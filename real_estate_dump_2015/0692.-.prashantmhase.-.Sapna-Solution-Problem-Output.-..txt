@@ -1,0 +1,57 @@
+1] Unzip the file SapanaSolution.zip.
+2] copy. Unzipped file into eclipse Workspace.
+3] Run Main.java file you will get the ouput on console and also in a file named Output.txt.
+
+eg.Output:
+
+cf0 Business & Finance >> Corporations >> 
+		Renting & Real Estate >> 
+		Other - Business & Finance >> 
+		Financial Planning >> 
+		Transcription services >> 
+		Insurance >> 
+		International Business and Operations >> 
+		General Management >> 
+		Translation services >> 
+		Credit & Debit >> 
+		Angels and Private Equity >> 
+		Mortgage and Loans >> 
+		Taxes >> 
+		Employment and labor issues >> 
+		Personal Finance >> 
+		Advertising & Marketing >> :- Conferences and marketing event management
+					:- Online marketing/SEO/SEM
+					:- Viral Marketing
+					:- Guerilla marketing
+					:- Traditional Marketing
+					:- Public relations
+					
+		Stock trading and Investing >> 
+		Business planning >> 
+		Small Business >> 
+		Careers & Employment services >> 
+		Ecommerce  >> 
+		Entrepreneurs >> 
+		Accounting and Finance >>  
+
+where cf0 Business & Finance : Primary Category
+	  Corporations >> 
+	  Renting & Real Estate >> 
+	  Other - Business & Finance >> 
+	  .
+	  .
+	  .
+	  Accounting and Finance >> : these all are subcategories of  cf0 Business & Finance (Primary Category)
+	  
+	  
+	  
+	  Advertising & Marketing  : subcategories of  cf0 Business & Finance (Primary Category).
+	  
+	  Advertising & Marketing >> :- Conferences and marketing event management
+	  			     :- Online marketing/SEO/SEM
+	  			     :- Viral Marketing
+	  			     :- Guerilla marketing
+	  			     :- Traditional Marketing
+				     :- Public relations
+				     
+				     these all are second-level subcategories.

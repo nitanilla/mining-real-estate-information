@@ -1,0 +1,5 @@
+Real Estate Checker
+
+Searches RealEstate.com for rental properties near new farm and then scrapes the resulting HTML to extract property details. 
+
+Todo: Lots. Make the query more flexible. Do something useful with the data. 

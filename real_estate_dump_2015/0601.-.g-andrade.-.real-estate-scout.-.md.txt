@@ -1,0 +1,18 @@
+# real-estate-scout
+Get notified of new appartments before anyone else.
+
+---
+Supported so far (some of them partially / with bugs):
+   * ImoVirtual (http://www.imovirtual.com/)
+   * Olx (http://www.olx.pt/)
+   * CustoJusto (http://www.custojusto.pt/)
+   * Ocasião (http://www.ocasiao.pt/)
+   * ArrendaCasa (http://www.arrendacasa.com/)
+   * Casas Sapo (http://casa.sapo.pt/)
+   * Remax (http://www.remax.pt)
+
+---
+Generic architecture; specific portal support on a case-to-case basis.
+   * **fetch_items.py** - web crawler; follows 'next page' links if supported; outputs items in JSON.
+   * **hash_item_images.py** - receives JSON; fetches & hashes images; outputs JSON;
+   * **filter_and_notify.py** - receives JSON; tracks repeated/new items; sends simple HTML emails with pictures (when supported), description and link.

@@ -1,0 +1,7 @@
+Mecklenburg County Real Estate Project 
+===
+
+This project uses open data to create a predictive real estate model for properties in Mecklenburg County, NC.
+
+#Project Overview
+This project is designed to predict real estate prices in Mecklenburg County (Charlotte Metro Area) using open data scraped from the county website.  The dbj_final.R script implements the data scraping and data quality control while the ipython notebook gives the model and the corresponding visualization.

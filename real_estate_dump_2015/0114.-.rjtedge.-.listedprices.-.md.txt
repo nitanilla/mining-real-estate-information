@@ -1,0 +1,11 @@
+Listed Prices Scraper
+===============
+It is becoming increasingly apparent that the listed prices that real estate agents provide are way off the mark.  
+
+This scraper extracts data from house sale ads. The aim is to gather the quoted prices from agents and later compare to the [Sold Prices](https://morph.io/rjtedge/saleprices). 
+
+It runs on [Morph.io](https://morph.io/), which hosts and runs the scraper. 
+
+### Notes
+
+This scraper was written in Ruby by a complete newbie. It is still very much in the starting phases and only collects select data. Once I workout how to compare the [Listed Prices](https://morph.io/rjtedge/listedprices) and [Sold Prices](https://morph.io/rjtedge/saleprices) I will try find some way of sharing the data.

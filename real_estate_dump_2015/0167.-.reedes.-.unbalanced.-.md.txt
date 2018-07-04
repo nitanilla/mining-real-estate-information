@@ -1,0 +1,254 @@
+# unbalanced
+
+> A multi-account portfolio balancing calculator
+
+## Features
+
+_unbalanced_ enables a do-it-yourself investor to conveniently balance
+a portfolio across multiple accounts to meet goals of tax-efficient
+placement and fund consolidation.
+
+* Balance multiple funds across multiple accounts
+* Holdings for each asset class are consolidated into single accounts
+  where possible
+* Target a specified allocation (e.g., 50% stocks, 40% bonds, 10% REIT)
+* Specify minimum funding for asset classes (per account)
+* Customize placement priority of asset classes
+* Regression test suite
+
+**Caveat Emptor**: Note that balancing portfolios can involve conflicting
+principles. _unbalanced_ deliberately makes its own compromises for the
+sake of convenience and tax-efficiency. For example, it won’t make any
+attempt to lower the costs of trading.
+
+## Requirements
+
+_unbalanced_ may require a recent version of Ruby.
+
+## Example
+
+The following `example.rb` script balances twelve funds across five
+accounts in a portfolio whose total value is $218,000.
+
+```ruby
+#!/usr/bin/env ruby
+
+require 'portfolio'
+require 'account'
+
+target_allocation = {
+      :total_stock     => 0.188, :small_value_idx => 0.075,
+      :micro_idx       => 0.038, :pacific_idx     => 0.060,
+      :europe_idx      => 0.060, :intl_small_idx  => 0.040,
+      :emerging_idx    => 0.040, :real_estate     => 0.100,
+      :total_bond      => 0.228, :junk_bond       => 0.076,
+      :tips            => 0.076, :cash            => 0.020 }
+
+p = Portfolio.new(target_allocation)
+
+p.accounts << Account.new(:annuity,
+                          { :cash => 28000,
+                            :real_estate => 0,
+                            :junk_bond => 0 })
+
+p.accounts << Account.new(:treasury_direct,
+                          {:tips => 2000})
+
+vanguard_funds = {
+      :total_stock     => 0, :small_value_idx => 0,
+      :micro_idx       => 0, :pacific_idx     => 0,
+      :europe_idx      => 0, :intl_small_idx  => 0,
+      :emerging_idx    => 0, :total_bond      => 0,
+      :junk_bond       => 0, :tips            => 0 }
+
+trad_ira = vanguard_funds.clone
+trad_ira[:cash] = 60000
+p.accounts << Account.new(:trad_ira, trad_ira, {:junk_bond=>10000})
+
+roth_ira = vanguard_funds.clone
+roth_ira[:cash] = 8000
+p.accounts << Account.new(:roth_ira, roth_ira)
+
+taxable = vanguard_funds.clone
+taxable[:cash] = 120000
+p.accounts << Account.new(:taxable, taxable)
+
+p.balance   # the magic
+
+print_formatted(p)
+```
+
+Running the script with the following command...
+
+```bash
+ruby -Ilib example.rb
+```
+
+produces the following output...
+
+```
+MY PORTFOLIO (balanced 2015-11-05)
+========================================
+Target Allocation:
+  total_bond          22.8%
+  total_stock         18.8%
+  real_estate         10.0%
+  tips                 7.6%
+  junk_bond            7.6%
+  small_value_idx      7.5%
+  pacific_idx          6.0%
+  europe_idx           6.0%
+  intl_small_idx       4.0%
+  emerging_idx         4.0%
+  micro_idx            3.8%
+  cash                 2.0%
+----------------------------------------
+annuity account
+  real_estate          $   21800
+  junk_bond            $    6200
+
+  Account Total        $   28000
+----------------------------------------
+treasury_direct account
+  tips                 $    2000
+
+  Account Total        $    2000
+----------------------------------------
+trad_ira account
+  total_bond           $   35064
+  junk_bond            $   10368
+  tips                 $   14568
+
+  Account Total        $   60000
+----------------------------------------
+roth_ira account
+  total_bond           $    8000
+
+  Account Total        $    8000
+----------------------------------------
+taxable account
+  total_stock          $   40984
+  small_value_idx      $   16350
+  micro_idx            $    8284
+  pacific_idx          $   13080
+  europe_idx           $   13080
+  intl_small_idx       $    8720
+  emerging_idx         $    8720
+  total_bond           $    6640
+  cash                 $    4142
+
+  Account Total        $  120000
+========================================
+GRAND TOTAL:           $  218000
+========================================
+```
+
+## Placement priorities
+
+Placement of funds in your target allocation is driven by a number of
+factors:
+
+1. Order of accounts. Placement begins with the first account added to
+   your portfolio. Once the first account is funded, it’ll continue with
+   the second, and so on.
+
+2. Asset classes available in an account. When you create an account you
+   specify a hash of available asset classes and their holdings.
+
+```ruby
+p.accounts << Account.new(:roth_ira, {:tips => 4333, :real_estate => 2000, :cash => 8192 })
+```
+
+3. The priority list. By default the priorities from least to most
+   tax-efficient are:
+
+```ruby
+  DEFAULT_PRIORITY = [
+    :junk_bond,         # high-yield corporate bonds (least efficient)
+    :tips,              # TIPS - inflation-protected bonds
+    :high_turnover,     # high-turnover active funds (incl. active balanced)
+    :real_estate,       # real estate or REIT funds
+    :stock,             # active stock funds (all non-indexed)
+    :micro,             # active micro-cap
+    :small_value,       # active small-value
+    :small,             # active small-cap
+    :large_value,       # active large-value
+    :intl_stock,        # active intl
+    :large_growth,      # active large growth
+    :total_bond,        # total-market bond index funds
+    :bonds,             # moderate-yield money market, bond funds
+    :balanced_idx,      # balanced index funds
+    :emerging_idx,      # emerging markets index funds (DGS, e.g.)
+    :intl_small_idx,    # intl small-cap index funds (DLS, e.g.)
+    :value_idx,         # value index funds
+    :intl_idx,          # intl index funds
+    :pacific_idx,       # pacific index funds (VPL, e.g.)
+    :europe_idx,        # europe index funds (VGK, e.g.)
+    :micro_idx,         # micro-cap index funds (IWC, e.g.)
+    :small_value_idx,   # small-value index funds (VBR, e.g.)
+    :small_idx,         # small-cap index funds
+    :mid_idx,           # mid-cap index funds
+    :balanced_idx,      # balanced index funds
+    :total_stock,       # large-cap and total-market stock index funds (VTI, e.g.)
+    :muni_bond,         # municipal bonds
+    :tax_managed,       # tax-managed stock funds
+    :savings_bond,      # EE/I Bonds
+    :cash ]             # low-yield money market, cash, short-term bond funds (most efficient)
+```
+
+You can override the priorities when creating your Portfolio:
+
+```ruby
+    target_allocation = { :real_estate => 0.100,
+                          :junk_bond => 0.076,
+                          :total_stock => 0.824 }
+    priorities = [
+          :junk_bond    ,   # first try will fill junk_bond before real_estate
+          :real_estate  ,
+          :total_stock  ,
+          :cash          ]
+    p = Portfolio.new(target_allocation, priorities)
+```
+
+Note that if balancing fails due to surplus funds, subsequent tries will
+be made by boosting the priority of those asset classes in surplus.
+
+## Account minimums
+
+You can establish a minimum to fund a holding on a per-account basis. This
+would be useful to achieve a lower expense ratio.
+
+For example, the `:junk_bond` in the following account would fund at
+$10,000 or more, or not at all.
+
+```ruby
+p.accounts << Account.new(:trad_ira, asset_classes, {:junk_bond=>10000})
+```
+
+Note that subsequent accounts in a portfolio will need to provide space
+for the targeted junk bond allocation. Otherwise the balancing will fail.
+
+## See also
+
+[Balancing Across Multiple Accounts][ma] (2015) - article from the _No Robo Investor_
+
+Relevant pages from the Bogleheads wiki:
+* [Rebalancing][rb]
+* [Asset allocation in multiple accounts][aa]
+* [Principles of tax efficient fund placement][te]
+
+[ma]: http://noroboinvestor.com/investing/multiple-accounts/
+[rb]: https://www.bogleheads.org/wiki/Rebalancing
+[aa]: https://www.bogleheads.org/wiki/Asset_allocation_in_multiple_accounts
+[te]: https://www.bogleheads.org/wiki/Principles_of_tax-efficient_fund_placement
+
+# Future development
+
+If you’ve spotted a problem or have an idea on improving _unbalanced_
+please report it as an issue, or better yet submit a pull request.
+
+For example, a web-based application would be welcome!
+
+```
+<!-- vim: set tw=73 :-->
+```

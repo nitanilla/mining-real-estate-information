@@ -1,0 +1,17 @@
+Welcome to CYC2001 Introduction to Cybercrime
+=====================================================================
+Introduction to Cybercrime is a core course of the Real Estate Technology Certification (RETC) program.
+
+Getting Started
+===============
+To help you get started, try the following link:-
+
+Syllabus:
+http://github.com/coreyleong/cyc2001
+
+Feedback
+tba
+
+Enjoy!
+
+Copyright 2008-14 Global Real Estate And Technology Consortium. All Rights Reserved. 

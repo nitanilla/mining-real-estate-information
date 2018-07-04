@@ -1,0 +1,5 @@
+# real-estate-data
+processing real estate data and keeping versions
+select time from 2004
+select cities which have fewer than 25 missing values in Median Sold Price
+replace missing values using interpolation

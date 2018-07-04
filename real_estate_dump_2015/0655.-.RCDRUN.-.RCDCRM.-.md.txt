@@ -1,0 +1,116 @@
+RCDCRM™ with CMS and ERP Capabilities
+=======================================
+
+RCDCRM™ with CMS and ERP Capabilities is software that combines
+standard business schema of a modern online entrepreneur. It combines
+following features together:
+
+* Customer Relationship Management
+* Content Management System
+* Enterprise Resource Planning
+
+## Customer Relationship Management
+
+Features:
+
+* Accounts, which may be:
+	* Companies
+	* Groups
+	* Mailing Lists
+	* Bank Accounts
+	* Cash Accounts
+
+* Contacts, which may belong to accounts, such as:
+	* Main Account
+	* Company
+	* Other Account
+
+* Opportunities
+
+* Notes, for:
+	* Accounts
+	* Contacts
+	* Opportunities
+	* Cases
+
+* Calls
+
+* E-mails
+	* Mailing Lists
+	* Newsletter management
+	* Offline autoresponder
+
+* Marks
+
+* Reminders
+
+
+## Content Management System
+
+* Pages
+* Links
+* Products
+* Real Estate
+* FAQ Categories, Questions and Answers
+* Gold and Silver prices
+* Fee Schedules and Fees
+	* PDF Generation
+	* HTML table generation within CMS
+
+### Sample websites generated with RCDCRM™ with CMS and ERP Capabilities
+
+* <http://www.startyourowngoldmine.com>
+
+There are maybe 100 domains and websites generated and created by using
+our RCDCRM™ with CMS and ERP Capabilities.
+
+## Enterprise Resource Planning
+
+* Invoices
+* Good and Services
+* Cash accounts and basic double entry accounting
+* Cash journal
+* Administrative Scales, Programs, Plans, Projects, Policies, Ideal Scenes, Valuable Final Products
+* Statistics
+* Real Estate
+* Top Level Domain management and TEL Domain Management
+* Real Estate
+* Gold and Silver
+* Fee Schedules and Fees
+
+## Software required
+
+* Linux, we use [Debian](http://www.debian.org "Debian") but you may use any distribution
+* PostgreSQL <http://www.postgresql.org>
+* Gedafe - Generic web based frontend for PostgreSQL written in Perl <http://isg.ee.ethz.ch/tools/gedafe/>
+* Perl and many Perl modules
+
+## Installation
+
+Installation is **not yet doable** without personal assistance. Contact us for
+the assistance. It may take 1-2 hours to install this software. Usability
+is in alpha stage for public, as a lot of documentation is missing and
+one need to understand all details.
+
+We expect first, third party person, to make a confirmed installation of
+this software to be in Serbia.
+
+1. Install Linux
+2. Install PostgreSQL
+3. Install git
+4. createuser thetacrmadmin
+	Shall the new role be a superuser? (y/n) n
+	Shall the new role be allowed to create databases? (y/n) y
+	Shall the new role be allowed to create more new roles? (y/n) y
+
+
+
+## Credits
+
+And many thanks to @oetiker for development of Gedafe, the Generic
+Database Frontend, together with his coleagues in
+Switzerland. We are looking forward to development of DbToRia
+<https://github.com/oetiker/DbToRia> and possible switch from usage of
+Gedafe to DbToRia.
+
+

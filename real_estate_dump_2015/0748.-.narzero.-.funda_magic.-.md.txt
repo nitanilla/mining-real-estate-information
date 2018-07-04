@@ -1,0 +1,40 @@
+# Funda Magic
+
+A little bit of Ruby magic is used to scrape all real estate data from [Funda](http://www.funda.nl).
+
+Sharing is caring.
+
+## Usage
+
+**Step 1: Install the Mechanize gem**
+
+```
+gem install mechanize
+```
+
+**Step 2: Clone this repository**
+
+```
+git clone https://github.com/narzero/funda_magic.git
+```
+
+**Step 3: Run magic.rb**
+
+```
+ruby magic.rb
+```
+
+**Step 4: Get some coffee**
+
+In about 1 hour, you'll have a single JSON file containing all
+real estate data from Funda.
+
+## Limitations
+
+Currently limited to the city of Rotterdam. Will change in the future.
+
+## License
+
+Funda Magic is released under the MIT license:
+
+* http://www.opensource.org/licenses/MIT

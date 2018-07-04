@@ -1,0 +1,51 @@
+# GodComplex
+
+GodComplex is a casual real estate sandbox type game; You build and manage your own city. 
+
+
+
+
+# Planned Buildings
+
+**Agricultural buildings**
+
+- Barn
+- Farmhouse
+- Granary
+- Stable
+- Farmland
+
+**Commercial buildings**
+
+- Automobile repair shop
+- Bank
+- Car wash
+- Convention center
+- Forum
+- Gas station
+- Market
+- Market house
+- Skyscraper
+- General Shop
+- Shopping mall
+- Supermarket
+- Warehouse
+- Restaurant
+
+**Residential buildings**
+
+- Asylum
+- Condominium
+- Dormitory
+- Duplex
+- Nursing home
+- Townhouse
+- Villa
+
+**Industrial buildings**
+
+- Brewery
+- Foundry
+- Power plant
+- Mill
+

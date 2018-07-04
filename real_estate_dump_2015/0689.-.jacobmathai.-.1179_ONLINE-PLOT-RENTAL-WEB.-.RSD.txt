@@ -1,0 +1,15 @@
+1. Name (Project heading) : ONLINE PLOT RENTAL
+2. Remote Centre ID (RC_ID) : 1179
+3. College / Institute Name : Viswajyothi College Of Engineering And Technology, Vazhakkulam.
+4. Vazhakkulam, Kerala , 686670.
+5. Asst. Prof. Jacob Mathai, Team Members:
+   Jis Francis,Nitin Mathew,Priyanka Anna Kuriakose.
+6. About (Short Description / Summary):
+
+
+Online house rental web portal is an internet portal along with an android application dedicated to meet every aspect of the consumer needs in the real estate industry. This is a form where the owner’s brokers and customers can exchange information’s quickly effectively and inexpensively. It features commercial and residential properties for sale , rent and lease the properties, rates and their locations are shown.
+Main aim of this project is to reduce gap between property owners and clients (customers). This application is a web portal project through which vendors will post their product details on website and provide solution for contact them. Clients will enter website through search results and know details of products and contact property owners.
+ This project is to bring the real estate industry online and enabling real estate industry participants to benefit from the Internet. Site acts as an interface between individuals and realtors. Here the user can advertise his property for selling.
+In this project we are proposing a web application as well as a mobile application in which the web application contains the detail about the properties and the customers can search and find the properties by their needs. The data’s in this portal is verified or authenticated so that the problem of fake properties or fake users does not arises. A person who needs to sell a property through this portal should upload their identity (voter’s ID card or Aadhar card) and other details. The details of the property includes whether it’s an apartment or house, location, area in square feet, images or videos of the property, GPS coordinates of the property etc.
+
+Mail: jacob_mathai@ymail.com

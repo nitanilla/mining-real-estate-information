@@ -1,0 +1,105 @@
+# Forecasting Housing Prices by City
+
+author: Gerald E. Daniels Jr.
+date: October 29, 2015
+
+This is a work in progress. Please click [here](https://htmlpreview.github.io/?https://github.com/GDanielsJr/HousinginPJ/blob/master/HousingPJ.html#/) for an introduction to the project. 
+
+
+Overview
+========================================================
+
+This year, house prices, as measured by the Purchase 
+Only House Price Index, have reached a record level high. 
+Thus, home owners must consistently consider one 
+fundamental question when deciding when to sell their 
+home. 
+
+How much will my house appreciate in the next 
+3 months, 12 months, and beyond?
+
+Purchase Only House Price Index for the United States
+========================================================
+
+[<img src="https://raw.githubusercontent.com/GDanielsJr/HousinginPJ/master/HPI.png"/>](https://github.com/GDanielsJr/HousinginPJ/blob/master/HPI.pdf)
+
+
+Project
+========================================================
+
+I will develop a simple web based application
+for forecasting housing prices by city. The goal of the 
+project will be to inform potential buyers or sellers on 
+the general behavior of housing prices in their area.
+
+The benefits of such an application:
+
+- The reduction in the asymmetric information between 
+buyers and sellers
+- Indirectly, allow consumers to understand how Federal Reserve 
+policies impact house prices 
+
+Those that will Benefit from this Application
+========================================================
+
+This question is obviously not limited to Home owners 
+and would be of significant interest to:
+
+- Real Estate firms
+- Data services such as Zillow
+- Individual Buyers and Sellers
+
+
+Growth Rate of Housing Prices (from a year ago)
+========================================================
+
+[<img src="https://raw.githubusercontent.com/GDanielsJr/HousinginPJ/master/HPIandFFR.png"/>](https://github.com/GDanielsJr/HousinginPJ/blob/master/HPIandFFR.pdf)
+
+
+Data and Sources
+========================================================
+
+The data for the forecast will come from the following 
+sources: 
+
+- [Zillow Real Estate Research](http://www.zillow.com/research/data/)
+- [Federal Reserve Economic Data](https://research.stlouisfed.org/fred2/)
+
+Data descriptions can be found at:
+- [Zillow Real Estate Research Definitions](http://www.zillow.com/research/data/#zhvi)
+- [Feder Funds Rate Target (Discontinued Series)](https://research.stlouisfed.org/fred2/series/DFEDTAR)
+- [Federal Funds Target Range - Upper Limit](https://research.stlouisfed.org/fred2/series/DFEDTARU)
+- [Federal Funds Target Range - lower Limit](https://research.stlouisfed.org/fred2/series/DFEDTARL)
+- [Purchase Only House Price Index for the United States](https://research.stlouisfed.org/fred2/series/HPIPONM226N)
+
+
+
+A Look at Some of the Data
+========================================================
+
+The data provided by Zillow includes more than 2.5 million observations.
+This data provides a nice reference for the change in prices by
+city over time. To better understand what the application will
+forecast, I provide two figures outlining the California 
+housing market for the four most populated cities in the state.
+
+Median House Price in California 
+========================================================
+
+[<img src="https://raw.githubusercontent.com/GDanielsJr/HousinginPJ/master/CAHP.png"/>](https://github.com/GDanielsJr/HousinginPJ/blob/master/CAHP.pdf)
+
+
+Growth Rate of Median House Price (from a year ago)
+========================================================
+
+[<img src="https://raw.githubusercontent.com/GDanielsJr/HousinginPJ/master/CAgr.png"/>](https://github.com/GDanielsJr/HousinginPJ/blob/master/CAgr.pdf)
+
+
+Growth Rate of Median House Price (Comment)
+========================================================
+Again, this application will forecast the growth of 
+these prices with the intention of providing consumers 
+with vital statistics on their local housing market.
+
+
+

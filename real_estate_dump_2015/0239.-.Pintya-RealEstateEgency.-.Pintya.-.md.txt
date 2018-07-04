@@ -1,0 +1,2 @@
+# Pintya
+A software for management of any real estate egency.

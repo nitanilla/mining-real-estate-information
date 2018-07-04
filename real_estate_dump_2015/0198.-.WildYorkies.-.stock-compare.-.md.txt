@@ -1,0 +1,7 @@
+# stock-compare
+The Web App should: 
+
+* take in stock information using a JavaScript library. 
+* have some way of sorting by whether or not they use LivePerson as well as by sector; Banking, real estate, telecoms, etc.… 
+* have a way of selecting two companies, one using and one not using LivePerson, in order to see a comparison between them.
+* use libraries such as JQuery order to improve various aspects of the User Interface by adding elements such as scrolling and fading effects 

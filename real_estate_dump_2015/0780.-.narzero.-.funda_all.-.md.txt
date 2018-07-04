@@ -1,0 +1,14 @@
+# Funda Magic Rocket
+
+[Funda Magic](https://github.com/narzero/funda_magic) is used to scrape all
+real estate data from [Funda](http://www.funda.nl).
+
+Twice a day, a rake task is run to fetch all real estate properties on
+Funda. First it checks if the property is present in the database, if it's
+not present it will be added.
+
+All data is saved to a [MongoDB](http://www.mongodb.org/) database.
+
+## Note
+
+This is a work in progress.

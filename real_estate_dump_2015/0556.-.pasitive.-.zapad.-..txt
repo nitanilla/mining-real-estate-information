@@ -1,0 +1,25 @@
+Restate v1.0
+
+Real Estate engine with sphinx search.
+
+REQUIREMENTS:
+ - Capistrano (deploy)
+ - Sphinx (search)
+ - APC/MemCache[d] (caching)
+
+FEATURES:
+ - Different types of real estate objects
+ - Unlimited additional attributes to real estate objects
+ - RBAC support
+ - Container & not container objects (container may include other objects)
+ - Powerfull search with Sphinx
+
+INSTALLATION:
+ - cap app:setup
+ - cap deploy:setup
+ - copy protected/config directory to #{shared_path}/config
+ - set chmod 0777 to runtime, assets
+ - make data directory writable to Sphinx indexer and sphinxd
+ - cap deploy
+
+ Enjoy!

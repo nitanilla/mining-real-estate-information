@@ -1,0 +1,16 @@
+Mailchimp is one of the most used and most feature-rich Email Marketing system and has a very generous 'Freemium' business model
+It's extensive API makes it easy to integrate it with your own web applications. 
+We at Pauli Systems integrated it with User registration, Membership administration and Real-Estate Listing application. 
+This repository holds the Coldfusion cfc we used to connect with Mailchimp API. Feel free to use and fork. 
+
+Links to learn more: 
+http://www.mailchimp.com
+http://www.mailchimp.com/api
+
+Note: We are in the process of moving communcation about this code from riaforge.org to Github.com, that's why this space is still empty.
+Stay tuned.
+
+Birgit Pauli-Haack
+bph@idxtools.com
+Follow on Twitter: @bph
+

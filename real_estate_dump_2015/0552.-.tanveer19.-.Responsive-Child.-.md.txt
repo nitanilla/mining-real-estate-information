@@ -1,0 +1,2 @@
+It is a wordpress theme for www.hometrustliving.com ( A Real Estate Firm).
+This theme is a child theme of popular wordpress theme named Responsive.

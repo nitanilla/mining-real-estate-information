@@ -1,0 +1,12 @@
+rem
+===
+
+Real Estate Management
+
+This is an attempt to create a generic project management real estate for any administration or private.
+
+Technologies used:
+- Spring
+- hibernate
+- GWT
+- maven

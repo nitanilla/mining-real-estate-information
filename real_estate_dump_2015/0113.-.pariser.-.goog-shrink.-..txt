@@ -1,0 +1,21 @@
+ goog-shrink
+-------------
+
+This project aims to recover valuable vertical screen real estate lost to
+Google's new design. Does the header really require that much space? It provides
+a few small css files for Google products (docs, maps, ...) that will be used by
+dotjs [http://defunkt.io/dotjs/] to accomplish this.
+
+Working:
+- deploy.sh script
+- docs.google.com.css
+
+In the pipeline:
+- maps.google.com.css
+
+To install, run ./deploy.sh, which will create your ~/.css/ folder (if it does
+not yet exist) and create symbolic links to the files contained in the project.
+
+Project started by:
+- pariser@gmail.com | github.com/pariser
+- thepotch@gmail.com | github.com/potch

@@ -1,0 +1,5 @@
+[![Build Status](https://travis-ci.org/mircomacrelli/stan.svg?branch=master)](https://travis-ci.org/mircomacrelli/stan)
+[![Coverage Status](https://coveralls.io/repos/mircomacrelli/stan/badge.svg?branch=master)](https://coveralls.io/r/mircomacrelli/stan?branch=master)
+Stan
+====
+A small search engine for real estate ads

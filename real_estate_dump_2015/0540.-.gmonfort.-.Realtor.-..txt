@@ -1,0 +1,11 @@
+== Welcome to Realtor
+
+Realtor is a real estate agency management application, you can manage your contracts, customers, properties, etc.
+
+IMPORTANT NOTE: This is pre alpha software so don't expect it to work
+
+== Getting Started
+
+TODO
+
+

@@ -1,0 +1,30 @@
+Welcome to the Royce Commercial Real Estate open source rails app.
+
+Our firm exclusively manages commercial real estate investments, with a
+particular focus on the general and medical office product type. In a
+business that hinges on ethics and capabilities, we remain
+committed to the following five pillars of service:
+
+LOYALTY
+A manager's motivations should never come into question.
+Our role is to provide guidance and a neutral perspective,
+but our clients' needs and wishes are our absolute priority.
+
+DEDICATION
+The growth of our company in 2010 will be limited to five exclusive clients,
+which will allow us to maintain an unmatched level of service.
+
+CONCENTRATION
+By managing only local investments with no residential component,
+we are able to tailor our efforts to a very specific market.
+
+COMPREHENSIVENESS
+Asset management extends far beyond facility maintenance. We strive to
+maximize profit in every aspect of operations and decision making, and
+are always conscious of our clients' unique needs and exit strategies.
+
+INNOVATION
+Every day is a new learning opportunity and a chance to provide a
+creative solution. Using technology and critical thinking, we provide an
+unconventional perspective in an evolving and competitive environment.
+

@@ -1,0 +1,5 @@
+# cardom_PostgreSQL-Heroku
+
+This is the website of real estate agency "Cardom". The version uses its own PostgreSQL database and is deployed on Heroku. 
+
+Available on: cardom.herokuapp.com

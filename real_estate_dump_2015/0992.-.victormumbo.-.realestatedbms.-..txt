@@ -1,0 +1,4 @@
+// A Real Estate Solution that helps in database management by doing the following:-
+// 1) Store all valuations in a systematic way
+// 2) Store research in details
+// 3) Able to retrieve data from the database

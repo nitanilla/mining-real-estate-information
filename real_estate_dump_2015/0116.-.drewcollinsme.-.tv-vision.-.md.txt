@@ -1,0 +1,4 @@
+# TV Vision
+_TV Vision_ is a simple framework which allows you to quickly and easily develop websites for TV devices. This framework ensures the screen real estate is used effectively and that content is visible from an appropriate viewing distance. I've developed this as a framework for my own [portfolio](http://drewcollins.me/) to display my work on a TV.
+
+The design layout implements large, full screen content to display images and video and layers the menu and navigation items over the top of the screen, hiding them when they aren't needed.

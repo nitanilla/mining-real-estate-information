@@ -1,0 +1,22 @@
+Java GUI for dxWorld.com
+command line style interface or launchpad style approach
+
+http://dbbear.com/k0emt/projsoft/dxSpot/
+
+Features:
+
+Minimizes bandwidth use, only reads up to point it last read.
+Starts the window with the "look back" log.
+Each frame is set to refresh at 5 minutes.
+Frame updates upon QSO or spot submission.
+The user may also manually force an update.
+Can display HF/6 & 2M QSO & DX frames without requiring a bunch of screen real-estate.
+Users grid & callsign are automagically appended to submissions.
+setting call sign / grid from command frame
+  IF they are set other than MyCall and MyGrid.
+QRZ feature when using CommandFrame
+read initial settings from a file -- give config file name on command line
+added whoami command for CommandFrame
+
+You can use the main in either of the CommandFrame or dxSpot classes.
+

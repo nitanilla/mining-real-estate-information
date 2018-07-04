@@ -1,0 +1,10 @@
+== README
+
+Final for BEWD at General Assembly
+
+This is an app for real estate professionals.  You can quickly and easily make custom looking websites for your listings.  Just input the information and the app takes care of the rest. 
+
+
+
+
+

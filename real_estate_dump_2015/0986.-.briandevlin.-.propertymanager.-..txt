@@ -1,0 +1,2 @@
+my property manager readme file
+here we want to create an application that is not about real estate but property management in controlling new or old tenants

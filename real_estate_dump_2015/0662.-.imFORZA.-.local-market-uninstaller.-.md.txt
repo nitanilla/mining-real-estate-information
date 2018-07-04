@@ -1,0 +1,18 @@
+# Local Market Explorer Uninstaller
+
+Back in the day, many real estate sites built with WordPress used a plugin called ***Local Market Explorer***. We find it common to see this plugin installed when we take over a older Real Estate WordPress site. 
+
+In 2011 it was discovered this plugin has a ***serious*** security issue.  You can read more about the security issue here:
+http://wpsecure.net/2011/02/local-market-explorer-plugin/
+
+Its a serious issue, and should not be taken litely. The WordPress team removed it from the WordPress.org Plugins not long after this issue was reported. If you have this plugin installed you should remove it immediately. 
+
+Now heres some more bad news. Many older plugins such as this one, leave legacy data. WordPress does now offer a way for developers to remove all plugin data on remove, but many have yet to utilize it. 
+
+This means even if you delete the plugin thru the WordPress admin or FTP, there will still be remaining data.
+
+### So what does this plugin do?
+
+* Removes the `lme_areas` table
+* Removes the `local-market-explorer` option 
+* Provides an admin tool to provide a list of IDs for any page/post using the Local Market Explorer shortcode. It searches for any shortcodes that start as `[lme-module`

@@ -1,0 +1,11 @@
+One-time setup
+
+```
+git clone https://www.github.com/wileykestner/sf_real_estate
+cd sf_real_estate
+pyvenv-3.4 ./venv
+source venv/bin/activate
+pip install -r requirements.txt
+./setup.py test
+./sf.py
+```

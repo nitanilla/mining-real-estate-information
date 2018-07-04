@@ -1,0 +1,5 @@
+zillowsearch
+============
+
+This project is an Android application that enables the user to search real estate information via Zillow.com. 
+The data are provided by zillow.com

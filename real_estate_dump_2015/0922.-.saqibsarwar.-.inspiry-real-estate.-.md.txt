@@ -1,0 +1,1 @@
+# Inspiry Real Estate Plugin

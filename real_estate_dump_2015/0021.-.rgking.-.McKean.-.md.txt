@@ -1,0 +1,13 @@
+McKean Real Estate
+======
+A website for a real estate agency, with properties managed from a database
+administered via GUI.
+
+Implemented in:
+- PHP
+- MySQL
+- CodeIgniter
+- jQuery
+- jQuery UI
+
+Includes photo upload, scaling, reordering.

@@ -1,0 +1,11 @@
+# [![Build Status](https://secure.travis-ci.org/redevest/com.png)](http://travis-ci.org/redevest/com)
+# redevest.com
+
+## WHAT
+
+Real Estate through Residential Redevelopment
+
+## LICENSE
+
+Copyright (c) 2012 Residential Redevelopment LLC
+

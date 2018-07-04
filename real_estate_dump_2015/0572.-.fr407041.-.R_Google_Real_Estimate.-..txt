@@ -1,0 +1,3 @@
+2014/7/15 Initial Release
+
+This is a R code for intergrated package RgoogleMaps with Taiwan's real estate.

@@ -1,0 +1,8 @@
+# Alante Real Estate
+UI Designer/Developer Test
+
+10 Hours to build, from extracting assets to final polish.
+
+Things I would have done differently, given more time and resources, is not using individual images(too many http requests). I would have liked to use an icon-font, or .svgs, or at the very least create a sprite sheet for many of the image assets. I would have loved to use JavaScript and not hack the CSS for the carousel 'slide up' menus on desktop.
+
+I had fun turning the .psds into HTML and CSS.

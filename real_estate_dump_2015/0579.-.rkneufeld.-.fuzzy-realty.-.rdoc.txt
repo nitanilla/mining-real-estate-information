@@ -1,0 +1,7 @@
+= fuzzy-realty
+
+A Fuzzy-search gem for a Real Estate website
+
+== Copyright
+
+Copyright (c) 2009 Ryan Neufeld. See LICENSE for details.

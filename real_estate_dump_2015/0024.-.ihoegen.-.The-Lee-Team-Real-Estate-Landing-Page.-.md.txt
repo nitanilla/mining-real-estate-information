@@ -1,0 +1,4 @@
+# The-Lee-Team-Real-Estate
+My first ever website.
+This is my first project, and is a landing page for a team of Real Estate agents in Gig Harbor. 
+The link to the live version is http://welcome2gigharbor.com

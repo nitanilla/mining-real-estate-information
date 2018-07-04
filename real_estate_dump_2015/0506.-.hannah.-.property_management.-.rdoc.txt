@@ -1,0 +1,1 @@
+This app is intended to help a real estate company manage their properties. It is a checkpoint for week seven at Launch Academy.

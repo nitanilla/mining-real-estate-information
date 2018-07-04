@@ -1,0 +1,2 @@
+# Chrome-emptyDrawer
+The drawer layout pattern is a very common and popular design for people to develop their applications. It provide maximum real estate for the main function and at the same time a dedicated space for your inputs and control fields. This application is an empty template for all to build upon. 

@@ -1,0 +1,2 @@
+# cs142Lab10RealEstate
+Inheritance and polymorphism can be used to model many real-world environments. In this lab you will use these features to efficiently model a simple set of real estate objects. In contrast with other labs there is not much computation in this lab. The primary task here is to organize the data needed to represent real estate objects, in particular properties and the associated taxes.

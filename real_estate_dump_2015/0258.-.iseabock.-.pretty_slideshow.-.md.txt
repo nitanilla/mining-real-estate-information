@@ -1,0 +1,4 @@
+# Pretty Slideshow
+
+Real Estate Slideshows Done Better
+by [Ian Seabock](http://prettyslideshow.com/).

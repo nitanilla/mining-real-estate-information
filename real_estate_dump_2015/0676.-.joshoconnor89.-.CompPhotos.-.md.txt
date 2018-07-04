@@ -1,0 +1,18 @@
+# CompPhotos
+iOS app
+
+CompPhotos is an iOS written by Joshua O'Connor in the Summer of 2015.  It is written in Swift and stores data externally on a Cloud Database with Parse.
+
+**DISCLAIMER:  The Key required to access CompPhoto's database has been removed from this project.  
+
+**TERMS OF USE:
+CompPhotos is only intended for READ ONLY.  Any reuse of this project must have approval of the developer.
+
+App Description:
+Comp Photos is a must have app for individuals in the Real Estate business.  Don't waste time  and energy gathering comparable photos!  Simply search the community database to view multiple comparable photos of the same property with ease.  Comp Photos also allows you to store and retrieve your own real estate photos externally on Cloud database in a neat and organized manner.
+
+App Store: https://itunes.apple.com/us/app/comp-photos/id1032058096?ls=1&mt=8
+
+For any questions, please contact the developer, Joshua O'Connor, at http://www.joshoconnor.us/contact
+
+Copyright Joshua O'Connor 2015.  All rights reserved.

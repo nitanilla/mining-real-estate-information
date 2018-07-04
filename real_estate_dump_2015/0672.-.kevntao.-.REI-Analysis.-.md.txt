@@ -1,0 +1,15 @@
+## US National Real Estate Investment Analysis
+
+##### Data Sources: Zillow, Quandl, Department of Numbers
+##### Analysis Tools: StatsModels, PostgreSQL, Pandas
+##### Visualization: D3.js, MetricsGraphics.js, Flask
+
+### Background
+The rental market in the US is at one of its highest points in recent history. The number of households renting has risen to 35.5% and rental vacancy has dropped to 7.6%, its highest and lowest points in two decades, respectively.
+
+Rental rates themselves are outpacing inflation 2 to 1, and as home prices rise, the hurdles to becoming a homeowner become greater. With these hurdles, the huge millennial generation will increase the number of renters in the country, improving the chances of return for real estate investors.
+
+### Objective
+Using monthly aggregated Zillow data available on Quandl's data platform, evaluate the average median sale price and average median rent value to determine the most promising US metropolitan areas for investment in rental properties. Data existing between 2010 and present day will provide the basis for time series analysis using vector autoregressive estimation models.
+
+### Analysis

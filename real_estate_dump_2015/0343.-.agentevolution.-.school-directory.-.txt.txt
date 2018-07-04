@@ -1,0 +1,26 @@
+=== School Directory ===
+Contributors:
+Tags: real estate, agentpress, genesis, genesiswp
+Requires at least: 3.2
+Tested up to: 3.3
+Stable tag: 0.1.0
+
+This plugin plugin creates a business directory for genesis.
+
+== Description ==
+
+The School Directory plugin creates a custom post type for listing schools.
+
+== Installation ==
+
+1. Upload the entire `school-directory` folder to the `/wp-content/plugins/` directory
+2. Activate the plugin through the 'Plugins' menu in WordPress
+
+== Frequently Asked Questions ==
+
+
+
+== Changelog ==
+
+= 0.1.0 =
+* Initial release

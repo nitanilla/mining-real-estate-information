@@ -1,0 +1,5 @@
+SeetTalera
+==========
+-Work in progress
+
+Real estate solution developed in metoer.js

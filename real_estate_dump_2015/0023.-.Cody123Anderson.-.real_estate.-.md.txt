@@ -1,0 +1,2 @@
+# real_estate
+In this C++ program, I use Inheritance and polymorphism to model a real-world real estate environment. I use these features to efficiently model a simple set of real estate objects. There is not much computation in this project, but the primary task here is to show my ability to organize the data needed to represent real estate objects, in particular properties and the associated taxes.

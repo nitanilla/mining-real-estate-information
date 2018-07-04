@@ -1,0 +1,38 @@
+## WordPress Theme for real estate website
+
+WordPress theme for a small real estate business using the starter theme from underscores.me called _s and the Foundation Framework for front-end development.
+
+Website: [CIP Consultora Constructora](http://consultoracip.com)
+
+## Tools
+  * [Fontello](http://fontello.com/): Use icon fonts instead of fontawesome.io to reduce file size.
+  * [Grunt](http://gruntjs.com/): concat, uglify, spritesmith, sass and watch.
+  * [Foundation](http://foundation.zurb.com/): Front-end development Framework with Mobile First approach.
+
+## Featured
+  * Custom post type to manage properties.
+  * Each property have amenities, description, photo gallery and Google Maps.
+  * Search properties using Google Maps.
+  * Generic form for each property with automatic response.
+  * Added Google Analytics.
+
+## WordPress Tweaks
+  * Replace WordPress bundled jQuery with [jQuery CDN](https://code.jquery.com/).
+  * Removed additional code from head section.
+  * Removed WP emoji code from markup.
+
+## Foundation Js
+  * Foundation Off Canvas for mobile navigation.
+  * Foundation Equalizer to force columns with the same height.
+
+## WordPress Plugins
+  * [Meta Box](https://wordpress.org/plugins/meta-box/)
+  * [Contact Form 7](https://wordpress.org/plugins/contact-form-7/)
+  * [Contact Form DB](https://wordpress.org/plugins/contact-form-7-to-database-extension/)
+  * [OptionTree](https://wordpress.org/plugins/option-tree/)
+  * [Custom Post Type UI](https://wordpress.org/plugins/custom-post-type-ui/)
+  * [Post Types Order](https://wordpress.org/plugins/post-types-order/)
+  * [WP Admin UI Customize](https://wordpress.org/plugins/wp-admin-ui-customize/)
+
+## jQuery Plugins
+  * [Slick](http://kenwheeler.github.io/slick/) the last carousel you'll ever need

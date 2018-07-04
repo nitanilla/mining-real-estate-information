@@ -1,0 +1,6 @@
+Crawler script for some German real estate websites to search appartments in Berlin.
+
+= Dependancies: =
+ * lxml
+ * PyQuery
+ * simplejson

@@ -1,0 +1,4 @@
+# DBMS_For_RealEstateAgency
+An Oracle database management system for real estate agency.  
+  
+Please see Project Description.pdf for more details.

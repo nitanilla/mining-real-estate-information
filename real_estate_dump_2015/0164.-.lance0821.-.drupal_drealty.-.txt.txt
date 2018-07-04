@@ -1,0 +1,75 @@
+--------------------------------------------------------------------
+Changes 6.x to 7.x
+--------------------------------------------------------------------
+
+one of the biggest changes is the removal of the batch api import method, in order to import listings 
+you'll need to use the following drush commands:
+
+Importing:
+drush -u admin -d rets-import
+
+Flushing Data
+drush -u admin -d rets-flush
+
+
+
+--------------------------------------------------------------------
+Description
+--------------------------------------------------------------------
+
+dRealty is a Real Estate Module to import Listings into drupal via the RETS protocol. It aims to become a full fledged IDX solution for Drupal.
+
+dReatly IDX offers the following functionality:
+
+Provides an interface to define multiple RETS service connections.
+Provides an interface to Setup a MLS feed, allowing a user to import various entities into the Drupal system.
+Users can select to import Property Listings, Real Estate Agents, Real Estate Offices, and Open Houses (Your RETS Feed must support these)
+There are four main Entities defined by the module [listing, agent, office, openhouse]
+The module leverages the power of Entities, they are field-able!
+GeoCoding
+Users have the ability to update and flush their MLS feeds
+Feeds are then processed according to the feed profile during cron
+Integration with CTools to provide Importing and Exporting of connections
+drush integration.
+works wonderfully with search api
+** This project is still very much in beta. Expect frequent updates to the code and feature set and possibly the schema. Not for use on production sites!
+
+
+--------------------------------------------------------------------
+Requirements & Required Modules
+--------------------------------------------------------------------
+
+php requirements:
+* php 5.2.x - http://www.php.net
+* php cURL support - http://www.php.net/manual/en/curl.setup.php
+
+
+--------------------------------------------------------------------
+Required Modules
+--------------------------------------------------------------------
+Entity API
+Views
+Libraries
+Geocoder
+Drush
+
+
+--------------------------------------------------------------------
+Recomended Modules
+--------------------------------------------------------------------
+TBA
+
+----------------------------------
+Installation
+-----------------------------------
+
+* To install, follow the general directions available at:
+http://drupal.org/getting-started/5/install-contrib/modules
+
+* View the INSTALL file
+
+--------------------------------------------------------------------
+Configuration
+--------------------------------------------------------------------
+
+TBA

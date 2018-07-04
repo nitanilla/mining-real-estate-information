@@ -1,0 +1,7 @@
+# Real Estate Web App
+Web App for Publishing and Searching Real Estate.  Support Search, Google Maps, Location, Ads and Pay Highlighted Placement.
+
+Built with:
+<strong>Infrastructure:</strong> AWS
+<strong>Backend:</strong>  NodeJS, Express, Sequelize, PostgreSQL, Passport, Underscore, EJS
+<strong>FrontEnd:</strong> JavaScript, HTML, CSS, EJS

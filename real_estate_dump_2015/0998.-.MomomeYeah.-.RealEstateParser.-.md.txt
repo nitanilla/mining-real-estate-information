@@ -1,0 +1,8 @@
+Real Estate Parser
+======
+
+TODO
+----
+
+* Group by open house date
+* When adding a new listing, look at all open house times and add to those, creating new ones if necessary

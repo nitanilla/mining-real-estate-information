@@ -1,0 +1,8 @@
+# property-tracker
+A real-estate canvasing application built for a client.
+
+# Built using
+- Python (webapp2)
+- Django/Jinja2
+- Bootstrap
+- Google App Engine

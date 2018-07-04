@@ -1,0 +1,8 @@
+Website: Atlanta Real Estate Forum
+Date: 2/11/2015
+Launch: TBD
+Author: Mike Adamczyk <mike@mrelevance.com>
+
+This website is a multisite network, with different domains pointing to it (ie. atlantarealestateforum.com, chicagorealestateforum.com)
+
+The Wordpress content directory has been changed to /theme, and not /wordpress/wp-content. Do not change the wp-content directory.

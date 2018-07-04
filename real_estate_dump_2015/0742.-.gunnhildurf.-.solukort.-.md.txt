@@ -1,0 +1,17 @@
+# solukort
+
+* AngularJS app that maps the Icelandic real estate market
+* All comments etc. in English please
+* To run app(requries Python 3):
+    * Open cmd in project folder
+    * python -m http.server 8000
+    * open browser and navigate to localhost:8000
+
+# TODO:
+* Get the data from visir
+* Design structure of code
+* Decide what to  have in Grunt file
+* Research testing (Jasmine + Karma)
+* Create Mongo database
+
+

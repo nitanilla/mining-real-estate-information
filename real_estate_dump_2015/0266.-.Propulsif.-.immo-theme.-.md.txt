@@ -1,0 +1,2 @@
+# immo-theme
+Base theme for the Immo real estate platform

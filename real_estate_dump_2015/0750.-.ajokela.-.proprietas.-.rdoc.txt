@@ -1,0 +1,9 @@
+== proprietas
+
+Build status: {<img src="https://secure.travis-ci.org/ajokela/proprietas.png" />}[http://travis-ci.org/ajokela/proprietas]
+
+The general idea of this project is provide a way to slice and dice GIS data (e.g. maps) along with other sources of geolocated data.
+Initially, this will be real estate data for Ramsey County, MN.  As other things pique my interest, they will be added. 
+
+See doc/notes.txt for more information.
+

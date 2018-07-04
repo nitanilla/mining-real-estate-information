@@ -1,0 +1,9 @@
+realtor_transaction_app
+=======================
+
+
+Basic web app for managing real estate transactions. 
+<br>
+Built with laravel 
+<br>
+pre alpha not functional yet

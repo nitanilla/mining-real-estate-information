@@ -1,0 +1,18 @@
+# RealEstateCSharpMVC
+Real Estate C# MVC
+
+
+
+
+Version Alpha 1.0
+
+**Added**
+Admin Panel
+- Country List
+- Province List
+- Property List
+
+
+
+
+http://www.halilkoca.com

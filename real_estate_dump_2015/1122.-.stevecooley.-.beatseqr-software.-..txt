@@ -1,0 +1,155 @@
+Beatseqr - a hardware interface for working with visuals and music software.
+http://beatseqr.com
+2009 - 2010 Steve Cooley
+
+Steppa - a Max/MSP app that handles sequencing MIDI data from messages sent from the rest of the beatseqr tool chain.
+
+Version updates:
+
+ v0.62 steve cooley
+ * just added a display of the midi note numbers.  Just a sanity check more than anything.
+
+ v0.61 steve cooley
+ * midi channel selection is assignable via OSC messages.  You can now select which midi channel you want each voice to go to via the voice faders on beatseqr
+
+ v0.6a derek scott
+ * ??? 
+ * midi channel selection is broken out per-voice
+
+ v0.51 steve cooley
+ * moved version history to this sub patcher. now it can get as big as it wants.
+ * broke the cc message paths into smaller pieces (ccsub1, ccsub2, ccsub3)
+ * added some documentation to the cc subs too
+ * the steppa logo is busted... :-\ scroll down for concepts.  Could even make the lights light up with the step number! :D
+
+ v0.50 derek scott
+ * rebuilt clock engine
+ * added MIDI sync out
+ * added click track sync (thanks, Mark Pauley!)
+
+ v0.40 derek scott
+ * consolidated dependency patches into sub-patches within Steppa
+
+ v0.39 steve cooley
+ * changed the OSC namespace to be prefixed with /beatseqr ... look in stepcomm if you need to change that
+ * overhauled the rosco-row system to the roxor_row system
+ * moved all velocity and midi note num processing to stepcomm
+
+ v0.38 steve cooley
+ * converting the incoming OSC velocity values into max senders so you can pick them up in other patches...
+ * giving in to "snap to grid" and OCD. Ahh. 
+
+ v0.37 steve cooley
+ * another bug fix in pitchout in rosco-row2
+ * I'm now resending the midinotenum1-8 values once they're parsed from the incoming OSC values so you could pick that up in other max patches
+
+ v0.36 steve cooley
+ * minor bug fix
+
+ v0.35 steve cooley
+ * added the "from steppa" midi output port
+ * added the "current beat" indicators under the play button
+ * added the "pitchout" senders so you can pick up the sequenced data from elsewhere in a max patch
+ * added senders for the three midi CC banks
+ * added a label for the "midi port" drop down selector
+ * added this release note
+
+ v0.01 through v 0.34 derek scott
+ * basically rocks it. 
+
+
+
+Roxor - a Processing.org app to handle serial data communication and OSC communication with external applications.
+
+Note: You will need several libraries in order to compile:
+* oscP5 and netP5 by Andreas Schlegel http://www.sojamo.de/libraries/oscP5/
+* controlP5 by Andreas Schlegel http://www.sojamo.de/libraries/controlP5/
+
+Version updates:
+
+ roxor version 2.10 2011-06-03 steve cooley
+ * yes, I'm officially breaking the single digit sub-version number paradigm, sorry.
+ * tweaked some parameters for the beatseqr board I'm using.  This obviously won't pertain to your board, so I'm going to have to figure out how to look for a customized configuration file. There's no doubt in my mind that I need to sort this out moving forward.
+ * added fast setup buttons for my specific tools of choice.  The way it works is that I've put some buttons on the screen that I can click on to configure the midi channels and note numbers for the tools I'm using.  You could reprogram the macro buttons I've made to suit your setup pretty easily.
+
+ roxor version 2.9 2011-??-?? steve cooley
+ * demo mode ?
+
+ roxor version 2.8 2010-08-26 steve cooley
+ * significantly revamped the OSC namespace for velocity, note number, and CC values.
+ * added the ability to handle the new parameter record functionality on the beatseqr version 4.x boards.
+
+ roxor version 2.5 2010-02-22 steve cooley
+ * revamped the OSC namespace overall to include the "/beatseqr" prefix
+ * also significantly revamped the /matrix OSC namespace. I was originally looking at mirroring the way the Max5 matrixctrl object takes in data, but decided against it in favor of a significantly easier /matrix/[row]/[column]/[step] value method. This made is a lot easier to revamp the way roxor handles the step data. But that's another update for another post. 
+
+ roxor version 2.3 2010-02-08 steve cooley
+ * This version of Roxor will let you change the output port to an arbitrary number. The input port looks similarly functional, but it turns out to be kind of hard to change that on the fly. I'll get something sorted out sooner or later. In the meantime, you can at least change what port you are sending OSC data out on.
+
+ roxor version 2.1 2010-01-08 steve cooley
+ * This version of Roxor is largely cosmetic in that it's visually smaller on screen. This became an obvious improvement when we started using the previous version in performance situations. We found it helpful to verify what roxor and steppa were doing, but not at the expense of too much screen real estate. So they've been made smaller to do their job and be useful without being a live performance workflow problem.
+ * the other recent updates are that the radio buttons in the serial device list are now functional if you need to disconnect from your beatseqr hardware for any reason. Also, the random circle drawing effect has been replaced with a more functional tempo and swing value readout from the hardware. When you are connected to the hardware, turn a knob to verify that Roxor is reading values. The tempo and/or swing values will mirror what the hardware says on the LCD panel.
+ 
+ roxor version 2.0 2009-12-03 steve cooley
+ * Ok, so we've all tried saying "ubirox" for about a month and it sort of blows, so I'm effectively dubbing this "Roxor 2.0"
+ * originally titled "ubirox", a new project in processing was created to be the multiplatform successor to the original version of Roxor
+
+ roxor version 1.0 2009 steve cooley
+ * version 1.0 was a cocoa/objective-c project. It may return someday.
+ 
+
+Beatseqr Firmware for the arduino mega
+
+Thanks to Alexander Brevig and Mikal Hart for their library contributions to the arduino environment.
+
+Version updates:
+
+ Beatseqr Firmware Version 4.3 - 2011-06-03 steve cooley
+ * octave adjust for knob modes
+ * midi channel select for faders
+
+ Beatseqr Firmware Version 4.2 - 2011-??-?? steve cooley
+ * demo mode?
+
+ Beatseqr Firmware Version 4.1 - 2010-10-13 Steve Cooley
+ * refactored "solo" voice button mode to be "toggle" mode.  
+ * using "T" to represent the "toggle" voice button mode on the LCD screen.
+ * replaced the custom character for "solo" and am now using that space for a solid square character for "stop"
+
+ Beatseqr Firmware Version 4.0 - 2010-08-26 Steve Cooley
+ * significant rewiring on the hardware for the new 4.0 hardware boards required rewiring in the firmware as well. 
+ * parameter record button now allows you to click and hold this button on the hardware to momentarily change the message header that is sent to the sequencer.  In Steppa, this will let you momentarily send slider parameters to a parameter sequencer/looper subpatch, which we think is significantly awesome.
+ 
+ Beatseqr Firmware Version 3.7 - 2010-06-30 Steve Cooley
+ * I've added all of the library files to the project folder that you would otherwise need to add to your arduino libraries folder.  If you already have them added to your arduino IDE, you can comment out the #include statements in the config.h file.  This addition of the files will let you open up the beatseqr_arduino_firmware.pde file, choose your beatseqr's serial address, target the arduino mega, and upload the new firmware to it without having to replicate my development setup on your machine. This is a good thing.
+ * More refinements to how the LCD displays data. I'd missed a couple of important places where the LCD wrote out information, which was blowing away lots of important other information on screen.  So, I've made some design decisions that hopefully will require less "click cycling" on mode select buttons just to find out what mode you wanted to be in. It should all be there on-screen now.
+
+ Beatseqr Firmware version 3.6 - 2010-06-03 Steve Cooley
+ * Ok, decided that maybe it might be nice to see what the doable situation would be to have all of the modes visible,  so I went through the code and tried to catch everything that did something stupid and made it less stupid, more useful, and arguably less explicit and more confusing.  But, it should in theory make it easier to know what the slider mode is without having to click the slider mode button a bunch of times just to find out. Same for the voice buttons (formerly voice select buttons, since they're multipurpose, calling them "voice select buttons" implies that they're only for voice selection, and they're more than that). 
+ * Put the build number back on the startup screen. Figured it out.
+
+ Beatseqr Firmware version 3.5 - 2010-06-02 Steve Cooley
+ * changed a bunch of the LCD commands to make much better use of the screen. For instance, in line 1, when you click on the knob mode select button, the screen will move its cursor to the BPM number that the mode is indicating that it's active for. mode 0 is the coarse BPM adjustment, and mode 1 is the fine BPM adjustment.  So when you're clicking that button, the cursor will bounce between those values to show you which mode it's in.  Also made line 0 more descriptive and less pedantic at the same time. Typically that line will display which mode the faders (formerly "voice sliders") are in, or what mode the voice select buttons are in.  A further refinement would come in the form of abbreviating both of these data points to both fit into one line at the same time. It's probably doable, but, maybe not for this update.
+
+ Beatseqr Firmware version 3.4 - 2010-02-25 Steve Cooley
+ * took the build number off the startup screen on the LCD. 
+ * tweaked the slider values in midi velocity mode so that they are able to zero out
+ 
+ Beatseqr Firmware version 3.3 - 2010-02-17 Steve Cooley
+ * experimental code to light up the voice select LEDs as the current_step is advancing to visually show what voices are triggering.
+ * Added a build number to the startup screen on the LCD.
+ 
+ Beatseqr Firmware version 3.2 - 2009-12-23 Steve Cooley
+ * welp, I changed my mind and we're using ubirox, but I've rebranded it as roxor 2.0.  
+ * There are a few changes in this release, everything is just getting tightened up so the controls react better and do what you expect. 
+ 
+ Beatseqr Firmware version 2.0 - 2009-10-30 Steve Cooley
+ * modified for use, exclusively, with ubirox instead of Roxor. Roxor is now deprecated.  Sniff.
+
+ Beatseqr Firmware version 1.0 - 2009-09-02 Steve Cooley
+ * broken out into separate tabs... I know this can look a little intimidating, but I think this will help you figure out what does what and where it is.
+ 
+ 
+
+
+ 

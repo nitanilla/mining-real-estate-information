@@ -1,0 +1,1 @@
+An application allowing Real Estate Agents access to newly available houses in the market

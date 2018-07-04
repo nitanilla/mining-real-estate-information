@@ -1,0 +1,26 @@
+### iCompRE ###
+
+===========================================================================
+DESCRIPTION:
+
+Repository for real estate competitor property. Load each comp with photo
+and detail information in a table view. 
+
+AVAILABLE IN APP STORE
+===========================================================================
+BUILD REQUIREMENTS:
+
+iOS SDK 6.0 or later
+
+===========================================================================
+RUNTIME REQUIREMENTS:
+
+iOS 5.0 or later, Automatic Reference Counting (ARC)
+
+===========================================================================
+CHANGES FROM PREVIOUS VERSIONS:
+
+1.0 - First version.
+
+===========================================================================
+Copyright (c) 2014 Shahn Auronas. All rights reserved.

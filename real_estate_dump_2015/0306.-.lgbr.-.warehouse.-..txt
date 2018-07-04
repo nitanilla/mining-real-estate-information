@@ -1,0 +1,29 @@
+Warehouse
+=========
+
+What is it?
+-----------
+
+Warehouse is an application that Leadadvo built for internal real estate listing
+management. This allowed both fetching of listings from remote sources by HTTP,
+as well as input by customers for managing listings directly.
+
+Installation
+------------
+
+The latest version can be found at https://www.github.com/leadadvo/warehouse
+
+Installation
+------------
+
+Installation is standard for Ruby on Rails 3.
+
+Configure config/database.yml, then:
+
+```bundle install
+rake db:migrate```
+
+Licensing
+---------
+
+Please see the file called LICENSE

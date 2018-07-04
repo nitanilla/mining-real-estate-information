@@ -1,0 +1,9 @@
+Freehold Flipper Deluxe
+=======================
+A strategic puzzle game written for browsers
+
+About
+-----
+Freehold Flipper Deluxe is a real-estate flipping puzzle/strategy game where the goal
+is to bring wealth to neighborhoods by placing wealthier buildings adjacent to existing
+ones.

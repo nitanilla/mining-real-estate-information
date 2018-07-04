@@ -1,0 +1,11 @@
+IDX-Github
+==========
+
+Collection of IDX Functions
+
+These are functions I use to create real estate websites in Oregon using a RETS feed from
+RMLS.  This is mostly for my own archival purposes, but if you have a MySQL database
+created from a RETS feed in your area, they would probably be fairly easy to modify
+and use.
+
+Names are pretty self-explanatory and there is some basic documentation in each file.

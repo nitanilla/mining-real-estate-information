@@ -1,0 +1,59 @@
+=== CREA Property synchronizer ===
+Author: Purple Turtle Productions
+Donate link: http://www.purpleturtle.pro
+Contributors: PurpleTurtlePro 
+Tags: Crea, Property, Agents,real estate, Synchronization, canada
+Requires at least: 2.7.2
+Tested up to: 3.8
+Stable tag: 1.0.0
+License: GPLv2 or later
+
+
+== Description ==
+
+
+CREA Property synchronizer, sync realestate properties from CREA(Canadian Real Estate Assoiciation) realator.ca to your own wordpress website. It automatically keeptrack propertes updates as well as sales, sold listing automatically remove from our website property listings.
+This plugin developped by Purple Turtle Productions (http://www.purpleturtle.pro)
+CREA Property synchronizer is designed to connect directly to CREA's Data Distribution Facility API without the need to integrate with Third Party Vendors. 
+you need to register with http://tools.realtorlink.ca for using this plugin, we accept the http://tools.realtorlink.ca CREA's Data Distribution Facility API details for initializing this plugin. 
+
+**Copyright**
+
+MLS®, REALTOR®, and the associated logos are trademarks of The Canadian Real Estate Association
+
+== Documentation ==
+
+
+= Contact Us =
+
+* Support (https://www.purpleturtle.pro/submitticket.php)
+* Web Site (http://www.purpleturtle.pro)
+
+= CREA =
+
+* [Data Distribution Facility Documentation] (http://crea.ca/data-distribution-facility-documentation)
+
+== Installation ==
+
+1. Install CREA Property synchronizer either via the WordPress.org plugin directory, or by uploading the files to your server.
+2. Click the Settings -> CREA Property synchronizer. You need to add your authentication credentials.
+3. Enable the synchronization
+4. there will be a manual synching button, also our plugin automatically sync properties by a period of time 
+
+**You are required to register for a data feed a http://tools.realtorlink.ca. An email containing user name and password is sent to the email address submitted as Technical Contact.**
+
+== Frequently Asked Questions ==
+
+== Screenshots ==
+
+
+
+== Changelog ==
+
+= 1.0.0 =
+Initial public release
+
+== Upgrade Notice ==
+
+= 2.0 =
+Initial pro version release

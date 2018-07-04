@@ -1,0 +1,3 @@
+EstImmo is a multi-platform mobile application that estimates real estate value.
+
+//When using another PC : phonegap platform update android.

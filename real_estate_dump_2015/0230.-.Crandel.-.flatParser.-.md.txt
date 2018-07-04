@@ -1,0 +1,2 @@
+# flatParser
+# Project for parsing real estate sites, written on Golang

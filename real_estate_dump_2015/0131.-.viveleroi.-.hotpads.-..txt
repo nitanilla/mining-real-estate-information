@@ -1,0 +1,17 @@
+Hotpads - A PHP5 Class for Hotpads.com XML Feeds
+Copyright (c) 2010, Michael Botsko Botsko.net, LLC
+
+Introduction
+============================
+
+Hotpads.com is a real-estate feed distribution service. This class
+makes it easy for you to generate the necessary XML output from
+within your php application.
+
+The basic process is shown in the example.php file. Simply create
+an instance of the hotpads class, and then assign property data
+to a new HotpadsProperty object, and when complete, append that
+object to the main hotpads class.
+
+The resulting output will be a complete xml file with all of the
+properties you've assigned.

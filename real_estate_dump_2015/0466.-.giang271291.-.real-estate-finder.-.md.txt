@@ -1,0 +1,6 @@
+# real-estate-finder
+Thesis project: Real estate finder web app
+
+This is my graduation thesis project. I will provide a demo soon.
+
+Overview: A web app that display for sale / for rent properties on an interactive map. Users can click on each property to find more information or run statistics over an area (average price, transaction intensity, etc.)

@@ -1,0 +1,4 @@
+instructionbox.js
+=================
+
+Dynamically floats a moveable "Instruction Box" over a system screen, thereby providing a UI instructing (w/ instructional content that is easy to program via a simple API) on how to interact w/ that screen, without consuming any of screen's real-estate.

@@ -1,0 +1,1 @@
+This site uses Leaflet in the right panel and Bootstrap on the left. It runs on Angular.js as the JS framework. The project is a collaboration between Maryland MTA and DoIT in an effort to encourage commercial real estate development around public transporation stops, also known as Transit Oriented Development (TOD).

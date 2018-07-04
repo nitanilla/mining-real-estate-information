@@ -1,0 +1,11 @@
+== MailClient Project ==
+
+= Name ideas: SnailMail, Whale, Snail, Zooka, WaterMoccassin, Beluga, Tapir =
+=             Moccassin
+
+Name: An easy-to-use email client that utilizes as much screen real estate as
+possible for modern desktop computers.
+
+Author: Larry Price (larry.price.dev@gmail.com)
+
+Mockups coming soon. Only paper copies available currently.

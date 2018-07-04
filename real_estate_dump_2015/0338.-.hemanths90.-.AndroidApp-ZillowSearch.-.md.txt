@@ -1,0 +1,2 @@
+- Android App for Property Search with Facebook posts (Technologies – JQuery, AJAX, JSON, PHP, HTML, Javascript, Facebook integration)
+- Implemented AJAX transactions of JSON data between a website and a PHP server script running on EC2 instance of Amazon Web Services to display Real estate information based on the address entered by the user, by making REST calls to Zillow API's with an option to publish on Facebook (uses Facebook SDK)

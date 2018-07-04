@@ -1,0 +1,17 @@
+== BootcampEZ
+
+http://bootcampez.herokuapp.com
+
+###My final project for Ironhack
+
+-- 
+
+An app to help interested travelers find a web development bootcamp, and the short term housing associated with it. 
+
+Gems and APIs:
+
+* Used the Zilyo API for real estate search
+
+* gmaps4rails and the google geocoder gem
+
+* Typical rails stack postgres / jquery 

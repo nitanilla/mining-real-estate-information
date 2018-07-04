@@ -1,0 +1,9 @@
+# SPL-Multi-Threading
+University project in Systems Programming course.
+
+The project is about multithreaded applications.
+
+# Main Conecpt
+From the Assignment Instructions:
+
+״In this assignment you will simulate a real estate investment trust (REIT), BGU-REIT, which owns and operates an income-producing real estate. The company employs multiple clerks and maintenance workers. BGU-REIT receives a list of rental requests, and its task is to simulate the renting process of the requested assets. Each rental will net the company an income. Preparing a asset for a customer requires di􏰀erent tools and maintenance materials. Your task is to make sure that the maintenance workers have the needed tools as well as the needed maintenance materials. You will manage the simulation process starting from creating customers that deliver requests to the clerks. The clerks will try to 􏰁ll the requests, by searching for available assets that meet their needs. If such a request cannot be 􏰁lled, the customer is put into a waiting list, until the desired assets are freed. At the end of the rental, the customer will 􏰁le a damage report and deliver it to the management, which will send the maintenance workers to 􏰁x the damages as needed. A Successful rental will net the BGU-REIT an income. At the end of the process, you will print out statistics which will show how well BGU-REIT has done. Money gained, and spent, as well as how much time each request took to complete.״

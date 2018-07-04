@@ -1,0 +1,5 @@
+# mod_topgunhomepage
+A joomla module from a scrapped real-estate project. Features interactive svg elements and integration with the SlimMLS component.
+
+This repo really has no practical purpose outside of the scrapped project :( 
+It's here - I guess - as a study in interactive svg and the snap.svg library.

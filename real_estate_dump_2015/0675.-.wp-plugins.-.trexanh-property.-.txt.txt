@@ -1,0 +1,113 @@
+=== TreXanh Property ===
+Contributors: trexanhlab
+Donate link: http://trexanhproperty.com
+Tags:  property, real estate, property portal, real estate portal, listings, property listings, property management, realtor, wp-property, wordpress property, wp property, wp-realestate, wordpress real estate, wp real estate, submit property, paid listing, payment, paypal
+Requires at least: 4.1.0
+Tested up to: 4.3
+Stable tag: 0.6
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+
+TreXanh Property plugin - A clean, powerful and easy to use real estate solution on Wordpress
+
+== Description ==
+
+TreXanh Property is a clean, powerful and easy to use real estate solution on Wordpress. It help you quickly add property to your site or allow user to submit property to your site for free or with a fee. 
+
+>[Demo with default theme](http://trexanhproperty.com/demo/twentyfifteen/ "Demo with Twenty Fifteen theme") | [Demo with custom theme](http://trexanhproperty.com/demo/estato/ "Demo with Custom theme") 
+
+>[Docs](http://trexanhproperty.com/doc/ "Documentation, User guide") | [Plugin Homepage](http://trexanhproperty.com/ "TreXanh Property Homepage")
+
+* It's quick to add property from wordpress admin or using wordpress import feature. Each property will have a lot of custom fields, map, gallery image.
+* User define new property type (e.g. House); with a property type we can add/remove/change attribute (e.g. Bath room number); Each property type can have its own template or fall back to default template.
+* Display properties on map
+* Compatible with almost every theme. Please check list of demo themes here at [trexanhproperty.com](http://trexanhproperty.com/ "trexanhproperty.com")
+* Search property widget, property listing shortcode with filter
+* Allow user to submit property for free or with a fee. User will pay through paypal, stripe. More payment gateways are being added. Submitted properties can display on site right away or need admin's approval
+
+
+== Installation ==
+
+= Minimum Requirements =
+
+* PHP version 5.3.28 or greater
+* MySQL version 5.0 or greater
+
+= Automatic installation =
+
+* Try steps at https://codex.wordpress.org/Managing_Plugins#Automatic_Plugin_Installation
+* During search plugin, try "TreXanh-Property"
+
+= Common setup task =
+
+* Add search widget to sidebar. Add property listing shortcode to pages.
+* At activation, plugin will create pages for property submission process at urls bellow, make sure you create menu items for them:
+    * http://yourwordpress.com/submit-property : for user to submit property
+    * http://yourwordpress.com/my-properties : for user to view submitted property
+* Go to Admin > TreXanh Property > Setting : to enable paid listing, paid listing fee, also paypal config
+
+= Dummy data =
+
+1. Locate sample-data\sample-property.xml in plugin directory
+1. Use wordpress's importer ( Wordpress admin > Tool > Import) to import file above
+
+
+== Screenshots ==
+
+1. **Frontend** > Search property, Property listing
+2. **Frontend** > List properties on map (with shortcode)
+3. **Frontend** > Single property
+4. **Backend** > Config property type and property attribute
+5. **Frontend** > Property submit
+6. **Frontend** > Property submit payment
+7. **Backend** > Property add form
+8. **Backend** > Submit property setting
+9. **Backend** > Paypal, Stripe setting
+
+== Changelog ==
+
+= 0.6 =
+
+* Improvement: add multi-select property custom attribute
+
+= 0.5 =
+
+* Improvement: add more hook to core so plugin can be used with other real estate theme
+* Improvement: use map listing as widget
+* Improvement: add hook during rendering map listing so we can work with other theme which also use google map js.
+
+= 0.4.2 =
+
+* Fix - Add New Property Type UI has js issue.
+
+= 0.4.1 =
+
+* Fix - Add New button should use first enabled property type. Show link to property type config page if there is no enabled property types.
+
+= 0.4 =
+
+* Feature - allow to define new property type (e.g. Landing); with a property type we can add/remove/change attribute (e.g. Bath room number); Each property type can have its own template or fall back to default template
+* Feature - Shortcode supports paging
+
+= 0.3 =
+
+* Feature - Show search results in map mode
+* Feature - Support listing properties on map using shortcode
+* Improvement - Show payment link in order list and payment form in order detail for orders which not payment yet
+
+= 0.2 =
+
+* Feature - Allowed admin disabled property submission.
+* Feature - Support Stripe Payment Gateway
+* Fix - Some bugs.
+
+== Frequently Asked Questions ==
+
+* We are building this
+
+== Upgrade Notice ==
+
+= 0.2 - 20 May 2015 =
+* Feature - Add stripe payment gateway.
+* Fix - Empty search criteria summary in search result
+* Fix - Migrate jquery.prettyPhoto.js library to 3.1.6 TO fix bug XSS vulnerability http://www.perucrack.net/2014/07/haciendo-un-xss-en-plugin-prettyphoto.html

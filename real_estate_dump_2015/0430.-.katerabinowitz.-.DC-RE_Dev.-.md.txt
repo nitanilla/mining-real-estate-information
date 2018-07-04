@@ -1,0 +1,7 @@
+DC Real Estate Development Analysis
+
+Data Source: OCTO Project Pipeline Database
+
+Analysis: Square footage development across wards, time and property type
+
+Result: www.datalensdc.com/10-year-dc-development.html

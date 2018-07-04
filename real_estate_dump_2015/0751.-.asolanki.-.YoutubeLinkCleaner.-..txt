@@ -1,0 +1,8 @@
+Youtube Link Cleaner
+====================
+
+Simple Chrome extension that alters all Youtube links to link to the fullscreen ad-free version of the video rather than the standard Youtube portal view.
+
+This is useful if you are not interested in seeing related videos, comments, wasted screen real-estate, and autoplay and would simply like to watch a youtube video in peace :).
+
+As of right now it is functional, but in the future I think context-menu integration would be ideal, perhaps an option in the right-click menu to bypass the filter and view the video normally.

@@ -1,0 +1,12 @@
+# Keen Portfolio
+Contains my private portfolio for Keen Software House.
+
+It contains two projects that were both created outside the scope of an NDA, which would otherwise prohibit me from sharing the code.
+
+keensteam
+
+This small size project (~8k lines of code) was created entirely for the purpose of my application at the Keen Software House. It uses the Steam API to retrieve information about steam games, including player count, achievements and completion statistics. It also downloads relevant media. It's highlights are asynchronous programming, networking system, an own JSON parser and a tree based string dictionary.
+
+IGL (real estate geo locator)
+
+This web based tool was a freelance project of mine. I was contracted by a real estate agent. It uses distance data provided by the search of a prominent real estate website to triangulate the location of real estate objects which have their addresses set to private by their owners. Is utilizes HTML and AJAX, as well as some of the google APIs.

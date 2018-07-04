@@ -1,0 +1,11 @@
+== Welcome to Faraagentii.ro
+
+This is my fist site in Ruby on Rails. It has two porpoises:
+ -to help me learn and become proficient in Ruby on Rails
+ -to help people find a home without paying unjustified commissions to real estate agencies. 
+
+It is developed with Rails 3.0.3 and Ruby 1.8.7
+
+
+IMAGES
+To process images I used paperclip. All images except medium size and original are resized to 16:10.5

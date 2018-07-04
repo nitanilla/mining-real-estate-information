@@ -1,0 +1,4 @@
+# experiments
+Trial and Error. These are a set of experiemnts we may or may not use as part of the final.
+They are experiments of documents, dashboard, widgets and various types of tools that could be used in the online real estate sector.
+

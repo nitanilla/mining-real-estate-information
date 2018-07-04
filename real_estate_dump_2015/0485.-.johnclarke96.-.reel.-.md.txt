@@ -1,0 +1,4 @@
+# reel
+
+Reel is the most comprehensive real estate search engine for NYC properties.
+Currently working on full integration of the Zillow, Trulia and Open Data NY APIs.

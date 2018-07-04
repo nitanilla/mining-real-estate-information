@@ -1,0 +1,5 @@
+# immoDash
+
+Real Estate Monitoring for Investors (Project for Burdahackday Future of Finance)
+
+Created with Play-Framework

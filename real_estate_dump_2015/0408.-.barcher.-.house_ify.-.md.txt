@@ -1,0 +1,4 @@
+house_ify
+=========
+
+This is a basic app that I created to help my mother, a real estate agent, to quickly perform routine calculations. Useful for me to practice doing AJAX requests.

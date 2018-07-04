@@ -1,0 +1,21 @@
+# P1: Predicting Boston Housing Prices
+
+## Description
+
+This is a practice machine learning project to experiment with model
+evaluation, validation, and optimization. All real estate data was
+obtained through the scikit-learn 'boston' dataset.
+
+## Repository contents
+
+* `boston_housing.py` : Housing prices model source code
+* `report.pdf` : Description and analysis of the model
+
+## Disclaimers and Credits
+
+This is my submission for Udacity's Machine Learning Engineering
+Nanodegree Project 1. A template for `boston_housing.py` was provided
+by Udacity developers. (See the oldest commit for template.) The
+`explore_city_data()`, `performance_metric()`, `split_data()`, and
+`fit_predict_model()` functions were implemented by me. The project
+report is also my original work.

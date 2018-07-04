@@ -1,0 +1,1 @@
+Setting up a real estate app to help identify and rate HOA's in buildings around Denver.

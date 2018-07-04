@@ -1,0 +1,6 @@
+# realestateteamapp
+Real Estate Team App
+
+Features: Yii 2.0, Select2, PHP5, MySQL
+
+Notice that vendor/bower-assets/dist/css includes extra.less to bring in extra features for Metro theme

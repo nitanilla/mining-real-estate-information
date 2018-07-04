@@ -1,0 +1,51 @@
+# Lux
+
+## Description
+
+Lux is a simple ruby based cli that generates JSON reports for the most expensive real estate in a given area from StreetEasy.
+
+### Installation
+
+1. Clone the repo
+
+```
+git clone https://github.com/omarvelous/lux
+```
+
+2. Install required gems
+
+```
+bundle install
+```
+
+3. Enjoy!
+
+## Usage
+
+First, navigate to the directory with lux.rb
+
+```
+cd path/to/lux
+```
+
+To generate a report for Sales, optionally replacing "soho" with any desired area:
+
+```
+./lux.rb sales soho
+```
+
+To generate a report for Rentals, optionally replacing "soho" with any desired area:
+
+```
+./lux.rb rentals soho
+```
+
+To generate a report for Sales ans Rentals, optionally replacing "soho" with any desired area:
+
+```
+./lux.rb all soho
+```
+
+Reports are saved in JSON format in the /reports directory
+
+Enjoy!

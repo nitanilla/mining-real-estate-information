@@ -1,0 +1,7 @@
+Homapp
+======
+This web application is to provide personalized services for realtor agents in greater Vancouver area.
+
+We have developed an iOS app called "Homapp" (iTunes link: https://itunes.apple.com/app/id879209391 ) which provides optimized real estate information for the Chinese communities. 
+
+Realtors who register a free user (http://www.homapp.ca) with us will be able to add more personalized information to their profile, and users of Homapp will be able to contact them directly.

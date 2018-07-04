@@ -1,0 +1,17 @@
+LiveCMS
+=======
+
+Lightweight CMS built specifically for the real estate industry. Themes will follow a fairly 'ajax-centric' design language.
+
+TODO
+====
+
+Pretty much everything is non-functional, other than simple database queries for the admin area. Nontheless, here is the official todo list:
+
+- Proplerly manage sessions in the backend
+- Create proper dashbord views
+- Create `site` object for theming and sitewide variables
+- Create `entry` object for contacts, pages, plans, posts
+- Create several themes to showcase the flexibility of the CMS
+- Allow user to chose theme in backend
+- A lot of other stuff

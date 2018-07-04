@@ -1,0 +1,3 @@
+# Bulk-Edit-For-Cal-Permissions
+Changes all permissions for all users Calendars. For use for real estate companies in Office 365 that 
+need access to agents calendars.

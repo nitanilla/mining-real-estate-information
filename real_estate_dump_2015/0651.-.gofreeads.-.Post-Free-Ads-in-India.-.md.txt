@@ -1,0 +1,4 @@
+Post-Free-Ads-in-India
+======================
+
+Gofreeads is a City based free ads posting site in India that helps Customers in Buying &amp; selling products and service online in a faster, simpler and easier way. Post free classified ads for buy or sell or Real estate, Rent a Property, furniture, Home appliance. Post free ads on Rent a car, Hotels, Holiday Packages, Travel &amp; Hotel Deals, Travel and Tour Packages. Find local classified advertisement ads find educational institute, counclers, Tutor or Tuition &amp; coaching classes in your city, Jobs, Matrimonial, Cars &amp; Bikes, watches &amp; jewellery designers shops, Pets etc. You can Post free ads in India and Get reply to your ads from Online customers from your city. You can search products services in your city seacrh, also find what you are looking for within city by area wise, you can search buyers and seller within your locality for better response

@@ -1,0 +1,20 @@
+Overview
+--------
+
+A GUI client for Toggl.
+
+Because the new official client wastes screen real estate.
+
+
+Requirements
+------------
+
+**System packages**
+* python 2.7.x
+* GTK+ >=3.0
+
+**Python modules**
+* python-dateutil
+* iso8601
+* pytz
+* PyGObject

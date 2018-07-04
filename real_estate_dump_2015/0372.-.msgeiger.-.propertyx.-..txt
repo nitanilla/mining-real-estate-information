@@ -1,0 +1,86 @@
+# propertyx
+
+## Overview
+
+Written in PHP5 using symfony framework, propertyx is designed to be a fast and 
+flexible tool for your real estate company. It is composed by two distinct 
+applications that can interact with each other. The first one is for backoffice 
+work and organize your real estate listing, collect your leads and much more. 
+The second one is for frontoffice and to publish on internet your real estates.
+
+## Demo
+
+A working demo is online at [http://INDIRIZZO/](http://INDIRIZZO/)
+
+## Installation
+
+To install (from your project's root):
+
+    svn checkout http://propertyx.googlecode.com/svn/trunk/
+
+Than download symfony and unzip it in the /lib/vendor/ directory
+
+    cd lib/vendor/
+    wget -c http://www.symfony-project.org/get/symfony-1.2.7.zip
+    unzip symfony-1.2.7.zip
+    mv symfony-1.2.7 symfony
+    rm symfony-1.2.7.zip
+
+Go back to your project's root and check that everything went fine
+
+    php symfony -V
+
+you should see symfony version and install path.
+
+Create a MySQL database called propertyx
+
+    mysqladmin -u root -p create propertyx
+
+and configure all the needed with
+
+    php symfony configure:database "mysql:host=localhost;dbname=propertyx" root yourpassword
+
+end with setting to the proper path the propel.output.dir line you find in config/propel.ini .
+
+Create the tables in the database, you need to run the propel:insert-sql task
+
+    php symfony propel:insert-sql
+
+Configure your Apache Virtual Host like this
+
+    Virtual Host
+
+Make cache and log directories
+
+    mkdir cache
+    mkdir log
+
+Check permissions for cache, log directories and symfony file in the project's root
+
+    chmod -R 777 cache
+    chmod -R 777 log
+    chmod 777 symfony
+
+Create a user for the beckend application
+
+    php symfony guard:create-user --application="be" admin password
+
+Load some data fixtures into the database (in data/fixtures/ you can find two diretories, 
+italian and english) for you preferred language
+
+    php symfony propel:data-load data/fixtures/en/en.data.yml
+
+## Roadmap
+
+All modules are working, with functional tests.
+
+The project aims to fully implement:
+
+  * **Property** system: basic CRUD to organize your real estate listings
+
+  * **Images** system: organize images related to your real estate listings
+
+  * **Customer** system: organize your customers, collect their requests and 
+    filter results
+
+  * **Frontend** application: spread your real estate listings to the world

@@ -1,0 +1,8 @@
+Tribeca Citizen / StreetEasy Fetch using Play
+
+This is a web service for automatically generating the "Recent Real Estate Sales in Tribeca" weekly post in Tribeca Citizen, built atop the Play web framework.
+
+The guts of the code to pull the relevant info from streeteasy and parse it are in the 'tclib' sub-project.
+The rest of the code here exposes that functionality as a very simple web service using Play.
+
+  

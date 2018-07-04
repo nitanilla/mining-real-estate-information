@@ -1,0 +1,25 @@
+### iCompRE ###
+
+===========================================================================
+DESCRIPTION:
+
+Repository for real estate property data. Load each comp with photo
+and detail information in a table view. 
+
+===========================================================================
+RUNTIME REQUIREMENTS:
+
+iOS 8.0 or later
+
+===========================================================================
+CHANGES FROM PREVIOUS VERSIONS:
+
+1.0.0 - First version.
+1.1.0 - Added notes section and bug fixes and improved function for photo
+        minor changes to UI (not released). 
+1.5.0 - Added maps section and further improved UI design.
+2.0.0 - Major UI change to collection view.
+2.1.0 - Major UI changes
+      - Added social buttons
+===========================================================================
+Copyright (c) 2014 Shahn Auronas. All rights reserved.

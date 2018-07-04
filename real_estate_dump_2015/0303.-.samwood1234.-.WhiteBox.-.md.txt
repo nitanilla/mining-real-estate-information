@@ -1,0 +1,4 @@
+# WhiteBox
+Whitebox is an idea a friend at work has to utilize empty real estate space for events throughout the Dallas Fort Worth Metropolitan area. He showed me his site and I needed a project, so I decided to improve upon his original idea. His original site was created via a templating engine: http://whitebox.space/
+
+I decided to imrpove upon this initial idea and create his landing page. The code in the following files represents my interpretation of his initial intent.

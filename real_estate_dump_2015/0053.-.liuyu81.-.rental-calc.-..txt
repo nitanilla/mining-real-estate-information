@@ -1,0 +1,5 @@
+Real-estate rental calculator webapp for personal use
+
+backend: python wsgi / django framework
+frontend: html + jquery
+

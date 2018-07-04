@@ -1,0 +1,2 @@
+# platform-real-estate
+A real estate extension for Cartalyst's platform 2.0.

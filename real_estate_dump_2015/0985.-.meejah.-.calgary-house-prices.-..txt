@@ -1,0 +1,2 @@
+Just a quick script and data to plot Calgary's median house prices for
+the last few years. Based on Calgary Real Estate Board (CREB) data.

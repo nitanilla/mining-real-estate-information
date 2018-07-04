@@ -1,0 +1,5 @@
+== Land Plot Organization
+
+The app helps real estate developers record and maintain information about their development projects.  The maps are color coded so users know the status of their property.
+
+Ruby, JavaScript, JQuery

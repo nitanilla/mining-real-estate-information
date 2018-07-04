@@ -1,0 +1,6 @@
+== Update ==
+Currently in the process of re-designing this app to be a rails 3.2 app.
+
+This current codebase isn't complete or updated.
+
+This app is dedicated to bringing the best in Real Estate listing services for agents.

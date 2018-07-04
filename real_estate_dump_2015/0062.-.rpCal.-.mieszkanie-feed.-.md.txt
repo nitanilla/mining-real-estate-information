@@ -1,0 +1,2 @@
+# mieszkanie-feed
+rss feed with some real estate flats in warsaw

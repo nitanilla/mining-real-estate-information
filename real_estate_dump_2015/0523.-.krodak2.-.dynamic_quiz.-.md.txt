@@ -1,0 +1,1 @@
+My dynamic quiz assignment from the "How to learn Javascript properly" course. Questions taken from Modern Real Estate Practice in Illinois, 6th Edition.

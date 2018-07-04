@@ -1,0 +1,2 @@
+# Boston_house_price_prediction
+You want to be the best real estate agent out there. In order to compete with other agents in your area, I employ here machine learning algorithem to predict  the best price for  client to  sell their house at. The best guess from a model is one that best generalizes the data. I use here various statistical analysis tools to build the best model to predict the value of a given house. 

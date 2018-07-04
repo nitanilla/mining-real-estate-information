@@ -1,0 +1,88 @@
+= social_share
+
+Social share functionality for Rails 3. Note that the view example code uses HAML syntax.
+
+== Twitter gems and API documentation
+
+https://github.com/hayesdavis/grackle
+https://github.com/jnunemaker/twitter
+https://github.com/twitter/twitter-text-rb
+
+https://twitter.com/about/resources/buttons#tweet
+
+=== Tweet
+
+Small button:
+
+<a href="https://twitter.com/share" class="twitter-share-button" data-text="Real Estate" data-via="kmandrup" data-related="mike" data-hashtags="sanfrancisco">Tweet</a>
+
+<a href="https://twitter.com/share" class="twitter-share-button" data-text="Real Estate" data-via="kmandrup" data-lang="sv" data-related="mike" data-hashtags="sanfrancisco">Tweeta</a>
+
+Large button (Tweet):
+
+<a href="https://twitter.com/share" class="twitter-share-button" data-text="Real Estate" data-via="kmandrup" data-size="large" data-related="mike" data-hashtags="sanfrancisco">Tweet</a>
+
+=== Follow
+
+<a href="https://twitter.com/kris" class="twitter-follow-button" data-show-count="false">Follow @kris</a>
+
+== Facebook like button documentation
+
+https://developers.facebook.com/docs/reference/plugins/like/
+
+See also: http://www.arctickiwi.com/blog/developing-facebook-applications-for-ruby-on-rails
+
+Facebook Gems:
+
+https://github.com/arsduo/koala
+https://github.com/nsanta/fbgraph
+https://github.com/mmangino/facebooker2
+
+== Twitter usage
+
+# at the end of your html file
+= yield :javascript
+
+content_for :javascript
+	= twitter_script
+
+To share a tweet of text
+
+= twitter_share(tweet)
+
+Options: [:hashtags, :at]
+
+= twitter_follow(username)
+
+Options: [:at]
+
+= twitter_mention(tweet_to, text)
+
+Options: [:at]
+
+= twitter_hashtag(hashtag, text)
+
+All the twitter button methods also optionally take the hash options: [:size, :lang] 
+If :size => :lang, the button is rendered large. Lang is the ISO language code, fx 'da' = denmark (danmark).
+
+== Facebook Usage
+
+Then on any page you want Facebook Like, just include this:
+
+ <%= facebook_like %>
+
+== Contributing to social_share
+ 
+* Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.
+* Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it.
+* Fork the project.
+* Start a feature/bugfix branch.
+* Commit and push until you are happy with your contribution.
+* Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.
+* Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.
+
+== Copyright
+
+Copyright (c) 2012 Kristian Mandrup. See LICENSE.txt for
+further details.
+

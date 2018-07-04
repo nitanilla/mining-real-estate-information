@@ -1,0 +1,23 @@
+# PCC Real Estate Program notes
+
+To obtain a [Real Estate Brokerage License](http://www.oregon.gov/rea/lic/pages/broker_license_requirements.aspx) in the State of Oregon through Portland Community College, one must:  
+1. Complete a Real Estate License Application in eLicense, the Agency's online license management system. When the application is processed, you will receive an applicant ID number.  
+2. Pay the $230 license application fee in eLicense.  
+3. Provide PCC with your your applicant ID number.  
+4. Complete the required courses.  
+5. Register and pay to take the broker license exam [pdf] with PSI.  
+6. Pass both sections of the broker license exam.  
+7. Pay for and submit fingerprints for the required background check while at a PSI testing center.  
+
+The required courses for the program are as follows:
+
++ RE 110 - Real Estate Practices (3 credits)
++ RE 112 - Real Estate Law (3 credits)
++ RE 114 - Real Estate Agency Law (2 credits)^
++ RE 116 - Real Estate Finance (3 credits)
++ RE 118 - Real Estate Brokerage (2 credits)%
++ RE 126 - Real Estate Contracts (2 credits)^
++ RE 140 - Broker Property Management (1 credits)%
+
+^ Real Estate Agency Law and Real Estate Contracts should be taken together
+% Brokerage and Broker Property Management should be taken together

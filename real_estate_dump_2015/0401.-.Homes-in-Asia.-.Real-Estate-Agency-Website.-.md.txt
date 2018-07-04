@@ -1,0 +1,31 @@
+# Real Estate Agency Website
+
+[![Build Status](https://travis-ci.org/Homes-in-Asia/Real-Estate-Agency-Website.svg?branch=master)](https://travis-ci.org/Homes-in-Asia/Real-Estate-Agency-Website)
+
+Real Estate is serious busines and first impression is the most important.
+In modern days, first impression a client has is when he or she visits 
+your website. This is why its important to have a fully featured real-estate
+website to draw the attention of your clients.
+
+Here at [HomesIn.ASIA](http://www.homesin.asia) we believe in technology to
+serve client needs, let it be ours, or yours. That is why we provide our
+award winning web technology free for your use.
+
+## Deployment
+
+**Real Estate Agency Website** is based on the award winning MVC famework
+**Ruby on Rails** and other bleeding edge enterprise grade technology. 
+Ideally you would host this in a VPS or Dedicated Server. I am afraid,
+shared webhosts might not be in par with the requirements of this app.
+
+
+
+## Developers
+
+**Ziyan Junaideen**   
+JDeen Solutions    
+Thalahena   
+Malabe    
+Sri Lanka   
+jdeen-solutions@outlook.com   
+jdeen.solutions (Skype)

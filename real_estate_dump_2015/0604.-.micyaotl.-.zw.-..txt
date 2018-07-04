@@ -1,0 +1,16 @@
+This is the ZihWeb CMS Project.
+
+After using XOOPS and WordPress leavin back a lot of different test PHP Nuke, phpBB, Joomla, Invision Power Board and many others.
+I decided to start from my needs to develop a Content Management System able to manage simple websites for customers and my listings projets for real estate and business directory
+
+Now after many years of slow chill vacation development Cozumel lifestyle I still trying new software and platforms and the system still growing
+
+
+Key features
+	* Custom URL's freely editable
+	* Extensions API
+	* Image auto cropping based in the URL request {width}x{height}.filename.ext works with jpg, png, gif
+	* Custom redirection system Aliaz (c) 2006-2014
+	* QR Image generation
+	* Google Maps integration
+	* jQuery libraries support

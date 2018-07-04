@@ -1,0 +1,12 @@
+# Power-Estate
+Gathers all Australian Real Estate prices,locations and info
+
+This project was started because I wanted to get a feel for using web-based powershell commands.(and regex... lots of regex..)
+
+Basically the script will scan through an Australian real estate website and gather all of the information in relation to prices and addresses'. Once gathered it will Regex out all of the information that is not relevant and display it into a table. This is a major work in progress and mostly just a fun side project. Recently i've changed this from being a web based GUI result to a more of an Object based result as seen below.
+
+![Alt text](https://flynnbundy.files.wordpress.com/2015/11/1111.gif "Auction example")
+
+![Alt text](https://flynnbundy.files.wordpress.com/2015/11/auction.png "Auction example")
+
+
