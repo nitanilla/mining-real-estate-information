@@ -1,0 +1,3 @@
+# Real Estate (Becca, Yoni, and Kyle)
+
+A project to highlight and upsell real estate listings mostly by private sellers. The initial prototype will be for Becca's parents. Moving into the future with this, a platform should be set up so that it can be more turn-key.

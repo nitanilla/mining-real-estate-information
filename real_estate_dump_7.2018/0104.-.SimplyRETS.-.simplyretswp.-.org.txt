@@ -1,0 +1,94 @@
+* SimplyRETS WP [[https://travis-ci.org/SimplyRETS/simplyretswp.svg?branch=master]]
+
+  This is the official repository of the SimplyRETS Wordpress plugin
+  client. SimplyRETS enables you to embed *your* live real estate listings
+  directly on your site simply and easily.
+  
+  *[[http://wordpress-demo.simplyrets.com][Check out the demo site]]*
+
+  The Wordpress plugin provides you a simply way to connect to your
+  SimplyRETS account and start showing your real estate listings
+  directly on your Wordpress site. It provides Wordpress standard
+  custom post types, sidebard and footer widgets, shortcodes, and
+  more.
+
+  The plugin requires an active plan with SimplyRETS to enable /your/
+  listings, but we also provide a demo test account with real listings
+  that you can use to test out the plugin and make sure it does what
+  you need it to.
+
+  For any support related issues, you can:
+  1) View the documentation at http://docs.simplyrets.com
+  2) Submit an issue on the official SimplyRETS WP github mirror: http://github.com/SimplyRETS/simplyretswp/issues
+  3) Send us a message via our website contact form at http://simplyrets.com/#home-contact
+  4) Send an email to [[mailto:support@simplyrets.com]]
+
+  *If you have an active SimplyRETS account, you can also submit a
+  support request via your [[https://simplyrets.com/account][SimplyRETS Account Panel]].*
+
+  /Pull requests are welcomed!/
+
+** Installation
+
+*** Install from .zip file
+    - Download the `.zip` file from [[https://github.com/SimplyRETS/simplyretswp/releases][the releases page]].
+    - In your Wordpress dashboard, go to 'Plugins' -> 'Add New'.
+      Choose 'Upload a New Plugin' and upload the `.zip` file.
+    - Activate it through the =Plugins -> Installed plugins= page of your Wordpress dashboard.
+
+*** Extract from .zip file
+    - Download the `.zip` file from [[https://github.com/SimplyRETS/simplyretswp/releases][the releases page]].
+    - Unzip the file in your Wordpress site's =wp-content/plugins/= directory.
+    - Activate it through the =Plugins -> Installed plugins= page of your Wordpress dashboard.
+
+*** Activating
+    Once the plugin is installed via one of the methods above, you
+    need to active it using a set of API credentials. If you want to
+    use the test data, you can use the credentials provided on the
+    =Settings -> SimplyRETS= page of your dashboard. Enther them and
+    activate! If you have an account with SimplyRETS, enter /your/
+    credentials on that page instead.
+
+** Getting Started
+   There are many Short-Codes, Widgets, Filters, and much much more
+   you can do with the SimplyRETs plugin. To see the full feature
+   documentation, please see the [[https://wordpress.org/plugins/simply-rets/other_notes/][WP Documentation page]].
+
+** Style Guide
+   The SimplyRETS Wordpress styleguide provides an overview of the HTML
+   and css classes and id's used to style the listings. To make customizations
+   to your site, use this style guide to easily find which elements to style.
+
+   You can view the style guide in [[https://docs.simplyrets.com][the SimplyRETS documentation]]
+
+   To generate the the style guide:
+   - Install StyleDocco via npm:
+   #+BEGIN_SRC bash
+   $ npm install -g styledocco
+   #+END_SRC
+   - And run it from the top level of this repo:
+   #+BEGIN_SRC bash
+   $ styledocco -n "SimplyRETS Style Guide" css/simply-rets-client.css
+   #+END_SRC
+
+   Note: we only need the simply-rets-client.html file
+
+** License
+   *This software is licensed under the GNU General Publice License Version 3.0*
+
+   Copyright (C) 2014-2015 SimplyRETS
+   Authored by: Cody Reichert
+
+   This program is free software: you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation, either version 3 of the License, or
+   (at your option) any later version.
+
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
+
+   You should have received a copy of the GNU General Public License
+   in a LICENSE file along with this program.  If not, see
+   [[http://www.gnu.org/licenses/]]

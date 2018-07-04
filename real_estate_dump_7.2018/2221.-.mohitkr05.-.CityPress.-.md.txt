@@ -1,0 +1,51 @@
+City Press
+============================
+
+A Solution to create City Portal
+
+
+Custom post types for
+
+- Properties/Real Estate
+- Business Listings
+- Questions
+- Deals
+
+
+
+
+
+v0.2 Details
+=============================================================
+- Added custom post types for real estate, question, deals and business listings
+
+
+
+v0.1 Details
+=============================================================
+- Initial commit for CSS and basic wordpress theme
+
+
+
+Todo 
+================================================================
+-Require Cleanup of code.
+-Testing of code with browsers
+- main menu and secondary menu dropdown
+- Port with Twitter bootstrap
+- Options Menu with Options Framework
+- Home page slider
+- Category menu
+- Integration with google maps
+
+
+
+Thanks to 
+=============================================================
+Underscores(http://underscores.me/)
+Bones (https://github.com/eddiemachado/bones)
+Custom Post types (https://github.com/jaredatch/Custom-Metaboxes-and-Fields-for-WordPress)
+960 Grid System (http://960.gs/)
+Codex
+http://codex.wordpress.org
+

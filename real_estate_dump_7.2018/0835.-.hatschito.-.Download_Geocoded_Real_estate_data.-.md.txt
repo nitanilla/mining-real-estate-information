@@ -1,0 +1,5 @@
+# Download_Geocoded_Real_estate_data
+
+The following short R script uses the Json parser Jsonlite and fetches gecoded real estate offers via the Nestoria REST API. The Nestoria API does not require any kind of authentification (as OAuth or an API key) and delivers current real estate date from all big and also smaller German real estate portals. Downloads are limited to 20 or 50 data points per page and to 1000 offers per request. So if you need a larger area, just adapt the bounding box or by filtering using the request paramaters documented on the Nestoria developers website: http://www.nestoria.co.uk/help/api-search-listings
+The script loops through the pages provided by the API and puts the result into a R dataframe. The R dataframe easily can be exported as CSV for further use in QGIS or any other GIS software (e.g. Arc GIS).
+If you have any questions, feel free to ask. The comments in the script are partly German and partly English, sorry for that mess :-). I tested the script fetching Berlin and Potsdam real estate data.

@@ -1,0 +1,14 @@
+== Real Estate Example
+
+At the 12/15/10 meeting of the Las Vegas Ruby Group there were two items of "how do I" discussion centered around scopes.  I put together a little example app that illustrates both topics and one additional:
+
+# Writing class methods instead of actual rails scopes (http://www.railway.at/2010/03/09/named-scopes-are-dead/)
+# Composing complex queries by chaining scopes.  Here exhibited by things like Listings.by_state("NV").for_rent
+# Creating a SEARCH method on the model that accepts flexible parameters from the controller, allowing the controller to have almost no intelligence.
+
+There are also RSpec tests to exercise the model's features.
+
+If you have any additions, feel free to fork!
+
+Enjoy,
+Jeff

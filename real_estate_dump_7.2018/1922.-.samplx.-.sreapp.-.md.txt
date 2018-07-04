@@ -1,0 +1,13 @@
+# sreApp - the Samplx.org Real-Estate App
+
+This project is an open source application for the creation of Real-Estate web sites. The
+site is a single-page application.
+
+It is based upon the [AngularJS](http://angularjs.org/) MVW framework.
+
+It also uses the [AngularUI Bootstrap](http://angular-ui.github.io/bootstrap/#) library, and Twitter's
+[Bootstrap](http://getbootstrap.com/) CSS style-sheet.
+
+The data for the site is from [JSON](http://json.org/) formated files. These can be
+statically generated, or provided from a server back-end.
+

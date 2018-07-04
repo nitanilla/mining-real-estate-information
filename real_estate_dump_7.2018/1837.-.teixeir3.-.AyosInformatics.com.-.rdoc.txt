@@ -1,0 +1,14 @@
+
+# AyosInformaticsCom.com
+* Home page for Lamington Properties LLC. 
+* Lamington Properties LLC, founded in 2002, is a licensed New Jersey independent real estate brokerage firm which provides strategic advisory and transaction services to its clients.  We are a valued partner to business owners, professionals and individuals who seek high-quality, personalized expertise to accomplish their goals.  Our professionals possess significant real estate brokerage and development experience and are particularly proud to hold extended relationships with our clients for many years.
+
+
+[Live]:http://www.AyosInformaticsCom.com
+
+
+## TODO
+* Add Standard content
+* Add News
+* Add Properties
+* Add Services

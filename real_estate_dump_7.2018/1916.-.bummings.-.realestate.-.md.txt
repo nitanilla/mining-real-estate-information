@@ -1,0 +1,4 @@
+Do you find yourself wishing you could find a real estate website focused on gentrification? Are you unfanthomably hip and "with it"? Is your budget for finding a new place to live in the range of 5 to 8 digits long? 
+
+If you answered yes, then I wish I could help- actually, no. I'm not sorry.
+Thing is, this is a fictional website. I've spent a considerable amount of time on it. I made this website to put into my portfolio to convince people to pay me money and make *real* things, like non-fictional real estate websites.

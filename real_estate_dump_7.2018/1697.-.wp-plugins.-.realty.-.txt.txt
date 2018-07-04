@@ -1,0 +1,135 @@
+=== Realty by BestWebSoft ===
+Contributors: bestwebsoft
+Donate link: http://bestwebsoft.com/donate/
+Tags: realty, real estate, realestate, property, agent, relty, reelty, relaty, realti, reel estate, rela estate, real estete, real estate plugin, add property, add property info, find property, property plugin, property posts, realty agents, add agents, add agents data
+Requires at least: 3.8
+Tested up to: 4.2.2
+Stable tag: 1.0.3
+License: GPLv3 or later
+License URI: http://www.gnu.org/licenses/gpl-3.0.html
+
+A convenient plugin that adds Real Estate functionality.
+
+== Description ==
+
+Realty plugin allows you to create your fully functional real estate website with a single plugin. The admin panel functionality is easy to use and loaded with features.
+
+http://www.youtube.com/watch?v=HArMTHq-D7A
+
+<a href="https://www.youtube.com/watch?v=_BQCk4D-CyI" target="_blank">Video instruction on Installation</a>
+
+<a href="http://wordpress.org/plugins/realty/faq/" target="_blank">FAQ</a>
+
+<a href="http://support.bestwebsoft.com" target="_blank">Support</a>
+
+<a href="http://bestwebsoft.com/products/realty/?k=143e150e92b9751b52da0cd46fb6f5cf" target="_blank">Upgrade to Pro Version</a>
+
+= Features =
+
+* An option to add an unlimited number of Properties. 
+* An option to add an image to the Property.
+* An option to sort Property by various criteria. 
+
+= Translation =
+
+* Russian (ru_RU)
+* Ukrainian (uk)
+
+If you create your own language pack or update the existing one, you can send <a href="http://codex.wordpress.org/Translating_WordPress" target="_blank">the text in PO and MO files</a> to <a href="http://support.bestwebsoft.com" target="_blank">BestWebSoft</a>, and we'll add it to the plugin. You can download the latest version of the program for working with PO and MO files <a href="http://www.poedit.net/download.php" target="_blank">Poedit</a>.
+
+= Technical support =
+
+Dear users, our plugins are available for free download. If you have any questions or recommendations regarding the functionality of our plugins (existing options, new options, current issues), please feel free to contact us. Please note that we accept requests in English only. All messages in another languages won't be accepted.
+
+If you notice any bugs in the plugins, you can notify us about it and we'll investigate and fix the issue then. Your request should contain URL of the website, description of an issue, and WordPress admin panel credentials.
+Moreover, we can customize the plugin according to your requirements. It's a paid service (as a rule it costs $40, but the price can vary depending on the amount of the necessary changes and their complexity). Please note that we could also include this or that feature (developed for you) in the next release and share with the other users then. 
+We can fix some things for free for the users who provide translation of our plugin into their native language (this should be a new translation of a certain plugin, you can check available translations on the official plugin page).
+
+== Installation ==
+
+1. Upload the `realty` folder to `/wp-content/plugins/` directory.
+2. Activate the plugin using the 'Plugins' menu in your WordPress admin panel.
+3. You can adjust the necessary settings using your WordPress admin panel in "BWS Plugins" > "Realty".
+
+<a href="https://docs.google.com/document/d/13w9MUw_368g8L11yjo7U2gvOISi5zTgPNV_Yt78Gce0/edit" target="_blank">View a Step-by-step Instruction on Realty Installation</a>.
+
+http://www.youtube.com/watch?v=_BQCk4D-CyI
+
+== Frequently Asked Questions ==
+
+= Where can I find the settings to adjust the plugin work after activation? =
+
+You can find a link to the settings page in your WordPress admin panel in "BWS Plugins" > "Realty".
+
+= How do I use the plugin? =
+
+1. You can add the necessary Property types in "Properties" > "Property type" menu. 
+2. In the menu "Properties" > "Add New". Select the necessary Propert type. 
+3. If you are using "Real Estate" theme, please create the Home page, select Home template for this page, and in "Settings" > "Reading Settings", please select static Home page in "Front page displays" block. 
+4. If you are using another theme, on "Appearance" > "Widgets" page, please find  "Sale Rent Widget" and add it to the sidebar of your theme. 
+
+= I have added Property, but nothing changed on my website. What do I do now? =
+
+1. If you are using "Real Estate" theme, please create the Home page, select Home template for this page, and in "Settings" > "Reading Settings", please select static Home page in "Front page displays" block. 
+2. If you are using another theme, on "Appearance" > "Widgets" page, please find "Sale Rent Widget" and add it to the sidebar of your theme.
+
+= I get a message that some files were not found in the theme. Why does this occur and how do I fix it? =
+
+The error message notifying that some files were not found means that the plugin lacks permissions to move the templates required for its work from the plugin folder to the theme folder. To have the plugin running correctly, please follow the instructions in the message, namely:
+- open `/wp-content/plugins/realty/templates/` directory
+- copy the files from this folder (`rlt-listing.php`, `rlt-nothing-found.php`, `rlt-search-form.php`, `rlt-search-listing-results.php`)
+- open the folder with your theme and add the files you just copied. 
+
+= I would like to add some features to the plugin. How do I do that? =
+
+Please contact our Support Service <a href="http://support.bestwebsoft.com" target="_blank">http://support.bestwebsoft.com</a> and describe the features you want added there.
+
+= I have some problems with the plugin's work. What Information should I provide to receive proper support? =
+
+Please make sure that the problem hasn't been discussed yet on our forum (<a href="http://support.bestwebsoft.com" target="_blank">http://support.bestwebsoft.com</a>). If no, please provide the following data along with your problem's description:
+
+1. the link to the page, on which the problem occurs
+2. plugin name and its version. If you are using a pro version - your order number.
+3. the version of your WordPress installation
+4. copy and paste into the message your system status report. Please read more here: <a href="https://docs.google.com/document/d/1Wi2X8RdRGXk9kMszQy1xItJrpN0ncXgioH935MaBKtc/edit" target="_blank">Instuction on System Status</a>
+
+== Screenshots ==
+
+1. Plugin settings page.
+2. Edit Property page.
+3. Sale Rent Widget with standard 2015 theme.
+4. Sale Rent Widget with Real Estate theme on the Home page.
+5. Property Search Results page.
+6. Single Property Photo tab page.
+7. Single Property View Street tab page.
+8. Single Property Map tab page.
+
+== Changelog ==
+
+= V1.0.3 - 01.07.2015 =
+* New : Ability to restore settings to defaults.
+* Bugfix : We fixed errors in the database recording when updating.
+* Bugfix : We added a field validation in the admin panel.
+
+= V1.0.2 - 19.05.2015 =
+* Update : We updated all functionality for wordpress 4.2.2.
+
+= V1.0.1 - 16.04.2015 =
+* Bugfix : Styles are updated.
+
+= V1.0.0 - 03.02.2015 =
+* NEW: Ability to add Sale Rent Widget into a site.
+
+== Upgrade Notice ==
+
+= V1.0.3 =
+Ability to restore settings to defaults. We fixed errors in the database recording when updating. We added a field validation in the admin panel.
+
+= V1.0.2 =
+We updated all functionality for wordpress 4.2.2.
+
+= V1.0.1 =
+Styles are updated.
+
+= V1.0.0 =
+Ability to add Sale Rent Widget into a site.

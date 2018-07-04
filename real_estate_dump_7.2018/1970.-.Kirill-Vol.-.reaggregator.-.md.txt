@@ -1,0 +1,6 @@
+This Spring MVC application is developed for studying purposes only.<br/><br/>
+What it does:<br/><br/>
+1)	Regularly collects information from several real estate oriented websites.<br/>
+2)	Does some processing and sends it to the database.<br/>
+3)	Presents this information to users in a way that it can be sorted and filtered.<br/>
+4)	Provides some analytics about the real estate market depending on collected information.<br/>

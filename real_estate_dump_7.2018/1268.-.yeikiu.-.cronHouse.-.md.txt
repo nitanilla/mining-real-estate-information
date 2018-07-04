@@ -1,0 +1,178 @@
+# About and motivation
+Finding a good home to rent in some cities has become a really complex task. Nowadays we have more and more sites publishing houses, but their alerts services are either not inmediate or simply not accurate.
+This is a very simple NodeJS recurrent task wich will keep track of every new flat added to an Idealista's or Fotocasa's URL and email you an alert if it passes your filter.
+
+The goal is to be the first doing the call and visiting your dream home! ;)
+
+# Requirements
+[npm](https://www.npmjs.com/) and [NodeJS](https://nodejs.org/en/). Get both [here](https://nodejs.org/en/download/)!
+
+# Get the repo
+    git clone https://github.com/yeikiu/cronHouse.git
+    cd cronHouse
+
+# Install dependencies
+    npm install
+
+# Customize your config files
+Before sending your email using gmail you have to allow non secure apps to access gmail you can do this by going to your gmail settings [here](https://myaccount.google.com/lesssecureapps).
+## config_email.json
+    {
+        "mail": {
+            "service": "gmail",
+            "auth": {
+                "user": "<YOUR_GMAIL>@gmail.com",
+                "pass": "<YOUR_PASSWORD>"
+            }
+        }
+    }
+I'm using Gmail as a provider since it was extremly easy to configure my account following [this great post](https://medium.com/@manojsinghnegi/sending-an-email-using-nodemailer-gmail-7cfa0712a799) by [Manoj Singh Negi](https://medium.com/@manojsinghnegi). But you should be able to configure any smtp provider digging in [Nodemailer's documentation](https://nodemailer.com/smtp/).
+
+## config_jobs.json
+    [{
+        "name": "Idealista JOB Las Palmas",
+        "source": "Idealista",
+        "init_url": "https://www.idealista.com/alquiler-viviendas/las-palmas-de-gran-canaria-las-palmas/con-publicado_ultimas-24-horas/?ordenado-por=fecha-publicacion-desc",
+        "max_pages": 5,
+        "output_json_file": "items_idealista_las_palmas.json",
+        "destinataries": [
+            {
+                "name": "Joe Blogs",
+                "email": "<example1>@gmail.com",
+                "filters": {
+                    "price": "< 601",
+                    "m2": "> 40",
+                    "num_rooms": "> 1"
+                }
+            },
+            {
+                "name": "Joe's friend",
+                "email": "<example2>@gmail.com",
+                "filters": {
+                    "price": "< 601",
+                    "m2": "> 30"
+                }
+            }
+        ]
+    }, {
+        "name": "Fotocasa JOB Las Palmas",
+        "source": "Fotocasa",
+        "init_url": "https://www.fotocasa.es/es/alquiler/casas/las-palmas-de-gran-canaria/todas-las-zonas/l?sortType=publicationDate&gridType=3",
+        "max_pages": 5,
+        "output_json_file": "items_fotocasa_las_palmas.json",
+        "destinataries": [
+            {
+                "name": "Joe Blogs",
+                "email": "<example1>@gmail.com",
+                "filters": {
+                    "price": "< 601",
+                    "m2": "> 40",
+                    "num_rooms": "> 1"
+                }
+            },
+            {
+                "name": "Joe's friend",
+                "email": "<example2>@gmail.com",
+                "filters": {
+                    "price": "< 601",
+                    "m2": "> 30"
+                }
+            }
+        ]
+    }, {
+        "name": "Idealista JOB Barcelona",
+        "source": "Idealista",
+        "init_url": "https://www.idealista.com/alquiler-viviendas/barcelona-barcelona/con-publicado_ultimas-24-horas/?ordenado-por=fecha-publicacion-desc",
+        "max_pages": 5,
+        "output_json_file": "items_idealista_barcelona.json",
+        "destinataries": [
+            {
+                "name": "John Smith",
+                "email": "<example3>@gmail.com",
+                "filters": {
+                    "price": "< 601",
+                    "m2": "> 40",
+                    "num_rooms": "> 1"
+                }
+            }
+        ]
+    }]
+
+This file is an array of Jobs to be iterated by the cron on each execution. Each job has the following fields:
+
+| Key | Definition |
+|--|--|
+| **name** | Will identify the job in the console output and the email alerts subject |
+| **source** | Possible values for this field at the moment are **'Idealista'** or **'Fotocasa'** |
+| **init_url** | The first URL to be visited by the scrapper. For example I use [this one](https://www.idealista.com/alquiler-viviendas/las-palmas-de-gran-canaria-las-palmas/con-publicado_ultimas-24-horas/?ordenado-por=fecha-publicacion-desc) to be updated with the new flats in my city Las Palmas de Gran Canaria. Visit the link and notice the web must show in it's list view, not the map. The next pages to visit will be identified if there is a 'next page' button in the pager of the list. |
+| **max_pages** | Limit the number of pages to be visited. Don't be greedy ;) |
+| **output_json_file** | This file will be generated with all the flats scrapped during the job. The first time the job runs it won't notify the configured destinataries since we are looking for fresh additions. After the second run, when it detects a new flat to insert in the file, it will notify those destinataries matching their filters criteria. |
+| **destinataries** | Here you can set any number of destinataries interested in the alerts generated. Each destinatary has a **name** and an **email** field. The **filters** field must exist but it's not mandatory to fill it with any data. |
+| **destinatary filters** | At the moment you can only use numeric comparison expressions for the following fields: **price**, **m2** and **num_rooms**. The **real_estate** field must be a boolean value. |
+
+# Enjoy scrapping!
+    node cronHouse
+
+# Output
+
+The output file generated by the job looks like this:
+
+    {
+        "38805870": {
+            "source": "Idealista",
+            "id": "38805870",
+            "title": "Piso en calle Los Llanos seis, s/n, Los Llanos-El Cabo, Santa Cruz de Tenerife",
+            "link": "https://www.idealista.com/inmueble/38805870/",
+            "price": 875,
+            "description": "Vivienda en alquiler en la zona de los Llanos seis, las Torres, vistas a Santa Cruz. Dispone de estar Cocina totalmente amueblada y equipada dos habitaciones con armarios empotrados, armario trastero y amplio baño completo con ducha. También dispones de aire acondicionado en toda la vivienda, dob...",
+            "num_rooms": 2,
+            "m2": 82,
+            "phone": "922939518",
+            "real_estate": true,
+            "pictures": [
+                {
+                    "big_img": "https://img3.idealista.com/blur/WEB_LISTING/0/id.pro.es.image.master/4f/e5/0f/248361297.jpg",
+                    "small_img": "https://img3.idealista.com/blur/WEB_DETAIL-L-L/0/id.pro.es.image.master/4f/e5/0f/248361297.jpg"
+                }
+            ],
+            "date_added": 1519768081853
+        },
+        "39702844": {
+            "source": "Idealista",
+            "id": "39702844",
+            "title": "Piso en los llanos seis LA TORRE I, s/n, Los Llanos-El Cabo, Santa Cruz de Tenerife",
+            "link": "https://www.idealista.com/inmueble/39702844/",
+            "price": 550,
+            "description": "Estupendo piso amueblado en la torre, edificio de calidad con seguridad 24 horas, consta de una habitación con armario empotrado, un baño completo, cocina amueblada y equipada unida al salon comedor. Es piso es muy acogedor. Esta disponible a partir del 01 de marzo de 2018. [iw].",
+            "num_rooms": 1,
+            "m2": 55,
+            "phone": "922270105",
+            "real_estate": true,
+            "pictures": [
+                {
+                    "big_img": "https://img3.idealista.com/blur/WEB_LISTING/0/id.pro.es.image.master/f6/fe/14/264869164.jpg",
+                    "small_img": "https://img3.idealista.com/blur/WEB_DETAIL-L-L/0/id.pro.es.image.master/f6/fe/14/264869164.jpg"
+                }
+            ],
+            "date_added": 1519768081860
+        },
+        "39735008": {
+            "source": "Idealista",
+            "id": "39735008",
+            "title": "Ático en Los Llanos Seis, 3, Los Llanos-El Cabo, Santa Cruz de Tenerife",
+            "link": "https://www.idealista.com/inmueble/39735008/",
+            "price": 875,
+            "description": "Precioso piso situado en la Torre 2, con vistas hacia la ciudad. Este apartamento esta distribuido de la siguiente forma, dos habitaciones con armarios empotrados y preciosas vistas, baño con ducha hidromasaje, salón comedor, cocina amueblada y equipada con todos los electrodomésticos, aire acond...",
+            "num_rooms": 2,
+            "m2": 70,
+            "phone": "922936895",
+            "real_estate": true,
+            "pictures": [
+                {
+                    "big_img": "https://img3.idealista.com/blur/WEB_LISTING/0/id.pro.es.image.master/4a/0d/6b/265485747.jpg",
+                    "small_img": "https://img3.idealista.com/blur/WEB_DETAIL-L-L/0/id.pro.es.image.master/4a/0d/6b/265485747.jpg"
+                }
+            ],
+            "date_added": 1519768081857
+        }
+    }

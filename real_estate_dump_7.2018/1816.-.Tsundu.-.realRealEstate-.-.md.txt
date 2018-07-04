@@ -1,0 +1,5 @@
+Real Real Estate Group 
+
+# Description 
+
+This is an example site for Flatiron coding school. 

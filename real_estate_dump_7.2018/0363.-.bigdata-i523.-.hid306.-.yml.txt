@@ -1,0 +1,66 @@
+---
+owner:
+    hid: 306
+    name: Cheruvu, Murali
+    url: https://github.com/bigdata-i523/hid306
+paper1:
+    abstract: >
+        The Internet of Things, or IoT, is all about data from
+        connected devices.  Millions of consumer and industrial
+        devices drive IoT growth and challenge with data volume and
+        variety. Big Data Analytics helps combing through these high
+        volumes of complex IoT data into meaningful business insights.
+    author:
+        - Murali Cheruvu
+    chapter: Technology
+    hid:
+        - 306
+    status: 100%; 10/26/2017
+    title: The Internet of Things and Big Data Analytics
+    url: https://github.com/bigdata-i523/hid306/paper1
+paper2:
+    review: Nov 6 2017
+    abstract: >
+        The Deep Learning is unique in machine learning algorithms to
+        analyze supervised and unsupervised datasets. Big Data
+        challenges like high volumes, multi-dimensionality and feature
+        engineering are well addressed using Deep Learning
+        algorithms. Deep Leaning, with edge and distributed mesh
+        computing, is best suited to handle IoT Analytics of millions
+        of sensors producing petabytes of time-series data.
+    author:
+        - Murali Cheruvu
+    chapter: Technology
+    hid:
+        - 306
+    status: 100%; 11/4/2017
+    title: Why Deep Learning matters in IoT Data Analytics?
+    url: https://github.com/bigdata-i523/hid306/paper2
+project:
+    review: Dec 4 2017
+    abstract: >
+        In United States, more than 6 million residential homes sold
+        in 2017. With ever-increasing demands, real estate is
+        challenged with complex analysis of homes to
+        provide accurate appraisals and predicting market
+        fluctuations to react accordingly. Big data analytics
+        helps mining the real estate data to provide valuable
+        business insights. In this project, we have planned to
+        analyze housing data to predict sale prices. Using well
+        established datasets, with lots of exploratory variables,
+        we could apply thorough exploration of the data, feature
+        engineering and implement various advanced supervised
+        learning algorithms, such as XGoost, Ridge, Lasso,
+        Random Forest and Neural Network to
+        predict accurate sale prices.
+    author:
+        - Murali Cheruvu
+        - Anand Sriramulu
+    chapter: Business
+    hid:
+        - 306
+        - 338
+    status: 100%; 12/10/2017
+    title: Predicting Housing Prices
+    type: latex
+    url: https://github.com/bigdata-i523/hid306/project

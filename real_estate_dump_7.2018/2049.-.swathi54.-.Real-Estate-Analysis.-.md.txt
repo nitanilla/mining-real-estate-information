@@ -1,0 +1,3 @@
+# Real-Estate-Analysis
+Analyzed Read Estate Data in US by using historical data categorized by state
+ Developed geometric line plots to show relation between “percentage price cut” and “days on market” parameters; created “buyer-seller index” starting from 0.0 to 10.0 being highest indicating selling trends across all states. Used “market health index” to assess market behavior across states. Developed several graphs to analyze variables like “median housing price’, “median sold”, compared 5 of the most expensive cities real estate and predict trends. Also, developed Linear Modeling to determine influencing factors on Price.

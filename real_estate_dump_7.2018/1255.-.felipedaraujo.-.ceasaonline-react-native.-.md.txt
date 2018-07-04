@@ -1,0 +1,34 @@
+# ceasaonline-react-native
+An Android app to demonstrate my skills working with React Native. CEASA Online is a collaborative app to share the daily prices of fruits and vegetables at CEASAs ("Farmers Outlets" in Brazil).
+
+You can also install CEASA Online on your Android and see what it does. The version on Google Play was writen with Ionic 1.
+<p><a href='https://play.google.com/store/apps/details?id=com.ceasaonline&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'>
+  <img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' width="170"/>
+</a></p>
+
+## Install
+To see CEASA Online on your machine, you must have an Android device connected or a simulator running. First bundle the app and then start a node server.
+
+`react-native run-android`
+
+`npm start`
+
+## Components
+* Item
+* List
+* NavBar
+* PriceModal
+* SearchBox
+* TabView
+* TextInputMoney
+
+## Stack
+* React Native
+* Firebase
+
+## Hire me
+For over a year, I have been working as a freelancer building mobile applications for startups from several markets, including real estate, cooking, recycling, events, and health.
+
+To share how I can help you with web & mobile development, I have listed some of my projects on my new webpage at http://felipedearaujo.com/.
+
+Let me know if I can help you on your next project!

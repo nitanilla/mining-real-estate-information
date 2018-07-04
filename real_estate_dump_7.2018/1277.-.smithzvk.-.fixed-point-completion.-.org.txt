@@ -1,0 +1,32 @@
+
+* Fixed Point Completions for Emacs
+
+This project was a "scratch an itch" sort of project.  I always found completion
+in Emacs to be annoying for one reason.  When I perform a completion, the
+location of the point (Emacs parlance for cursor) on the screen often times
+changes.  This forces me to go searching for where the point has moved to in
+order to see the result of the completion.  Basically, when using Emacs, I
+suffered from [[http://youtu.be/iXRLw0A5G9w][these problems]].  It seemed that there was no reason for the point
+to move at all as there is plenty of screen real estate for the completions
+pop-up window.  So I created this hack in order to keep the [[http://youtu.be/lQrkTTOopP4][location of the
+point on screen fixed during completions]].
+
+I call this a hack because it doesn't really use the normal Emacs channels to
+work.  There are no customizable variables or major/minor modes.  There is a
+function to enable the behavior and one to disable it.  There is also a
+variable, =*completion-vertical-popup-size*=, that determines the number of rows
+the pop-up window should have.  And that's about it.
+
+To use Fixed Point Completions, just download the file and place it in your load
+path and use =M-x load-library RET fixed-point-completions RET=.  To enable the
+completion behavior, run the function =(enable-fixed-point-completions)=.  If
+you want to do this on startup, you can just add this to your =.emacs= file:
+
+#+BEGIN_SRC lisp
+(load "/path/to/fixed-point-completions.el")
+(enable-fixed-point-completions)
+#+END_SRC
+
+And, naturally, running =(disable-fixed-point-completions)= will return Emacs to
+it's normal completion behavior.  While Fixed Point Completions is enabled, is
+should alter the way all completions happen in all of Emacs.

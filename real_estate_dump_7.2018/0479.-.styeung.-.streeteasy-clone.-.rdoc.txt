@@ -1,0 +1,3 @@
+== README
+
+A pure clone of StreetEasy.com, a real estate website focused on New York City.

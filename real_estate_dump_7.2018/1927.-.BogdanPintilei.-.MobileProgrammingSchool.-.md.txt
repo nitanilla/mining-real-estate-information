@@ -1,0 +1,63 @@
+# Mobile Programming School
+
+
+            _H_              _H_               _H_                  o88o.
+          .=|_|===========v==|_|============v==|_|===========.    (8%8898),
+         /                |                 |                 \ ,(8888%8688)
+        /_________________|_________________|__________________(898%88688HJW)
+        |=|_|_|_|  =|_|_|=|X|)^^^(|X|=|/ \|=||_|_|_|=| ||_|_|=|`(86888%8%9b)
+        |=|_|_|_|== |_|_|=|X|\___/|X|=||_||=||_____|=|_||_|_|=|___(88%%8888)
+        |=_________= ,-. =|""""""""""="""""=|=_________== == =|_______\//`'
+        |=|__|__|_| //O\\=|X|"""""|X|=//"\\=|=|_|_|_|_| .---.=|.=====.||
+        |=|__|__|_|=|| ||=|X|_____|X|=|| ||=|=|_______|=||"||=||=====|||
+        |___d%8b____||_||_|=_________=||_||_|__d8%o%8b_=|j_j|=|j==o==j|\---
+
+
+
+Real Estate App & Dashboard - Ditch the Agent<br />
+Prepared for: Mobile Programming Laboratory<br />
+Prepared by: Bogdan Pintilei<br />
+October 19, 2017<br />
+
+EXECUTIVE SUMMARY
+
+Objective <br />
+The purpose of this app would be to replace the need for a real estate agent and a user to be able to look for new property without going thru an agency and having to pay such large comission both for buying and selling homes. The app should work like some sort of Uber for Real Estate. Everybody can sell and you have to stop real estate agents from using the database of the app, and you can also do this by machine learning the behaviour of the users and banning those in fault and also by reporting user by other users. The app should have a bidding/ offer functionality and also a programming method for visiting properties. This process can also be automatized for empty places in which the user will be able to visit alone the property, unlocking the door with the phone. All the information needed about a property will be present in the description.
+
+App Description <br />
+
+Mobile application <br />
+- with the mobile application the user will be able to view all types of
+properties and place bids on a property he is interested in, schedule a meeting for when he wants to see the place depending when the seller makes the place available for seeing.<br />
+
+Dashboard <br />
+- the dashboard should have all the functionalities the mobile apps have +
+some extra features like virtual tours of places .
+
+Goals <br />
+The focus of the app is to create a more comfortable experience for buying and selling properties both for the buyer and seller, and reducing the expenses associated with real estate agents.
+
+Business Value <br />
+The app has tremendous potential and business value as for an continuously increasing marketplace the and lack of digital methods of buying and selling properties is pretty big.
+
+Effort <br />
+The main effort of the app will be discovering methods to eliminate agents from using the platform for their benefit, but I have no doubt that this is very possible.
+
+
+The structure of the app will be the following:
+
+Users:
+- manager(admin)
+- client(regular user)
+
+The manager will:
+- delete reported users and various listings
+- edit listings
+* more features will be added later
+
+The Client will:
+- view listings
+- view listing details
+- send reports & complaints
+- place a bid on a house
+* more features will be added later

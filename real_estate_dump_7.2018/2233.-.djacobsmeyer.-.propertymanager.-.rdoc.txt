@@ -1,0 +1,18 @@
+== README
+
+Property Manager is a capstone project for the Bloc - Rails Backend Development Course
+
+It's purpose is to give Real Estate Landlords and Managers a platform to manage tenants, payables, receivables as well as give the tenants themselves a portal for payment history and a direct line of communication for requests.
+
+This project was written using Rails 4.2.3 and Ruby 2.2.1.
+
+Current Version: 
+Ultimately there are two separate sets of users who will interact with this app, paying customers/real estate managers and tenants of those real estate properties. 
+
+Managers will login landing them onto their main page listing their properties and a form to add a new property. After selecting a property, or adding a new one, they will be taken to the respective property page. There they will find details of the property itself as well as the tenants who have active leases. 
+
+Tenants will login and see their respective landing page. This page will give them details of their lease, lease payment history, as well as a running account of correspondence with the manager. This 
+
+While the app is ready to be launched and run as its own business, there is already a V2.0 in the works for a better user experience and additional features for use.
+
+Stripe is currently handling transactions. 

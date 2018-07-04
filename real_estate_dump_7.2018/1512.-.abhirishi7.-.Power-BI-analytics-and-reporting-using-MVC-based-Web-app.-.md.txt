@@ -1,0 +1,2 @@
+# Power-BI-analytics-and-reporting-of-MVC-based-Web-app
+A web app created as a data analytics subordinate for a Real Estate project in which all information like user visits, room preference, time spent on the site, accessed geo-location, access device etc. are stored and analysed using Microsoft Power BI and a reporting is presented to the end user to visualize the overall statistics of Real Estate project. The web app created used MVC paradigm.

@@ -1,0 +1,99 @@
+#### General
+
+You can request all information for real estate exposé on houses and flats (rent and sale) on [immobilienscout24](www.immobilienscout24.de). It's used for German real estates, but can be easily customized for other countries, too.  You can save the information to all [slick](http://slick.lightbend.com/doc/3.2.0/supported-databases.html) supported databases.  
+It's available on github:  
+<a href="https://github.com/josefstr/immobilienscout24" target="_blank">https://github.com/josefstr/immobilienscout24</a>
+
+
+
+#### Features
+
+* requesting and storing all exposé on immobilienscout24
+    * supported types: HausKauf, HausMiete, WohnungKauf, WohnungMiete
+* requesting new exposé in a customizable time interval
+    * settings crontabs like:  
+    `0 22 * * 1-7 $HOME/immobilienscout24/storing.all.sh`  
+    `*/30 * * * * $HOME/immobilienscout24/storing.latest.sh`
+* custom fields:
+    * `timeAdded` and `lastUpdated` shows you important information when the exposé was added and when the last update on the exposé occurred.
+* tagging exposé
+    * `online`: still online on is24
+    * `offline`: archived or deleted on is24
+* creating a readable customized html table. (see below)
+    * custom fields like
+        * yield
+        * square metre prices
+        * ...
+    * sortable by headers (it takes some time on large files)
+* configurable options:
+    * reloading all listing
+    * reloading last n pages (speed things up)
+    * storing images on/off
+    * parallel requests
+    * reloading offline exposes on/off
+    * see `resources/application.conf`
+* customizable search queries
+    * filter by
+        * Germans Postleitzahl
+        * whitelist Landkreis
+        * whitelist Stadt
+        * blacklist Gemeinde
+    * ...
+* alerts for new exposes on your filter
+* creating some simple statistics. (see below)
+* you could create your own regional price bias
+
+#### Usage
+
+Simple run `sbt assembly`.  
+You can add crontabs like:
+```
+0 22 * * 1-7 $HOME/immobilienscout24/storing.all.sh
+*/30 * * * * $HOME/immobilienscout24/storing.latest.sh
+```
+
+#### Statistics
+latest update: 2017-09-18 06:30:38.614  
+all exposes: 342838  
+online exposes: 314134  
+offline exposes: 28704
+
+HausKauf online expose: 140482  
+HausMiete online expose: 5716  
+WohnungKauf online expose: 63259  
+WohnungMiete online expose: 104677
+
+new exposes added:  
+2017-09-18      157  
+2017-09-17      2486  
+2017-09-16      4989  
+2017-09-15      5764  
+2017-09-14      7981  
+2017-09-13      7758  
+2017-09-12      7540  
+2017-09-11      252026  
+2017-09-10      15349
+
+exposes set offline / removed:  
+2017-09-16      10348  
+2017-09-14      10883  
+2017-09-13      7004  
+2017-09-12      469
+
+
+#### Example Html Files
+
+**all exposes**
+
+<a href="immobilien/examples/renditeHausKauf.html" target="_blank">all real estates "haus kauf" sorted by yield</a>  
+all real estates "wohnung kauf" sorted by yield  
+200 newest real estates "haus kauf" sorted by date
+
+**customized search results**
+
+<a href="immobilien/examples/latestHausKaufRegion.html" target="_blank">latestHausKaufRegion</a>  
+renditeHausKaufRegion
+
+
+#### Terms of use:
+Before using this project, be aware of the [terms of use](https://www.immobilienscout24.de/agb/nutzungsagb.html) on immobilienscout24.de.

@@ -1,0 +1,3 @@
+# Saigon Real Estate
+# This Java Spring MVC web project serves as an online trading portal to real estate in Ho Chi Minh City, this is my very own pet project, so any advice is highly appreciated
+# Please refresh the page if you don't see the images at the first time

@@ -1,0 +1,14 @@
+Aladdin Real Estate Advisor (AREA)
+Make data-driven real estate investment decisions by de-mystifying your property portfolio
+
+The problem:
+- BlackRock and our clients struggle to easily reason about their real estate portfolios in a centralized, integrated, and highly available platform.
+- Systems typically consist of several 3rd party software systems glued together with obscured business processes built into Excel
+- We are not taking advantage of the collective power of Aladdin to manage these ‘real assets’
+- Finding relevant information required to respond to operational events quickly and efficiently is a major challenge
+
+Our solution: 
+- Manage risk by visualizing and understanding your real estate portfolio
+- Quickly identify overexposure to high-risk tenants, markets or industries
+- Perform market and risk analysis using unconventional data sources 
+- Simplify asset management by searching through mountains of documents and centralizing property level details

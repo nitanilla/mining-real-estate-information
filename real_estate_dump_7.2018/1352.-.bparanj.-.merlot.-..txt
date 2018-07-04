@@ -1,0 +1,252 @@
+Understanding and Building or Rebuilding your Credit is incomplete (on 5th page)
+Things to Know About Shopping for Life Insurance is duplicated (Two articles with same title or same content?)
+There is lot of Bankruptcy related articles overlap
+
+------------------------------------------------------------------------------------------------------------------------------
+Backup existing database: 
+------------------------------------------------------------------------------------------------------------------------------
+$ mysqldump -u root merlot > merlot.sql
+Populate new database:
+$ mysql -uroot merlot_production < merlot.sql
+
+------------------------------------------------------------------------------------------------------------------------------
+Delegate to Elance
+------------------------------------------------------------------------------------------------------------------------------
+1) Style Social Buttons (similar to Mashable site)
+2) Style pagination (similar to Github blog pagination)
+3) Fix the layout issue on the articles tab. Ads are at the bottom.
+
+------------------------------------------------------------------------------------------------------------------------------
+Tasks to be delegated:
+------------------------------------------------------------------------------------------------------------------------------
+1) Get help to make JQuery datepicker inline option work. Make the date default to today's date.
+2) Get help to create Digstyle theme for Kaminari Themes
+3) At least one recipient (To, Cc or Bcc) is required to send a message error. Test if sendmail config will fix the problem
+4) Drop shadow effect is missing for the content area
+5) Edit screen for admin layout has a different font for the tabs. 
+
+------------------------------------------------------------------------------------------------------------------------------
+
+1. Link keywords to other articles and categories inside the site. Refer Mashable for example.
+2. Include a call to action at the end of the article. Related articles list, maybe other articles in the category etc. Check Mashable ideas. 
+3. Display all articles that is tagged with that tag. Test the result page noindex no follow.
+4. Include javascript to count the number of words
+5. RSS feeds using Feedburner
+6. Write a test case for Mercury editor for Rails 3. Refer railscasts.
+7. Calculators: https://www.ovlg.com/calculators/
+8. Update site with instructions on link exchange
+
+http://www.bingocardcreator.com/articles/rails-seo-tips.htm
+https://github.com/kpumuk/meta-tags
+https://github.com/mbleigh/acts-as-taggable-on
+
+http://services.google.com/breeze/webmasters/googleforwebmasters/
+
+
+www.dailybingocards.com/bingo-cards/geography/european-capitals
+www.dailybingocards.com/bingo-cards/geography
+
+Note that you will have to write custom routes to go with this, and you will have to be explicit about creating URLs with url_for and the like. I like naming mine so that I can generate them quickly and never get an ugly route by mistake:
+
+#goes in routes.rb
+  map.showCategory 'bingo-cards/:category', :controller => 'category', :action => 'show'
+  map.showCard 'bingo-cards/:category/:url', :controller => 'card', :action => 'show'
+
+	link_to "Put My Anchor Text Here", showCard_url(:url => @card.url, :category => @card.category)
+
+Generating anonymous routes is very freaking expensive because Rails has to try generating every possible route you have listed. Use either named routes or helper/model methods if you've got lots of links on a page and are worried about performance.
+
+------------------------------------------------------------------------------------------------------------------------------
+
+Category has_many :cards       #cards are grouped in categories like Rewards
+Card belongs_to :category       #shows one set of credit cards, like Capital One Credit Card
+
+match 'credit-cards/:category', :to => 'category#show'
+match 'credit-cards/:category/:url', :to => 'cards#show'
+
+
+------------------------------------------------------------------------------------------------------------------------------
+SEO Starter Guide
+------------------------------------------------------------------------------------------------------------------------------
+1) The <title> tag should be placed within the <head> tag of the HTML document. Ideally, create a unique title for each page on your site. Choose a title that effectively communicates the topic of the page's content. Use brief, but descriptive titles - DONE
+
+2) The title for your homepage can list the name of your business and could include other information like the physical location of the business, its main offerings etc.
+
+3) A page's description meta tag is a sentence or two or a short paragraph. [DONE]
+The description meta tag is placed within the <head> tag of your HTML document.
+Write a description that would both inform and interest users if they saw your description meta tag as a snippet in a search result. You could automatically generate description meta tags based on each page's content. [PENDING - Categories]
+
+4) Creating descriptive categories and filenames for the documents on your website. Also, it can create easier, "friendlier" URLs.
+
+5) Prepare two sitemaps: one for users, one for search engines. A site map is a simple page on your site that displays the structure of your website, and usually consists of a hierarchical listing of the pages on your site. Visitors may visit this page if they are having problems finding pages on your site. 
+
+An XML Sitemap file, which you can submit through Google's Webmaster Tools, makes it easier for Google to discover the pages on your site. Sitemap Generator Script helps you create a Sitemap file for your site. To learn more Webmaster Help Center provides a useful guide.
+
+https://github.com/lassebunk/dynamic_sitemaps
+
+6) Create a simple directory structure. Use a directory structure that organizes your content well and makes it easy for visitors to know where 
+they're on your site. Try using your directory structure to indicate the type of content found at that URL.
+
+7) Allow for the possibility of a part of the URL being removed.
+
+http://lassebunk.dk/tag/seo/
+
+------------------------------------------------------------------------------------------------------------------------------
+Structure for Articles
+
+1) Title : How to give a good title. Use brief, but descriptive titles.
+
+--------------------------------------------------------------------------------------------------------------------------------
+Examples for how to mix lower and upper case in titles: http://www.amazon.com/Brian-Tracy/e/B001H6OMRI/ref=ntt_athr_dp_pel_pop_1
+--------------------------------------------------------------------------------------------------------------------------------
+
+
+2) First Paragraph : Clearly explain the benefit of reading the entire article in a short paragraph. It is a summary of what the page is about.
+
+3) Content must be well written and easy to follow.
+
+4) Use paragraph, subheading, bullet lists appropriately.
+
+5) Organize content by breaking it up into logical chunks. 
+
+6) Run through a spell checker. Check for grammatical mistakes.
+
+7) Provide two sample paraphrased articles as examples of how to do it.
+
+8) Link to "How to write clearly" book and the PDF book on writing in iPad
+
+
+------------------------------------------------------------------------------------------------------------------------------
+
+2) Moonshine recipe for Amazon backups
+3) Test Moonshine recipe for Virtual hosts 
+4) Image album for use in (Real Estate site, Child / Pet adoption site etc). Zip code based search.
+5) Track Indian Restaurants and grade on authenticity
+
+
+# cat /root/my.cnf
+[client]
+password        = <secret>
+
+You can chmod this file 600 so only root can read it.
+
+------------------------------------------------------------------------------------------------------------------------------
+
+Email: Writing guidelines, themes, topics, keywords, categories. Training video on how to use the
+publishing platform.
+
+
+Version 2
+
+1) Sell leads through Commission Junction
+2) News tab
+3) Social media buttons (A/B Test before to decide the best design)
+4) Copy writing guidelines (Link at the bottom and why write for us?)
+
+Editorial guidelines: http://ezinearticles.com/editorial-guidelines.html
+
+Secret URLs
+
+'Sign up as Admin' : http://localhost:8080/admin/sign_up
+'Sign in as Admin' : http://localhost:8080/admin/sign_in
+
+------------------------------------------------------------------------------------------------------------------------------
+DO NOT DO
+------------------------------------------------------------------------------------------------------------------------------
+1) SEO fields in the form - not required
+2) Test how to deploy multiple virtual hosts using Moonshine
+This may not be required. Since Google ranking algorithm penalizes same IP used by several domains.
+
+
+------------------------------------------------------------------------------------------------------------------------------
+COMMANDS
+------------------------------------------------------------------------------------------------------------------------------
+sudo /etc/init.d/apache2 restart
+
+
+Admin.create(:email => "bparanj@gmail.com", :encrypted_password => "$2a$10$5VdUJcNBERWsXA6OS57oWe8YjSBsmIkeIDpuSfnYpsSOC7BMJiEsm", :password => "123456", :password_confirmation => "123456" )
+
+<% if user_signed_in? -%>
+  <p><%= link_to 'Token Authentication Example', token_path(:auth_token => current_user.authentication_token) %></p>
+<% end -%>
+
+------------------------------------------------------------------------------------------------------------------------------
+Tests to Optimize Revenue:
+------------------------------------------------------------------------------------------------------------------------------
+1) How to make the right side Google ads stay put when page is scrolled
+http://www.gaugeus.com/ramblings/2007/10/27/building-a-restful-ruby-on-rails-application-from-the-ground-up-with-a-site-wide-layout
+
+2) https://github.com/tpunder/gwo
+
+3) http://www.investopedia.com/articles/pf/09/seven-ways-borrow-money.asp
+
+4) ZestCash, prosper
+
+------------------------------------------------------------------------------------------------------------------------------
+<p class="p1"><strong><a name="apply_for_credit_card" id="apply_for_credit_card">Apply for a Credit Card</a> </strong></p>
+
+<a href="categories/credit-card#apply_for_credit_card">Apply for a Credit Card</a> 
+
+------------------------------------------------------------------------------------------------------------------------------
+<!-- 
+<%= link_to 'Sign up', new_user_registration_path %> today to submit articles.
+
+ -->
+
+------------------------------------------------------------------------------------------------------------------------------
+Done
+
+<p>
+	<%= f.label :published_on %><br />
+    <%= f.text_field :published_on, :size => 15  %>
+</p>
+------------------------------------------------------------------------------------------------------------------------------
+
+
+<h2>Become a Member</h2>
+<div class="left-content">
+	<ul>
+		<li>
+		<a href="#">Sign up</a> for free membership and get notifications for members only free Ruby and Rails screencasts. <a href="#">Privacy</a> 
+		</li>
+	</ul>
+</div>
+<br/>
+<h2>Rails MeetUp</h2>
+<div class="left-content">
+	If you live in the bay area, check out Silicon Valley Ruby Meetup 
+</div>
+
+------------------------------------------------------------------------------------------------------------------------------
+Migrating old records 
+    Category.find_each(&:save)
+
+------------------------------------------------------------------------------------------------------------------------------
+
+<!-- 
+			<% if user_signed_in? -%>
+				<li>
+					<%= link_to 'My Profile', edit_user_registration_path, :class => is_active?("users/edit")  %>
+				</li>
+				<li>
+					<%= link_to 'Sign out', destroy_user_session_path %>
+				</li>
+		    <% else %>
+				<li>
+				  <%= link_to 'Sign up', new_user_registration_path, :class => is_active?("registrations") %> 			
+				</li>
+				
+				<li>
+			  	  <%= link_to 'Sign in', new_user_session_path, :class => is_active?("devise/sessions") %>	
+				</li>
+	        <% end -%>
+	 -->
+------------------------------------------------------------------------------------------------------------------------------
+
+The page failed to provide a valid list of administrators. It needs to specify the administrators using either a "fb:app_id" meta tag, or using a "fb:admins" meta tag to specify a comma-delimited list of Facebook users.
+
+
+	http://chaolam.wordpress.com/2011/08/03/229/
+	
+	
+The mission of creditcardslogic.com is  'Free credit help based on your goals.' This is for your understanding of the mission. Visit the website and take a look at the home page, you will see "I want to" and list of things. The list of things are goals that the visitor wants to achieve.

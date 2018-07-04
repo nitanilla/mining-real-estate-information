@@ -1,0 +1,55 @@
+= \MLS - 42Floors Multiple Listing Service
+
+MLS provides an Ruby interface for interacting with Commercial Real Estate
+Listings provided by 42Floors.com.
+
+*home*  - https://mls.42floors.com
+
+*docs* - http://docs.42floors.com
+
+*bugs* - https://github.com/42floors/mls/issues
+
+== System Requirements
+
+== Installation
+
+  $ gem install mls
+
+== Configuration
+
+The Gem needs to be configured with your API key and URL to connect to the
+42Floors MLS. For now, ask us to provide you with an API key.
+
+  #!ruby
+  require 'mls'
+  
+  MLS.url = "https://{API_KEY}@mls.42floors.com"
+
+You can also override the MLS asset host if you are connecting to the staging
+environment and want the photos to load.
+
+  #!ruby
+  MLS.asset_host = "assets.42floors.com"
+  MLS.image_host = "images.42floors.com"
+
+== Bugs
+
+If you think you found a bug, file a ticket on the {issues
+tracker}[https://github.com/42floors/mls/issues] on github.
+
+To get your bug fixed as fast as possible please include a sample file that
+illustrates the problem or link to a repository and include steps to reproduce
+the issue.  Here are some examples of good issues:
+
+* https://github.com/rdoc/rdoc/issues/55
+* https://github.com/rdoc/rdoc/issues/61
+
+== License
+
+#TODO
+
+== Warranty
+
+This software is provided "as is" and without any express or implied
+warranties, including, without limitation, the implied warranties of
+merchantability and fitness for a particular purpose.

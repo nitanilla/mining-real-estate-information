@@ -1,0 +1,13 @@
+Instruction:
+
+This “Real Estate” project is made by Zend framework (version 1.12). To install this project in your server, please follow the instruction bellow.
+
+1)Create a database with name “real_estate” in phpmyadmin.
+2)Copy and paste the “iwrealestate” folder into “localhost/htdocs”.
+3) import “database/real_estate_db.sql” file in the database  named “real_estate”.
+4)Next open “iwrealestate /application/configs/ application.ini” edit “resources.db.params.username” value by putting your phpmyadmin username,” resources.db.params.password” value by putting your phpmyadmin password[if you do not have any password the leave it as it is.],save the file.
+5) If you do not want to running the project in localhost then open “iwrealestate /application/library/ define_path.php” and change the “ROOT_PATH” with your proper path and save it. Also please write the proper “ABSOLUTE_PATH”.
+6)Open browser and paste this link “localhost/ iwrealestate /”.[for localhost user else you will  give the proper path ex.”http:// Hostaname/projetfo.folderpath/projectname/”].
+7) To access the admin module, please use this URL link “localhost/ iwrealestate /admin”.[for localhost user else you will  give the proper path ex.”http:// Hostaname/projetfo.folderpath/projectname/admin”]. The user name is admin and password is admin.
+
+

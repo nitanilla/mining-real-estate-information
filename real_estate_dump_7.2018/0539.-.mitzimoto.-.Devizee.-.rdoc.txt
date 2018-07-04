@@ -1,0 +1,5 @@
+== Devizee 
+
+Devizee was an experiment in real estate search. As I was searching for a new home with my wife, I realized that all the major real estate sites were really missing something: A focus on images. Searching for a home is a visual experience and images should be the main focus of the site. 
+
+Using Pinterest's visual style and layout, I created a real estate search site that has a heavy emphasis on images. The site feature extra large thumbnails and a beautiful slide show viewer. The site is as simple as possible. Real estate sites are too complicated. Too many options, too many buttons, too many distractions. With Devizee, the goal was to focus on usability and beauty rather than feature richness. 

@@ -1,0 +1,2 @@
+# Real-Estate-Listings-Manager-for-Wordpress-
+This is Wordpress plugin which allows you to be able to manage real estate listings

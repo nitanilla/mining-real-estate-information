@@ -1,0 +1,5 @@
+# Ad Management System v2 - PHP Back End Code
+#### Real Estate One
+
+PHP code to provide an API for data storage and retrieval for the Real Estate
+One Ad Management System v2.

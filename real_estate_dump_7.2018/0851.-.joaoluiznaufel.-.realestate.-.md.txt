@@ -1,0 +1,10 @@
+realestate
+==========
+Bem vindo ao sistema de gerenciamento para imobiliárias Real Estate.
+
+O Real Estate é um sistema web desenvolvido para cadastro e pesquisa de imóveis para compra e venda.
+Ele foi desenvolvido em PHP usando o Framework Yii e hoje ele se encontra na versão 1.1.
+Para usar o sistema Real Estate você tem que baixar o Framework Yii, usando a versão mais recente.
+
+
+Para maiores esclarecimentos, entre em contato pelo email joaoluiznaufel@gmail.com

@@ -1,0 +1,40 @@
+
+# Real Estate
+
+https://luxuryestates.herokuapp.com
+
+Luxury Estates is a website that allows you to create and advertise real estate listings. Whether you are selling a small house or a mansion you can post it on Luxury Estates. The web app features a login and registration system as well as CRUD functionality. The web app stores all of the real estate listings in a MySQL database
+
+
+# Technologies Used
+
+### Frontend
+  
+  * HTML5
+  * CSS
+  * SCSS
+  * Javascript
+  * Jquery
+  
+### Backend
+  * PHP
+  * Laravel
+  * MySQL
+  
+    
+### Tools
+  
+  * Gulp
+
+# Features
+
+   * User Profiles
+   * User Authentication
+   * Database: Create, Read, Update, Delete
+   * Cloud Storage
+   * Filtering
+   * Sorting
+   * Submission Forms
+   * Background Slider
+
+

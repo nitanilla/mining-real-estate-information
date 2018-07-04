@@ -1,0 +1,8 @@
+# Real Estate Agent Test Scores and Recruitment Source:  Employee Referral vs. Other Sources
+
+Test data from a commercially available Real Estate simulation exam were collected
+along with where they were sourced:  1) Employee Referral; and 2) Other Recruitment Sources (e.g., job boards).
+
+
+
+

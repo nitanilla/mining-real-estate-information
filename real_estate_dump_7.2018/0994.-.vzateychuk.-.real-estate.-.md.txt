@@ -1,0 +1,7 @@
+# real-estate
+real-estate pet application
+
+# run application
+```
+> java -jar target/realestate.jar
+```

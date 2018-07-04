@@ -1,0 +1,5 @@
+# Real Estate Tinder Bot
+
+Tinder bot that pretends to be a real estate agent.
+
+Uses [Pynder](https://github.com/charliewolf/pynder) to talk to Tinder.

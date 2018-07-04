@@ -1,0 +1,8 @@
+# Real Estate Scrapper
+Scraps from a real-estate website (Century21) from a particular location, and transfers data into a CSV file
+
+## Requirements
+* BeautifulSoup4
+* Selenium
+* Pandas
+* Python 3.x

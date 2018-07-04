@@ -1,0 +1,205 @@
+=== Great Real Estate: WordPress Real Estate and Property Management Plugin ===
+Contributors: daverod
+Donate link: http://greatrealestateplugin.com/premium-modules/
+Tags: wordpress real estate, real estate, wp real estate, IDX, listings, MLS, properties, property, property management, property listings, real estate cms, RETS, wp-property, wp-realestate, simple real estate pack
+Requires at least: 4.0
+Tested up to: 4.3.1
+Last Updated: 2015-Oct-15
+Stable tag: tags/1.6
+License: GPLv2 or later
+
+Great Real Estate WordPress Plugin allows you to create and manage any kind of real estate on your WordPress site, from commercial and residential listings to a property management site.  
+
+== Description ==
+
+[Main Site](http://greatrealestateplugin.com/) | [Support Forum](http://greatrealestateplugin.com/forums/) | [Documentation](http://greatrealestateplugin.com/docs/) | [Showcase](http://greatrealestateplugin.com/showcase/) | [Premium Modules](http://greatrealestateplugin.com/premium-modules/)
+
+Great Real Estate was developed to enable real estate agents, brokers, and realtors to display and manage information about their listings in WordPress pages.
+
+The property information and listing templates allow for consistent display of the property listings across the site. Authors do not need to format the content, they simply enter it into a form.
+
+Widgets and custom page templates permit display of only available homes, only sold homes, a random "featured" home, and a detailed property page for a listing.
+
+= Works best if the following plugins are also installed =
+* NextGen Gallery - to upload, manage, and display property listing photos
+* PanoPress - to display panorama photos in a Flash 360 degree interface ("virtual tours")
+
+Feeds for Trulia, Zillow and Yahoo media are integrated into the plugin now!
+
+You'll need a Trulia, Google Base, and Zillow account to enable feeds.  Google Maps is now supported natively in the plugin but you can use an API key for tracking purposes or a large number of listings (Google has a daily geocoding limit around 100 calls)
+
+To use the panorama plugin, you'll need to obtain the Flash Panorama Player, appropriately licensed for your domain.  We recommend CuTY.
+
+Please read the documentation carefully... to get the most out of this plugin, you may need to edit some of your theme files, and/or copy files from this folder to your theme folder
+[Documentation Link] (http://greatrealestateplugin.com/docs/
+
+For a complete and detailed list of features, please visit:  http://greatrealestateplugin.com/features/
+ 
+Please report any bugs you find via http://greatrealestateplugin.com/forums/  
+
+== Screenshots ==
+
+See our features page for more details and up-to-date screenshots on the application:  [Features Page](http://greatrealestateplugin.com/features/)
+
+== Frequently Asked Questions ==
+
+= How do I get support? =
+
+The plugin author has set up a Forum for support questions and announcements at [the support forum](http://greatrealestateplugin.com/forums/)
+
+The forums are the quickest place to receive support and other users can also benefit from the questions and answers as well.
+
+= What are the template tags I can use? =
+
+Generally, they are the functions in the PHP file templatefunctions.php. But please visit the plugin homepage for complete details on all the tags, and how you can use them in The WordPress Loop.
+
+= How can I change the currency? =
+
+Simply create a localization file for your language and/or locale. You can use the existing translation files as a staring point.
+
+= What can I change in the plugin's output? =
+
+There's quite a bit that you can do if you are comfortable with HTML, PHP and the WordPress API.  See our website tutorial on customizing templates here:  [Template Customization](http://greatrealestateplugin.com/documentation/customizing-templates/).  We strongly recommend avoiding changes to the core code, as these will be lost on upgrade of the plugin and you'll need to manually move the changes each upgrade.
+
+== Installation ==
+
+[Quick Start Guide] (http://greatrealestateplugin.com/quick-start-guide/)
+
+1. Unzip into your `/wp-content/plugins/` directory. 
+2. Activate the plugin through the 'Plugins' menu in WordPress
+3. Make your settings in the Admin panel "Real Estate"
+- be sure to choose a main Listings page
+- for a quick preview, check the options to automatically generate the page info
+4. Create sub-pages under the main listings index page; they should automatically display additional input form fields to capture listing information
+5. See the plugin website for detailed template function documentation  [Documentation Link] (http://greatrealestateplugin.com/docs/)
+
+== Credits ==
+
+    Great Real Estate - The Real Estate plugin for WordPress
+    Copyright (C) 2008-2015 D. Rodenbaugh  
+    Originally created by Roger Theriault.
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+
+== Changelog ==
+= 1.6 =
+* Add shortcodes to show listings For Rent and For Sale.
+* Add listings-list template.
+* Add gre_get_queried_objects and gre_get_return_url template functions.
+* Add Search Listings Widget and Shortcode.
+* Add support for searching by property type.
+* Capture Property Type in Edit Page screen.
+* Add function to retrieve listings information from custom fields.
+* Add functions to render HTML elements.
+* Fix: drop geolocation info if address is empty.
+* Add settings to control the title of listings sections.
+* Make sure the listing's thumbnail fits the container width (Closes #19).
+* Use property address as the primary source for location.
+* Increase default zoom level in Google Maps.
+* Move new templates to <plugin-dir>/theme/great-real-estate.
+* Add documentation about how to customize templates.
+* Show 'No photo availble' message when the property has no images.
+* Replace 'Under Air' with 'Living'.
+* Increase font size for fieldset's legend.
+* Add a Publish button to the bottom of the Edit Listing page.
+* Rename Downloads section to Attachments.
+* Update appearance and description of Location Fields in Edit Listing.
+* Add setting to control the default display type for listings images.
+* Improve appearance of listings index and listing individual pages.
+* Add new template for individual Listing page.
+* Move code that renders default index and individual pages to run late on init.
+* Enable pagination in Manage Listings section.
+* Show listings order by list date (newest first).
+* Add Active, Sold and Pending filter views to the Manage Listings section.
+* Add views to the table in Manage Listings admin section.
+* Add Listings Table (subclass of WP_List_Table) for the Manage Listings section.
+* Change name and description of setting to control stylesheet inclusion.
+* Allow users to define custom stylesheets.
+* Show listings ordered by post_date in Manage Listings section.
+* Update appearance of default Listings Index page.
+* Add clearfix CSS rules to plugin's stylesheet.
+* Fix PHP notice in NextGen Gallery interface code.
+* Update 'Sort by' form fields in Listings Widget form.
+* Fix error in NextGen Gallery.
+* Add Random Listings Widget.
+* Change 'Display type' form field's name to 'Layout' in Widget forms.
+* Add function to return Random Listings.
+* Remove setting for Google Base feed.
+* Split Feeds setting into individual setttings for each setting.
+* Fix multiple errors in feeds.
+* Update the name and description of the Add Plugin CSS setting.
+* Move Settings submenu to the second position (right after Great Real Estate).
+* Drop support for WordTube.
+* Make Google Maps API Key optional.
+* Update Featured Listings widget to use WP_Widget API.
+* Remove Built In Features section from Plugin Status Dashboard Widget.
+* Update Plugin Status Dashboard Widget.
+* Change title, icon and position of admin menu.
+* Replace WP Downloads Manager integration (frontend)
+* Remove GREFOLDER constant
+* Replace FPP-Pano integration with PanoPress.
+* Avoid defining constants already defined in other plugins.
+* Remove unused undefined variable to avoid PHP warning.
+* Fix PHP Warning in Settings screen.
+* Add new downloads system
+* Change installation and update procedure * Update schema on demand * Migrate downloads from WP Download Manager
+* Remove Feed Wrangler status icon
+* Remove FeedWrangler requirement
+* Make NGGallery work better when toggling between thumbs/slides
+* Some admin UI improvements
+* Several usability fixes
+* Various backend fixes
+* Add 'Add Listing' to listings screen
+* Update links in About and Main admin screens
+
+= 1.5 =
+* Revamped internals of plugin to function on WordPress 4.x
+* Migrated add-on plugins to modern versions (PanoPress, NextGen Gallery) as appropriate, removed others (Feeds, Downloads) as support for these was no longer available
+* Added widgets for plugin (featured, random, regular)
+* Updates to UI to fix weird layout issues
+* Improved admin interface for better workflow
+
+= 1.4 =
+* [2010-06-12] support for WP 3.0 (requires WordPress 3.0)
+* updated links to edit and add listings in Admin area
+* updated the jquery Validation plugin to 1.7
+
+= 1.3.1 =
+* moved JS scripts back to head because of google maps
+
+= 1.3.0 =
+* [2009-07-27] support for WP 2.8 (requires WordPress 2.8)
+* moved the JS scripts to the page footer
+* changed invocation of tabs to conform to jQuery 1.3.x (target the parent div instead of > ul) 
+* changed checking for NextGen version to be more compatible with PHP 5.0.x
+* additional localizations: German, Spanish, French, Italian, and Russian supported now
+* support WP Download Manager version 1.5 (Files with permission "Everyone" were hidden)
+
+= 1.2.1 =
+ * [2008-12-16] Added compatibility with NextGen Gallery version 1.0+
+ 
+= 1.2 =
+ * [2008-12-14] After WP 2.6, get default WP supplied jQuery ui and tabs
+ * [2008-08-02] included widget file; widget now installed automatically and no longer has a separate (confusing) entry in the plugins list
+ 
+= 1.1 =
+ * [2008-07-27] updated for WP2.6
+ * 		added localization (correctly)
+ 
+= 1.01 =
+ * [2008-06-27] added shortcode handler for featured listings block
+ 
+= 1.0 =
+ * (original)

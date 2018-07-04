@@ -1,0 +1,75 @@
+Requirements
+============
+
+geo_regioning is packaged with geokit-rails and awesome_nested_set
+
+
+Installation
+============
+
+Currently, geo_regioning is only packaged as a plugin.
+> script/plugin install git://github.com/fuelxc/geo_regioning.git
+
+Once installed the rake task will need to be ran.  This creates the necessary tables for geo_regioning to work
+> rake db:migrate:geo_regioning
+
+
+Configuration
+=============
+
+There is a default configuration file in lib/config.  You can copy this to your applications config directory and modify it.
+Not all geokit options are passed to geokit.  Currently it is hard coded, feel free to change this if you need to before I get to it.
+
+Country definitions are completely arbitrary and up to you to define what you need.  The level definitions are used to give you named accessors
+
+eg:
+  country_definitions:
+    US:
+      1:
+        name: state
+      2:
+        name: county
+        exclude_from_geocode: true
+      3:
+        name: city
+
+This will give you the methods state, county, city for the country code US.  If you wish to add boroughs as a level below city add:
+      4:
+        name: boroughs
+
+Setting the exclude_from_geocode option to true will not pass the value of that part of the field to the geocoding (which in turn means that level will geocode to the parent)
+This is useful for any division that is not used in the postal address
+
+
+Reason
+======
+
+This plugin was developed for use with geo based searches, such as real estate.
+
+
+Example
+=======
+
+country = GeoRegioning::Country.find_by_iso_3166('US')
+az = country.states.find_by_name('Arizona')
+mesa = az.cities.find_by_name('Mesa')
+
+#some other geokit model
+Property.find_within(5, :origin => mesa.lat_long)
+
+#non geokit model that uses addresses
+cities = mesa.others_within(5) + [mesa]
+
+#please don't actually use this.  Great way to have sql injection attack
+Property.all(:conditions => ["city IN (#{cities.collect(&:name).join(',')})")
+
+
+Coming Soon
+===========
+
+Level strfmt - allow the passing of parameter much like strftime ie: mesa.strfmt("%s, %T %p") => "Mesa, AZ 85213"
+Level Bounds - allow the addition of bounding boxes for regions. ie: Property.find(:all, :bounds => mesa.bounds)
+Level By Ip  - easily get the lowest subdivision closest to an IP address
+
+
+Copyright (c) 2011 Eric Harrison, released under the MIT license

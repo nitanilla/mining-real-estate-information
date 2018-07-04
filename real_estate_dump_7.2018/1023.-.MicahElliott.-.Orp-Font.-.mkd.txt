@@ -1,0 +1,337 @@
+# Orp Bitmap Fonts for X11 (xterm, urxvt, etc)
+
+<!--NOTE: See [Tamsyn](http://www.fial.com/~scott/tamsyn-font/) for packaging ideas.-->
+
+Orp makes X font creation and installation easy. This package includes a few
+small fonts to get you started. If you don’t fall in love with them, you can
+use this package to quickly create your own.
+
+Use of this package presupposes a few things:
+
+1. You want a small font (so you can optimize screen real estate).
+1. You hate antialiasing of small fonts.
+1. You care about mixing in fonts like bold (and probably even italic).
+
+<img src="https://github.com/MicahElliott/Orp-Font/raw/master/images/orp-still-4.png" alt="Orp with clojure/solarized" title="Orp with clojure/solarized" align="right" />
+
+
+This is a simplified extension/fork of the
+[Unicode fonts and tools for X11](http://www.cl.cam.ac.uk/~mgk25/ucs-fonts.html)
+project.
+
+Inside you’ll find five newly invented 6x12 bitmap fonts.
+
+* Orp Medium    (adapted from Pro Font with various changes)
+* Orp Italic    (not perfect but can’t do perfect bitmap italic)
+* Orp Bold      (only possible readable 6x12 bold; most compelling piece of package)
+* Orp Book      (like Bookman Old Style; slightly ugly but nearly optimal)
+* ProFont       (pretty close to [the original](http://en.wikipedia.org/wiki/Pro_font))
+
+The vertical height on all has been lowered by 1px. _In practice_ this causes no
+problems.
+
+About the name: Given that I am definitely not a “Pro” typographer, I’ve named
+this Orp.
+
+## Quick start
+
+### Arch Linux
+There is now an AUR package.
+
+    % yaourt -S pro-font-git
+
+### From source
+If you just want to start using the provided Orp fonts without tweaking glyphs
+or moving things around, all you need to do is run:
+
+    % cd orp-font
+    % xset +fp $PWD/misc
+
+You should now be able to fire up an xterm (or better: urxvt) and see the new
+Orp you just “installed”:
+
+    % xterm -fn '-misc-orp-medium-r-*--*-*-*-*-*-*-iso10646-1'
+
+Put the `xset` line (hard-code expanded `$PWD`) into your `~/.Xdefaults` and
+you’re now permanent! Read on for tweaking details, philosophy, and anecdotes…
+
+## Why a project out of a single font?
+
+“It’s just a console font; why bother with this?” To some, a beautiful
+monospaced bitmap font is a way of life. Many of us need to tweak fonts,
+add glyphs, or totally redesign a font. So this project exists because:
+
+1. **My ideal font.** I finally have what I consider a perfect enough
+   programming/do-everything font.
+
+2. **Ease of installation.** It’s been non-trivial to create, build, and install
+   your own X11 font.
+
+3. **Font hacking.** At some point in your life you’re going to long for a tweak
+   to your font, or addition of some wacky glyph you’ve dreamed up.
+
+4. **Pontification.** There’s not a lot in here, but this README serves as a
+   place where I can rant about my font ideals, and explain the importance of
+   being able to view less common characters and the ability to view a lot of
+   text at a time.
+
+Over the past decade I have spent several days here and there fiddling around
+with finding good small fonts. Although I’ve been pretty (though not
+perfectly) happy with 6x10 in an xterm, I’ve come across files where I needed
+to read/use characters that were not available. So I had to move to 6x12. But
+it just felt too big or inefficient, and I wasn’t able to view enough lines of
+code on my screens. It also had a few things I didn’t like (jagged slashes,
+skinny zero, some inconsistent characters). It also had an extra pixel of
+spacing per line, which was wasting 10% of the screen.
+
+I’ve taken my very favorite existing monospace font, [Pro
+Font](http://en.wikipedia.org/wiki/Pro_font), adapted an xterm friendly BDF
+for it, and enhanced some of its glyphs to be slightly more friendly.  Plus,
+I’ve added a few other derivative fonts that make up the Orp family.
+
+## All you need to understand
+
+A BDF file is the ‘source code’ of your font. It is modifiable via
+a tool called `gbdfed` (Gtk BDF EDitor), which is pretty easy for any n00b to
+start whacking glyphs with. After you’re happy with your BDF you run it
+through a bunch of tools that create an output (gzipped) PCF file. Finally you
+tell X to start using the font/directory.
+
+There are two major type systems in X: [_Core_ and _Xft_][x11fonts]. Core
+fonts are "bitmaps" and are what you want in a terminal. They come in the form
+of BDFs (and are compressed as PCFs). Xft fonts are antialiased and you don’t
+want these unless you’re looking at larger fonts. You’ll recognize them as
+TTFs. Actually, you can selectively turn off antialiasing of TTFs, but still
+doesn’t solve the lack of bold/italic offerings.
+
+## Included in this repo
+
+* `*.bdf` — A few fonts that you may like or want to change/use as baseline.
+
+* `xfont-install.zsh` — The little glue script that could.
+  Though tiny, it does the full build, plus
+  installation and setup.
+
+* `xfont-test.zsh` — Dumps an glyph-intensive test file to the screen. Could
+  do some other tests in the future.
+
+* `*.pcf.gz` — I’ve included the Orp fonts in complied form since they’re
+  tiny, and some will simply want to install them without tweaking/building.
+  They will be rebuilt if you recompile.
+
+And things you shouldn’t care about:
+
+* `bdftruncate.pl` — You’ve probably already got this on your system,
+  but this newer version is from Markus’ package and provides the recent
+  support for some of the ISO10646 stuff (I think that’s what it does).
+  Anyway, the system version doesn’t work for this, so I’m copying it in.
+
+* Auxiliary stuff for building.
+
+## How to create, build, and install a font
+
+1. Install some prerequisites.
+
+        % aptitude install xfonts-utils gbdfed
+
+1. To create a new font, just copy a base font (you’ll likely want to start
+   with Orp Medium)
+
+        % cp orp-medium.bdf my-font.bdf
+
+1. Fire up `gbdfed`, hack some glyphs, and set up your new font’s properties.
+   Just hit `C-P` to get to properties and make sure your font family name is
+   ‘my-font’.
+
+1. Build and install to CWD with
+
+        % xfont-install.zsh my-font
+
+   The font tools magic happens via the few commands in there, but you
+   shouldn’t need to worry about it.
+
+1. Figure out what your new font is actually called.
+
+        % xfontsel
+
+   Make sure your new font shows up under ‘fmly’ and select it. You can paste
+   that crazy `-*-my font-*-…` string into your `~/.Xdefaults-$(hostname)`
+   file. My preference:
+
+        *font:       -misc-orp-medium-r-*-*-12-*-75-75-*-60-iso10646-*
+        *boldFont:   -misc-orp-bold-r-*-*-*-*-*-*-*-*-iso10646-1
+        *italicFont: -misc-orp-*-i-*-*-*-*-*-*-*-*-iso10646-1
+
+   You can see it and other fonts on the system with `xlsfonts` (and maybe
+   `fc-list`).
+
+1. Test your new font
+
+        % xfont-test.zsh
+
+1. Make it permanent by ensuring you’ve done the steps in the Quick Start
+   section above.
+
+## Why bitmap? (vs truetype)
+
+There are many glyphs that are not available in any but the standard X11
+fonts. Use `xfont-test.zsh` as a test.
+
+For small font rendering it’s highly undesirable to have subpixel smoothing.
+
+It probably goes without saying, but it is truly shameful to be writing code,
+looking at data, or doing much of anything in an editor or terminal with a
+variable width font. Programmers depend so much on indented and tabular
+formatting that the world would fall apart without monospacing.
+
+Note to book publishers: Please, please always use monospace fonts for your
+code samples.
+
+## Why a bold font?
+
+Bold is beautiful too. But it’s often the ugly step-child of an existing
+system font. You’re probably used to seeing it rendered algorithmically as an
+adaptation from its ‘medium’ canonical cousin. This results in fonts that
+become too heavy (e.g., solid block ‘m’ and ‘#’) and come out unreadable.
+However, the 6x12 set can be manually crafted as bold, to a lesser degree of
+boldness, and yet still be bold. (This is less of an issue with larger fonts.)
+
+You can see some of the basic effects in limited color with this:
+
+    % for c in {1..7}; do echo -e "\e[0;$c;3${c}muNitErest1n6 5tR|ng"; done
+
+Presentational variation is important in the code/documentation you
+read/write. If you forgo bold fonts you’re really missing out on
+distinguishing of some inherent formatting semantics. Possible variations in a
+console include…
+
+### Color
+This is pretty obvious, as any syntax highlighter will make liberal use
+of color differentiation.
+
+You can even take color to an extreme level by doing standout/inversion, but
+it’s rare to want this.
+
+### Font/weight (bold vs medium)
+Terminals don’t usually allow multiple fonts, but bold can be mixed in and
+actually can be a different font.
+
+Bold is great for distinguishing files in `ls` listings, standing forward
+important pieces of code, documentation headings, and several other cases.
+
+### Underline
+Underline is a bit strong for most things, but for exceptional bits can be
+helpful. Examples: FIXME comments, definitions, error messages,
+class/interface/module names.
+
+### Blinking
+This is almost always unwanted. However, I have found it useful for very
+glaring things, like failing test output. Essentially, for things that need
+immediate attention.
+
+### Sizing/obliqueness
+Sadly, most terminals (including xterm) don’t offer much in the way of these.
+
+But there’s great news!! Very recent versions of `urxvt` enable activation of
+several fonts at a time. My older Ubuntu required application of a patch to
+get full 256 colors, but I suspect newer systems will already have a sane
+build of `urxvt` installed.
+
+## Why xterm (family)?
+
+* True bitmap fonts
+* All the ISO-10646 glyphs (for math, prompts, drawing, etc)
+* Lightweight
+* 256+ (RGB) color
+* All Properties (bold, underline, inverse) work as expected (except oblique)
+* Alt/Meta actually work and are easily configurable
+
+## Glyph details (for the tweakers)
+
+You rarely want to spill pixels into column 6. On occasion I find it’s
+acceptable to do so for one pixel on a couple letters. Since col-6 is used as
+the ‘spacer’ between characters, it’s pretty essential to keep intact.
+
+Glyph tops should form a uniform line at row 5. Avoiding a lot of deviating
+curves from there maximizes readability.
+
+The ‘i’ and ‘l’ are altered to be more dissimilar to ‘1’ and ‘|’. They have
+an added left shoulder and missing left foot. Somewhat a personal preference,
+but this is an important characteristic of the highly popular Monaco, Lucida,
+Andale, Deja Vu, and Bitstream Vera, and even generic web browser monospace
+fonts.
+
+Numbers (0/6/9) have a dot added to their middle to make them more
+obviously numbers.
+
+Some special ‘operator’ characters were shrunk a bit. The `*` has been turned
+into more of a small dot, as it is often used for bullets and multiplication,
+which can be often better expressed in small dot form.
+
+Other operators follow that small trend: `#$%`. I’ll probably increase the `%`
+since it too closely resembles an `x`.
+
+I like that the original 6x12 uses a strong 2x2px square for dots in various
+punctuation. I’ll probably revert the `%` to use them.
+
+The ProFont is close to the original but has been tweaked to disambiguate some
+of the glyphs.
+
+## Other languages, extensions
+
+I’ve already added support for the 12 Esperanto ‘hat’ characters. Other
+language accented characters will render fine, but might lack a bit of the
+Orp panache.
+
+The [vim-powerline fancy glyphs](https://github.com/Lokaltog/powerline) are supported in _medium_ (I think the only place they're needed), using the following somewhat original symbols:
+
+    [2b60] Branch symbol
+    [2b61] LN (line) symbol
+    [2b62] FT symbol 1
+    [2b63] FT symbol 2
+    [2b64] Padlock (closed) symbol
+    [2b80] Hard right arrow
+    [2b81] Soft right arrow
+    [2b82] Hard left arrow
+    [2b83] Soft left arrow
+
+To make use of these you’ll need to set in your `~/.vimrc`:
+
+    let Powerline_symbols = 'fancy'
+
+## Areas for extension/improvement
+
+Many will not prefer a font as small as 6x12. It might be nice to recreate Orp
+for larger sizes. But once you get into larger fonts, smoothing becomes less
+of an issue, so it may be moot, as you can just go with a smoothed font.
+
+If you really want to economize on screen space, you could reduce your ascent
+by another pixel. The font set could possibly even be tweaked to fit into
+shorter vertical size, like 6x10.
+
+It’s kind of amazing to think how much variation can be accomplished in a 72px
+grid.  I’ve tried creating other alternative characters (sometimes
+accidentally) and found that there are probably several other glyph designs
+that could work well. So feel free to experiment with new variations.
+
+Orp-Italic still needs an italicization treatment for its capital letters.
+
+It would be nice to support the exotic [vim-powerline](https://bitbucket.org/gkuznets/vimrc/src/57616999e524754d951c1e4191aafe2a48e41a09/bundle/vim-powerline/fontpatcher/fontpatcher) glyphs.
+
+## Why not just use Markus’ package?
+
+Maybe you should; that’s what I did before arriving here. There’s nothing
+wrong with it – we are greatly indebted to its existence. However, its process
+of building a single new font individually is cumbersome. It’s also not
+maintained in git (AFAIK) and it doesn’t have Orp. I wasn’t able to get a
+response from Markus in email to get Orp included, so it lives here.
+
+## Resources
+
+* [Terminal codes](http://linuxgazette.net/issue65/padala.html)
+* [Markus Kuhn’s X11 Fonts](http://www.cl.cam.ac.uk/~mgk25/ucs-fonts.html)
+* [Adding a font to your system](http://osr507doc.sco.com/en/GECG/X_Font_ProcAddFn.html)
+* [Computer fonts explained](http://en.wikipedia.org/wiki/Computer_font)
+* [X11 Font Types][x11fonts]
+
+[x11fonts]: http://www.xfree86.org/current/fonts2.html "X11 Font Types"

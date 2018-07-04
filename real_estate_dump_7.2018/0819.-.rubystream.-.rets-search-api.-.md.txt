@@ -1,0 +1,23 @@
+# her-realtor real estate API
+
+RETS stands for Real Estate Transaction Standard which is a set of documents describing 
+how software developers can program their software according to standards agreed upon 
+by the Real Estate Standards Organization (RESO).
+
+## Get started
+
+Install dependences
+```
+$ npm i
+```
+
+Start the server
+```
+npm start
+```
+
+## References
+
+- [RETS Specifications](http://www.reso.org/specifications)
+- [DMQL Tutorial](https://www.flexmls.com/developers/rets/tutorials/dmql-tutorial/) 
+- [RETS Tutorials](https://www.flexmls.com/developers/rets/tutorials/)

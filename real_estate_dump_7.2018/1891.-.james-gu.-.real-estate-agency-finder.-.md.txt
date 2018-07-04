@@ -1,0 +1,25 @@
+# real-estate-agency-finder
+Simple React/Node app to find list of nearest real estate agencies
+
+# Trying it out
+Check it out for a demo at: http://52.39.67.31/
+
+# Installing dependencies and use
+
+First obtain and use personal API key:
+```sh
+Follow directions here to obtain a key: https://developers.google.com/maps/documentation/javascript/get-api-key
+Paste in /client/src/constants/key.js where placeholder 'YOUR_API_KEY' is currently
+```
+
+From root directory:
+```sh
+npm install
+npm --prefix ./client/ install
+npm run --prefix ./client/ build
+npm start
+open http://127.0.0.1:8080 in browser
+```
+
+> Note:
+Ensure you have node 6^ installed (https://nodejs.org/en/download/package-manager/)

@@ -1,0 +1,37 @@
+Swann Real Estate website
+===
+
+This repository is the website for [Swann Real Estate](http://www.swannre.com/) by New York Ave, LLC.
+
+FAQ
+===
+
+If you have any questions that aren't covered below, contact Peter Croce.
+
+## How do I get set up?
+
+* In your console, cd to the directory where you want to keep this repo.
+* Clone the repo to your computer.
+```
+git clone https://bitbucket.org/newyorkave/swann-real-estate
+```
+
+## How do I import this theme into Weebly?
+
+* In the Weebly editor, go to the 'Theme' tab.
+* In the sidebar click 'Change Theme'.
+* Click 'Import Theme' and select the ZIP file located in the theme's *dist* directory.
+
+The custom theme is now available in the 'custom' tab of the 'Change Theme' menu.
+
+After you have imported the theme, be sure to copy the contents of any files from *weebly_partials* into the files in the Weebly editor.
+
+You can make incremental updates by copying the contents of CSS, HTML, JS files from the *dist* directory into the files in the Weebly editor.
+
+## Notes:
+
+N/A
+
+## Who do I talk to if I have a question?
+
+* If you have any questions contact Peter Croce.

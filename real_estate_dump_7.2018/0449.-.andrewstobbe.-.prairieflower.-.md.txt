@@ -1,0 +1,12 @@
+# Simple Single Page Real Estate
+
+* Check it out here: [Website](http://PrairieFlower.info)
+* Version: 1.0
+
+## Description
+A lightweight responsive single page real estate site using Bootstrap.
+
+* Last update: 2015/05/05 
+* Standards: HTML5, CSS3
+* Components: Modernizr, jQuery, Bootstrap          
+* Software: PHP

@@ -1,0 +1,10 @@
+scrape-n-plot!
+============
+
+**Scrape-n-plot** is a collection of three independent python programs.
+ - a web scraper to collect data from a real estate platform
+ - a script that normalizes the data to make it representable
+ - a program that visualizes the data using Matplotlib and a shapefile of Berlin
+
+>**Note:**
+Since I'm not sure if the owners of the site this scraper is designed for are okay with me publishing the code for a tool to collect data from their service, I decided to save the URL in a separate config-file. This file is not tracked in this repository.

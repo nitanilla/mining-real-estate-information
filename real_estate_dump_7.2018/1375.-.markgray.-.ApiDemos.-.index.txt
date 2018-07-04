@@ -1,0 +1,2630 @@
+% Local Variables:  %
+% fill-column: 9999 %
+% End:              %
+atLeastHoneycomb        v11
+atLeastHoneycombMR2     v13
+atLeastIceCreamSandwich v14
+atLeastJellyBean        v16
+atLeastJellyBeanMR1     v17
+atLeastJellyBeanMR2     v18
+atLeastKitKat           v19
+atLeastLRelease         v20
+
+Accessibility
+  Accessibility/Accessibility Node Querying
+        .accessibility.TaskListActivity
+        .accessibility.TaskListView (also contains TaskAdapter)
+            Starts up the task list that will interact with the AccessibilityService sample.
+            TaskListView acts as a go-between for all AccessibilityEvents sent from items in its
+            ListView, providing the option of sending more context to an AccessibilityService
+            by adding more AccessibilityRecords to an event.
+
+  Accessibility/Accessibility Service
+        .accessibility.ClockBackActivity
+        .accessibility.ClockBackService
+            This is the entry activity for a sample that demonstrates how to implement an
+            AccessibilityService, namely the ClockBackService
+
+  Accessibility/Custom View
+        .accessibility.CustomViewAccessibilityActivity
+            Demonstrates how to implement accessibility support of custom views. Custom view
+            is a tailored widget developed by extending the base classes in the android.view
+            package. This sample shows how to implement the accessibility behavior via both
+            inheritance (non backwards compatible) and composition (backwards compatible).
+            While the Android framework has a diverse portfolio of views tailored for various
+            use cases, sometimes a developer needs a specific functionality not implemented
+            by the standard views. A solution is to write a custom view that extends one of the
+            base view classes. While implementing the desired functionality a developer should
+            also implement accessibility support for that new functionality such that
+            disabled users can leverage it.
+
+Animation (disabled for froyo)
+  Animation/Activity Transition v20+
+        .animation.ActivityTransition Becomes:
+    Animation/Details of a specific thingy v20+
+        .animation.ActivityTransitionDetails
+            Uses ActivityOptions.makeSceneTransitionAnimation to transition using
+            a shared view as the epicenter of the transition. The xml sets
+            android:onClick="clicked" to use for each thumbnail in the GridLayout
+            and clicked() creates an intent to launch ActivityTransitionDetails.class
+            using a bundle containing an ActivityOptions.makeSceneTransitionAnimation()
+            which causes the thumbnail to "expand" into the image detail version. When the
+            ImageView in the image detail version is clicked, the reverse transition to
+            ActivityTransition activity occurs. The animation is set up using AndroidManifest
+            android:theme="@style/ActivityTransitionTheme" which contains elements which point
+            to files in res/transition
+
+  Animation/Bouncing Balls v11+
+        .animation.BouncingBalls
+            Uses several different kinds of ObjectAnimator to animate bouncing 
+            color changing balls. When onTouchEvent is called with either a
+            MotionEvent.ACTION_DOWN or MotionEvent.ACTION_MOVE a ball of random
+            color is added at the events event.getX(), event.getY() coordinates.
+            The ball motion and geometry is animated, then an animator of the balls
+            alpha is played fading it out from an alpha of 1.0 to 0.0 in 250 milliseconds.
+            The onAnimationEnd callback of the fade animation is set to an
+            AnimatorListenerAdapter which removes the ball when the animation is done.
+            The background color is also Animated. Note that setting the background color
+            will automatically invalidate the view, so that the animated color, and the
+            bouncing balls, get redisplayed on every frame of the background color animation.
+
+  Animation/Cloning v11 
+        .animation.AnimationCloning
+            Creates an ObjectAnimator to animate the y position of an object from 0 to the
+            bottom of the View, .clones it and uses .setTarget to set it as the animation
+            of a second View. Then it creates two ObjectAnimator's to: animate the y position
+            of an object down, and a second to animate y position up again and creates an AnimatorSet
+            to play them sequentially, clones this AnimatorSet and .setTarget's the clone as the
+            AnimatorSet for a second object. Uses an AnimatorSet to play the first two ObjectAnimator's
+            and first AnimatorSet, requesting that they be run at the same time by calling
+            playTogether(ObjectAnimator1,ObjectAnimator2,AnimatorSet1), and the second AnimatorSet
+            to run after the first AnimatorSet by calling playSequentially(AnimatorSet1,AnimatorSet2).
+
+  Animation/Custom Evaluator v11 
+        .animation.CustomEvaluator
+            Implements the TypeEvaluator interface to animate using a custom:
+            "public Object evaluate(float fraction, Object startValue, Object endValue)"
+            function. The x and y coordinates of an "animation.ShapeHolder ball" are 
+            animated by calling evaluate, and onAnimationUpdate is called which calls
+            invalidate() which causes the onDraw method to be called.
+            TODO: Scale using mDensity = getContext().getResources().getDisplayMetrics().density;
+
+  Animation/Default Layout Animations v11 -- layout uses GridLayout so crash,  if < v14.
+        .animation.LayoutAnimationsByDefault
+            Uses android:animateLayoutChanges="true" in the GridLayout used to contain buttons,
+            to automate transition animations using the default animations as Buttons are added
+            to or removed from that ViewGroup.            .
+
+  Animation/Events v11
+        .animation.AnimatorEvents
+            Supposed to show when the various Sequencer Events and Animator Events: 
+            Start Repeat Cancel and End occur, but Repeat Events are not generated
+            for the Sequencer because the api does not support setRepeatCount on a
+            AnimatorSet.
+
+  Animation/Hide-Show Animations v11
+        .animation.LayoutAnimationsHideShow
+            Uses setLayoutTransition to set default transitions, and setAnimator to 
+            specify custom animations if checkbox is checked. Buttons disappear when
+            touched using these animations. If "Gone" checkbox is checked, 
+            setVisibility is used to set the button's view to View.GONE which means 
+            that it takes up no layout space, and the remaining buttons move together
+            to fill the now empty space, otherwise it is set to View.INVISIBLE which
+            makes it invisible, but it still occupies the same layout space.
+
+  Animation/Layout Animations v11
+        .animation.LayoutAnimations
+            Adds and removes buttons using custom or default animations. Buttons are 
+            too small for the number on ub->htc_one, and i7->Nexus 5 I recall, but 
+            perfect on quad->nexus 7, and i7->Excite 10, ub->Nexus 9, k7->LG G pad 8.3,
+            and bizarre but true k7->Nexus 4. This problem is due to bug in FixedGridlayout?
+            TODO: Scale all use of pixels to dp
+
+  Animation/Loading v11 -> v23 or higher required due to android:fraction="0"
+        .animation.AnimationLoading
+            Loads animations from Xml files: R.animator.object_animator (animates ball[0] "y"
+            from 0 to 200, and reverses), R.animator.animator (animates ball[1] alpha from 1 to
+            0 and reverses), R.animator.animator_set (an animator set which animates ball[2]'s
+            "x" from 0 to 200, and "y" from 0 to 400), R.animator.color_animator (an animator
+            which animates ball[3]'s color from #0f0 to #00ffff), R.animator.object_animator_pvh
+            (an animator which animates ball[4]'s "x" from 0 to 400, and "y" from 0 to 200 using
+            propertyValuesHolder's), R.animator.object_animator_pvh_kf (uses propertyValuesHolder
+            to hold keyframe specs for x and y and uses the default linear interpolator on balls[5]),
+            R.animator.value_animator_pvh_kf (uses propertyValuesHolder to hold keyframe specs
+            for a value which balls[6] uses in an AnimatorUpdateListener for an alpha animation),
+            and R.animator.object_animator_pvh_kf_interpolated (the animation used for balls[7] has an
+            accelerate interpolator applied on each keyframe interval instead of the default used on
+            balls[5], As these two animations use the exact same path, the effect of the per-keyframe
+            interpolator has been made obvious.)
+
+  Animation/Multiple Properties v11
+        .animation.MultiPropertyAnimation
+            Uses AnimatorSet.playTogether(Animator... items) to play four different 
+            animations at once: yBouncer (animates y using a BounceInterpolator), yAlphaBouncer
+            (animates y and alpha using an AccelerateInterpolator), whxyBouncer (animates width,
+            height, x and y using PropertyValuesHolder's), and yxBouncer (animates y and x
+            using Keyframe's to split the animation into three sections with a repeat count of
+            one and setRepeatMode(ValueAnimator.REVERSE)), all of which are set up in the method
+            createAnimation().
+
+  Animation/Path Animations v11 -- uses android.util.Property crashes if < v14. Also 
+        uses android.animation.ObjectAnimator crashes if < v21. Also extends abstract
+        class android.animation.TypeConverter crashes if < v21.
+        .animation.PathAnimations
+            Moves a frog around an android.graphics.Path using six different ways to move
+            the View: named_components (Uses the named "x" and "y" properties for individual
+            (x, y) coordinates of the Path and sets them on the view object. The setX(float)
+            and setY(float) methods are called on view. An int version of this method also
+            exists for animating int Properties), property_components (Use two Properties
+            for individual (x, y) coordinates of the Path and set them on the view object.
+            An int version of this method also exists for animating int Properties.),
+            multi_int (Use a multi-int setter to animate along a Path. The method
+            setCoordinates(int x, int y) is called on this during the animation. Either
+            "setCoordinates" or "coordinates" are acceptable parameters because the "set"
+            can be implied.), multi_float (Use a multi-float setter to animate along a Path.
+            The method changeCoordinates(float x, float y) is called on this during the
+            animation), named_setter (Use the named "point" property to animate along the Path.
+            There must be a method setPoint(PointF) on the animated object. Because setPoint
+            takes a PointF parameter, no TypeConverter is necessary. In this case, the animated
+            object is PathAnimations.), and property_setter (Use the POINT_PROPERTY property
+            to animate along the Path. POINT_PROPERTY takes a Point, not a PointF, so the
+            TypeConverter PointFToPointConverter is necessary.). The radio buttons to choose
+            which way to use need to be in an HorizontalScrollView not a ScrollView in order
+            to be seen on narrow screens.
+
+  Animation/Reversing v11
+        .animation.ReversingAnimation
+            Demonstrates the use of android.animation.ValueAnimator.reverse() method
+            to play an animation in "reverse".
+
+  Animation/Seeking v11
+        .animation.AnimationSeeking
+            Uses a SeekBar to allow user to set the animation to a particular position
+            using android.animation.ValueAnimator.setCurrentPlayTime(long playTime)
+            Pressing the Run button will play from the current position of the animation.
+
+  Animation/Simple Transitions v11 -- TransitionInflater.from(this) requires v19 as does
+        Scene.getSceneForLayout, as does android.transition itself.
+        .animation.Transitions
+            Uses classes from android.transition to animate transitions between 4 (or 3) 
+            different layouts. scene4 is not an actual 'Scene', but rather a dynamic
+            change in the UI, transitioned to using beginDelayedTransition() to tell
+            the TransitionManager to get ready to run a transition at the next frame.
+            It merely re-sizes four of the views in whichever of the first three Scenes
+            happens to be displayed at that moment.
+
+  Animation/View Flip v11
+        .animation.ListFlipper
+            Uses fancy custom ObjectAnimator to swap two list views occupying the same
+            space in a LinearLayout, by setting one to android:visibility="gone" and the
+            other to android:visibility="visible" when they are to be "flipped", the
+            english list starts as the visible list as defined in the Layout xml file.
+
+App
+  Action Bar (All Disabled for Froyo)
+    App/Action Bar/Action Bar Mechanics v11
+        .app.ActionBarMechanics
+            Populates its Action Bar programmatically with no xml files used, even
+            for the Activity layout.
+
+    App/Action Bar/Action Bar Navigation v16 (new Document Flag requires v21)
+        .app.ActionBarNavigation goes to:
+        .app.ActionBarNavigationTarget
+            Shows how to use "Up" button in Action Bar, new Document is created in a 
+            separate activity, so you have to use "recent" to switch to it, and then
+            the "up" button works as "up", otherwise it works as "Back". Uses the
+            attribute android:taskAffinity=":bar_navigation" to associate the activities.
+
+    App/Action Bar/Action Bar Tabs v11
+        .app.ActionBarTabs
+            You need to toggle tab mode before tabs show in action bar. Crashes when rotated
+            because it needs a zero argument constructor. The text should be passed in a bundle.
+            Working on doing this Right. Did so, but need to use retained fragments in order
+            to keep tabs (TODO: add retained fragments to this)
+
+    App/Action Bar/Action Bar Usage v11
+        .app.ActionBarUsage
+            This demonstrates idiomatic usage of the Action Bar. The default Honeycomb theme
+            includes the action bar by default and a menu resource is used to populate the
+            menu data itself. If you'd like to see how these things work under the hood, see
+            ActionBarMechanics. Shows a bunch of different action bar actions, and how to use
+            and configure in both java and xml
+
+    App/Action Bar/Action Provider/Settings Action Provider v14
+        .app.ActionBarSettingsActionProviderActivity
+            demo creates an ActionProvider for launching the system settings and adds
+            a menu item with that provider, in this case it will launch the system
+            settings app. Demonstrates how to implement an android.view.ActionProvider
+
+    App/Action Bar/Action Provider/Share Action Provider v14
+        .app.ActionBarShareActionProviderActivity
+            Shows how to add a Share Action Provider to the Action Bar. Shares robot.png
+            packaged with the app in res/raw by copying it to shared.png in the apps 
+            private storage area. TODO: replace startActivity with startActivityForResult FOR Gmail
+            http://stackoverflow.com/questions/26883259/gmail-5-0-app-fails-with-permission-denied-for-the-attachment-when-it-receives
+
+    App/Action Bar/Display Options v16
+        .app.ActionBarDisplayOptions
+            Shows how various action bar display option flags can be combined and their
+            effects. The flags are: DISPLAY_HOME_AS_UP, DISPLAY_SHOW_HOME, DISPLAY_USE_LOGO,
+            DISPLAY_SHOW_TITLE, DISPLAY_SHOW_CUSTOM, all fields in ActionBar. Also you
+            can cycle the gravity of the Custom View from START->CENTER_HORIZONTAL->END->START,
+            all fields in Gravity, as well as toggle the bar's visibility using ActionBar.hide()
+            and ActionBar.show(), and toggle system ui visibility using setSystemUiVisibility(0)
+            to make it visible, and setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN) to
+            make it invisible.
+
+  Activity
+    App/Activity/Animation                 all
+        .app.Animation
+        JELLY_BEAN (v16+) required for "modern animations" by java code if/else statement
+        animates in to:
+        .app.AlertDialogSamples
+            Example of using a custom animation when transitioning between activities. 
+            Legacy "Fade In" and "Zoom In" use:
+            overridePendingTransition(int enterAnim, int exitAnim), where enterAnim and 
+            exitAnim are the R.anim.* for xml files in res/anim, (R.anim.fade, R.anim.hold)
+            for the "Fade In" animation, and (R.anim.zoom_enter, R.anim.zoom_exit) for 
+            the "Zoom In" animation.
+            The modern versions of these use ActivityOptions.makeCustomAnimation() and
+            ActivityOptions.toBundle() to pass the animations to the startActivity function.
+            The "Scale Up" animation uses ActivityOptions.makeScaleUpAnimation and the
+            "Thumbnail Scale Up" animation uses ActivityOptions.makeThumbnailScaleUpAnimation
+            to create options to bundle with toBundle to pass to the startActivity function.
+
+    App/Activity/Custom Dialog             all
+        .app.CustomDialogActivity
+            Creates a pop-up activity over the App/Activity list which looks like a dialog, and
+            uses a android:theme="@style/Theme.CustomDialog" set in the AndroidManifest.
+
+    App/Activity/Custom Title              all
+        .app.CustomTitle
+            How to use a custom title. Uses Window.FEATURE_CUSTOM_TITLE to create a 
+            custom title bar from layout/custom_title_1 for the activity, and allows
+            the user to change the title.
+
+    App/Activity/Dialog                    all
+        .app.DialogActivity
+            Creates a Dialog using a style derived from a theme that is appropriate 
+            and available given the Api level: style/ThemeCurrentDialog is defined in
+            each: values/styles.xml values-v11/styles.xml values-v19/styles.xml and
+            values-v20/styles.xml with the parent set to android:Theme.Dialog, 
+            android:Theme.Holo.Dialog, android:Theme.Material.Dialog, and
+            android:Theme.Material.Light.Dialog respectively.
+
+    App/Activity/Finish Affinity           v16
+        .app.FinishAffinity
+            Show how to end a deeply nested stack of activities, returning to the 
+            activity at the very top. It does this by calling finishAffinity() which
+            finishes this activity as well as all activities immediately below it in 
+            the current task that have the same affinity.
+
+    App/Activity/Forwarding                all
+        .app.Forwarding
+            Example of removing yourself from the history stack after forwarding to 
+            another activity. This is simply done by calling finish() after calling 
+            startActivity(Intent).
+
+    App/Activity/<b>Hello <i>World</i></b> all
+        .app.HelloWorld
+            Simple app which only displays a layout containing a single TextView.
+
+    App/Activity/Intent Activity Flags     all -> v11
+        .app.IntentActivityFlags
+            This activity demonstrates how to build a backstack of activities into an
+            array of Intent[] and use it to replace the current backstack by using 
+            makeRestartActivityTask() to create Intent[0] with the flags set to 
+            re-launch ApiDemos task in its base state, Intent[1] to launch ApiDemos
+            at the "Views" "com.example.android.apis.Path", Intent[2] to launch
+            ApiDemos at the "Views/Lists" "com.example.android.apis.Path" and requesting
+            to reset the back stack to these three "activities". It then launches these
+            intents using startActivities() if the FLAG_ACTIVITY_CLEAR_TASK button is
+            pressed, or putting them into a PendingIntent which it "later" calls using
+            PendingIntent.send()
+
+    App/Activity/Intents                   all
+        .app.Intents
+            Uses Intent.createChooser(Intent, "title") to create a "chooser intent" 
+            from three different mime types ("audio/*", "image/*", and "*/*") of
+            Intent.ACTION_GET_CONTENT Intents based on which button the user clicks,
+            and it then hands the created "chooser Intent" to startActivity(Intent)
+
+    App/Activity/Overscan                  v18
+        .app.OverscanActivity
+            Uses @android:style/Theme.Holo.NoActionBar.Overscan set in AndroidManifest,
+            and android:fitsSystemWindows="true" in its layout/overscan_activity.xml to
+            place a surrounding "white box" in the overscan region of the display, and
+            displays a picture in a FrameLayout offset to avoid the overscan region.
+
+    App/Activity/Persistent State          all
+        .app.PersistentState
+            Demonstrates saving and restoring activity state by using a
+            SharedPreferences.Editor to save state in the onPause() callback, then 
+            restoring the state in the onResume callback.
+
+    App/Activity/Presentation -- registerDisplayListener v17 getSupportedModes v23
+        .app.PresentationActivity
+            Presents a presentation on a secondary display. (Needs secondary display.)
+
+    App/Activity/Presentation with Media Router MediaRouter needs v17
+        .app.PresentationWithMediaRouterActivity
+            The activity uses the MediaRouter API to automatically detect when a 
+            presentation display is available and to allow the user to control the
+            media routes using a menu item.  When a presentation display is available,
+            we stop showing content in the main activity and instead open up a  
+            Presentation on the preferred presentation display.
+
+    App/Activity/QuickContactsDemo         all
+        .app.QuickContactsDemo
+            Shows how to query the contacts database using a cursor, and display the
+            results in a ListActivity hosted ListView. It uses a deprecated api which
+            queries the database on the UI thread -- it is better to use LoaderManager
+            with a CursorLoader. See the documentation for LoaderManager for an example
+            of how to do this. TODO: write LoaderManager version.
+
+    App/Activity/Receive Result            all
+        .app.ReceiveResult
+            Show how to start a second activity (.app.SendResult) to generate a result,
+            receive it using startActivityForResult(intent, GET_CODE), followed on completion
+            by the callback onActivityResult(int requestCode, int resultCode, Intent data).
+            It launches the Activity SendResult, which then returns the result using
+            setResult(RESULT_OK, (new Intent()).setAction("Corky!")), followed by
+            finish().
+
+    App/Activity/Recreate                  v11
+        .app.ActivityRecreate
+            Uses setTheme(theme) followed by recreate() to cycle through three different 
+            Holo themes (original version did not initialize the field that the current 
+            theme is kept in, causing it to crash on Material Light default devices.)
+
+    App/Activity/Redirection               all
+        .app.RedirectEnter
+            Consists of three activities: RedirectEnter, RedirectGetter, and RedirectMain.
+            RedirectGetter stores user input in the shared preference file "RedirectData"
+            RedirectEnter just describes what will happen, and when the "Go" button is 
+            clicked starts up RedirectMain, which immediately starts RedirectGetter if 
+            there is no data stored in "RedirectData" yet, if there is data it will display
+            it and give the user the options to either "Clear and Exit" back to RedirectEnter,
+            or "New Text" which restarts RedirectGetter. RedirectMain uses the request 
+            codes INIT_TEXT_REQUEST, and NEW_TEXT_REQUEST that it sends in the Intent to 
+            RedirectGetter to determine what to do if the result code was RESULT_CANCELED,
+            either finish() back to RedirectEnter, or just display the old text.
+
+    App/Activity/Reorder Activities        all
+        .app.ReorderOnLaunch
+            ReorderOnLaunch is the first of a sequence of four Activities: ReorderTwo,
+            ReorderThree, and ReoderFour follow.  A button on the fourth will use the 
+            Intent.FLAG_ACTIVITY_REORDER_TO_FRONT flag to bring the second of the 
+            activities to the front of the history stack. After that, proceeding back
+            through the history should begin with the newly-frontmost second reorder 
+            activity, then the fourth, the third, and finally the first.
+
+    App/Activity/Rotation Animation        v18+ or crash
+        .app.RotationAnimation
+            Allows you to choose the animation that occurs when the screen is rotated:
+            either ROTATION_ANIMATION_ROTATE, ROTATION_ANIMATION_CROSSFADE, or 
+            ROTATION_ANIMATION_JUMPCUT.
+
+    App/Activity/Save &amp; Restore State  all
+        .app.SaveRestoreState              Broken? Or too much memory for a kill needed.
+            Supposed to show that only EditText with an "id" assigned to the view will
+            have its state preserved, but both EditText views remember text entered after
+            switching to another app and back. However if you rotate screen then only the
+            state of the EditText with android:freezesText="true" is saved, the new content
+            of other EditText is forgotten.
+
+    App/Activity/Screen Orientation        all -- v18+ required for full use
+        .app.ScreenOrientation
+            Lets the user choose the screen orientation programmatically -- some orientations
+            are only available for v9+, and some only for v18+ but froyo ignores them rather 
+            than crashes. Very nice example of spinner layout and use.
+
+    App/Activity/Secure Surfaces/Secure Dialog          all
+        .app.SecureDialogActivity
+            Shows a secure dialog by setting WindowManager.LayoutParams.FLAG_SECURE on an
+            AlertDialog before calling dialog.show()
+
+    App/Activity/Secure Surfaces/Secure Surface View    all
+        .app.SecureSurfaceViewActivity                  v17+ or Crash
+            This activity demonstrates how to make a SurfaceView use a secure surface so 
+            that its contents will only be visible on secure displays. The surface view's
+            window has been made secure using setSecure(true) to make it use a secure 
+            surface.
+
+    App/Activity/Secure Surfaces/Secure Window          all
+        .app.SecureWindowActivity
+            This activity demonstrates how to make an activity use a secure surface so
+            that its contents will only be visible on secure displays. The activity's 
+            window has been marked with FLAG_SECURE by calling:
+
+            getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE,
+                                 WindowManager.LayoutParams.FLAG_SECURE);
+
+            in the onCreate callback just after calling setContentView to make it use
+            a secure surface.
+
+    App/Activity/SetWallpaper              all
+        .app.SetWallpaperActivity
+            This demonstrates the how to write an activity that gets the current system 
+            wallpaper, modifies it and sets the modified bitmap as system wallpaper. The
+            image it uses is too small for larger screens because the current wallpaper
+            is compressed to fit in the ImageView used by the layout, which is then used
+            to set the new wallpaper.
+
+    App/Activity/Soft Input Modes          all
+        .app.SoftInputModes
+            Shows how the various soft input modes: "Unspecified" (The system will try to
+            pick one or the other depending on the contents of the window); "Resize"
+            (allow the window to be resized when an input method is shown, so that its
+            contents are not covered by the input method); "Pan" (window will pan when
+            an input method is shown, so it doesn't need to deal with resizing but is just
+            panned by the framework to ensure the current input focus is visible); and
+            "Nothing" (window will not adjust for a shown input method. The window will
+            not be resized, and it will not be panned to make its focus visible) effect
+            the resizing of the UI windows when the IME is displayed. They are set with:
+            getWindow().setSoftInputMode(mResizeModeValues[position])
+
+    App/Activity/Translucent               all
+        .app.TranslucentActivity
+            Sets the theme on the window in AndroidManifest to @style/Theme.Translucent
+            which is derived in styles.xml from android:style/Theme.Translucent, thereby
+            causing the window to be composited over whatever is behind it.
+
+    App/Activity/Translucent Blur          all Not Blurred enough on lollipop
+        .app.TranslucentBlurActivity
+            This is the same as .app.TranslucentActivity, with the background blurred on
+            older api's - WindowManager.LayoutParams.FLAG_BLUR_BEHIND is no longer 
+            supported as of API level 14, so Lollipop does not blur at all.
+
+    App/Activity/Wallpaper                 all
+        .app.WallpaperActivity
+            This is an app which has the system wallpaper behind it. It does this by 
+            setting the theme on the window in AndroidManifest to Theme.Wallpaper,
+            which inherits from the system theme android:style/Theme.Wallpaper, which
+            has android:windowShowWallpaper = "true".
+
+  Alarm
+    App/Alarm/Alarm Controller             all
+        .app.AlarmController
+            Shows how to schedule both one-shot alarms (OneShotAlarm.java), and repeating
+            alarms (RepeatingAlarm.java) using AlarmManager.set() for one-shot and 
+            AlarmManager.setRepeating() for the repeating alarm. OneShotAlarm and RepeatingAlarm
+            are declared as <receiver>'s in AndroidManifest.xml
+
+    App/Alarm/Alarm Service                all
+        .app.AlarmService
+            This demonstrates how you can schedule an alarm that causes a service to be
+            started (.app.AlarmService_Service)  This is useful when you want to schedule 
+            alarms that initiate long-running operations, such as retrieving recent e-mails.
+            Note: as of API 19, all repeating alarms are inexact. If your application needs
+            precise delivery times then it must use one-time exact alarms, rescheduling each
+            time. Legacy applications whose targetSdkVersion is earlier than API 19 will
+            continue to have all of their alarms, including repeating alarms, treated as exact.
+
+  Alert Dialogs
+    App/Alert Dialogs                      all (v11+ or crash for some)
+        .app.AlertDialogSamples
+            Allows you to create different types of dialogs: DIALOG_YES_NO_MESSAGE = 1;
+            DIALOG_YES_NO_LONG_MESSAGE = 2; DIALOG_LIST = 3; DIALOG_PROGRESS = 4;
+            DIALOG_SINGLE_CHOICE = 5; DIALOG_MULTIPLE_CHOICE = 6; DIALOG_TEXT_ENTRY = 7;
+            DIALOG_MULTIPLE_CHOICE_CURSOR = 8; DIALOG_YES_NO_ULTRA_LONG_MESSAGE = 9;
+            DIALOG_YES_NO_OLD_SCHOOL_MESSAGE = 10; DIALOG_YES_NO_HOLO_LIGHT_MESSAGE = 11;
+            DIALOG_YES_NO_DEFAULT_LIGHT_MESSAGE = 12; DIALOG_YES_NO_DEFAULT_DARK_MESSAGE = 13;
+            and DIALOG_PROGRESS_SPINNER = 14. It does this by calling showDialog with the
+            int identifying the dialog to be shown, and overriding "Dialog onCreateDialog(int id)"
+            which uses a switch to branch between code needed to create the Dialog which it
+            returns. All this is very deprecated - TODO: Write a DialogFragment version.
+
+  Device Admin
+    App/Device Admin                       Works only on newer versions(?) v23+ or crash
+        .app.DeviceAdminSample
+            Shows how to implement a comprehensive UI for exploring and operating the 
+            DevicePolicyManager api. TODO: work up enough courage to play around with this (lem?)
+
+  Fragment                                 v11+ for all samples
+    App/Fragment/Alert Dialog              v11
+        .app.FragmentAlertDialog
+            Demonstrates how to show an AlertDialog that is managed by a Fragment. Uses
+            DialogFragment as base class and overrides onCreateDialog in which it builds
+            the AlertDialog using an AlertDialog.Builder
+
+    App/Fragment/Arguments                 v11
+        .app.FragmentArguments
+            Demonstrates a fragment that can be configured through both Bundle arguments
+            and layout attributes. Different layout in landscape, including an extra 
+            fragment configured within the landscape layout only.
+
+    App/Fragment/Context Menu              v11
+        .app.FragmentContextMenu
+            Demonstration of displaying a context menu from a fragment.
+
+    App/Fragment/Custom Animations         v11 -> v21 due to getDrawable call
+        .app.FragmentCustomAnimations
+            Uses FragmentTransaction.setCustomAnimations to cause animations to be used
+            when replacing one fragment with the next. The "POP" button does the same thing
+            as the back button by calling onBackPressed, it takes you back through the numbered
+            fragments on the stack after you "Push" them, again using the same animation.
+            onSaveInstanceState saves the mStackLevel in an int "level" which is used when
+            the Activity is recreated to remember the stack level, mStackLevel is then used
+            to set the int argument "num" passed to the new fragment when it is created.
+
+    App/Fragment/Dialog                    v11
+        .app.FragmentDialog
+            Example of displaying dialogs with a DialogFragment. Press the show button
+            at the bottom to see the first dialog; pressing successive show buttons on 
+            the dialogs will display other dialog styles as a stack, with back going to
+            the previous dialog. The various styles are: STYLE_NO_TITLE; STYLE_NO_FRAME;
+            STYLE_NO_INPUT (this window can't receive input, so you will need to press 
+            the bottom show button); STYLE_NORMAL with dark fullscreen theme; STYLE_NORMAL
+            with light theme; STYLE_NO_TITLE with light theme; STYLE_NO_FRAME with light 
+            theme; STYLE_NORMAL with light fullscreen theme; and STYLE_NORMAL.
+
+    App/Fragment/Dialog or Activity        v11
+        .app.FragmentDialogOrActivity
+            Shows how to show the same DialogFragment embedded in the activity layout,
+            and as a dialog.
+
+    App/Fragment/Hide and Show             v11
+        .app.FragmentHideShow
+            Demonstration of hiding and showing fragments while keeping fragment state
+            using FragmentTransaction.hide(Fragment), and FragmentTransaction.show(Fragment).
+            The Fragment's are created in the layout using the <fragment> xml element.
+            TODO: fix display of show/hide Button text after rotation.
+
+    App/Fragment/Layout                    v11
+        .app.FragmentLayout                CRASHES both Xcite and Nexus 7 (fixed)
+            Demonstration of using fragments to implement different activity layouts.
+            This sample provides a different layout (and activity flow) when run in
+            landscape. It crashes as is in landscape mode because of a reference to the
+            non-existent containerViewId R.id.a_item in the call at line 156: 
+                  (FragmentTransaction) ft.replace(R.id.a_item, details)
+            This was obviously added by a runaway modification script, and the container
+            id should be R.id.details
+
+    App/Fragment/List Array                v11
+        .app.FragmentListArray
+            Uses a ListFragment as the sole content of the activities window, using setListAdapter to
+            configure the list to display an array by constructing an ArrayAdapter<String> using that
+            array (Shakespeare.TITLES) as its data:
+
+            ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, Shakespeare.TITLES));
+
+            It overrides onListItemClick simply to log the id of the item clicked.
+
+    App/Fragment/Menu                      v11
+        .app.FragmentMenu
+            Builds menus from two fragments, allowing you to hide them to remove them.
+
+    App/Fragment/Nesting Tabs              v17
+        .app.FragmentNestingTabs
+            Uses tabs in the ActionBar to select between other activities in App/Fragment:
+            FragmentMenuFragment.java, FragmentArgumentsFragment.java, FragmentStackFragment.java,
+            FragmentTabsFragment.java. Uses FragmentManager.enableDebugLogging(true) to produce
+            debugging info from the FragmentManager (very useful)
+
+    App/Fragment/Receive Result            v11
+        .app.FragmentReceiveResult
+            FragmentReceiveResult builds a FrameLayout in java -- no xml layout. To this it adds
+            the Fragment ReceiveResultFragment which uses the layout R.layout.receive_result. Then
+            it starts the activity SendResult (startActivityForResult) which returns the
+            users input in an intent setResult(RESULT_OK, (new Intent()).setAction("Corky!"))
+            which FragmentReceiveResult receives in the callback onActivityResult and then
+            appends it to the Editable TextView id R.id.results contained in the layout
+            R.layout.receive_result.
+
+    App/Fragment/Retain Instance           v11
+        .app.FragmentRetainInstance
+            Work fragment/thread calls setRetainInstance(true) in its onCreate callback, 
+            causing it and the thread it is running to be retained when the device configuration
+            changes. Shows how you can use a Fragment to easily propagate state (such as 
+            threads) across activity instances when an activity needs to be restarted. This is
+            a lot easier than using the raw Activity.onRetainNonConfigurationInstance() API.
+
+    App/Fragment/Stack                     v11 -> crashes less than v16
+        .app.FragmentStack
+            Shows how to push and pop fragments using the system backstack. 
+            FragmentTransaction.addToBackStack() adds the fragement to the backstack, and
+            getFragmentManager().popBackStack() (or simply pressing "back" button) goes back
+            one fragment, using a fancy animation for push and pop. (Not really visible on
+            Nexus 6 Marshmallow, but striking on Excite 10.)
+
+    App/Fragment/Tabs                      v11 -> v13 because of .detach
+        .app.FragmentTabs
+            This demonstrates the use of action bar tabs and how they interact with other
+            action bar features. The Activities chosen to populate the tabs all have 
+            their own uses for the action bar, and they are switched in and out by a 
+            class which implements ActionBar.TabListener (TabListener<T extends Fragment>)
+
+  Launcher Shortcuts
+    App/Launcher Shortcuts                 all
+        .app.LauncherShortcuts
+            Supposed to show all that goes into creating a shortcut, and responding 
+            to it, but could not get it to work.
+            TODO: separate Activity into its own Application
+
+  Loader
+    App/Loader/Cursor                      v11
+        .app.LoaderCursor
+            Creates a custom class CursorLoaderListFragment which extends ListFragment, 
+            with the necessary callbacks to serve as a CursorLoader to load and display 
+            contacts data in the ListFragment. Includes the use of a SearchView which
+            might come in handy for MarkovChain
+
+    App/Loader/Custom                      v11 -> v14
+        .app.LoaderCustom
+            Shows how to implement a custom AsyncTaskLoader, it uses the system function
+            PackageManager.getInstalledApplications to retrieve a List<ApplicationInfo> 
+            containing the AndroidManifest information for all the installed apps.
+
+    App/Loader/Retained                    v11 -> v14
+        .app.LoaderRetained
+            Demonstration of the use of a CursorLoader to load and display contacts
+            data in a fragment. Shows how to retain a ListFragment by calling
+            setRetainInstance(true) in the onActivityCreated callback.
+
+    App/Loader/Throttle                    v11
+        .app.LoaderThrottle
+            Demonstration of bottom to top implementation of a content provider holding
+            structured data through displaying it in the UI, using throttling to reduce
+            the number of queries done when its data changes. Implements a custom CursorLoader
+            which pretends to be a SQLite database, and simulates a slow provider of data
+            LoaderThrottle$SimpleProvider
+
+  Menu
+    App/Menu/Inflate from XML              all -> v14
+        .app.MenuInflateFromXml            crashes froyo invalidateOptionsMenu()
+            Lets you choose from a bunch of different xml menus: R.menu.title_only, 
+            R.menu.title_icon, R.menu.submenu, R.menu.groups, R.menu.checkable, 
+            R.menu.shortcuts, R.menu.order, R.menu.category_order, R.menu.visible, 
+            and R.menu.disabled and use MenuInflater.inflate to inflate them.
+            R.menu.title_icon does not show the icon (boo hoo!), but oddly enough
+            the submenu does?
+
+  Notification
+    App/Notification/IncomingMessage       all -> v16
+        .app.IncomingMessage               interstitial crashes froyo startActivities()
+        .app.IncomingMessageView
+            Allows you to choose between a regular app notification, and an interstitial
+            notification and shows how to launch IncomingMessageView from either type of
+            notification. The interstitial choice launches IncomingMessageInterstitial 
+            which on clicking the "Switch to App" button uses the same function as the 
+            non-interstitial notification to launch IncomingMessageView.
+
+    App/Notification/Notifying Service Controller  -- all -> v16
+        .app.NotifyingController controls:
+        .app.NotifyingService
+            Updates a notification every 5 seconds from a background thread. Note use of
+            ConditionVariable to implement the condition variable locking paradigm, blocking
+            for 5*1000 milliseconds after every notification (very useful approach).
+
+
+    App/Notification/NotifyWithText        all
+        .app.NotifyWithText
+            Show notification in a Toast.
+
+    App/Notification/Status Bar            all -> v16
+        .app.StatusBarNotifications
+        .app.NotificationDisplay
+            froyo crash -- sound/vibrate/all calls: Intent.makeRestartActivityTask() 
+            and PendingIntent.getActivities() -> v11+ only. Displays icon, and text when
+            buttons pressed. Marquee does not work lollipop.
+
+  Print
+    App/Print/Print Bitmap                 v19
+        .app.PrintBitmap
+            Shows how to print a Bitmap. Uses ImageView.getDrawable()).getBitmap(); to
+            retrieve a bitmap of the drawable used in the screen, then to print it uses:
+            PrintHelper.printBitmap("Print Bitmap", bitmap);
+
+    App/Print/Print Custom Layout          v19
+        .app.PrintCustomContent
+            Nifty example of a ListActivity with a custom ListAdapter, but it also shows
+            how to allow the user to specify options for the printout, and then re-layout
+            the pdf canvas View to reflect those changes when it comes time to print.
+
+    App/Print/Print HTML from screen       v19
+        .app.PrintHtmlFromScreen
+            Uses a WebView as the View for the app, which allows it to use 
+            WebView.createPrintDocumentAdapter() to print using PrintManager.print()
+
+    App/Print/Print HTML off screen        v19
+        .app.PrintHtmlOffScreen
+            This activity shows a text prompt and when the user chooses the print option
+            from the overflow menu an HTML page with content that is not on the screen
+             is printed via an off-screen WebView.
+
+  Search
+    App/Search/Invoke Search               all
+        .app.SearchInvoke
+        .app.SearchQueryResults
+        .app.SearchSuggestionSampleProvider (A provider specified in AndroidManifest.xml)
+            This activity shows a few different ways to invoke search, and inserts context-specific
+            data for use by the search activity The search activity  is defined in AndroidManifest.xml
+            using a meta-data element added to our activity parent component which has the attributes:
+            android:name="android.app.default_searchable" and android:value=".app.SearchQueryResults"
+            This specifies .app.SearchQueryResults to be our searchable activity (it performs searches).
+            The definition of android.app.default_searchable is more typically handled at the
+            applications level, where it can serve as a default for all of your activities.
+
+
+    App/Search/Query Search Results        all
+        .app.SearchQueryResults
+            This activity accepts query strings via the ACTION_SEARCH intent.  In a 
+            full implementation, you would use the query string to select results from
+            your data source, and present a list of those results to the user. Does not
+            actually do anything unless the device has a "Search Key" like Froyo does.
+            Note: that although this is intended to only be called by SearchInvoke it also can be
+            launched using the "App/Search/Query Search Results" path of the ApiDemos app.
+
+  Service
+    App/Service/Foreground Service Controller  -- all -> v19
+        .app.ForegroundService$Controller
+            This demonstrates how you can implement services that run in the foreground
+            when needed. Informative use of new Class[] TODO: Study reflection!
+
+    App/Service/Isolated Service Controller    -- v16
+        .app.IsolatedService$Controller
+            Show how to use android:isolatedProcess="true" AndroidManifest option for
+            a service -- the "two" services .app.IsolatedService and .app.IsolatedService2
+            do absolutely nothing so there is no way to tell.
+            TODO: Make this example service actually do something
+
+    App/Service/Local Service Binding          -- all
+        .app.LocalServiceActivities$Binding
+        .app.LocalService
+            This demonstrates the implementation of a service that runs in the same 
+            process as the rest of the application, which is explicitly started and 
+            stopped as desired. Binds to app.LocalService.java
+
+    App/Service/Local Service Controller       -- all
+        .app.LocalServiceActivities$Controller
+        .app.LocalService.java
+            Example of explicitly starting and stopping the local service. Starts 
+            app.LocalService.java
+
+    App/Service/Messenger Service              -- all -> v16
+        .app.MessengerServiceActivities$Binding
+        .app.MessengerService --> service we bind to
+            This is an example of implementing an application service that uses the
+            Messenger class for communicating with clients.  This allows for remote
+            interaction with a service, without needing to define an AIDL interface.
+
+    App/Service/Remote Service Binding         -- all -> v16
+        .app.RemoteService$Binding
+        Uses the aidl files  IRemoteService.aidl, IRemoteServiceCallback.aidl and ISecondary.aidl
+            This is an example of implementing an application service that runs in a 
+            different process than the application.  Because it can be in another
+            process, we must use IPC to interact with it.  The Controller, Binding and
+            BindingOptions classes show how to interact with the service.
+
+    App/Service/Remote Service Binding Options -- all -> v16
+        .app.RemoteService$BindingOptions
+        Uses the aidl files IRemoteServiceCallback.aidl and ISecondary.aidl
+
+    App/Service/Remote Service Controller      -- all -> v16
+        .app.RemoteService$Controller
+        Uses the aidl files IRemoteServiceCallback.aidl and ISecondary.aidl
+            Need to make explicit.
+
+    App/Service/Service Start Arguments Controller -- all -> v16
+        .app.ServiceStartArguments$Controller
+            Shows how to send arguments to the service you are starting by adding them 
+            to the Intent you give to ContextWrapper.startService(Intent service) using
+            Intent.putExtra
+
+    Implicit to Explicit conversion:
+    /***
+     * Android L (lollipop, API 21) introduced a new problem when trying to invoke implicit intent,
+     * "java.lang.IllegalArgumentException: Service Intent must be explicit"
+     *
+     * If you are using an implicit intent, and know only 1 target would answer this intent,
+     * This method will help you turn the implicit intent into the explicit form.
+     *
+     * Inspired from SO answer: http://stackoverflow.com/a/26318757/1446466
+     * @param context
+     * @param implicitIntent - The original implicit intent
+     * @return Explicit Intent created from the implicit original intent
+     */
+    public static Intent createExplicitFromImplicitIntent(Context context, Intent implicitIntent) {
+        // Retrieve all services that can match the given intent
+        PackageManager pm = context.getPackageManager();
+        List<ResolveInfo> resolveInfo = pm.queryIntentServices(implicitIntent, 0);
+
+        // Make sure only one match was found
+        if (resolveInfo == null || resolveInfo.size() != 1) {
+            return null;
+        }
+
+        // Get component info and create ComponentName
+        ResolveInfo serviceInfo = resolveInfo.get(0);
+        String packageName = serviceInfo.serviceInfo.packageName;
+        String className = serviceInfo.serviceInfo.name;
+        ComponentName component = new ComponentName(packageName, className);
+
+        // Create a new intent. Use the old one for extras and such reuse
+        Intent explicitIntent = new Intent(implicitIntent);
+
+        // Set the component to be explicit
+        explicitIntent.setComponent(component);
+
+        return explicitIntent;
+    }
+
+  Text-To-Speech
+    App/Text-To-Speech                     all
+        .app.TextToSpeechActivity          LANG_MISSING_DATA on froyo
+        Need  to call:
+       // missing data, install it
+            Intent installIntent = new Intent();
+            installIntent.setAction(
+                TextToSpeech.Engine.ACTION_INSTALL_TTS_DATA);
+            startActivity(installIntent);
+            -------------------------------------------------
+       Shows how to use android.speech.tts.TextToSpeech class.
+
+  Voice Recognition
+    App/Voice Recognition                  all
+        .app.VoiceRecognition
+            Sample code that invokes the speech recognition intent API. Contains excellent example
+            of creating a Handler in the onCreate method for other threads to use to run code on
+            the UI thread.
+
+AskForPermission/Marshmallow
+  Marshmallow
+    AskForPermission/Marshmallow
+        .AskForPermissions
+            Just asks for all permissions listed in AndroidManifest.xml using Marshmallow api
+
+Content
+  Assets
+    Content/Assets/Read Asset              all
+        .content.ReadAsset
+            Shows how to read a data file contained in the app's apk "assets" directory
+            using getAssets() to get an AssetManager and AssetManager.open(String filename)
+            to open the "file" as an InputStream.
+
+  Clipboard
+    Content/Clipboard/Data Types           v11 - newHtmlText, getHtmlText, coerceToStyledText,
+    .content.ClipboardSample               coerceToHtmlText requires v16
+            Shows how to copy to, and paste from the clipboard using the different conversion methods
+            available
+
+  Packages
+    Content/Packages/Install Apk           v13 -- v14 needed for some fields and methods.
+    .content.InstallApk
+            Shows how to use Intent.ACTION_INSTALL_PACKAGE, and Intent.ACTION_UNINSTALL_PACKAGE
+            to install and uninstall packages.
+
+  Process Text Intent                      v23 uses things not supported earlier.
+    Content/Process Text Intent
+    .content.ProcessTextLauncher
+    .content.ProcessText
+            Shows how to handle text selection intents, when text in .content.ProcessTextLauncher
+            is selected, Marshmallow and above allow you to send the selected text to the
+            .content.ProcessText Activity using the"android.intent.action.PROCESS_TEXT" action.
+            ProcessText is specified to be the recipient in AndroidManifest.xml by this:
+
+            <intent-filter>
+                <action android:name="android.intent.action.PROCESS_TEXT" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+
+  Provider
+    Content/Provider/Changed Contacts      all -- but LoaderManager.LoaderCallbacks<Cursor>
+    .content.ChangedContacts               requires v11, and some fields require v18
+            Shows how to access the contacts database and list those that have changed or been
+            deleted since a certain time. Layout is created by java code, includes instructive
+            use of a ListView to contain the results of the Cursor queries.
+
+    Content/Provider/Pick Contact          all
+        .content.PickContact
+            Demonstrates launching the contacts app to pick a contact.  Does not require
+            permission to read contacts, as that permission will be granted when the 
+            selected contact is returned.
+
+    Content/Provider/Share Content         v16 required for setClipData v11 for newUri
+        .content.ShareContent
+        .content.FileProvider
+            Demonstrates the share content api, uses the <provider> ".content.FileProvider" to
+            pipe the image/jpeg to the app that the user selects to handle it.
+
+  Resources
+    Content/Resources/Layout Reference     all
+        .content.ResourcesLayoutReference
+            Shows how to write layout resource references in values-* directories,
+            so that you can define multiple different configurations of a layout
+            resource that refer to one actual XML definition. References are defined
+            in layout.xml files contained in res/values-xlarge and res/values-sw600dp
+            which point to @layout/resources_layout_reference_tablet and
+            @layout/resources_layout_reference_tablet respectively (uh... both same
+            file?) There is also a default resources_layout_reference.xml file in
+            res/layout/ which is used for other size screens.
+
+    Content/Resources/Resources            all
+        .content.ResourcesSample
+            Shows how to fetch R.string.styled_text from values*/strings.xml as styled
+            text using Context.getText (int resId), as a string stripped of its style
+            using Context.getString(int resId), and as styled text again using this 
+            time Resources.getText (int id). The styled text uses html markup <b>, <i>,
+            and <b><i> surrounding the text to set the style used TODO: use this
+
+    Content/Resources/Smallest Width       v13
+        .content.ResourcesSmallestWidth
+            Layout file <includes \> layouts from layout, and layout-sw***/ in order to create custom
+            FrameLayout area for different smallest width (sw480dp, sw600dp, and sw720dp). These in
+            turn <include\> other FrameLayout's also with different versions for the smallest width
+            (cute - huh?)
+
+    Content/Resources/<i>Styled</i> <b>Text</b>  -- all
+        .content.StyledText
+            Shows a resource string being used directly in the layout, and by being 
+            retrieved and assigned programmatically.
+
+    Content/Resources/Width and Height     v13
+        .content.ResourcesWidthAndHeight
+            The layouts included by the {@code FrameLayout} inside R.layout.resources_width_and_height
+            use layout-wNNNdp and layout-hNNNdp to select between different versions based on the size
+            of the screen. Those from layout-hNNNdp are included first using @layout/resources_height
+            and these different layouts in turn include layouts from layout-hNNNdp by asking for
+            @layout/resources_width.
+
+  Storage
+   Documents
+    Content/Storage/Documents              v21
+        .content.DocumentsSample
+            Exercises the client side of the DocumentsContract api. Layout is created
+            programmatically.
+
+   External Storage
+    Content/Storage/External Storage       all
+        .content.ExternalStorage
+            Shows how to use the external storage directory api for both public and 
+            app private directories.
+
+  Undo
+    Content/Undo                           android:allowUndo="false" requires v23 ("m")
+        .content.TextUndoActivity
+            Simple example of using an UndoManager for editing text in a TextView. (Or so it says)
+            Actually an example of using InputFilter.LengthFilter to limit the length of text entered,
+            a DigitsKeyListener, and a TextWatcher.
+
+Graphics
+  AlphaBitmap
+    Graphics/AlphaBitmap                   all
+        .graphics.AlphaBitmap
+            Shows how to use alpha channel compositing in 2D graphics using PorterDuffXfermode
+            and Bitmap.extractAlpha -- also shows how to create your own View in code alone.
+            See: https://developer.android.com/reference/android/graphics/PorterDuff.Mode.html
+            for details of the graphic algebra performed with the different PorterDuff modes
+            You can use the key below to understand the algebra that the Android docs use to
+            describe the other modes (see the article for a fuller description with similar terms).
+
+                Sa Source alpha
+                Sc Source color
+                Da Destination alpha
+                Dc Destination color
+
+            Where alpha is a value [0..1], and color is substituted once per channel (so use
+            the formula once for each of red, green and blue)
+
+            The resulting values are specified as a pair in square braces as follows.
+
+            [<alpha-value>,<color-value>]
+
+            Where alpha-value and color-value are formulas for generating the resulting
+            alpha chanel and each color chanel respectively.
+            TODO: Exercise all the other PorterDuff modes.
+
+  AnimateDrawables
+    Graphics/AnimateDrawables              all
+        .graphics.AnimateDrawables
+        .graphics.AnimateDrawable
+        .graphics.ProxyDrawable
+            Shows how to use the Animation api (in this case TranslateAnimation) in order 
+            to move a jpg around a Canvas. Uses AnimateDrawable which extends ProxyDrawable
+            (A neat way to package the methods required when extending Drawable, overriding
+            only draw in AnimateDrawable)
+
+  Arcs
+    Graphics/Arcs                          all
+        .graphics.Arcs
+            Shows how to draw arcs and rectangles to a Canvas -- need to figure out what
+            slows down frame rate -- I'm guessing something inside native_drawArc
+
+  BitmapDecode
+    Graphics/BitmapDecode                  all crashes LG-8.3, works: froyo, Nexus 7. Nexus 4, Nexus 9
+        .graphics.BitmapDecode             Crash in android.graphics.Movie.java native method draw line 40.
+            Shows how to decode various image file formats into displayable bitmaps: drawable/beach.jpg,
+            drawable/frog.gif (creates also an Bitmap.Config.ARGB_8888 bitmap, and a Bitmap.Config.ARGB_4444
+            bitmap from that bitmap), drawable/button.9.png, and drawable/animated_gif.gif which it animates
+            using android.graphics.Movie.java
+
+  BitmapMesh
+    Graphics/BitmapMesh                    all
+        .graphics.BitmapMesh
+            Uses android.graphics.Canvas method drawBitmapMesh to warp a bitmap near the 
+            area it is touched. Very subtle effect on Nexus 6 and Nexus 6P -> Marshmallow
+            or just small high density screen?
+
+  BitmapPixels
+    Graphics/BitmapPixels                  all crashes lollipop, works froyo, jellybean
+        .graphics.BitmapPixels
+            Supposed to show Bitmap.Config.ARGB_8888, Bitmap.Config.RGB_565, and Bitmap.Config.ARGB_4444
+            configurations of the same color ramp, but ever since KitKat Bitmap.createBitmap will return 
+            a Bitmap.Config.ARGB_8888 bitmap instead of Bitmap.Config.ARGB_4444 bitmap, so the call to
+            mBitmap3.copyPixelsFromBuffer(makeBuffer(data4444, N)); on line 147 will crash Lollipop.
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) kludge to make it work on newer
+            versions. TODO: make kludge use ARGB_8888 instead?
+
+  CameraPreview
+    Graphics/CameraPreview                 all crashes froyo -- getNumberOfCameras() needs v9+
+        .graphics.CameraPreview
+            Shows how to create a SurfaceView for the deprecated Camera api (use android.hardware.camera2)
+
+  Clipping
+    Graphics/Clipping                      all
+        .graphics.Clipping
+            Shows how to use android.graphics.Canvas methods clipPath and clipRect, as well as
+            some other Canvas drawing methods.
+
+  ColorFilters
+    Graphics/ColorFilters                  all
+        .graphics.ColorFilters
+            Applies a PorterDuffColorFilter to tint some button like drawables using several
+            different colors, and both PorterDuff.Mode.SRC_ATOP, and PorterDuff.Mode.MULTIPLY
+            PorterDuff modes to apply them. Oddly only froyo spaces the drawables properly 
+            probably due to the use of drawable-mdpi and drawable-hdpi versions. Checking
+            Drawable.getIntrinsicHeight() and modifying the spacing for hdpi fixes the problem.
+
+  ColorMatrix
+    Graphics/ColorMatrix                   all
+        .graphics.ColorMatrixSample
+            Uses ColorMatrixColorFilter's to create three different versions of a jpeg, 
+            animating them through different "contrasts". One changes both scale and 
+            translate, one changes scale only, and one changes translate only. (The original
+            is at top of left column, scale and translate to right of it, scale only second row,
+            and translate only is in the third row.)
+
+  Compass
+    Graphics/Compass                       all
+        .graphics.Compass
+            Displays a compass pointer which it rotates according to SensorEvent it receives
+            in its override of the onSensorChanged method. The rotation is done using the
+            matrix pre-concatenated by Canvas.rotate(float degrees) 
+
+  CreateBitmap
+    Graphics/CreateBitmap                  all
+        .graphics.CreateBitmap
+            Shows how to create bitmaps programmatically, how to compress them to JPG and PNG
+            formats, and shows how JPG looses information while PNG is loss-less.
+
+  Density
+    Graphics/Density                       all
+        .graphics.DensityActivity
+            This activity demonstrates various ways density can cause the scaling of bitmaps
+            and drawables. Includes sample code for different ways to get drawables onto the
+            different dpi screens.
+
+  Drawable
+    Graphics/Drawable/GradientDrawable     all
+        .graphics.GradientDrawable1
+            Uses xml to draw <shape> ImageView(s). shape_5.xml has a <gradient>
+
+    Graphics/Drawable/ShapeDrawable        all
+        .graphics.ShapeDrawable1
+            Drawing using the Drawable class methods, many of them usable in <shape> xml drawables.
+
+  FingerPaint
+    Graphics/FingerPaint                   all
+        .graphics.FingerPaint
+        .graphics.ColorPickerDialog
+            Shows off some Canvas drawing methods and View.onTouchEvent usage. ColorPickerDialog
+            produces a color wheel which is too small TODO: fix size of ColorPickerDialog
+
+  Layers
+    Graphics/Layers                        all
+        .graphics.Layers
+            Shows the use of Canvas.saveLayerAlpha() and Canvas.restore() to save and restore
+            Canvas settings while doing some drawing in an off screen buffer.
+
+  MeasureText
+    Graphics/MeasureText                   all
+        .graphics.MeasureText
+            Shows how to use the text measurement methods: Paint.getTextWidths(), 
+            Paint.measureText(), and Paint.getTextBounds() to determine what area
+            each character in a string as well as the complete string will occupy 
+            when they are drawn using Canvas.drawText, then draws a colored rectangle
+            around each string and a line under each at the baseline. Text was too
+            small so I modified it a bit.
+
+  OpenGL ES
+   Compressed Texture
+    Graphics/OpenGL ES/Compressed Texture  all
+        .graphics.CompressedTextureActivity
+        .graphics.StaticTriangleRenderer
+            Demonstrate how to use ETC1 format compressed textures. This sample can be
+            recompiled to use either resource-based textures (compressed offline using
+            the etc1tool), or textures created on the fly by compressing images.
+
+   Cube Map
+    Graphics/OpenGL ES/Cube Map            all
+        .graphics.CubeMapActivity
+            Demonstrate how to use the OES_texture_cube_map extension, available on some
+            high-end OpenGL ES 1.x GPUs. Shows how to load and use GL_TEXTURE_CUBE_MAP
+            textures to animate a gyrating Torus.
+
+   Frame Buffer Object
+    Graphics/OpenGL ES/Frame Buffer Object all
+        .graphics.FrameBufferObjectActivity
+        .graphics.TriangleRenderer.Triangle (the file TriangleRenderer.java contains it)
+        .graphics.Cube
+            Demonstrate the Frame Buffer Object OpenGL ES extension. This sample renders
+            a scene into an offscreen frame buffer, and then uses the resulting image as
+            a texture to render an onscreen scene.
+
+   GLSurfaceView
+    Graphics/OpenGL ES/GLSurfaceView       all
+        .graphics.GLSurfaceViewActivity
+        .graphics.CubeRenderer
+        .graphics.Cube
+            Wrapper activity demonstrating the use of GLSurfaceView, a view that uses OpenGL
+            drawing into a dedicated surface. Uses CubeRenderer to render a pair of tumbling
+            cubes created and draw(n) by Cube.java
+
+   Kube
+    Graphics/OpenGL ES/Kube                all
+        .graphics.kube.Kube Main Activity
+        .graphics.kube.Cube
+        .graphics.kube.GLColor
+        .graphics.kube.GLFace
+        .graphics.kube.GLShape
+        .graphics.kube.GLVertex
+        .graphics.kube.GLWorld
+        .graphics.kube.KubeRenderer
+        .graphics.kube.Layer
+        .graphics.kube.M4
+            Animates a Rubic cube, randomly spinning layers one by one.
+
+   Matrix Palette Skinning
+    Graphics/OpenGL ES/Matrix Palette Skinning  -- all
+        .graphics.MatrixPaletteActivity
+        .graphics.MatrixPaletteRenderer
+            This sample shows how to implement a Matrix Palette, used to rock a column
+            back and forth.
+
+   OpenGL ES 2.0
+    Graphics/OpenGL ES/OpenGL ES 2.0       all
+        .graphics.GLES20Activity
+        .graphics.GLES20TriangleRenderer
+        .graphics.TriangleRenderer
+            This sample shows how to check for OpenGL ES 2.0 support at runtime, and then
+            use either OpenGL ES 1.0 or OpenGL ES 2.0, as appropriate. Since even froyo 
+            uses 2.0 this is not all that important it seems. Does show a simple example
+            of using Vertex shaders, and Fragment shaders (Pixel shaders).
+
+   Sprite Text
+    Graphics/OpenGL ES/Sprite Text         all
+        .graphics.spritetext.SpriteTextActivity
+        .graphics.spritetext.LabelMaker
+        .graphics.spritetext.MatrixGrabber
+        .graphics.spritetext.MatrixStack
+        .graphics.spritetext.MatrixTrackingGL
+        .graphics.spritetext.NumericSprite
+        .graphics.spritetext.Projector
+        .graphics.spritetext.SpriteTextRenderer
+            Shows how to add text to a GLSurfaceView using OpenGL labels. OpenGL labels 
+            are implemented by creating a Bitmap, drawing all the labels into the Bitmap,
+            converting the Bitmap into an Alpha texture, and drawing portions of the
+            texture using glDrawTexiOES. The benefits of this approach are that the 
+            labels are drawn using the high quality anti-aliased font rasterizer, full
+            character set support, and all the text labels are stored on a single texture, 
+            which makes it faster to use. The drawbacks are that you can only have as many
+            labels as will fit onto one texture, and you have to recreate the whole 
+            texture if any label text changes. Characters are too small on lollipop, okay
+            on froyo. TODO: Resize characters
+
+   Textured Triangle
+    Graphics/OpenGL ES/Textured Triangle   all
+        .graphics.TriangleActivity
+        .graphics.StaticTriangleRenderer
+            Shows a rotating triangle using a bitmap made from raw/robot.png as the 
+            texture. It uses a GLSurfaceView.Renderer that uses the Android-specific 
+            android.opengl.GLESXXX static OpenGL ES APIs. The static APIs expose more 
+            of the OpenGL ES features than the javax.microedition.khronos.opengles APIs,
+            and also provide a programming model that is closer to the C OpenGL ES APIs, 
+            which may make it easier to reuse code and documentation written for the C 
+            OpenGL ES APIs. It uses android:theme="@style/ThemeCurrentDialog" in the
+             AndroidManifest.xml so the SurfaceView is shrunk to appear in a dialog size
+              window
+
+   Touch Rotate
+    Graphics/OpenGL ES/Touch Rotate        all
+        .graphics.TouchRotateActivity
+        .graphics.Cube
+            Shows how to redraw in response to user input. Draws a cube, and allows the
+            user to rotate it using their finger. TODO: Implement molecule demo.
+
+   Translucent GLSurfaceView
+    Graphics/OpenGL ES/Translucent GLSurfaceView  -- all
+        .graphics.TranslucentGLSurfaceViewActivity
+        .graphics.CubeRenderer
+            Sets the background of the GLSurfaceView of a CubeRenderer to Translucent, 
+            allowing the user to see the ApiDemos application behind the rotating cube.
+
+  PathEffects
+    Graphics/PathEffects                   all
+        .graphics.PathEffects
+            Shows how to use the PathEffect classes to make animated dashed lines, and 
+            smoothed, rounded lines. TODO: scale lines for high dpi screens.
+
+  PathFillTypes
+    Graphics/PathFillTypes                 all
+        .graphics.PathFillTypes
+            Shows the effect of four different Path.FillType's on the same Path, which
+            consists of two intersecting circles: 
+            Path.FillType.WINDING, Path.FillType.EVEN_ODD, Path.FillType.INVERSE_WINDING, 
+            and Path.FillType.INVERSE_EVEN_ODD.
+            TODO: See convertDpToPixel for example of converting pixels to dp and apply elsewhere
+
+  Patterns
+    Graphics/Patterns                      all
+        .graphics.Patterns
+            Creates two Bitmap's: a blue rectangle on a red background, and a green 
+            circle on a clear background. It uses these Bitmap's to make two 
+            BitmapShader's, and it rotates the Circle BitmapShader by 30 degrees.
+            In the onDraw method it first draws using the rectangle pattern, translate's
+            the Canvas based on the current MotionEvent movement and draws using the
+            circle pattern. The effect is to allow you to move the circle pattern with
+            your finger while leaving the rectangle pattern stationary and partially visible
+            through the circle pattern on top.
+
+  Pictures
+    Graphics/Pictures                      all
+        .graphics.Pictures
+            Shows how to use the Picture class to record drawing instructions performed
+            on the Canvas returned by Picture.beginRecording(width, height), then after
+            calling Picture.endRecording() the Picture  is turned into a Drawable by
+            calling PictureDrawable(Picture). Then in the onDraw method it first draws
+            the Picture using the Canvas.drawPicture(Picture) method then it stretches
+            the Picture when drawing using the Canvas.drawPicture(Picture,RectF) method,
+            then it draws the Drawable it created with PictureDrawable(Picture) to draw
+            using Drawable.draw(Canvas), then it writes the Picture to a ByteArrayOutputStream
+            and draws it by reading that ByteArrayOutputStream back in and then drawing it
+            using Canvas.drawPicture(Picture.createFromStream(is))
+
+  Points
+    Graphics/Points                        all
+        .graphics.DrawPoints
+            Creates an array of points, draws RED lines between them using Canvas.drawLines()
+            then draws the points by themselves in BLUE using Canvas.drawPoints().
+
+  PolyToPoly
+    Graphics/PolyToPoly                    all
+        .graphics.PolyToPoly
+            Shows how to use Matrix.setPolyToPoly to move and warp drawings done to a Canvas:
+            translate (1 point); rotate/uniform-scale (2 points); rotate/skew (3 points); and
+            perspective (4 points).
+
+  PurgeableBitmap
+   NonPurgeable
+    Graphics/PurgeableBitmap/NonPurgeable  all
+        .graphics.PurgeableBitmap
+        .graphics.PurgeableBitmapView
+            Uses Options.inPurgeable to increase the number of Bitmap's before running 
+            out of memory, but it is deprecated as of LOLLIPOP, and is ignored. Use 
+            inBitmap or other bitmap memory tricks instead.
+
+   Purgeable
+    Graphics/PurgeableBitmap/Purgeable     all
+        .graphics.PurgeableBitmap
+        .graphics.PurgeableBitmapView
+            Uses Options.inPurgeable to increase the number of Bitmap's before running 
+            out of memory, but it is deprecated as of LOLLIPOP, and is ignored. Use 
+            inBitmap or other bitmap memory tricks instead.
+
+  Regions
+    Graphics/Regions                       all
+        .graphics.Regions
+            Shows how to use the Region class to merge two or more Rectangle's in a 
+            Region using Union, Xor, Difference, and Intersect operations.
+            TODO: desperately needs scaling for dpi.
+
+  RoundRects
+    Graphics/RoundRects                    all
+        .graphics.RoundRects
+            Shows how to use a GradientDrawable to draw rectangles with rounded corners,
+            and three different types of color gradient: GradientDrawable.LINEAR_GRADIENT,
+            GradientDrawable.RADIAL_GRADIENT, and GradientDrawable.SWEEP_GRADIENT.
+
+  ScaleToFit
+    Graphics/ScaleToFit                    all
+        .graphics.ScaleToFit
+            Shows the results of using Matrix.ScaleToFit.FILL, Matrix.ScaleToFit.START,
+            Matrix.ScaleToFit.CENTER, and Matrix.ScaleToFit.END as the ScaleToFit options
+            when calling:
+             Matrix.setRectToRect(Rect srcRect, Rect dstRect, Matrix.ScaleToFit stf)
+
+  SensorTest
+    Graphics/SensorTest                    all
+        .graphics.SensorTest
+            This sample only draws a nice looking arrow, and logs sensor readings. No
+            meaningful graphics lessons here?
+            TODO: update mValues from sensor readings.
+
+  Shadow Card Drag
+    Graphics/Shadow Card Drag              v21 (or crashes due to Outline.setConvexPath)
+        .graphics.ShadowCardDrag
+            Shows "material design" effects of simple draggable shapes that generate a
+            shadow casting outline on touching the screen
+
+  Shadow Card Stack
+    Graphics/Shadow Card Stack             v11 (or crash due to android.animation.Animator)
+        .graphics.ShadowCardStack
+            Clever use of Animator and AnimatorSet to move card stack using "material 
+            design" shadowing. The properties being animated are: translationY (expandAnimators), 
+            translationZ (towardAnimators), rotationY and translationX (moveAwayAnimators), 
+            rotationY and translationX (moveBackAnimators),  translationZ (awayAnimators), and
+            translationY (collapseAnimators). Crashes for less than v21 due to AndroidManifest
+            android:theme="@android:style/Theme.Material.Light"
+
+  Surface Window
+    Graphics/Surface Window                v21 or crash
+        .graphics.WindowSurface            SurfaceHolder.Callback2 needs v9+
+            Demonstrates how to take over the Surface from a window to do direct drawing
+            to it (without going through the view hierarchy). Good example of how to use 
+            a background thread to do your drawing. Shows use of life cycle callbacks when
+            a thread is running in the background.
+
+  SurfaceView Overlay
+    Graphics/SurfaceView Overlay           all
+        .graphics.SurfaceViewOverlay
+        .graphics.CubeRenderer
+            Shows how to use a FrameLayout to layer views within it, and how to use 
+            View.setVisibility(View.VISIBLE), View.INVISIBLE, and View.GONE to toggle
+            which ones are shown. Good use of a translucent background as well.
+
+  Sweep
+    Graphics/Sweep                         all
+        .graphics.Sweep
+            Animates a SweepGradient Shader by rotating its setLocalMatrix(Matrix M),
+            used to paint a circle.
+            TODO: Scale for high dpi screens, and add alternative input for keypad.
+
+  Text Align
+    Graphics/Text Align                    all
+        .graphics.TextAlign
+            Shows how to position text drawn to a Canvas using Paint.setTextAlign, 
+            Canvas.drawPosText, and along an arbitrary path using Canvas.drawTextOnPath
+            TODO: resize text for dpi and fix deprecated methods warnings
+
+  Touch Paint
+    Graphics/Touch Paint                   all v14+ or crash
+        .graphics.TouchPaint
+            Demonstrates the handling of touch screen, stylus, mouse and trackball 
+            events to implement a simple painting app. (Lots of features, but unable
+            to access with only the touch screen.)
+
+  Typefaces
+    Graphics/Typefaces                     all
+        .graphics.Typefaces
+            Shows how to load and use a custom Typeface.
+
+  UnicodeChart
+    Graphics/UnicodeChart                  all
+        .graphics.UnicodeChart
+            Draws a unicode chart, and if you had a dpad it would draw more than 
+            one chart. Way too small on the newer devices (froyo OK). I fixed this
+            by scaling the canvas by the logical screen density before drawing to it.
+
+  Vertices
+    Graphics/Vertices                      all
+        .graphics.Vertices
+            Shows how to use Canvas.drawVertices with BitmapShader to draw warp-able
+            Bitmap's. The Canvas.translate before drawing the bottom version of the
+            two is not far enough away from the top for high dpi so it overlaps it
+            in the original version, so I scaled it by the logical screen density.
+
+  Xfermodes
+    Graphics/Xfermodes                     all
+        .graphics.Xfermodes
+            Shows the results of using different Xfermode's when drawing an overlapping 
+            square and a circle to the same Canvas. It was way too small on the newer devices
+            (froyo OK), so I modified it to scale for dpi
+
+Hardware
+    Hardware/Consumer IR                  all  -- but v19+ or crash
+        .hardware.ConsumerIr
+            App that transmits an IR code, demonstrates the android.hardware.ConsumerIrManager
+            android.hardware.ConsumerIrManager class. Unfortunately I have no devices with an
+            IR Emitter.
+
+Media
+    Media/AudioFx                          all -- but v9+ or crash
+        .media.AudioFxDemo
+            Nifty equalizer with simplified audio waveform display using onWaveFormDataCapture
+            callback of the Visualizer.OnDataCaptureListener interface.
+
+    Media/MediaPlayer                      all
+        .media.MediaPlayerDemo
+        .media.MediaPlayerDemo_Audio
+        .media.MediaPlayerDemo_Video
+            Shows how to use the MediaPlayer class to control playback of audio/video 
+            files and streams.
+            TODO: Set the path variables to a local audio and video file path.
+
+    Media/MediaProjection                  all -- v21 or crash
+        .media.projection.MediaProjectionDemo
+            Shows how to use a ProjectionManager.createScreenCaptureIntent to capture 
+            screen content to a VirtualDisplay which is created using 
+            MediaProjection.createVirtualDisplay to display to a SurfaceView.
+
+    Media/VideoView                        all
+        .media.VideoViewDemo
+            Shows how to use the VideoView class in an application to play a video, as
+            well as a MediaController to provide control buttons for the playback.
+
+NFC
+    NFC/ForegroundDispatch                 all -- v10+ or crash
+        .nfc.ForegroundDispatch
+            An example of how to use the NFC foreground dispatch APIs. This will intercept
+            any MIME data based NDEF dispatch as well as all dispatched for NfcF tags.
+
+    NFC/ForegroundNdefPush                 all -- v16+ or crash
+        .nfc.ForegroundNdefPush
+            An example of how to use the NFC foreground NDEF push APIs to push an url to
+            another android device.
+
+    NFC/TechFilter                         all
+        .nfc.TechFilter
+            No idea, but nfc related somehow. Having looked at it more closely, it does not
+            look like it does anything at all
+
+OS
+    OS/MMS Messaging                       v21 or crash
+        .os.MmsMessagingDemo
+        .os.MmsWapPushReceiver
+        .os.MmsFileProvider
+            Shows how to send and receive mms messaging (test using real phone)
+
+    OS/Morse Code                          all
+        .os.MorseCode
+        .os.MorseCodeConverter
+            App that vibrates the vibrator with the Morse Code for a string. This 
+            demonstrates the android.os.Vibrator class.
+
+    OS/Rotation Vector                     all -- v9+ or crash
+        .os.RotationVectorDemo
+            Uses output from Sensor.TYPE_ROTATION_VECTOR to change the rotation matrix
+            of an openGL Cube.
+
+    OS/SMS Messaging                       all
+        .os.SmsMessagingDemo
+        .os.SmsReceivedDialog
+        .os.SmsMessageReceiver
+            Shows how to send and receive SMS messages. Nifty use of tts as well.
+
+    OS/TriggerSensors                      all -- v18+ or crash
+        .os.TriggerSensors
+            Shows how to use the Sensor.TYPE_SIGNIFICANT_MOTION sensor as a TriggerSensor
+            and respond to TriggerEvent it receives as a TriggerEventListener.
+
+Preference
+    Preference/1. Preferences from XML     all
+        .preference.PreferencesFromXml
+            Uses deprecated method PreferenceActivity.addPreferencesFromResource to load 
+            preferences. TODO: use PreferenceFragment and PreferenceFragment.addPreferencesFromResource
+
+    Preference/2. Launching preferences    all
+        .preference.LaunchingPreferences
+        .preference.AdvancedPreferences
+        .preference.MyPreference
+            Shows how to launch a separate PreferenceActivity activity to collect user
+            preference choices. TODO: Use PreferenceFragment instead.
+
+    Preference/3. Preference dependencies  all
+        .preference.PreferenceDependencies
+            A primitive example showing how some preferences can depend on other preferences.
+            Uses android:dependency to point to key of another Preference that the Preference
+            will depend on. If the other Preference is not set or is off, the Preference will
+            be disabled. TODO: reimplement using fragment-based PreferenceActivity.
+
+    Preference/4. Default values           all
+        .preference.DefaultValues
+            How to properly use default values when using a preference file. This activity is an
+            example of a simple settings screen that has default values. In order for the default
+            values to be populated into the SharedPreferences(from the preferences XML file), the
+            client must call PreferenceManager.setDefaultValues(android.content.Context, int, boolean)}.
+            This should be called early, typically when the application is first created. An easy way
+            to do this is to have a common function for retrieving the SharedPreferences that takes
+            care of calling it.
+            TODO: use PreferenceFragment instead.
+
+    Preference/5. Preferences from code    all -- v14+ or crash
+        .preference.PreferencesFromCode
+            Shows how to fill a PreferenceScreen using java code.
+            TODO: use PreferenceFragment instead.
+
+    Preference/6. Advanced preferences     all
+        .preference.AdvancedPreferences
+        .preference.MyPreference ?
+            Show how to impliment a OnSharedPreferenceChangeListener.
+            TODO: use PreferenceFragment instead.
+
+    Preference/7. Fragment                 v11
+        .preference.FragmentPreferences
+            Shows how to use a PreferenceFragment instead of the deprecated PreferenceActivity.
+
+    Preference/8. Headers                  v11 -- need to override isValidFragment or crash
+        .preference.PreferenceWithHeaders
+            After override of isValidFragment {return true;} you have a top-level preference 
+            panel with headers which when clicked launch the PreferenceFragment's listed
+            in the xml/preference_headers.xml resource loaded using loadHeadersFromResource.
+
+    Preference/9. Switch                   v14
+        .preference.SwitchPreference
+            Shows how to use android.preference.SwitchPreference.
+            TODO: use PreferenceFragment instead.
+
+Security
+    Security/KeyStore                      all -- v23+ or crash
+        .security.KeyStoreUsage
+            Shows how to use api to generate Key pairs, sign and verify.
+
+Views
+  Animation
+    Views/Animation/3D Transition          all
+        .animation.Transition3d
+            This sample application shows how to use layout animation and various 
+            transformations on views. The result is a 3D transition between a ListView
+            and an ImageView. When the user clicks on an item in the list, it flips to
+            show the item's picture. When the user clicks the picture, it flips to show 
+            the list. The animation is made of two smaller animations: the first half 
+            rotates the list by 90 degrees on the Y axis and the second half rotates the
+            picture by 90 degrees on the Y axis. When the first half finishes, the list
+            is made invisible and the picture is set visible. (This would be good to use
+            in my ClockSlice app!)
+
+    Views/Animation/Interpolators          all
+        .view.Animation3
+            Shows the effect of selecting each of seven different types of TranslateAnimation
+            interpolator: "Accelerate", "Decelerate", "Accelerate/Decelerate", "Anticipate",
+            "Overshoot", "Anticipate/Overshoot", and "Bounce".
+
+    Views/Animation/Push                   all
+        .view.Animation2
+            Shows how to use the four different animations available for a ViewFlipper:
+            "Push up", "Push left", "Cross fade", and "Hyperspace". A ViewFlipper is a
+            Simple ViewAnimator that will animate between two or more views that have 
+            been added to it. Only one child is shown at a time. If requested, it can
+            automatically flip between each child at a regular interval.
+ 
+    Views/Animation/Shake                  all
+        .view.Animation1
+            Shows use of a translate animation defined in xml to "shake" a TextView.
+            It uses an android:interpolator also defined in xml which consists of a 
+            cycleInterpolator whose android:cycles="7".
+
+  Auto Complete
+    Views/Auto Complete/1. Screen Top      all
+        .view.AutoComplete1
+            Shows how to use an AutoCompleteTextView to provide suggestions as a user 
+            types. The AutoCompleteTextView is located at the top of the screen, so
+            the suggestions appear in a drop down list.
+
+    Views/Auto Complete/2. Screen Bottom   all
+        .view.AutoComplete2
+            Shows how to use an AutoCompleteTextView to provide suggestions as a user 
+            types. The AutoCompleteTextView is located at the bottom of the screen, so
+            the suggestions appear in a pop-up list
+
+    Views/Auto Complete/3. Scroll          all
+        .view.AutoComplete3
+            Shows how to use an AutoCompleteTextView to provide suggestions as a user 
+            types. The entire very long layout is inside a ScrollView that you have to
+            scroll down to see the AutoCompleteTextView's, which control the ScrollView
+            as they need to when presenting the suggestion list.
+
+    Views/Auto Complete/4. Contacts        all
+        .view.AutoComplete4
+            Shows how to use the ContentResolver for the contacts database as the source
+            of data for an auto complete lookup of a contract.
+            TODO: replace CursorAdapter constructor with LoaderManager with a CursorLoader
+
+    Views/Auto Complete/5. Contacts with Hint -- all
+        .view.AutoComplete5
+            Shows how to use the ContentResolver for the contacts database as the source
+            of data for an auto complete lookup of a contact. It uses android:completionHint
+            to show the hint "Typing * will show all of your contacts." in the AutoCompleteTextView.
+
+    Views/Auto Complete/6. Multiple items  all
+        .view.AutoComplete6
+            Shows how to use a MultiAutoCompleteTextView to show completion suggestions 
+            for the substring of the text where the user is typing. Adds a comma at the
+            end of every selected suggestion and MultiAutoCompleteTextView.CommaTokenizer
+            uses that to separate the words for the MultiAutoCompleteTextView.
+
+Buttons
+    Views/Buttons                          all
+        .view.Buttons1
+            Shows three different buttons, all totally defined in layout/buttons_1.xml:
+            a default button, a small button using style="?android:attr/buttonStyleSmall",
+            and a ToggleButton. The small button is same size as normal button on M.
+
+Chronometer
+    Views/Chronometer                      all
+        .view.ChronometerDemo
+            Demonstrates the Chronometer class.
+
+Controls
+    Views/Controls/1. Light Theme          all
+        .view.Controls1
+            A gallery of basic controls: Button, EditText, RadioButton, Checkbox, Spinner
+            and switch if v14+. This example uses the light theme which is set using
+            android:theme="@android:style/Theme.Light" in AndroidManifest.xml
+
+    Views/Controls/2. Dark Theme           all
+        .view.Controls2
+            Same as .view.Controls1 but android:theme="@android:style/Theme" is set in
+            AndroidManifest.xml
+
+    Views/Controls/3. Holo Light Theme     v11
+        .view.Controls3
+            Uses .view.Controls1 with android:theme="@android:style/Theme.Holo.Light" set
+            in AndroidManifest.xml
+
+    Views/Controls/4. Holo Dark Theme      v11
+        .view.Controls4
+            Uses .view.Controls1 with android:theme="@android:style/Theme.Holo" set in
+            AndroidManifest.xml
+
+    Views/Controls/5. Material Light Theme v20
+        .view.Controls5
+            Uses .view.Controls1 with android:theme="@android:style/Theme.Material.Light"
+            set in AndroidManifest.xml
+
+    Views/Controls/6. Material Dark Theme  v20
+        .view.Controls6
+            Uses .view.Controls1 with android:theme="@android:style/Theme.Material" set
+            in AndroidManifest.xml
+
+    Views/Controls/7. Custom Theme         all
+        .view.Controls7
+            Uses .view.Controls1 with a custom theme derived from parent="android:Theme.Light",
+            with: <color name="custom_theme_color">#b0b0ff</color> used for both
+            android:windowBackground, and android:colorBackground
+
+    Views/Controls/8. Current or Old Theme all
+        .view.Controls8
+            Uses .view.Controls1 with style/ThemeCurrent which selects a theme based on the
+            version using values/styles.xml and values-vNN/styles.xml to select between the
+            versions.
+
+    Views/Controls/9. Default Theme        all
+        .view.Controls9
+            Uses .view.Controls1 without specifying a theme which uses the system default
+            of the device it is running on.
+
+Custom
+    Views/Custom                           all
+        .view.CustomView1
+        .view.LabelView.java
+            Demonstrates creating a Screen that uses custom views. This example uses
+            com.example.android.apis.view.LabelView.java -- the attributes it accepts
+            are defined in the file values/attrs.xml
+
+Date Widgets
+    Views/Date Widgets/1. Dialog           all
+        .view.DateWidgets1
+            Basic example of using date and time widgets, including android.app.TimePickerDialog
+            and android.widget.DatePicker. Also provides a good example of using Activity#onCreateDialog,
+            Activity#onPrepareDialog and Activity#showDialog to have the activity automatically
+            save and restore the state of the dialogs. Nifty TimePickerDialog on Nexus 6, lame one
+            on Jellybean
+
+    Views/Date Widgets/2. Inline           all
+        .view.DateWidgets2
+            Shows the use of an inline TimePicker. Neat on M lame on J
+
+Drag and Drop
+    Views/Drag and Drop                    v11
+        .view.DragAndDropDemo
+        .view.DraggableDot
+            Shows how to implement draggable views.
+
+
+Expandable Lists
+    Views/Expandable Lists/1. Custom Adapter  -- all -- v17+ or crash
+        .view.ExpandableList1
+            Demonstrates expandable lists using a custom ExpandableListAdapter from
+            BaseExpandableListAdapter. The custom BaseExpandableListAdapter groups
+            different child lists under group names: "People Names", "Dog Names", 
+            "Cat Names", and "Fish Names". When clicked the groups expand to show the
+            child lists, any child or group which is long-pressed will pop up a context
+            menu with an "action button".
+
+    Views/Expandable Lists/2. Cursor (People) -- all -- crashes on froyo: null pointer
+        .view.ExpandableList2
+            Demonstrates expandable lists backed by Cursors -- uses Contacts data base to
+            retrieve names and when a name is clicked expands to show the phone numbers 
+            for that name.
+
+    Views/Expandable Lists/3. Simple Adapter  -- all
+        .view.ExpandableList3
+            Demonstrates expandable lists backed by a Simple Map-based adapter, which is
+            created using SimpleExpandableListAdapter
+
+Focus
+    Views/Focus/1. Vertical                all
+        .view.Focus1
+            Demonstrates the use of non-focusable views: caused by android:focusable="false" 
+            in layout file layout/focus_1.xml
+
+    Views/Focus/2. Horizontal              all
+        .view.Focus2
+            Uses android:nextFocusRight="@+id/rightButton" to skip middle button -- need
+            input device suitable for changing focus.
+
+    Views/Focus/3. Circular                all
+        .view.Focus3
+            Uses android:nextFocusDown="@+id/bottom", android:nextFocusLeft="@+id/left",
+            android:nextFocusUp="@+id/top", and android:nextFocusRight="@+id/right" to
+            specify focus behavior that would be difficult with default focus calculation 
+            algorithm -- need input device suitable for changing focus.
+
+    Views/Focus/4. Internal Selection      all
+        .view.InternalSelectionFocus
+        .view.InternalSelectionView
+            android.view.View#requestFocus(int, android.graphics.Rect) and 
+            android.view.View#onFocusChanged(boolean, int, android.graphics.Rect)
+            work together to give a newly focused item a hint about the most interesting
+            rectangle of the previously focused view.  The view taking focus can use this
+            to set an internal selection more appropriate using this rect.
+            This Activity exercises that behavior using three adjacent InternalSelectionView
+            that report interesting rects when giving up focus, and use interesting rects
+            when taking focus to best select the internal row to show as selected.
+            Were InternalSelectionView not to override android.view.View#getFocusedRect, or
+            android.view.View#onFocusChanged(boolean, int, android.graphics.Rect)}, the focus 
+            would jump to some default internal selection (the top) and not allow for the 
+            smooth hand-off. Need keys to move focus, so I do not know what this does.
+
+    Views/Focus/5. Sequential (Tab Order)  all
+        .view.Focus5
+            Demonstrates using nextFocusForward in the layout/focus_5.xml to explicitly 
+            set sequential focus order. Not for touch only.
+
+    Views/Focus/6. Window Focus Observer   all  -- v18+ or crash
+        .view.WindowFocusObserver
+            Implements a WindowId.FocusObserver() whose onFocusGained(WindowId) merely
+            prints "Gained focus", and whose onFocusLost(WindowId) prints "Lost focus".
+            Nothing happens on a touch only screen of course.
+
+Game Controller Input
+    Views/Game Controller Input            all
+        .view.GameControllerInput
+        .view.GameView
+            Demonstrates how to process input events received from game controllers.
+            It also shows how to detect when input devices are added, removed or 
+            reconfigured.
+            This activity displays button states and joystick positions. Also writes 
+            detailed information about relevant input events to the log. The game 
+            controller is also uses to control a very simple game.  See GameView
+            for the game itself, it is used by our layout file R.layout.game_controller_input.
+            No game controller here.
+
+Grid
+    Views/Grid/1. Icon Grid                all
+        .view.Grid1
+            Shows how to use a GridView to display a grid of ImageView's created from
+            the app icons retrieved from the PackageManager
+            TODO: Scale for high dpi screens
+
+    Views/Grid/2. Photo Grid               all
+        .view.Grid2
+            Shows how to use a GridView created from resource jpg's using 
+            ImageView.setImageResource
+
+    Views/Grid/3. Selection Mode           all -- v11+ or crash
+        .view.Grid3
+            Implements multi-selection mode on GridView - hard to select by touch though
+
+Hover Events
+    Views/Hover Events                     all -- v14+ or crash View.OnHoverListener()
+        .view.Hover
+        .view.HoverInterceptorView
+            No idea what this is supposed to do -- need mouse.
+
+ImageButton
+    Views/ImageButton                      all
+        .view.ImageButton1
+            Simply shows how to draw images on buttons using the SDK stock image.
+
+ImageView
+    Views/ImageView                        all
+        .view.ImageView1
+            Shows how to control scaling in an ImageView in a layout file using:
+            android:layout_width, android:layout_height, android:maxWidth, and 
+            android:maxHeight and other attributes of ImageView.
+
+Layout Animation
+    Views/Layout Animation/1. Grid Fade    all
+        .view.LayoutAnimation1
+            Uses @anim/layout_grid_fade.xml which is a gridLayoutAnimation which uses
+            @anim/fade.xml to fade in app icons in a GridView
+
+    Views/Layout Animation/2. List Cascade all
+        .view.LayoutAnimation2
+            Shows how to use a LayoutAnimationController to animate the layout of a list
+            in a ListActivity Too fast on Nexus 6 to see effect
+            TODO: slow down animation for fast devices.
+
+    Views/Layout Animation/3. Reverse Order  -- all
+        .view.LayoutAnimation3
+            Same as List Cascade above, but an android:layoutAnimation attribute in the layout
+            file R.layout.layout_animation_3 uses anim/layout_bottom_to_top_slide.xml which uses
+             anim/slide_right instead of implementing the animation in code
+
+    Views/Layout Animation/4. Randomize    all
+        .view.LayoutAnimation4
+            Its layout file R.layout.layout_animation_4 uses a android:layoutAnimation attribute
+            to animate using anim/layout_random_fade which has an android:animationOrder="random"
+            attribute and uses the alpha animation specified in anim/fade.xml to fade in app
+            icons in random order.
+
+    Views/Layout Animation/5. Grid Direction  -- all
+        .view.LayoutAnimation5
+            Its layout file R.layout.layout_animation_5 uses an android:layoutAnimation attribute
+            which uses "@anim/layout_grid_inverse_fade" which in turn uses the attributes
+            android:directionPriority="row", and android:direction="right_to_left|bottom_to_top"
+            along with anim/fade.xml to fade in app icons in a grid from bottom right to top left
+            instead of top down order.
+
+    Views/Layout Animation/6. Wave Scale   all
+        .view.LayoutAnimation6
+            Its layout file R.layout.layout_animation_6 uses and android:layoutAnimation attribute
+            specifying "@anim/layout_wave_scale" as the animation, which in turn use an
+            android:animation attribute to specify @anim/wave_scale as its animation. This
+            animation animates alpha from 0.0 to 1.0 with a duration of 100, and two fancy scaling
+            animations. The results are: 1. Fade in app icons, 2. Scale them in from .5 size, to
+            1.5 size, 3. Scale back from 1.5 to 1.0 size.
+
+    Views/Layout Animation/7. Nested Animations  -- all
+        .view.LayoutAnimation7
+            Its layout file R.layout.layout_animation_7 contains a android:layoutAnimation
+            attribute specifying @anim/layout_animation_table as its animation. This creates
+            an animation of the layout files TableLayout, with the layout of each TableRow
+            animated using an android:layoutAnimation so that alternating rows use
+            @anim/layout_animation_row_right_slide and @anim/layout_animation_row_left_slide.
+            Way too fast to see effect well even on Excite 10
+            TODO: slow down animation to show effect.
+
+Layouts
+  Baseline
+    Views/Layouts/Baseline/1. Top          all
+        .view.Baseline1
+            Use default android:layout_gravity of LinearLayout to place widgets at top 
+            of window -- the baseline of the text in the views of differently sized text
+            is used to align.
+
+    Views/Layouts/Baseline/2. Bottom       all
+        .view.Baseline2
+            Uses android:layout_gravity="bottom" of LinearLayout to place widgets at 
+            bottom of window -- the baseline of the text in the views of differently sized
+            text is used to align.
+
+    Views/Layouts/Baseline/3. Center       all
+        .view.Baseline3
+            This example shows that baseline alignment has no effect when the layout
+            gravity is set to center_vertical.
+
+    Views/Layouts/Baseline/4. Everywhere   all
+        .view.Baseline4
+            This example scatters widgets around the window using different values of
+            android:layout_gravity
+
+    Views/Layouts/Baseline/5. Multi-line   all
+        .view.Baseline6
+            Demonstrates the baseline alignment in a RelativeLayout when one of the 
+            widgets is a multi-line EditText
+
+    Views/Layouts/Baseline/6. Relative     all
+        .view.Baseline7
+            Shows alignment in a RelativeLayout using android:layout_alignParentLeft="true"
+            and android:layout_alignParentRight="true" for two different TextView widgets.
+
+    Views/Layouts/Baseline/Nested Example 1  --all
+        .view.BaselineNested1
+            Shows how to use android:baselineAlignedChildIndex to align the baseline of
+            widgets contained inside a android:orientation="horizontal" LinearLayout
+            TODO: describe layout file R.layout.baseline_nested_1
+
+    Views/Layouts/Baseline/Nested Example 2  --all
+        .view.BaselineNested2
+            More use of android:baselineAlignedChildIndex to align specific widget inside
+            compound nested Views
+
+    Views/Layouts/Baseline/Nested Example 3  --all
+        .view.BaselineNested3
+            Using android:baselineAlignedChildIndex again this time to point to a linear 
+            layout to baseline align by, which in turn will point to a text view inside 
+            of it.
+
+  CustomLayout
+    Views/Layouts/CustomLayout             all -- v11+ or crashes combineMeasuredStates
+        .view.CustomLayoutActivity
+        .view.CustomLayout
+            Example of writing a custom layout manager.  This is a fairly full-featured 
+            layout manager that is relatively general, handling all layout cases.  The
+            custom parameters that it supports are extensions of ViewGroup.MarginLayoutParams
+
+  GridLayout
+    Views/Layouts/GridLayout/1. Simple Form  --all -- v14+ or crashes GridLayout
+        .view.GridLayout1
+            Demonstrates using GridLayout to build the same "Simple Form" as in the
+            LinearLayout and RelativeLayout demos.
+
+    Views/Layouts/GridLayout/2. Form (XML)  --all -- v14+ or crashes GridLayout
+        .view.GridLayout2
+            A form, showing use of the GridLayout API from XML, using a separate layout
+            for landscape mode defined in layout-land
+
+    Views/Layouts/GridLayout/3. Form (Java)  --all -- v14+ or crashes GridLayout
+        .view.GridLayout3
+            A form, showing use of the GridLayout API from java code. Here we demonstrate
+            use of the row/column order preserved property which allows rows and or
+            columns to pass over each other when needed. The two buttons in the bottom right
+            corner need to be separated from the other UI elements. This can either 
+            be done by separating rows or separating columns - but we don't need to 
+            do both and may only have enough space to do one or the other. Uses
+            GridLayout.Spec spec(...) to specify the horizontal and/or vertical
+            characteristics of the cells.
+
+  HorizontalScrollView
+    Views/Layouts/HorizontalScrollView    all
+        .view.HorizontalScrollView1
+            Demonstrates horizontal scrolling with a HorizontalScrollView. Needed to set
+            android:textSize to see properly.
+
+  LinearLayout
+    Views/Layouts/LinearLayout/01. Vertical  --all
+        .view.LinearLayout1
+            Demonstrates a simple linear layout. The height of the layout is the sum of 
+            its children due to android:layout_height="wrap_content"
+
+    Views/Layouts/LinearLayout/02. Vertical (Fill Screen)  --all
+        .view.LinearLayout2
+            Demonstrates a simple linear layout. The layout fills the screen, with the
+            children stacked from the top due to android:layout_height="match_parent"
+
+    Views/Layouts/LinearLayout/03. Vertical (Padded)  --all
+        .view.LinearLayout3
+            Demonstrates a simple linear layout. The layout fills the screen, with the 
+            children stacked from the top. The middle child gets allocated any extra 
+            space due to android:layout_weight="1"
+
+    Views/Layouts/LinearLayout/04. Horizontal  --all
+        .view.LinearLayout4
+            Demonstrates a horizontal linear layout with equally sized columns due to
+            all children View's using android:layout_weight="1"
+
+    Views/Layouts/LinearLayout/05. Simple Form  --all
+        .view.LinearLayout5
+            Demonstrates building a simple form with nested LinearLayouts. It uses
+            a horizontal layout to hold the two buttons at the bottom and uses
+            layout_gravity="right". This means the whole horizontal LinearLayout is
+            right aligned, not the individual items within it. The horizontal
+            LinearLayout's width is set to wrap_content. (If it was match_parent
+            it would not have any room to slide to the right.)
+
+    Views/Layouts/LinearLayout/06. Uniform Size  --all
+        .view.LinearLayout6
+            LinearLayout which uses a combination of wrap_content on itself and 
+            match_parent on all of its children to get every item to be the same width.
+
+    Views/Layouts/LinearLayout/07. Fill Parent  --all
+        .view.LinearLayout7
+            Demonstrates a horizontal linear layout with equally sized columns. Some 
+            columns force their height to match the parent. Does not work as is for some
+            reason. Changed the height of the longest text to android:layout_height="wrap_content"
+            and it works as advertised.
+
+    Views/Layouts/LinearLayout/08. Gravity  --all
+        .view.LinearLayout8
+            Demonstrates changing gravity of a LinearLayout programmatically using
+            setOrientation(LinearLayout.*) as dictated by options menu choice.
+
+    Views/Layouts/LinearLayout/09. Layout Weight  --all
+        .view.LinearLayout9
+        .view.AutoComplete1
+            Demonstrates a simple linear layout. The layout fills the screen, with the
+            children stacked from the top. The ListView receives all the extra space due
+            to android:layout_weight="1.0", but because it is still larger than the screen
+            it is forced to enter scroll mode.
+
+    Views/Layouts/LinearLayout/10. Background Image  --all
+        .view.LinearLayout10
+            Demonstrates the use of LinearLayout backgrounds to group labels,
+            EditTexts, and buttons, -- OR -- Demonstrates using a LinearLayout
+            background to group related TextViews, EditTexts, and Buttons.
+            (EditText is hard to read because of background color -- please fix.)
+            TODO: Change background or text color so it can be read especially for Excite 10.
+
+  RelativeLayout
+    Views/Layouts/RelativeLayout/1. Vertical  --all
+        .view.RelativeLayout1
+            A simple layout which demonstrates stretching a view to fill the space
+            between two other views. This occurs oddly enough because even though all
+            three share the same default weight, the android:layout_height="0dip"
+            causes the center view to take the leftover space from the parent.
+
+    Views/Layouts/RelativeLayout/2. Simple Form  --all
+        .view.RelativeLayout2
+            Demonstrates using a relative layout to create a form.
+
+  ScrollView
+    Views/Layouts/ScrollView/1. Short      all
+        .view.ScrollView1
+            Demonstrates wrapping a (short) layout in a ScrollView.
+
+    Views/Layouts/ScrollView/2. Long       all
+        .view.ScrollView2
+            Demonstrates wrapping a LONG LinearLayout in a ScrollView (All but the first
+            TextView and Button in the LinearLayout are Created and .addView'd programmatically)
+
+    Views/Layouts/ScrollView/3. Internal Selection  --all
+        .view.InternalSelectionScroll
+        .view.InternalSelectionView
+            Demonstrates how a well behaved view with internal selection InternalSelectionView
+            can cause its parent android.widget.ScrollView to scroll to keep the internally
+            interesting rectangle on the screen.  InternalSelectionView achieves this by calling
+            android.view.View#requestRectangleOnScreen each time its internal selection changes.
+            android.widget.ScrollView, in turn, implements android.view.View#requestRectangleOnScreen
+            thereby acheiving the result.  Note that android.widget.ListView also implements the
+            method, so views that call android.view.View#requestRectangleOnScreen that are embedded
+            within either android.widget.ScrollView's or android.widget.ListView's can expect to
+            keep their internal interesting rectangle visible.  Needs keyboard and a fix to
+            background colors in InternalSelectView.java
+
+  TableLayout
+    Views/Layouts/TableLayout/01. Basic    all
+        .view.TableLayout1
+            Very simple example of TableLayout done entirely in xml, three rows, three columns of
+            TextViews
+
+    Views/Layouts/TableLayout/02. Empty Cells  --all
+        .view.TableLayout2
+            TableLayout of Button and TextView's showing how to leave a cell empty
+
+    Views/Layouts/TableLayout/03. Long Content  --all
+        .view.TableLayout3
+            Rows have different number of columns and content doesn't fit on screen:
+            column 4 of row 2 shrinks all of the other columns android:shrinkColumns="2, 3"
+            Oddly enough my test devices are too wide to need shrinking so it does not
+            actually show what it intends to show. Not only that, but if the text is too long
+            it is wrapped and the row is increased in size to fit the entire text.
+
+    Views/Layouts/TableLayout/04. Stretchable  --all
+        .view.TableLayout4
+            Stretch some columns: second column uses android:gravity="right",
+            android:stretchColumns="1" (column numbers are zero based)
+
+    Views/Layouts/TableLayout/05. Spanning and Stretchable  --all
+        .view.TableLayout5
+            Uses android:stretchColumns="1" and has View divider line children along with the
+            TableRow's
+
+    Views/Layouts/TableLayout/06. More Spanning and Stretchable  --all
+        .view.TableLayout6
+            Uses android:stretchColumns="1" to stretch second column, and android:layout_column="1"
+            to skip column 0 for some TableRow's
+
+    Views/Layouts/TableLayout/07. Column Collapse  --all
+        .view.TableLayout7
+            Button's toggle collapsed state of column 0 or column 2, also show how to build a
+            TableRow and add it to a TableLayout programmatically. Note that the attribute
+            android:collapseColumns="2" starts column 2 in a collapsed state.
+
+    Views/Layouts/TableLayout/08. Toggle Stretch  --all
+        .view.TableLayout8
+            Uses Button to toggle stretch attribute of one column. Includes programmatically built
+            TableRow along with xml TableRows
+
+    Views/Layouts/TableLayout/09. Toggle Shrink  --all
+        .view.TableLayout9
+            Button uses setColumnShrinkable to toggle the shrinkColumns attribute of a table which
+            has a column so long it forces the last columns off the screen.
+
+    Views/Layouts/TableLayout/10. Simple Form  --all
+        .view.TableLayout10
+            Uses xml only to construct a form, too long of an entry in the EditText boxes does a
+            weird thing -- it scrolls the buttons at the bottom off the screen!
+            TODO: Scroll the EditText boxes instead.
+
+    Views/Layouts/TableLayout/11. Gravity  --all
+        .view.TableLayout11
+            Shows difference in layout for android:gravity="right",
+            android:layout_gravity="center_horizontal" and
+            android:layout_gravity="right|bottom" (large cell height is set by
+            a "strut" of 68dp for the right|bottom example row.)
+
+    Views/Layouts/TableLayout/12. Cell Spanning  --all
+        .view.TableLayout12
+            Creates large multi-column cells for several rows using android:layout_span=
+
+Lists
+    Views/Lists/01. Array                  all
+        .view.List1
+        .view.Cheeses
+            Uses an ArrayAdapter<String> to fill a ListActivity's list
+
+    Views/Lists/02. Cursor (People)        all
+        .view.List2
+            Builds a cursor using getContentResolver().query(...) of the Contacts provider for a
+            projection of Contacts._ID, and Contacts.DISPLAY_NAME and sets it as the ListAdapter
+            for the ListActivity's list
+            TODO: Switch to the new CursorLoader class with LoaderManager instead
+
+    Views/Lists/03. Cursor (Phones)        all
+        .view.List3
+            A list view example where the data comes from a cursor, and a SimpleCursorListAdapter
+            is used to map each item to a two-line display.
+            TODO: Switch to the new CursorLoader class with LoaderManager instead
+
+    Views/Lists/04. ListAdapter            all
+        .view.List4
+        .Shakespeare
+            A list view example where the data comes from a custom ListAdapter which displays from
+            an array of strings using a custom view (reusing recycled views when one is given to it.)
+
+    Views/Lists/05. Separators             all
+        .view.List5
+            A list view example with separators. Separators are implemented by overriding the methods
+            areAllItemsEnabled, and isEnabled
+
+    Views/Lists/06. ListAdapter Collapsed  --all
+        .view.List6
+            A list view example where the data comes from a custom ListAdapter, onListItemClick is
+            overridden to "toggle" the view between two states: collapsed to a title, and expanded
+            to a title and text for that title
+
+    Views/Lists/07. Cursor (Phones)        all
+        .view.List7
+            A list view example where the data comes from a cursor. Original used the "selected"
+            item in list to display the details of an item at the bottom of the string by implementing
+            OnItemSelectedListener, I modified to do the same when onListItemClick is called since
+            a touch interface cannot select.
+            TODO: Switch to the new CursorLoader class with LoaderManager instead
+
+    Views/Lists/08. Photos                 all
+        .view.List8
+            A list view that demonstrates the use of setEmptyView. This example also uses a custom
+            layout file that adds some extra buttons to the screen instead of using the ListActivity
+            default layout.
+
+    Views/Lists/09. Array (Overlay)        all
+        .view.List9
+        .view.Cheeses
+            Another variation of the list of cheeses. In this case, we use
+            AbsListView#setOnScrollListener(AbsListView.OnScrollListener)
+            AbsListView#setOnItemScrollListener(AbsListView.OnItemScrollListener)
+            to display the first letter of the visible range of cheeses. Uses an
+            Handler thread to remove the dialog displaying the letter after 3000ms
+            using postDelayed(mRemoveWindow, 3000); where mRemoveWindow is a pointer
+            to a class RemoveWindow which implements Runnable. (Cute -- need to use this)
+            TODO: Make overlay more transparent
+
+    Views/Lists/10. Single choice list     all
+        .view.List10
+            This example shows how to use choice mode on a list. This list is in
+            CHOICE_MODE_SINGLE mode, which means the items behave like radio-buttons.
+
+    Views/Lists/11. Multiple choice list   all
+        .view.List11
+            This example shows how to use choice mode on a list. This list is in
+            CHOICE_MODE_MULTIPLE mode, which means the items behave like checkboxes.
+
+    Views/Lists/12. Transcript             all
+        .view.List12
+            Demonstrates the using a list view in transcript mode. The bottom of the layout
+            is an EditText, clicking on the EditText view .add()'s  the text to the
+            ArrayAdapter filling the ListView above it.
+
+    Views/Lists/13. Slow Adapter           all
+        .view.List13
+            Demonstrates how a list can avoid expensive operations during scrolls or flings.
+            In this case, we pretend that binding a view to its data is slow (even though it
+            really isn't). When a scroll/fling is happening, the adapter binds the view to
+            temporary data. After the scroll/fling has finished, the temporary data is
+            replaced with the actual data. Usable approach but needs major modification to
+            use in real world application.
+
+    Views/Lists/14. Efficient Adapter      all
+        .view.List14
+        .view.Cheeses
+            Demonstrates how to write an efficient list adapter. The adapter used in this example
+            binds to an ImageView and to a TextView for each row in the list.
+            To work efficiently the adapter implemented here uses two techniques:
+            - It reuses the convertView passed to getView() to avoid inflating View
+              when it is not necessary
+            - It uses the ViewHolder pattern to avoid calling findViewById()
+              when it is not necessary
+            The ViewHolder pattern consists in storing a data structure in the tag of the view
+            returned by getView(). This data structure contains references to the views we want
+            to bind data to, thus avoiding calls to findViewById() every time getView() is invoked.
+            Note: uses mInflater.inflate(R.layout.list_item_icon_text, parent, false) instead of
+            mInflater.inflate(R.layout.list_item_icon_text, null)
+            TODO: Fix all other inflate() with null rootview.
+
+    Views/Lists/15. Selection Mode         all -- v11+ or crash
+        .view.List15
+        .view.Cheeses
+            This demo illustrates the use of CHOICE_MODE_MULTIPLE_MODAL, a.k.a. selection
+            mode on ListView. It switches into selection mode on long press.
+
+    Views/Lists/16. Border selection mode  all -- v11+ or crash
+        .view.List16
+        .view.Cheeses
+            This demo illustrates the use of CHOICE_MODE_MULTIPLE_MODAL, a.k.a. selection
+            mode on ListView couple with the new simple_list_item_activated_1 which uses
+            a highlighted border for selected items.
+
+    Views/Lists/17. Activate items         all -- v11+ or crash
+        .view.List17
+        .view.Cheeses
+            A ListView.CHOICE_MODE_SINGLE list view where the last item the user
+            clicked is placed in the "activated" state, causing its background to
+            highlight. Uses the built-in layout android.R.layout.simple_list_item_activated_1
+            for showing a list item with a single line of text whose background
+            changes when activated. Uses getListView().setItemChecked in onCreate
+            to start with first item activated.
+
+Popup Menu
+    Views/Popup Menu                       all -- v11+ or crash
+        .view.PopupMenu1
+            This demonstrates the use of the PopupMenu class. Clicking the button will
+            inflate and show a popup menu from an XML resource.
+
+Progress Bar
+    Views/Progress Bar/1. Incremental      all
+        .view.ProgressBar1
+            Demonstrates how to use ProgressBar as a widget. The ProgressBar is defined in
+            the layout xml file to use style="?android:attr/progressBarStyleHorizontal",
+            android:layout_width="200dip", android:layout_height="wrap_content",
+            android:max="100". It uses android:progress="50" to initialize the state of
+            the default progress and android:secondaryProgress="75" to initialize the state
+            of the secondary progress. Buttons below the ProgressBar decrement or increment
+            the two progress states. In spite of the comments in the code, the progress bar
+            does not appear in the title bar, it appears at the top of the LinearLayout
+
+    Views/Progress Bar/2. Smooth           all
+        .view.ProgressBar2
+            Demonstrates the use of indeterminate progress bars as widgets and in the
+            window's title bar. The widgets show the 3 different sizes of circular
+            progress bars that can be used. The window title bar does not work, it has
+            been dropped as of Android 5.0 appCompat library.
+
+    Views/Progress Bar/3. Dialogs          all
+        .view.ProgressBar3
+            Demonstrates the use of progress dialogs.  Uses Activity#onCreateDialog
+            Activity#showDialog to ensure the dialogs will be properly saved and
+            restored. Buttons on the main Layout allow you to choose between one
+            which sets the title using dialog.setTitle("Indeterminate") and one which
+            has no title. (Direct use of showDialog is deprecated, use a DialogFragment
+            instead). TODO: convert to use DialogFragment
+
+    Views/Progress Bar/4. In Title Bar     all -- does not work lollipop
+        .view.ProgressBar4
+            Demonstrates how to use an indeterminate progress indicator in the window's
+            title bar. This does not work for android starting with 5.0
+
+Radio Group
+    Views/Radio Group                      all
+        .view.RadioGroup1
+            Demonstrates RadioGroup, including adding a RadioButton to an xml defined
+            RadioGroup programmatically (the R.id.snack is created in the file values/ids.xml),
+            retrieving the R.id.* of the RadioButton selected, clearing all buttons, and the
+            value View.NO_ID (=-1) returned when no RadioButton is selected.
+
+Rating Bar
+    Views/Rating Bar                       all
+        .view.RatingBar1
+            Demonstrates how to use a rating bar. The top two RatingBar's have their
+            RatingBar.OnRatingBarChangeListener set to this and a onRatingChanged method
+            updates a TextView and two RatingBar indicators based on the values passed to
+            it.
+
+Rotating Button
+    Views/Rotating Button                 all -- v11+ or crash
+        .view.RotatingButton
+            This application demonstrates the ability to transform views in 2D and 3D,
+            scaling them, translating them, and rotating them (in 2D and 3D). Use the
+            seek bars to set the various transform properties of the button. It sets the
+            SeekBar.OnSeekBarChangeListener of each SeekBar to morph the button using
+            setTranslationX, setTranslationY, setScaleX, setScaleY, setRotationX, setRotationY,
+            and setRotation. Good demo of SeekBar.
+            TODO: fix crash that occurs if you rotate too much
+
+ScrollBars
+    Views/ScrollBars/1. Basic              all
+        .view.ScrollBar1
+            Demonstrates scrolling with a ScrollView. Done entirely in xml, the ScrollView is
+            the root view with a single LinearLayout child (ScrollView's can have only one.)
+
+    Views/ScrollBars/2. Fancy              all
+        .view.ScrollBar2
+            Demonstrates scrolling with a ScrollView, android:scrollbarTrackVertical
+            and android:scrollbarTrackVertical are set to colored drawables created in xml
+            using <shape> and android:scrollbarSize="12dip" makes it wider than normal.
+            http://developer.android.com/guide/topics/resources/drawable-resource.html#Shape
+            The drawable/scrollbar_vertical_thumb has <corners android:radius="6dp" /> which
+            gives a rounded look to the top and bottom of the scrollbar.
+
+    Views/ScrollBars/3. Style              all
+        .view.ScrollBar3
+            Demonstrates scrolling with ScrollView's with android:scrollbarStyle set to
+            outsideOverlay and outsideInset in the xml, and one set programmatically using
+            setScrollBarStyle(View.SCROLLBARS_INSIDE_INSET)
+            TODO: Scroll bars are too small to see clearly, scale them better
+
+Search View
+    Views/Search View/Action Bar           v11+
+        .view.SearchViewActionBar
+        .app.SearchQueryResults
+            This demonstrates the usage of SearchView in an ActionBar as a menu item. It sets
+            a SearchableInfo on the SearchView for suggestions and submitting queries to. In
+            AndroidManifest.xml a <meta-data> element android:name="android.app.default_searchable"
+            android:value=".app.SearchQueryResults" sets the Activity to handle search requests.
+
+    Views/Search View/Always Expanded      v11+
+        .view.SearchViewAlwaysVisible
+        .view.SearchViewActionBar
+        .app.SearchQueryResults
+            This Activity extends .view.SearchViewActionBar, with the only difference being it
+            Override's isAlwaysExpanded() to return true instead of false.
+
+    Views/Search View/Filter               v11+
+        .view.SearchViewFilterMode
+        .view.Cheeses
+            Shows a list that can be filtered in-place with a SearchView in non-iconified mode.
+            Calls setTextFilterEnabled(true) on the layout's ListView to filter the children
+            displayed in the ListView and the value it gets in the onQueryTextChange callback
+            it implements as a SearchView.OnQueryTextListener to setFilterText on the ListView.
+            (Very sweet -- need to try this!)
+            http://stackoverflow.com/questions/30398247/how-to-filter-a-recyclerview-with-a-searchview
+
+Secure View
+    Views/Secure View                      all -- v9+ or crash
+        .view.SecureView
+        .view.SecureViewOverlay
+            This activity demonstrates two different ways in which views can be made more secure to
+            touch spoofing attacks by leveraging framework features.
+
+            The activity presents 3 buttons that ostensibly perform a risky security critical
+            function.  Under ordinary circumstances, the user would never click on these buttons
+            or would at least think long and hard about it.  However, a carefully crafted toast can
+            overlay the contents of the activity in such a way as to make the user believe the buttons
+            are innocuous.  Since the toast cannot receive input, the touches are passed down to the
+            activity potentially yielding an effect other than what the user intended.
+
+            To simulate the spoofing risk, this activity pops up a specially crafted overlay as
+            a toast lay-ed out so as to cover the buttons and part of the descriptive text.
+            For the purposes of this demonstration, pretend that the overlay was actually popped
+            up by a malicious application published by the International Cabal of Evil Penguins.
+
+            The 3 buttons are set up as follows:
+
+            1. The "unsecured button" does not apply any touch filtering of any kind.
+               When the toast appears, this button remains clickable as usual which creates an
+               opportunity for spoofing to occur.
+
+            2. The "built-in secured button" leverages the android:filterTouchesWhenObscured view
+               attribute to ask the framework to filter out touches when the window is obscured.
+               When the toast appears, the button does not receive the touch and appears to be inoperable.
+
+            3. The "custom secured button" adds a touch listener to the button which intercepts the
+               touch event and checks whether the window is obscured.  If so, it warns the user and
+               drops the touch event.  This example is intended to demonstrate how a view can
+               perform its own filtering and provide additional feedback by examining the MotionEvent
+               flags to determine whether the window is obscured.  Here we use a touch listener but
+               a custom view subclass could perform the filtering by overriding
+               View#onFilterTouchEventForSecurity(MotionEvent).
+             TODO: Make first TextView secure_view_overlay.xml More visible.
+
+Seek Bar
+    Views/Seek Bar                         all
+        .view.SeekBar1
+            Demonstrates how to use a seek bar. It implements SeekBar.OnSeekBarChangeListener which
+            has the three call backs: onProgressChanged, onStartTrackingTouch, and onStopTrackingTouch
+            displaying appropriate text based on the information passed it.
+            TODO: why do first two SeekBar's start out enabled in spite of android:enabled="false"
+
+Spinner
+    Views/Spinner                          all
+        .view.Spinner1
+            Demonstrates the use of the Spinner widget. It creates two ArrayAdapter<CharSequence>
+            from string-array resources and uses setDropDownViewResource to set the view used by the
+            adapter to create drop down views, then uses setAdapter to set the adapter used by
+            each Spinner. setOnItemSelectedListener is used to set an OnItemSelectedListener
+            for each which involves implementing onItemSelected and onNothingSelected to receive
+            callbacks when an item in the Spinner's is selected.
+
+Splitting Touches across Views
+    Views/Splitting Touches across Views   all - v11+ or crash in layout
+        .view.SplitTouchView
+        .view.Cheeses
+            This activity demonstrates splitting touch events across multiple views within a
+            view group.  Here we have two ListViews within a LinearLayout that has the attribute
+            android:splitMotionEvents set to "true". Try scrolling both lists simultaneously
+            using multiple fingers.
+
+Switches
+    Views/Switches                         all - v14+ or crash in layout
+        .view.Switches
+            Demonstrates the use of the toggle switch widget. Customized text removed for Lollipop
+            unless attribute android:showText="true" is added
+
+System UI Visibility
+    Views/System UI Visibility/Content Browser  -- v16
+        .view.ContentBrowserActivity
+            This activity demonstrates how to use system UI flags to implement
+            a content browser style of UI (such as a book reader). Includes "Content",
+            and implementation of a view for displaying immersive content, using system
+            UI flags to transition in and out of modes where the user is focused on
+            that content. When the user clicks, it toggles the visibility of navigation
+            elements.
+
+    Views/System UI Visibility/Content Browser Nav Bar  -- v19
+        .view.ContentBrowserNavActivity
+            This activity demonstrates how to use system UI flags to implement a content
+            browser style of UI (such as a book reader) that hides the nav bar as well as
+            the status bar. The difference is the addition of the flags
+            SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION, and SYSTEM_UI_FLAG_IMMERSIVE.
+
+    Views/System UI Visibility/Game        v19
+        .view.GameActivity
+        .view.TouchPaint.PaintView
+            This activity demonstrates how to use the system UI flags to implement
+            an immersive game.
+
+    Views/System UI Visibility/System UI Modes  -- v18
+        .view.SystemUIModes
+            This activity demonstrates some of the available ways to reduce the size or
+            visual contrast of the system decor, in order to better focus the user's
+            attention or use available screen real estate on the task at hand. Uses
+            CheckBox'es to set or unset the various flags passed to View.setSystemUiVisibility
+            for the IV extends ImageView which serves as the background in the FrameLayout
+            holding it and the CheckBox'es which overlay it.
+
+    Views/System UI Visibility/System UI Modes Overlay  -- v16
+        .view.SystemUIModesOverlay
+        .view.SystemUIModes
+            Extend .view.SystemUIModes with the addition of requesting the window feature
+            Window.FEATURE_ACTION_BAR_OVERLAY which overlays the action bar rather than
+            positioning the action bar in the space above the window content.
+
+    Views/System UI Visibility/Translucent Bars  -- v19
+        .view.TranslucentBarsActivity
+            Layout sets the attribute android:fitsSystemWindows="true" to adjust view layout
+            based on system windows such as the status bar. When true, it  adjusts the padding
+            of the view to leave space for the system windows. Will only take effect if this
+            view is in a non-embedded activity. This has the effect of allowing the text
+            displayed to be visible below the system navigation bar and notification bar.
+            android:theme="@android:style/Theme.Holo.NoActionBar.TranslucentDecor" is set in
+            AndroidManifest to make the bars translucent.
+
+    Views/System UI Visibility/Video Player  -- v16
+        .view.VideoPlayerActivity
+            Implementation of a view for displaying full-screen video playback, using system
+            UI flags to transition in and out of modes where the entire screen can be filled
+            with content (at the expense of no user interaction).
+
+Tabs
+    Views/Tabs/1. Content By Id            all
+        .view.Tabs1
+            An example of an TabActivity that uses labels TabSpec#setIndicator(CharSequence)
+            for its indicators and views by id from a layout file TabSpec#setContent(int).
+            TextView's sharing a FrameLayout are selected by the tabs.
+
+    Views/Tabs/2. Content By Factory       all
+        .view.Tabs2
+            Example of using a tab content factory for the content via
+            TabHost.TabSpec#setContent(android.widget.TabHost.TabContentFactory)
+            It also demonstrates using an icon on one of the tabs via
+            TabHost.TabSpec#setIndicator(CharSequence, android.graphics.drawable.Drawable)
+            but this does not work using the default Theme as of Ice Cream Sandwich.
+
+    Views/Tabs/3. Content By Intent        all
+        .view.Tabs3
+            An example of tab content that launches an activity via
+            android.widget.TabHost.TabSpec#setContent(android.content.Intent), the
+            three tabs launch .view.List1, .view.List8, and .view.Controls1
+            respectively, using Intent's. The last sets the Intent flag so that it is
+            recreated each time the tab is clicked using:
+            Intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+
+    Views/Tabs/4. Non Holo theme           all
+        .view.Tabs4
+            Identical to Tabs2. The change is in the theme used in the manifest file:
+            android:theme="@android:style/Theme" The Icon shows up now unlike Tabs2.
+
+    Views/Tabs/5. Scrollable               all
+        .view.Tabs5
+            Demonstrates the Tab scrolling when too many tabs are displayed to fit
+            in the screen. In the layout a HorizontalScrollView contains the TabWidget
+            and 30 tabs are added to it using TabHost.addTab(TabHost.TabSpec tabSpec)
+            the callback createTabContent creates the content as each tab is selected.
+
+    Views/Tabs/6. Right aligned            all
+        .view.Tabs6
+            Uses a right gravity for the TabWidget. Does not seem to have any effect even
+            after changing AndroidManifest to android:theme="@android:style/Theme"
+
+Text
+    Views/Text/EditText
+        .view.EditTextDemo
+            Demonstrates the android.widget.EditText widget. android:imeOptions="actionSearch"
+            only produces an action key in landscape orientation for some reason. (No :id?)
+
+    Views/Text/Linkify                           all
+        .text.Link
+            Four different ways to generate html like links and styled text: text1 shows
+            the android:autoLink property, which automatically creates links for things
+            like URLs and phone numbers found in the text. No java code is needed to make
+            this work; text2 has links specified by putting <a> tags in the string resource.
+            By default these links will appear but not respond to user input. To make
+            them active, you need to call setMovementMethod() on the TextView object;
+            text3 shows creating text with links from HTML in the Java code, rather than
+            from a string resource.  Note that for a fixed string, using a (localizable)
+            resource as shown above is usually a better way to go, this example is
+            intended to illustrate how you might display text that came from a dynamic
+            source (eg, the network); text4 illustrates constructing a styled string
+            containing a link without using HTML at all.  Again, for a fixed string you
+            should probably be using a string resource, not a hardcoded value.
+
+    Views/Text/LogTextBox                        all
+        .text.LogTextBox1
+        .text.LogTextBox
+            Using a LogTextBox to display a scrollable text area to which text is
+            appended. LogTextBox.java is a custom TextView that is Editable and by
+            default scrollable, like EditText without a cursor.
+
+    Views/Text/Marquee                           all
+        .text.Marquee
+            Uses android:ellipsize="marquee" in the layout file to auto scroll Button
+            text that is longer than the view is wide.
+            Need to add android:focusable="true" and android:focusableInTouchMode="true"
+            to each of the buttons in order for the Marquee animations to run.
+
+    Views/Text/TextClock                        all - v17+ or crash
+        .view.TextClockDemo
+            Variants of TextClock: Default formats; Shows the date only; Uses styles
+            (different android:format12Hour, and android:format24Hour strings with
+            font and face defined in string xml); Shows seconds; Uses a fixed time zone.
+
+    Views/Text/TextSwitcher                     all
+        .view.TextSwitcher1
+            Uses a TextSwitcher to animate changes in the View controlled by the TextSwitcher.
+            Two TextView's are requested from the app's overriding of ViewSwitcher.ViewFactory
+            method makeView, and when the View needs to be updated TextSwitcher.setText is
+            called to change the text and animate to it.
+
+    Views/Text/TextView
+        .view.TextViewDemo
+            Demonstrates the android.widget.TextView widget. Shows different values for
+            android:textAppearance: ?android:attr/textAppearanceSmall,
+            ?android:attr/textAppearanceMedium, and ?android:attr/textAppearanceLarge,
+            as well as the effect of android:textIsSelectable="true",
+            android:visibility="invisible", and android:background="#ff00ff00"
+
+Visibility
+    Views/Visibility                       all
+        .view.Visibility1
+            Demonstrates making a view VISIBLE, INVISIBLE and GONE. Three buttons control
+            the visibility of a TextView which is sandwiched between two other TextView's
+
+WebView
+    Views/WebView                          all
+        .view.WebView1
+            Sample creating 1 webviews. Html data is loaded into the layout's WebView using
+            WebView.loadData
+

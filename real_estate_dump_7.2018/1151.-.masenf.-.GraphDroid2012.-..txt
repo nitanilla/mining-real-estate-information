@@ -1,0 +1,136 @@
+GraphDroid 2012: the symbolic graphing calculator for the Android platform
+
+To build the latest version in Eclipse indigo w/ Android SDK v13 installed:
+    1. File > Import...
+    2. Choose Existing project
+    3. Select GraphDroid2012/AmbilWarna project
+    4. Repeat above steps, this time add the main GraphDroid2012 project
+    5. Build
+
+The GraphDroid project was born out of a term project by Masen Furer and Nam Ngo
+in Winter 2012 for Mobile Device Development taught by Phil Nelson at WWU. We're
+moving the code online and open source to best support it and evolve it into a
+useful Android application.
+
+For all intents and purposes, this is a prototype of the final app. There are
+many details which will need to change before a Market release. Nothing within
+is sacred, and the code badly needs to be both modularized and Javaized.
+
+A note about code quality: We realize that this code is not the highest quality,
+that does not embarass us. We are working to improve the codebase over time. If
+you notice anything which seems strange or unbecoming of an Android application
+please submit an issue or a pull request. Also, this is not our best work due to
+time constraints, unfamiliarity with the environment, and other external
+factors.
+
+Thank you for getting involved, Masen and Nam
+
+Below is the text of our original prototype documentation.
+
+Graphdroid 2012
+Prototype Document v1.1 
+Masen Furer, Nam Ngo 
+February 1, 2012
+
+I. Overview. 
+
+Graphdroid 2012 is a virtual graphing calculator which seeks to be easy enough
+to use that it can replace a student’s standard TI-83. Traditionally, most
+phone/tablet-based graphers are too limited or inconvenienced by their static
+design and small buttons to be a useful replacement. Graphdroid tackles these
+problems in two distinct ways: sliding modular keyboards with large, well marked
+keys and predictable Android style patterns including gestures like pinch
+zooming and drag to pan for graphing and incorporating the action bar. Of course
+the standard graph analysis tools will need to be implemented as well.
+
+II. User Interface. 
+
+The following paragraphs are a discussion of the dialog map and hand drawn UI
+mockups which are unfortunately unavailable. This will have to suffice until we
+get a real readme.
+
+I’ll start out with the first improvement over existing solution: a modular
+keyboard. The special input keypad will be available for all math input text
+boxes. The keyboard consists of a base layout containing numbers, basic
+operators, cursor movement, and parentheses. To the left and right of the keypad
+are different tabs. Each tab can slide out, exposing a collection of additional
+functions (e.g. sin, cos, tan, etc) without cluttering the main display. All
+math input should be straight forward and follow TI-style conventions.  
+
+There are several main Activities in the app which are designed to fill a phone
+screen. In the tablet environment, this extra screen real estate is used to
+display views side by side or allow for a more comfortably spaced keypad. Other
+than that, the core UI elements will be shared between phone and tablet
+versions.  
+
+The home screen is where immediate calculations are made. This is fairly
+straightforward. The command/answer history is very convenient to access on the
+Android platform by using a ListView and builtin scrolling and click. From the
+home screen, the other Activities are accessed via a Spinner on the Action Bar.  
+
+From the functions screen, graph groups and mathematical functions are defined,
+enabled, and modified. The app sets no arbitrary limit on the number of
+functions or different sets of axes can be stored and displayed.  The user
+begins by adding a graph group, which is a set of functions that share the same
+axes and inherit the same properties from the group. When functions or point
+sets are added to the group, it becomes eligable for graphing.  
+
+The graph screen is the second selling point of the app. It is designed to be
+clean, minimalistic, and usable. It should work like Google Maps for a system of
+functions. This means that gesture support and smooth scrolling and zooming are
+important (even if we must fake it by scaling first). As mentioned previously,
+the graph screen exposes the standard set of Tools one comes to expect from a
+graping calculator. These are listed on the handwritten prototype sketch and
+include: value, zero, min/max, derivative, integrate, tangent, trace, table, and
+export...  
+
+In all aspects of the user interface, the goal is to design for speed and ease
+of use. Complex tasks should be simple, while still allowing for control over
+the details if it’s wanted by the user. If chosen, this product will adhere
+strictly to the Android Style Guide which I believe is cruicial to its
+commericial success.
+
+III. Project Outline. 
+
+The core of the work will be spent in the user interface design and graph
+rendering portions of the app. Because we’re not concerned with reinventing the
+wheel, we’ll be using the LGPL licensed Symja everywhere for parsing and
+evaluating all mathematic expressions. There is built-in support for most
+expected CAS operations including calculus operations. Using this we’ll be able
+to replicate TI-like functionality in the timespan required by this project.
+
+    • UI
+        – Home screen
+        – Keypads
+        – Specialized I/O views
+        – Function/graph input
+        – Graph display and interactions (gestures)
+    • Graph rendering
+        – Cartesian and Polar axes
+        – Functional, parametric, polar graphing – Caching
+        – Antialiasing
+        – Zoom and pan
+
+Because these two main aspects of the app are largely disjoint, we will approach
+both ends the project concurrently.
+
+IV. Feature List.
+
+Scope for January - March 2012
+
+• Specialized keyboard which provides convenient access to functions and is not
+    cumbersome • Support for basic calculation features and built-in functions
+• Support for multiple sets of axes, each containing many functions
+• Android gestures for manipulating function graphs: zoom, pan, trace
+• Adherence to Android design best practices to improve appeal to potential
+    customers
+
+Future scope
+
+• Full customization of the graphing experience: line colors, weights, patterns,
+    axes back- ground/foreground, grid lines, etc
+• Support for parameterized functions
+• polar and arbitrary coordinate systems (and transformations between)
+• UX testing to remove workflow bottlenecks and increase user desirability
+• Skins and customizable key layouts
+• Programmer modes for converting between bases, etc

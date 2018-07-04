@@ -1,0 +1,1 @@
+This post demonstrates techniques for building cash flows for zoo objects.  We discuss some basics on zoo objects and illustrate an example real estate investment.  We demonstrate analysis with functions for NPV and IRR and show some graphical methods.

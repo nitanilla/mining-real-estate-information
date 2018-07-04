@@ -1,0 +1,10 @@
+Dedicated for real estate agents to organize all of the agents homes that he represents and a reference tool for visitors that attend the agents open house. 
+
+When a real estate agent holds an open house, this app allows the agent to gather information on the prospective visitor(s): name, email, phone number and notes which then is organized accordingly by time and date of visit in a personalized easy to reference like table. 
+
+Follow ups made easy by a click of a button!
+
+Feature: 
+The user has the ability to export the document in an excel file to send to himself or to send a progress report to the owner of the property so he/she knows who has shown up to the open house.
+
+Built on: Ruby on Rails, PostgreSQL and Foundation-Zurb

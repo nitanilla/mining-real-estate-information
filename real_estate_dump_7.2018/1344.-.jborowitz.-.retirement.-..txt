@@ -1,0 +1,160 @@
+
+
+This code answers the question "given my income, how much would I be able
+to retire with if I retire at a given age and save at a given rate?"  The
+main output is a file Pensions.pdf, which plots the posibilities frontier
+for this in savings rate-retirement age space.  
+
+Taxes
+Taxes are calculated using NBER's Taxsim v9 software.  These taxes are
+calculated remotely on the NBER's server, and exchanged via FTP.  Taxes are
+calculated once and then stored in a matrix for a lookup table.  Tax lookup
+is by necessity approximate.  Income elements (labor income, capital gains,
+and social security) are rounded down to the next grid point.  Then, income
+between the last grid point and current levels is assumed to be taxed at
+the marginal rate from the grid point to the actual level.  
+
+This method requires making two calls to Taxsim, since taxsim only
+calculates a single set of marginal rates.  The first call calculates
+marginal rates WRT earned income, and the second call calculates marginal
+rates WRT capital income.
+
+Features
+
+This code calculates how much money an individual will have left in
+retirement given income as well as savings and retirement decisions.
+
+Economic features
+*Calculate taxes using state-of-the-art bulk tax program, Taxsim.  
+*Use income assumptions based on recent Census estimates by Heckman,
+Lochner, and Todd
+*Calculates social security benefits using current exact eligibility formula.
+*Uses exact dating (birth date, retirement date) in order to calculate
+exact social security benefits
+
+Potential features
+*With a small amount of work, it could calculate alternative benefits under
+the Domenici-Rivlin or Simpson-Bowles reform plans
+*Compare decisions to marry, live in two states, have a child, etc.
+*Maintain several accounts (IRAs, etc) to accurately determine tax
+liability
+*Take arbitrary income schedules (compare income to other assumptions)
+*Take arbitrary savings decisions (save x dollars per year)
+*Finite differencing or marginal effects -- answer the question "if I save
+$1 today, how much will that affect my pension for the rest of my life,
+depending on other decisions?"
+*Take different/historical return assumptions
+
+
+There are currently 3 key .R files that need to be run.
+
+rettest.R -- This file takes a variety of income, capital gains income, and
+social security income grid points and calculates taxes from NBER's taxsim.
+It saves the tax grids, variables taxsim and taxsimcapitalgains, in
+taxsim.RData.  Note that it's conceivable that if you ran this code, it
+woudl give an error if the internet connection is too slow.  If the
+internet connection is too slow, I believe that the RCurl package times out
+and decides that there were no rows in the result, which is a symptom of a
+bad input file.  
+
+rettest.R doesnt' actually have to be run in general - it should be saved
+with a given taxsim.RData which matches the lookup grid points.
+
+calculate.R -- This file sets paramters to reasonable values and then calls
+Pension(), the main function which returns a finances object that includes
+the answer to the question how much you would have at retirement if you
+save at a given rate and retire at a given age.
+
+ret2.R -- This file contains the bulk of the code.  
+
+Objects
+
+There are 3 main objects that are used. decisions and parameters contain
+input parameters that go into calculating the output 'finances' objects.
+Below the objects' structures are described.
+
+finances -- The finances object should contain the variables which
+characterize a person's lifetime financial history.  
+
+*laborincome -- labor income is the vector of annual amounts, in 2011
+dollars, that the individual earns.  
+*currentSavings -- This is the amount that the individual adds to savings
+in a given period, equal to labor income times the savings rate
+*toIRA -- currently unused, this is the amount of savings that goes to an
+IRA - as of now there is no separate IRA account so this does nothing.
+*retirementConsumptionPath -- This is a life-length vector which scales a
+retirement annuity (in retirementIncome) to future dollars for each year.
+This variable takes a value of zero when the individual is not retired.
+*retirementIncome -- This variable is the level of 2011 dollars that the
+individual can retire with as an annuity.
+*capitalgains -- This is the value of savings in a given period times the
+asset return for the year.  It feeds directly into capital gains for tax
+purposes.  I would like to treat long-term capital gains more cleverly, but
+currently I just realize all gains every year.  Since I have no offsetting
+losses in the model either, this isn't too far off, but it doesn't mdoel
+robust financial decisionmaking.
+*netincome -- This isn't used, but it is equal to labor incomeplus caoital
+income minus taxes.
+*socialsecurity -- This is the social security income over the year for
+years when the individual is retired and zero for other years.  It DOES
+feed into taxes.
+*savings -- This is the main state variable throughout the individual's
+life.  It is equal to the total assets that an individual has at the [end
+or beginning] of a given year.  It is constrained to go to the bequest
+amount at the end of life.
+*consumption -- This is the total money available for consumption, after
+taxes, in each year of life.  It is plotted in the second graph,
+income.pdf.  [NOTE: it might be good to plot annuity CONSUMPTION in 2011
+dollars in Pensions.pdf, except that since social security goes up faster
+than inflation, real consumption wouldn't remain constant over the annuity
+but would increase instead.
+*optimizationInfo -- the results object of the optim function, reported for
+diagnostic purposes
+*decisions, parameters -- these are the decisions and parameters objects
+which are useful to match up specific parameters to output.
+
+decisions -- The decisions object contains the information that
+characterizes an individual's decisions.  This includes information about
+the retirement date and savings rate
+*retirementDate -- a date that represents when the individual will retire
+*savingsRate -- the fraction of income that an individual saves every year
+*estate -- the number of 2011 dollars that hte indivual's consumption plan
+will leave after period T2
+*T1 -- the index date of retirement (it measures how many years from now
+retirement will happen)
+*returnHistory -- this is where a smarter or more realistic return would be
+inserted, but currently it just replicates the pre and post-retirement
+returns.  It is part of this object instead of parameters since it even now
+depends on the retirement date.
+
+parameters -- This object contains things like assumed asset returns, life
+length, the person's birthday, initial savings, and a time vector.  I tried
+to make parameters stuff that wouldn't change and decisions stuff that
+would, but really I don't think there's much difference
+*ssInflation -- The rate of growth for social security (which is indexed to
+the CPI for all urban wage earners).  This grows faster than CPI-U, with
+the original idea being ot let the elderly share in the benefits of wage
+growth.
+*birthday -- a date objet containing the individual's birthday
+*today -- a date object that starts things
+*myage -- an integer representing the individual's current age
+*T2 -- the number of years from now that the individual will die
+*w0 -- initial savings
+*t -- a vector running from 1 to T2 that is used for indexing and
+calculating inflation
+*investmentReturn -- the rate of return on pre-retirement investments.
+*retirementInvestmentReturn -- the rate of return on post-retirement
+investments
+*inflation -- rate of inflation
+*initialIncome -- the assumption is that every individual has the level of
+deviation from the experience wage profile of Heckman et al at every point.
+The current initialIncome variable is used to calculate future wages as
+well
+*avgwage - this is the current average wage, which the social security
+logic uses to calculate bend points now and in the future to determine
+social security benefits.
+*initwage - this is also for social security calculations
+*ssType - the type of SS law used for social security calcualtions.  This
+currently doesn't work.
+*IRAlimit - the nominal predicted IRA limit based on indexing rules - this
+isn't used

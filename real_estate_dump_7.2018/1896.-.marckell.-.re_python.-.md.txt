@@ -1,0 +1,32 @@
+# re_python
+
+
+Similar to the re_perl repo, these scripts were written in 2017 to email new local real estate listings on a daily basis, filtering on specific search criteria. Since the underlying website does not offer any type of email notification, this script was set up as a daily cron job to send links to new listings.
+
+## re_python_data_collection
+
+Using pycurl, this script is run daily via a cron job to retrieve the latest MLS IDs from the real estate website based on some filtering criteria, namely location, price range and property type (house, condo, etc).
+
+After retriving the data, it is stored in a MySQL database table that has some fields for determining whether the property listing is still active and whether it has been emailed using the re_python_mailer (see below).
+
+## re_python_mailer
+
+The mailer script is used to send daily notifications of new real estate listings. It is also run via a cron job, shortly after the previous script. The mail gateway is Sparkpost, which has a free usage tier and a REST API endpoint that can be called using pycurl.
+
+## MySQL schema
+
+```
+CREATE TABLE `listings` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `mls_id` varchar(32) DEFAULT NULL,
+  `property_type` int(2) DEFAULT NULL,
+  `image_url` varchar(256) DEFAULT NULL,
+  `address` varchar(256) DEFAULT NULL,
+  `price` float(12,2) DEFAULT NULL,
+  `email_sent` int(1) DEFAULT NULL,
+  `active` int(1) DEFAULT NULL,
+  `created` datetime NOT NULL,
+   PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=latin1;
+
+```

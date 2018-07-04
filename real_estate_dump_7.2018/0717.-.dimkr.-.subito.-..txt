@@ -1,0 +1,6 @@
+Subito GNU/Linux is a minimalistic and versatile GNU/Linux distribution for
+advanced users, built around the roar-ng (http://www.iguleder.info/roar-ng)
+framework.
+
+It is highly optimized for minimal usage of screen real estate, keyboard-driven
+control and console applications.

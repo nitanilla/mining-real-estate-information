@@ -1,0 +1,18 @@
+# EmlaX
+EmlaX is a real estate portfolio program.
+
+Database Warning!
+
+Before using this program, you must setup mysql database in your computer and integrate your mysql information(username-password) to program.if you dont do this,it will not work well.
+
+What can you do in EmlaX?
+
+You can add new homes and land in your portfolio.
+
+You can update and delete your real estate's properties(price,owner phone,mail...).
+
+You can search optimum home or land for your customer.
+
+You can let them know via email inside program with several subjects.
+
+But Do not forget to setup mysql on your computer.

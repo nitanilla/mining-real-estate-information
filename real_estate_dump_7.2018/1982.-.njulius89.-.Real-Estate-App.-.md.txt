@@ -1,0 +1,23 @@
+# Real Estate App
+
+
+A real estate themed app built with react.
+
+Technologies: React.js, ES6, Webpack, Gulp, Sass
+
+**Steps**
+---------
+
+**Download or Pull This Repo**
+	Top of this page you can see where it says clone or download
+
+
+ **Install all the node packages**
+On the root of this project run on your terminal
+
+    npm install
+
+
+**Start the server**
+
+  	npm run watch

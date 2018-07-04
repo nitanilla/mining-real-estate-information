@@ -1,0 +1,4 @@
+eStation
+========
+
+eStation is a processing system which computes environmental indicators in near real time. Environment Monitoring and Mapping of Africa

@@ -1,0 +1,2 @@
+# various_useful_bits
+Little automation scripts for stuff like scraping real estate listing, course webpage, or automating wifi login. 

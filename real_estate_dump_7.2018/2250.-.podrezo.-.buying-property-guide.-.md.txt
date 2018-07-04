@@ -1,0 +1,8 @@
+# Buying Property: A simple guide
+This project is a microsite that aims to present a boiled-down, down-to-earth list of all the steps involved in buying property for newbies like me who don't know much about that world.
+
+The site is live at http://podrezo.github.io/buying-property-guide
+
+## Disclaimer/Preface
+
+This guide is written from the perspective of a first-time homebuyer who wanted to simplify what he learned about the process for others. I take absolutely no responsibility for any problems my advice here may cause. I also cannot vouch for its accuracy with utmost certainty, especially if you are buying property outside of Ontario, Canada as that is what I'm basing this on. If you do find any mistakes please contact me. I am not in the real-estate business so please do not direct any questions about real-estate to me and instead ask your real-estate agent.

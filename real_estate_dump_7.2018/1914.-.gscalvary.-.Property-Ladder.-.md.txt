@@ -1,0 +1,10 @@
+# Property-Ladder
+A Market Place for Residential Architecture and Historical Preservation Enthusiasts
+
+In this project I built a normalized, relational database to support an application concept I dreamt up for a Database Management Systems graduate course at Northeastern University.  I worked alone on this project and implemented it in PostgreSQL.
+
+Property Ladder is an online application, with a batch component, using data sourced from a normalized database, that buyers, sellers, real estate agents, contractors and others use to create a more informed real estate market. All properties in a given area are represented in the application. The application facilitates communication between its users and captures a myriad of market information, entered by its users, to further inform all market participants. Property Ladder’s target users are those interested in residential architecture and historical preservation but the application is designed to be useful for all parties with an interest in a particular real estate market.
+
+Buyers use the application to learn more about properties they would like to own, to propose offers to the current owners of those properties or just to let owners know that should their home come to market, they would be interested in buying it. Buyers may also use the application as a traditional real estate search engine. Search characteristics, along with all buyer data entered, are captured and stored by the application.
+
+Owners, or their designated agents, sign into the application and take ownership of properties. They may update their property characteristics, solicit and view offers from buyers or just see how many people are interested in their home. Owners may also solicit feedback regarding their home via market surveys and a comment utility. Additionally, an owner is able to “blue-sky” changes to their property by querying historical search data to see if either a switch from oil to gas heat or the installation of granite countertops might generate more buyer interest.

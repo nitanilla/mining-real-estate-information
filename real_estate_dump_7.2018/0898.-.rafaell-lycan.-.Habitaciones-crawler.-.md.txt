@@ -1,0 +1,38 @@
+# Habitaciones
+A web extractor of main pages of buying and selling real estate in Spain.
+
+#### Provider list:
+
+- [ ] Idealista
+- [ ] Fotocasa
+- [ ] Habitaclia
+- [ ] Pisos.com
+
+#### Why?
+
+I was boring, so just for fun :)
+
+#### Install
+
+```
+npm install
+```
+
+#### Base Provider
+
+The `baseProvider` has the minimum of properties to extract of each provider like a **base model**:
+
+- title
+- description
+- price
+- url
+- meters
+- images
+
+#### ToDo
+
+- Add a simple exemple
+- Add a simple config file exemple
+- Add a simple cron file exemple
+- Add a common paginator util for each provider
+- Add more providers

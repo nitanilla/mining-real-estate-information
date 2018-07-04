@@ -1,0 +1,31 @@
+# Real Estate Listing App build with AngularJS
+
+This Angular App displays all my real estate properties in the city of Ottawa
+
+### Demo
+
+http://mikeleung.ca/angular/realestate/
+
+### Instructions
+
+git clone https://github.com/mpakleung/RealEstateAngularApp.git
+
+Navigate to file
+
+Enter in terminal: python -m SimpleHTTPServer
+
+Browse to: http://localhost:8000
+
+
+### Concepts Learned
+
+Directives (ng-repeat, ng-if, ng-click, ng-show, ng-hide)
+
+Custom Filters
+
+Creating Data
+
+Editing and deleting data
+
+$http, $scope and controller
+

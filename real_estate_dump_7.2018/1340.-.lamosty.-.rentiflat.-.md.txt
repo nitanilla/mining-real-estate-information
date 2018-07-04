@@ -1,0 +1,74 @@
+# RentiFlat
+
+RentiFlat.com is a web application helping tenants and real estate owners match each other  comfortably and inexpensively. Property owners can create a simple yet apt web pages detailing their flats with pictures, location, number of rooms, price and more. The web pages are then shared throughout the flat owner's social network and groups related to renting and finding flats. On the other side, people looking for a suitable living space stumble upon these offers with links pointing to the web pages describing them. They navigate to the offer details, seeing beautiful pictures and most importantly the list of other people who are interested in renting the property too. Flat owner can see the email addresses of the candidates so he or she can contact them about the offer. 
+
+# Why am I working on this?
+
+There are two main reasons:
+
+1. It could help flat owners with renting their properties.
+2. I wanted to learn developing web applications in WordPress.
+
+# Project structure
+
+The project is based on [Bedrock](https://github.com/roots/bedrock) WordPress stack (configuration, deployments) and [Sage](https://github.com/roots/sage) WordPress starter theme. Therefore, the structure follows their best practices.
+
+## Main project structure (Bedrock-like)
+
+### config
+Eenvironments and deploy configurations.
+
+### web
+The web application (theme) with dependencies (plugin, WordPress) and user-generated content.
+
+### composer.json
+
+Package definition file containing autoloading paths and dependencies with versions.
+
+## Theme (web app) project structure (Sage-like)
+
+Link to the theme folder: [https://github.com/lamosty/rentiflat/tree/master/web/app/themes/rentiflat-theme](https://github.com/lamosty/rentiflat/tree/master/web/app/themes/rentiflat-theme).
+
+### assets
+
+Custom fonts, images, JavaScripts and Sass (CSS) files which get concatenated and minified during the deploy process.
+
+### src
+
+RentiFlat main library folder containing autoloaded classes and helpers.
+
+### templates
+
+Files which are used as [Page Templates](https://codex.wordpress.org/Page_Templates) for specific app pages.
+
+### base.php, index.php, single-rentiflat_flat.php
+
+Template files used for app pages. They follow the WordPress [Template Hierarchy](https://codex.wordpress.org/Template_Hierarchy). Scribu's [Theme Wrapper](http://scribu.net/wordpress/theme-wrappers.html) is used so I don't have to replicate header and footer on all templates.
+
+### functions.php
+
+Main bootstrapping file. It is loaded by WordPress on each request to the web app. I'm using [Encase](https://github.com/dsawardekar/encase-php) IOC container for classes dependency injection.
+
+### gulpfile.js
+
+Modified gulpfile.js from Sage starter theme. This file specifies [gulp](https://github.com/gulpjs/gulp) tasks such as JS, CSS concatenation and minification.
+
+# How to run RentiFlat locally?
+
+## Requirements
+
+- Composer to load dependencies
+- Node.js with NPM, gulp, bower to run JS/CSS tasks
+- Web server with PHP and MySQL
+
+## Steps
+
+1. Clone the repository
+2. Run `composer install`
+3. Create an [.env](https://github.com/roots/bedrock/blob/master/.env.example) file
+4. Set your web server document root to /path/to/site/web
+5. Access WP admin at `http://example.com/wp/wp-admin`
+6. Switch to RentiFlat theme
+7. Create a new home page. Set the page to be [Static Front Page](https://codex.wordpress.org/Creating_a_Static_Front_Page) so `index.php` template is used. 
+8. Create a new flat. It will use the `single-rentiflat_flat.php` template.
+

@@ -1,0 +1,10 @@
+# Back-end for real estate projects
+
+## Installation
+* `git clone <repository-url>` this repository
+* `cd real-estate-back `
+* `yarn`
+
+## Front-end
+### EmberJS
+[repository link](https://github.com/DenisNazarenko/ember-real-estate)

@@ -1,0 +1,4 @@
+real_estate_web_app
+===================
+
+Django app for real estate companies to show listings, contact realtors, and place bids on properties

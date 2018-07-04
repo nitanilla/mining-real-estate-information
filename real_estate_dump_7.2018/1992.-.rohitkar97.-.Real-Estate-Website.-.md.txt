@@ -1,0 +1,2 @@
+# Real-Estate-Website
+The real estate website/portal allows the users to post property for sale as well as search sort property and contact its owner online. It also consists of an innovative feature that allows users to post reviews of the dealing process with a buyer after their deal.

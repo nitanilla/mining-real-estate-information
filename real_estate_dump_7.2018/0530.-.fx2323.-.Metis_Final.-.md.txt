@@ -1,0 +1,41 @@
+
+## Synopsis
+The overall goal for this project was to explore real estate data and try to infer something useful. My first idea was to look at and try to predict price but since their are many analysis out there that do just that I thought it would be more useful to look at a different idea. My goal was to show price elasticity by showing how the price relates to the days on market for a property.So I went in to explore and explain the days on market.
+
+## Motivation
+
+The real inspiration behind the project was family and friends going through the process of buy and selling real estate process. Buyers didn't want to miss out on their dream homes because someone beat  closing the deal first, thus perhaps paying a little more to make sure they close the deal. While sellers wanted to make sure that they didn't price themselves out of the market but were will to hold a little longer if it means a better deal for them. I believe that many out there would find having a better understanding of the property market dynamics to make better informed decisions. 
+
+## Installation
+
+For the web scraping the whole data transfer goes through [tor] you will need to install that. Also, the data is stored in [mongodb] so that will have to be installed as well.
+
+The rest of the requirements can be installed via pip and [conda].
+
+
+Install the pip requirements first by:
+```
+#if linux
+pip install -r requirements/linux_pip_requirements.txt
+#if mac
+pip install -r requirements/mac_pip_requirements.txt
+```
+
+Then install the conda requirements by:
+```
+#if linux
+conda install --file requirements/linux_conda_requirements.txt
+#if mac
+conda install --file requirements/mac_conda_requirements.txt
+```
+
+The reason why you have to use both pip and conda is that the dependencies can be at times only installed with only one or the other. Also, they vary a little between the mac and the linux dependent packages.
+
+[tor]: https://www.torproject.org/docs/installguide.html.en
+[mongodb]: https://docs.mongodb.org/manual/installation/
+[conda]:http://docs.continuum.io/anaconda/install
+
+
+```python
+
+```

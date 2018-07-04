@@ -1,0 +1,42 @@
+Goal:
+
+Deliver relevant data to real estate agents while cutting out the complexity of reporting analytics.
+Allow access to Google Analytics data without direct access to the account. 
+reporting on demand.
+Ability to build infrastructure on top of report
+
+Here are the guts of the application
+
+TLDR: lisitingids in the url is captured and appended to results.
+
+Steps 
+1. grab listing ids from page path in google analytics
+2. filter out non-listing pages that happen to have that string of numbers
+2. take the what's left and append the uuid(listingid) to the results 
+4. group the uuids together and add up the results.
+5. display the results in the view with pretty graphs
+
+garb gem
+the legato gem is more current, however, this particular version of garb allows the use of oauth1 and chaining conditionals in google api V3.  
+oauth2 is going to be mandatory and the application will have to be updated.
+
+Report.rb
+utilizing WmsSvcConsumer, Report class inherits from the Garb::ResultSet class and ties in WmsSvcConsumer to augment analytics data with corresponding information about the office, agent, and listings.
+
+
+lib/google_analytics/
+This is where the report lives.  There are a few helper methods that interact on this folder.  The files here allow simplicity in the UI.  There are some standard dimensions and metrics that must be included in order for graphs to display properly. 
+There is growth in this area.  Google analytics dashboard is all about customization of reports, yet requires trainging to create.  
+
+Issues
+3 months of data: 
+This may fix itself after some of the cold fusion links are gone.  Also, after the erroneous subdomains are no longer being tracked.  As long as there is an artificially inflated results that need to be parsed, a browser time out is a risk.
+solution may be to increase the time browser timeout. 
+
+Legato:
+a better gem but best left to be implemented as a version upgrade.
+
+listing_snipe:
+http://rubular.com/r/1I84B3QskH
+the way to regex uuids from a url path with the routes provided.  There is an edgecase in which some routes to listings are routed in a catch-all.  for instance, listing/99004435/gallery is a proper route, yet listings/99004435/gallery (additional "s") is a valid route as well. 
+This regular expression is important but isn't constructed to catch these alternate routes.

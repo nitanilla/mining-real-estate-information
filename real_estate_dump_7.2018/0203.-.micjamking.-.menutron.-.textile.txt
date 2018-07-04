@@ -1,0 +1,113 @@
+h1. Menutron 
+
+A jQuery plugin for responsive navigation menus
+
+h2. Demo
+
+Plugin Demo: "http://micjamking.github.com/Menutron/":http://micjamking.github.com/Menutron/
+
+h2. What it does
+
+Menutron transforms your navigation menus from a list to a select menu when resizing your browser. On mobile devices, the select menu pulls up a native control, making it easier to pick an item.
+
+* *It's concise* - When implemented in a responsive design, your menu becomes consolidated in to a single control, saving you horizontal and/or vertical real-estate.
+* *It's convenient* - On mobile devices, the select controls will activate a native control, like the picker control for iOS, which can be navigated using drag, nudge, or flick gestures. 
+* *It's intuitive* - It works on any type of list (ol,ul,dl) and automatically adds a menu title of "Choose..." for easy recognition 
+
+
+h2. How it works
+
+Let's say your navigation menu markup looks like this:
+
+<pre>
+<nav id="main">
+  <ul>
+    <li><a href='google.com'>Google</a></li>
+    <li><a href='facebook.com'>Facebook</a></li>
+    <li><a href='twitter.com'>Twitter</a></li>
+    <li><a href='pinterest.com'>Pinterest</a></li>
+    <li><a href='flickr.com'>Flickr</a></li>
+  </ul>
+</nav>
+</pre>
+
+Simply call the Menutron function, using the list menu container (ie. @<nav id="main">@) as a selector...
+
+<pre>
+<script>
+  $(function(){
+    $("nav#main").menutron();
+  });
+</script>
+</pre>
+
+...and your list _transforms_ in to a select control when the screensize is below the specified screen width!
+
+<pre>
+<nav id="main">
+  <select>
+    <option selected="selected" value="">Choose...</option>
+    <option value='google.com'>Google</option>
+    <option value='facebook.com'>Facebook</option>
+    <option value='twitter.com'>Twitter</option>
+    <option value='pinterest.com'>Pinterest</option>
+    <option value='flickr.com'>Flickr</option>
+  </select>
+</nav>
+</pre>
+
+By default, the plugin has a media query set to @max-width: 600px@. If you want to set your own media query, the plugin has an option for that. Just pass in your desired size to @maxScreenWidth@ like below:
+
+<pre>
+<script>
+  $(function(){
+    $("nav#main").menutron({
+      maxScreenWidth: 480
+    });
+  });
+</script>
+</pre>
+
+Now when a browser width is below *480px*, the list will transform in to a select menu.
+
+If you want your own custom menu title for the select menu on mobile, just pass in the desired title to the @menuTitle@ option as below:
+
+<pre>
+<script>
+  $(function(){
+    $("nav#main").menutron({
+      maxScreenWidth: 480,
+      menuTitle: 'Main Menu:'
+    });
+  });
+</script>
+</pre>
+
+h2. What you'll need (dependencies)
+
+* *"A responsive design":http://www.alistapart.com/articles/responsive-web-design/* ;)
+* *"Latest jQuery":http://code.jquery.com/jquery-latest.js* (It may work on previous versions, but it's only been tested on the latest)
+* For devices with retina displays, a @<meta name="viewport" content="initial-scale=1.0" />@ in the head will make the device screen resolution equal to the device screen size (1:1). Although not needed, I also disable zooming when controls are selected. Below is my meta tag:
+
+<pre>
+<meta name="viewport" content="initial-scale=1.0, width=device-width, maximum-scale=1.0, user-scalable=no" />
+</pre>
+
+h2. FYI
+
+* As of 04.27.2012, Menutron can support nested lists up to 2 levels (ie. ul > li > ul > li).
+* In the next update, I plan to support definition list titles (@<dt>@) as the select menu's default title when there is one available. As of 04.27.2012, there is an option for to specify your own custom select menu title.
+* If you have any suggestions, comments, or creative insults for my code, "add an issue":https://github.com/micjamking/Menutron/issues/new or "fork the repo":https://github.com/micjamking/Menutron/fork_select.
+
+
+
+*MIT LICENSE*
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+*Copyright*
+Copyright (c) 2012 Mike King (@micjamking)

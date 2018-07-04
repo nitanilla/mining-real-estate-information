@@ -1,0 +1,25 @@
+﻿Welcome to our Real Estate System!
+==
+
+
+Hey, welcome!
+This a college assignment where we are working in a real estate management system.
+
+Our dashboard (management, without transactions for now), is based in the [akveo's blur admin front end framework](https://github.com/akveo/blur-admin), using Angular 1.5.
+
+The installation is very simple:
+
+ 1. Install **node** if you don't already have it
+ 2. Install **gulp** if you don't already have it 
+ 3. Clone the repo
+ 4. Run `npm install` (it can take a while)
+ 5. Run `gulp serve`
+ 
+ And that's it!
+ 
+----------
+Development guidelines
+----------
+ 1. The main focus should be in the `src/app/pages/ ` where we have our components.
+ 2. More to come ;)
+

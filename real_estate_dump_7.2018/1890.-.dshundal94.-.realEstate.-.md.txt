@@ -1,0 +1,2 @@
+# realEstate
+This is the content that I've created for my real estate page at www.facebook.com/royalrealtyca. The goal is to dispense information so that people are more informed about the real estate world. Being more informed means better decision making in what is often people's largest financial transaction. I also wanted to use data visualization with Tableau to give support to my arguments in my articles. You can look through the documents and images, and if there is anything you would want me to include, e-mail me at dshundal94@gmail.com.

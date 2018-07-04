@@ -1,0 +1,21 @@
+{<img src="https://codeclimate.com/github/gtrujillop/RealEstateWeb/badges/gpa.svg" />}[https://codeclimate.com/github/gtrujillop/RealEstateWeb]
+
+{<img src="https://codeclimate.com/github/gtrujillop/RealEstateWeb/badges/coverage.svg" />}[https://codeclimate.com/github/gtrujillop/RealEstateWeb/coverage]
+
+{<img src='https://semaphoreci.com/api/v1/projects/f368c43b-04d9-450c-946b-ae93790083c3/444996/shields_badge.svg' alt='Build Status'/>}[https://semaphoreci.com/gtrujillop/realestateweb]
+== README
+
+RealEstateWeb
+
+http://realestateweb.herokuapp.com/
+
+Is a free App for Real Estate operations. An user can sign up and sell/rent or just look for a department or house located at the place and with the conditions the user is looking for.
+
+* Ruby version: 
+  Ruby 2.1.2p95
+  Rails 4.2.0
+
+* System dependencies
+  MySQL 5.1
+  
+  License: Apache 2.0

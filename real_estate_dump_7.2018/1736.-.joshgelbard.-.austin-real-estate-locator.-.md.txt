@@ -1,0 +1,30 @@
+A React app that finds, for a given pair of addresses within Austin, TX, the nearby real estate agencies with the least combined distance to those addresses.
+
+##### The following were on my to-do list but didn't quite happen in time:
+
+
+* **An actual map displaying the locations of each agency**
+
+* **A nice UI**
+
+* **Ability to add more fields and search by more than two addresses**
+  * I actually put a reasonable amount of effort into optimizing and DRYing up
+    the code with this, among other things, in mind, so I might go back and do this.
+
+* **Links to each real estate agency's website, or to the official Google one for that agency.**
+  * These are available via a Google Places "Details" request, but hitting the API for
+  that many detail requests was locking me out.
+    * My attempted, fairly silly, solution was to simply cache as many detail
+      results as possible by scraping the API in advance with a separate script, but,
+      while the scraping worked, it turned out what I had scraped was insignificant
+      compared to the total number of real estate agencies in Austin, so it made
+      little difference. It would still work, but I would have to start with a much
+      larger set of search coordinates than I initially tried.
+
+* **Better, non-blocking solution for integrating Google Maps**
+  * I currently have a pretty gross hack using window.requestAnimationFrame to simply delay
+  loading any React components until we are sure they will have access to google maps and won't
+  crash as soon as their class is defined.
+
+* **Loading indicators, rather than nothingness and then "suddenly -- data!"**
+  * Goes with "Nice UI," above

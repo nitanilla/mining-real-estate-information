@@ -1,0 +1,16 @@
+# Ad Management System v2
+#### Real Estate One
+
+The Ad Management System is intended to create and manage newspaper ad layouts
+for the Real Estate One Ann Arbor office, and other Real Estate One branches
+in Washtenaw County.  The system allows agents to enter and maintain ad
+information for their own listings and profiles.  Office staff my edit any
+listings or profiles for agents assigned to their office.  System administrators
+may edit any listing or profile on the system, as well as generate display ads.
+Ads are generated as PDF files.
+
+Authentication is handled via Firebase.  The only view available to
+unauthenticated users is the sign in view.  Authenticated users may access any
+view that their authorization level allows.
+
+Data is stored in a PHP/MySQL backend accessed through API calls.

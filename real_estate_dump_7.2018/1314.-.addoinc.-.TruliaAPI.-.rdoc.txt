@@ -1,0 +1,50 @@
+= Trulia
+
+The Trulia API allows you to add data about regional real estate listings and Trulia search trends to your application utilizing the following libraries from the Trulia API:
+
+LocationInfo: Allows you to get the following geographical location information, including longitude and latitude for most locations, for use in other calls:
+
+Neighborhoods in a City    - get_neighborhoods_in_city
+Cities in a State          - get_cities_in_state
+Counties in a State        - get_counties_in_state
+List of all 50 States      - get_states
+Zip codes in a State       - get_zip_codes_in_state
+ 
+
+TruliaStats: Allows you to access the following statistics pertaining to Trulia traffic and for sale listing data on Trulia:
+
+Avg. and median listing price of homes on Trulia
+Avg. and median listing price of homes on Trulia by number of bedrooms
+Number of listed homes on Trulia
+Number of listed homes on Trulia by number of bedrooms
+Percent of total Trulia traffic to locations of interest
+ 
+API methods for Trulia Stats:
+Retrieves statistics about a city           -  get_city_stats	
+Retrieves statistics about a county         -  get_county_Stats	
+Retrieves statistics about a neighborhood   -  get_neighborhood_stats	
+Retrieves statistics about a state          -  get_state_stats	 
+Retrieves statistics about a ZIP code       -  get_zipcode_Stats	
+ 
+Examples:
+loc = Trulia::LocationInfo.new("<api key>")
+cities = loc.get_cities_in_state('VA')
+
+stats = Trulia::TruliaStats.new("<your api key>")
+city_stats = stats.get_city_stats('FairFax', 'VA')
+
+== Contributing to trulia
+ 
+* Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
+* Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it
+* Fork the project
+* Start a feature/bugfix branch
+* Commit and push until you are happy with your contribution
+* Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.
+* Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.
+
+== Copyright
+
+Copyright (c) 2011 kranthicu. See LICENSE.txt for
+further details.
+

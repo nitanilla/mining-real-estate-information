@@ -1,0 +1,45 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=2951
+
+Bug reports or comments welcome! Email: oconnore@gmail.com
+----------------
+
+Parsing is done using a per character tokenizer. Two stacks are used to simulate a recursive parse.
+
+Mappings:
+<Tab> indents lines (or ranges in visual mode)
+<C-\> indents the toplevel form. Or whatever is at 150[(.
+
+To indent an entire file, do 1GVG<Tab>. This may take a while for a large file.
+
+Commands:
+:CLLoadLispwords refreshes the lisp word file
+:CLIndentForm indents the toplevel form
+:CLIndentRange indents a range
+:CLIndentLine indents a line
+:CLSetWord <word> <number> sets a lispword
+
+Customizable variables:
+String :: g:CL_lispwords_file defaults to ~/lispwords.
+Boolean :: g:CL_aggressive_literals defaults to 1
+Boolean :: g:CL_retab_on_open defaults to 1
+Integer :: g:CL_auto_zero_limit defaults to 25
+List <String> :: g:CL_loop_keywords lists all known loop keywords
+List <String> :: g:CL_flets lists forms to be handled similar to flet
+List < List < String, Integer > > :: g:CL_auto_prefixes lists all regexp base lisp numbers.
+
+Add <<let g:VARIABLE = VALUE >> to your ~/.vimrc to change this. For Boolean variables, 1 is true and 0 is false.
+
+Lisp words are stored 1 per line as such:
+<symbol> <lisp #>
+
+Aggressive literals means that forms such as (:hello world), ('got milk) and (&optional var1 var2) are treated as literals. The first character of the first symbol (if it is a symbol) are tested to match [&':].
+
+While indenting, auto prefixes iterates over each string-integer pair. If the string matches the parent (for example "def" matches "defclass", and "^[abc].*$" matches "chair"), then the associated lisp word number is used for indentation. The first match wins.
+I default to: [["with-",1], ["def",2], ["make-",1], ["map",1]]
+
+Auto zero limit was added to preserve screen real estate for long lispy symbol names. If a symbol in your program looks like "variable-that-holds-an-integer-and-is-used-for-counting", you may appreciate this setting. Any parent string longer than the limit will be handled as a lisp number zero. By default, this is 25 characters.
+
+My lispwords file is available at: http://paste.lisp.org/display/97882
+It is not complete, but might be a useful starting point.
+
+The indentation behavior was based on a description at http://evalwhen.com/scmindent/index.html.

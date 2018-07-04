@@ -1,0 +1,29 @@
+== Description
+
+An ActiveRecord validation for determining if an Array is a subset of another Array.
+
+== Example
+
+A real estate search that:
+* includes only houses and condos;
+* in suburbia or the west-end.
+could be:
+
+  class RealEstateSearch < ActiveRecord::Base
+
+    # params[:styles] => %w(House Condo)
+    #   --> This would pass validation.
+    validates_array_subset_of :styles,
+      :in       => %w(House Apartment Condo),
+      :message  => 'What kind of property are you looking for??'
+
+    # params[:neighbourhoods] => %w(Suburbia Mars)
+    #   --> This would fail validation, because "Mars" is not in the Array below.
+    validates_array_subset_of :neighbourhoods,
+      :in => %(Uptown Downtown Suburbia West-End East-End)
+
+  end
+
+== Copyright and License
+
+Copyright (c) 2008 Nick Hoffman, released under the MIT license.

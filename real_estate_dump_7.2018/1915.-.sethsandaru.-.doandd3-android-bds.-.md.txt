@@ -1,0 +1,23 @@
+# doandd3-android-bds
+## Project Android about Real Estate - Mobile Developer 3 TDC
+A project about Real Estate is developing by Group 2.
+
+This project, mainly to research the Firebase of Google but mostly Realtime Database.
+
+I'm leaded this project and got the maximum score.
+
+## Group 2 members:
++ Tran Minh Phat (Leader)
++ Dang Van Phu
++ Huynh Nhat Minh Tien
++ Pham Ngoc Dai
+
+## Technologies used:
++ Android API 16+
++ Java
++ Firebase Real-time Database
++ Firebase Cloud Storage
++ Google Map API
++ .....
+
+Copyright &copy; 2018 by Phat Tran. All right reserved!

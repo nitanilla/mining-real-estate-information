@@ -1,0 +1,28 @@
+##Real Estate WebApp    			             
+@Auteurs : Issa ABDRASSOUL-YOUSSOUF, Yaser BOUHAFS	                   
+@Date    : 04/01/2015
+
+ Note that to download the project you have just to execute realestate.sh script  (bash realestate.sh)
+The reale state project is consisting to create a webapp called realestate
+for managing building adverts using MEAN JS and the following tchnologies :
+
+	-->Framework Web with Express and Node ;
+	-->CSS Preprocessing using SASS ;
+	-->NoSQL database with MongoDB ;
+	-->ORM (Object Representational Model) using Mongoose ;
+	-->Client-side MVC (Model View Controller) using AngularJS ;
+	-->Use of bower and npm to manage package and dependencies client side for server side respectively;
+	-->Unit tests sing Mocha, Jasmine;
+	-->Grunt for the differents task ;
+	-->Scaffolding using Yeoman.
+
+Using this API it is possible to create, remove, update and visualize adverts.
+
+##Notes : It was very interresting because we have learnt important things such as the using of angular js, express, node js, MongoDB.
+ We have been able to improve in :
+ 
+ 	-->how to generate unique identifiers in Node JS ;
+	-->how to use multiparty module top arse http requests with content-type multipart/form-data;
+	-->how to use fs module to store,move and remove photos;
+	-->how File HTML5 API to interact with local files, make drag and drop;
+

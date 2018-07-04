@@ -1,0 +1,10 @@
+**Final Asignment Funda Coding Challange 2017**
+For Funda Real Estate we got the assignment to workout a prototype based on a user story.
+I chose to add more information to a specific house about the neighbourhoood. This way the user can select a house based on practical and social manners.
+
+**My Prototype**
+Since we only had one week the prototype is not very advanced and only some features work. 
+As a user you can manipulate the dataset of Funda. You can select the neighbourhood and price range.
+
+It might be that this demo is not working any longer. Funda told us they would block the API key after a couple of months.
+

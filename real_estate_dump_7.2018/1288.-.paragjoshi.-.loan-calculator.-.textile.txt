@@ -1,0 +1,87 @@
+h1. Description
+
+While there are several web based calculators for finding loan payment, nothing beats the simplicity, speed and efficiency of good old command-line! 
+
+In my opinion, executing <code> pmt 250000</code> is way faster than lauching browser, going to a website and finding your way around the GUI while ignoring all those annoying advertisements!
+
+h1.  Implementation
+
+This simple program is implemented in Ruby and also can serve as an example ruby program while being a little more advanced than commonly known Hello World program! 
+
+h1. System Requirements
+
+# You need a Ruby interpreter to run this program. 
+# On Debian / Ubuntu run: 
+** <code>sudo apt-get install ruby</code>
+
+h1. Usage
+
+<pre>
+$  ./pmt <LoanAmt> [Rate] [LoanDurationMonth/Years] [TaxRate]
+</pre>
+
+or, on non-*nix platforms, assuming the Ruby interpreter is already installed, execute:
+
+<pre>
+c:/>  ruby ./pmt <LoanAmt> [Rate] [LoanDuration][Month/Years] [TaxRate]
+</pre>
+
+All parameters in <code>[]</code> are optional. <code>LoanAmt</code> is the only required parameter.
+
+By default, <code>LoanDuration</code> is considered in years but you can specify in months by adding <code>m</code> at the end.  For instance, a value <code>15</code> would be 15 years but <code>16m</code> would be considered 16 months.
+
+<code>TaxRate</code> is used for loan transactions where tax may be applied as a percentage of the loan amount. For instance, in the case of real estate purchase, typically property tax is payable as a percentage of purchase price of home. When a down payment is made, the house value considered would be different than the loan principal amount.
+
+h3.  Default values
+
+If the optional parameters are not supplied the following default values are taken:
+
+| *Parameter* | *Default Value* |
+| Rate | 6% |
+| Duration | 30 years |
+| Tax Rate | 1% |
+
+
+h1.  Examples
+
+h3.  Example 1:
+<pre>
+$   ./pmt 450000  5.5  20 
+</pre>
+
+This would compute the loan payment and tax on 450,000 (in your favorite currency) at 5.5% per year interest rate for a 20 year loan duration.
+
+The following would be the output:
+<pre>
+	Principal=450000
+	Interest Rate=5.5
+	Loan Payment=3095.49288536656
+	Tax=375.0
+	Total Payment(including tax)=3470.49288536656
+</pre>
+
+
+h3.  Example 2:
+<pre>
+$   ./pmt 450000 5.5 36m 2 
+</pre>
+
+This would calculate the same loan for 36 months duration with 2% tax rate. 
+
+The following would be the output:
+<pre>
+	Principal=450000
+	Interest Rate=5.5
+	Loan Payment=13588.1558119395
+	Tax=375.0
+	Total Payment(including tax)=13963.1558119395
+</pre>
+
+
+h1.  License
+
+All the code, documents and related content for this project is released under the GNU AFFERO GENERAL PUBLIC LICENSE.  For more information please refer to the included "LICENSE":http://github.com/paragjoshi/loan-calculator/blob/master/LICENSE file.
+
+h1. Feedback
+
+Please feel free to send feedback, report bugs or request enhancements on the "GitHub issue tracker":http://github.com/paragjoshi/Loan-Calculator/issues.

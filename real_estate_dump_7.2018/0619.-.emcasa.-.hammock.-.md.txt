@@ -1,0 +1,49 @@
+[![Build Status](https://travis-ci.org/em-casa/hammock.svg?branch=master)](https://travis-ci.org/em-casa/hammock)
+[![Ebert](https://ebertapp.io/github/em-casa/hammock.svg)](https://ebertapp.io/github/em-casa/hammock)
+# Hammock
+
+Hammock is a Real Estate web crawler and scrapper.
+
+## Install
+
+* Install dependencies with `mix deps.get`
+
+* Create, migrate and seed your database with `mix ecto.setup`
+
+* Copy `.envrc.example` to `.envrc`, replace values accordingly and run `source .envrc`
+
+## Start the Application
+
+* Start the application with `iex -S mix phx.server`
+
+## Crawl all stored domains
+
+* To crawl all domains, run `Hammock.start_all()`
+
+## Crawl individual domains
+
+* To crawl individual domains, use an existing domain(see `seeds.exs` for an example) or insert your own
+
+* Start the crawler with the domain's `ID` or `base_url`:
+
+  `{:ok, crawler} = Hammock.start(1)` or
+
+  `{:ok, crawler} = Hammock.start("https://staging.emcasa.com")`
+
+* If you keep the return of `Hammock.start/1`, you can stop the crawler:
+
+  `Hammock.stop(crawler)`
+
+or stop all running crawlers:
+
+  `Hammock.stop_all()`
+  
+## Deploy
+
+  * Make sure you have your public key authorized and run:
+  
+  `mix bootleg.build`
+  
+  `mix bootleg.deploy`
+  
+  `mix bootleg.start`

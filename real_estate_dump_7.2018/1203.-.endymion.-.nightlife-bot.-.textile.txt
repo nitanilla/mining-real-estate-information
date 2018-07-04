@@ -1,0 +1,101 @@
+h1. Nightlife Bot
+
+Nightlife Bot powers the Event Listing Service, a decentralized event calendar system that's similar to the "MLS":http://en.wikipedia.org/wiki/Multiple_Listing_Service database used by real estate agents. Many independent Nightlife Bots form a federation and share data using common conventions defined here.  Each individual site in the federation displays its own searchable calendar of events and map of venues.
+
+h2. The Workflow
+
+Admin logs in, has a list of events to approve/reject/disown, has a list of events/venues/tags that may need to be merged after the admin's individual bot flags them for merging.  The admin will also have to deal with flagged or reported content, and it would be good to just roll DMCA complaint workflow into it.  All of this admin/backend stuff could be very easy with Active Scaffold.
+
+h2. The Data Model
+
+We need to figure out how the records will be uniquely identified.  We're going to need to define a URL format too, that will uniquely identify one of these Event/Venue/Artist/Tag records in the world.  els://djstalkers.com/events/tiesto-at-liv-in-miami-beach-october-whatever.xml  els://vegas-dance-music.com/events/robbie-rivera-at-wet-republic-ldw-2009.json  We can make the federation more full-featured if we specify things like this as conventions so that all of our individual nightlife bots can communicate with each other.  I suggest we just start hacking up the readme file for the project and put the spec there?
+
+h2. Twitter-like "follower" model
+
+So what we're talking about building is a little like a decentralized Twitter.  But our data model is way more sophisticated than 140-character strings.  It's similar though, in that each bot will have a list of other bots that it's "following".  Portal bots might try to promiscuously follow a many other bots as possible.  We can make the bots auto-discover each other using web search engines if we define micro-formats.  "Anything of the form @<div class="els-event"><div it="title">TITLE</div> ...@ represents an event.", for example.
+
+Twitter displays the tweets from people you're following to you.  Our bots will display the data object from other bots that they're following to the administrators/moderators.  When events are approved for publication either automatically or manually then they will be visible on that bot's public event calendar and venue map.
+
+So your list of people you're following is just a list of els:// URLs.  My list of subscriptions might be:
+
+els://djstalkers.com
+els://vegas-dance-music.com
+els://talknightlife.com/bot
+
+That URL follows conventions that we define in our spec.  Our convention might just say to look for the REST API end point for the Event model by adding /events.  So the Event lists would be at:
+
+els://djstalkers.com/events
+els://vegas-dance-music.com/events
+els://talknightlife.com/bot/events
+
+Unlike Twitter, we're moving multiple types of data object around the network:
+
+els://djstalkers.com/venues
+els://vegas-dance-music.com/venues
+els://talknightlife.com/bot/venues
+
+els://djstalkers.com/tags
+els://vegas-dance-music.com/tags
+els://talknightlife.com/bot/tags
+
+Plug that into Active Resource and it's easy for us to move data around inside of the federation.
+
+Then on top of that, in order to present the correct "other events at this venue" information, and to display the correct venue map, we need a set of associations on each record to other known instances of itself.  I might have a record like this:
+
+els://miami-dance-music.com/venues/liv
+
+David might have a matching entry:
+
+els://djstalkers.com/venues/liv-at-fontainebleau
+
+Ivan might have a third matching entry:
+
+els://ivansite.com/venues/liv-miami-beach
+
+Everything on my site will work if my entry has an association to your entries:
+
+els://miami-dance-music.com/venues/liv
+	additional_sources:
+		els://djstalkers.com/venues/liv-at-fontainebleau
+		els://ivansite.com/venues/liv-miami-beach
+
+My "other events at this venue" will work properly because I can look for Events associated with those two URLs as well as Events directly associated with my record.  My map will display properly because I will only display one map pin and not three.
+
+We can hopefully use the Levenshtein distance to find probable matches but each bot's owners/admins/moderators will probably want approve/reject control over all of that.  And we need to figure out how to make matching information flow around the federation, so that if I match those three records then the three records end up automatically matched in all three bots and not just in my bot.
+
+h3. The API
+
+The ELS protocol specifies a 100% "RESTful" protocol, with JSON Requests to Venue data:
+
+Json example:
+curl -i -H "Accept: application/json" -X POST -d "venue[source]=boty" -d "venue[state]=florida" -d "venue[city]=miami" -d "venue[country]=usa" -d "venue[address]=900 biscayne bay" -d "venue[name]=Space" http://127.0.0.1:3000/venues/
+	HTTP/1.1 201 Created
+	Connection: close
+	Date: Wed, 02 Sep 2009 19:00:21 GMT
+	Location: http://127.0.0.1:3000/venues/11
+	Transfer-Encoding: chunked
+	Content-Type: application/json; charset=utf-8
+	Cache-Control: no-cache
+
+	{"venue":{"name":"Space","city":"miami","updated_at":"2009-09-02T19:00:21Z","country":"usa","id":11,"source":"boty","address":"900 biscayne bay","state":"florida","created_at":"2009-09-02T19:00:21Z"}}~/rails/nightlife-bot(master) $ 
+
+
+curl -i -H "Accept: application/json" http://127.0.0.1:3000/venues/
+	HTTP/1.1 200 OK
+	Connection: close
+	Date: Wed, 02 Sep 2009 18:59:42 GMT
+	ETag: "f3578dba4de4ad8e308d853d14213bc6"
+	Transfer-Encoding: chunked
+	Content-Type: application/json; charset=utf-8
+	Cache-Control: max-age=0, private, must-revalidate
+
+	[{"venue":{"name":"Space","city":"miami","updated_at":"2009-09-02T18:47:19Z","country":"usa","id":10,"source":"boty","address":"900 biscayne bay","state":"florida","created_at":"2009-09-02T18:47:19Z"}}]~/rails/nightlife-bot(master) $ 
+
+h3. Query Data by Tags
+
+
+Rails 3.0.pre
+Shoulda
+RedGreen
+Factory-Girl
+

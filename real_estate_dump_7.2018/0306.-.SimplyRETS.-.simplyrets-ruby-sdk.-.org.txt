@@ -1,0 +1,60 @@
+#+AUTHOR: SimplyRETS, Christopher Reichert, Cody Reichert
+#+TITLE: SimplyRETS Ruby SDK (Beta)
+
+*Deprecation Notice: This SDK is deprecated and will not receive any future updates. The recommended workflow is to use the [[https://docs.simplyrets.com/api/index.html][API]] directly, or generate an SDK for your use-case from the [[https://docs.simplyrets.com/api/resources.json][Swagger Spec]]*
+
+The official Ruby SDK for the [[https://simplyrets.com][SimplyRETS]] Listings API.
+
+SimplyRETS provides a modern and simple interface for building robust
+applications and websites with Real Estate data.
+
+You can view the full API Documentation [[https://docs.simplyrets.com/api/index.html][here]].
+
+** Installation
+
+   Clone the repo or install the =simplyrets= gem:
+
+   #+BEGIN_SRC bash
+     $ git clone git@github.com/SimplyRETS/simplyrets-ruby-sdk
+   #+END_SRC
+   or
+   #+BEGIN_SRC bash
+     $ gem install simplyrets
+   #+END_SRC
+
+
+** Quick Start
+
+   Here's a quick example to set up the client and make a request:
+
+   #+BEGIN_SRC ruby
+     %w(rubygems simplyrets).each {|lib| require lib}
+     %w(rubygems simplyrets).each {|models| require models}
+
+     require "simplyrets"
+
+     SimplyRetsClient.configure do |config|
+       config.username = 'simplyrets'
+       config.password = 'simplyrets'
+     end
+
+     # all properties
+     listings =  SimplyRetsClient::DefaultApi.new.properties_get()
+     p listings
+   #+END_SRC
+
+
+    See the =examples.rb= file for more examples on how to call the
+    api with query parameters.
+
+** Additional Info
+
+   View the complete interactive API on [[https://docs.simplyrets.com/api/index.html][the docs page]]. Here you can
+   find all the available query parameters and the complete response
+   body. You can even see the URL made for that request.
+
+
+** Support
+
+   For support regarding the API or bugs in the SDK, can contact us at
+   support (at) simplyrets (dot) com - or leave an issue on the [[https://github.com/simplyrets/simplyrets-ruby-sdk][Github page]]!

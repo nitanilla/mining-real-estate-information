@@ -1,0 +1,2 @@
+# Real-Estate-Price-Prediction
+To predict the real estate prices based on their properties.

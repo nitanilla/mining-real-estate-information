@@ -1,0 +1,67 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=107
+
+PLEASE READ THE INSTALL SECTION COMPLETELY.
+
+SelectBuf is a buffer explorer similar to the file explorer plugin that comes
+with Vim, the difference being that file explorer allows you to view the files
+on the file system, where as buffer explorer limits the view to only the files
+that are already opened in the current Vim session. It is even possible and 
+easy to extend the plugin with new commands.
+
+Since the first time I released it in Jul '99 (try sending an email to 
+vim-thread.1235@vim.org), the script has gone many
+revisions and enhancements both in technology and features, taking advantage of all the niceties that the new versions of Vim has to offer.
+
+For detailed help, see ":help selectbuf" or read doc/selectbuf.txt. 
+
+- Install the plugin, restart vim and press <F3> (the default key binding) to
+  get the list of buffers.
+- Move the cursor on to the buffer that you need to select and press <CR> or
+  double click with the left-mouse button.
+- If you want to close the window without making a selection, press <F3>
+  again.
+- You can also press ^W<CR> or O to open the file in a new or previous window.
+  You can use d to delete or D to wipeout the buffer. Use d again to
+  undelete a previously deleted buffer (you need to first view the deleted
+  buffers using u command).
+
+You can change the default key mapping to open browser window by setting 
+
+      nmap <unique> <silent> <YourKey> <Plug>SelectBuf
+
+Almost everything is configurable, including all the key mappings that are
+available. E.g., you can change the help key to <C-H> instead of the default ?,
+so you can free it to do backward searches in the file list, using the
+following mapping:
+
+      noremap <silent> <Plug>SelBufHelpKey <C-H> 
+
+Some highlights of the features are:
+
+- It is super fast as the buffer list is cached and incrementally built as new
+  files are added and the old ones are deleted.
+- Hide buffer numbers to save on real estate (goes well with "Always On" mode
+  or when used with WinManager).
+- Opens a new window to avoid disturbing your existing windows. But you can
+  change the behavior to reuse the current window or even to permanently keep
+  it open.
+- You can select block of buffers and delete or wipeout all the buffers at once.
+- You can toggle various settings on and off while you are in the browser. You
+  can e.g., toggle showing the buffer indicators by pressing i.
+- Goes very well with WinManager.
+- There are different sorting keys available. You can sort by buffer number,
+  name, type (extension), path, indicators and MRU order. You can even select a
+  default sort order
+- If you use multiple windows, then the browser restores the window sizes after
+  closing it.
+- Syntax coloring makes it easy to find the buffer you are looking to switch to.
+- Full configurability.
+- Extensibility.
+- Support for WinManager and multiselect plugins.
+- and many more.
+
+For more information, read the vim help on seletbuf.
+
+
+Search_key_words: buffer selectbuf bufexplorer explorer list select multvals genutils multiselect Hari Krishna Dara
+

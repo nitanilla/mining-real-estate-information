@@ -1,0 +1,15 @@
+## Real Estate Comparables Java Application Using Zillow API and MySQL
+
+This Java Application is dedicated to empowering users with the graphical data they need to make preeminent decisions when purchasing/investing in real estate.  Users can enter a valid address to retrieve an average price of 5 comparables.  Comparables are regarded as the single-best tool in determining a home's value. They contrast criteria from recently sold properties in a neighborhood, such as sale price, age of house, size, and square footage. Real estate agents use comps to prepare a Comparative Market Analysis (CMA) for their clients.  
+
+The data (address and respective comp price average) is then stored locally in a MySQL Database.  The user can then choose to display the graph of the average comps for the property they entered.  
+
+After the first property is searched, it is stored and later used in the 'recently searched properties' drop-down menu for easy access.  
+
+Below are photos of the main page, the aquired data page, and the graph window respectively...
+
+![alt text](https://raw.githubusercontent.com/tdirusso/Real-Estate-Comparables/master/photos/selector.png)
+
+![alt text](https://raw.githubusercontent.com/tdirusso/Real-Estate-Comparables/master/photos/data.png)
+
+![alt text](https://raw.githubusercontent.com/tdirusso/Real-Estate-Comparables/master/photos/graph.png)

@@ -1,0 +1,31 @@
+# Real Estate Database
+
+**This is a database for a fictional real estate company created by me (Martha Ribeiro Locks) to practice and show my skills on database development using MySQL.**
+
+I did invented myself all tables and relationships using the books that I read and the online courses I made.
+
+Feedback or sugestions, please send to me an email or open an issue here in github.
+
+>* Real estate model **Customers**
+
+    The purpose of this tables is to record informations of customers (owners, tenants, guarantors, properties, etc.)
+
+![alt text](images/ER_MODEL_CUSTOMERS.png "Customers")
+
+>* Real estate model **Contracts**
+
+    The purpose of the tables below is to record informations of lease agrements (properties, garages, bank accounts, etc.)
+
+![alt text](images/ER_MODEL_CONTRACTS.png "Contract")
+
+>* Real estate model **Financial**
+
+    The purpose of the tables below is to record financial information (rent receipts, bills, tax, etc.)
+
+![alt text](images/ER_MODEL_FINANCIAL.png "Financial")
+
+>* Real estate model **Reports**
+
+    The purpose of the tables below is record report informations (tenant, rent receipt, lease agreement, etc.)
+
+![alt text](images/ER_MODEL_REPORTS.png "Reports")

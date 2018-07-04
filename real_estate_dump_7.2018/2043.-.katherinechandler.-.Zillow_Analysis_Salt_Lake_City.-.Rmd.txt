@@ -1,0 +1,10 @@
+# Living small in the city or large in the 'burbs?
+### An exploratory and statistical analysis of Salt Lake City's real estate prices to address the eternal question
+
+#### Katherine Chandler  
+
+Small home enthusiasts maintain that small homes are a great asset, but is this economic reality? Is a small urban home *really* a better investment than a large suburban home? The analysis in this repository explores this question using current and historical real estate data from the real estate market place Zillow (Zillow_Project2_Walk_Through.ipynb). The findings of the initial exploratory data analysis was confirmed with an inferential statistical analysis; additionally, a multi-variate linear regression model was built to further explore relationships in the data (Zillow_Project3_Walk_Through.ipynb). 
+
+Below is an overview of the project structure.
+
+![**File Structure Overview**](./zillow_figures/Project_Overview.png)

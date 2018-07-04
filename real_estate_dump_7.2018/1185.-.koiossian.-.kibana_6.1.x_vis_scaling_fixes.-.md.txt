@@ -1,0 +1,30 @@
+# kibana_6.1.x_vis_scaling_fixes
+Fixes a number of visualization scaling issue introduced in Kibana 6.1.x.
+
+Kibana 6.1 introduced a number of useful new features, but also a lot of changes behind the scenes. Unfortunately these changes have resulted in some visualization scaling issues. For example a pie chart that in 6.0.1 looked like this...
+
+<img width="473" alt="Pie Chart 6.0.1" src="https://user-images.githubusercontent.com/10326954/34079004-c4e94214-e324-11e7-99a4-265110575322.png">
+
+in 6.1.x looks like this...
+
+<img width="475" alt="Pie Chart 6.1.x" src="https://user-images.githubusercontent.com/10326954/34079013-d2a9ea5c-e324-11e7-9f04-834885d61b65.png">
+
+A little investigation with Chrome's Developer Tools reveals that the issue is related to excessive padding having been added almost everywhere.
+
+<img width="312" alt="padding 6.0.1" src="https://user-images.githubusercontent.com/10326954/34079138-b0680e12-e327-11e7-81ce-815dfe13c585.png">
+
+<img width="312" alt="padding 6.1.x" src="https://user-images.githubusercontent.com/10326954/34079144-bb37a2f8-e327-11e7-8f8a-fe7e0248c711.png">
+
+Pie Charts are impacted even more than most visualizations due to an additional issue related to space being reserved for labels (a new feature) even when labels are not enabled.
+
+The addition of all this padding means that screen real estate is being wasted for whitespace, rather than being used to display your valuable data.
+
+<img alt="6.1.1 out-of-the-box" src="https://user-images.githubusercontent.com/10326954/34258763-b6ba646e-e65f-11e7-9a86-813d05bb79da.png">
+
+Fortunately there are tickets for both of these issues. The fix for the pie chart label-related issue (https://github.com/elastic/kibana/pull/15641) has already been committed but isn't yet released. However the excessive padding issue (https://github.com/elastic/kibana/issues/15594) has not yet been fixed in the Kibana repository.
+
+While I definitely encourage anyone suffering from these issues to provide their input on the Github issue. I have produced a solution that is working well for me without any negative side-effects.
+
+Simply replace the relevant original Kibana 6.1.x files with the files in this repository. Included is both the pie chart fix, as well as CSS changes to reduce excessive padding. The result of these changes looks like this...
+
+<img alt="6.1.1" src="https://user-images.githubusercontent.com/10326954/34258779-c938ce5a-e65f-11e7-85ce-79dd9c67ab6a.png">

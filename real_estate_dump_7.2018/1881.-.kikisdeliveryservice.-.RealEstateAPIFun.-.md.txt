@@ -1,0 +1,14 @@
+# Real Estate API Fun
+
+NOTE: Trulia is discontinuing their API as of September 29, 2016.
+
+Programming Languages: Python
+
+Libraries used: json, requests, xmltodict
+
+Trying out a few popular real estate sites' apis.
+
+trulia.py: This uses Trulia's API.  I'm not a huge fun of this API: the documentation is 
+meager, it only returns XML and doesn't have a lot of options of data to receive.  
+I tried out the xmltodict library to turn it into a dict so that you can treat it like a 
+json.

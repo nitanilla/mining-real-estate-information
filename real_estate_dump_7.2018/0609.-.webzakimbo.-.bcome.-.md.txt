@@ -1,0 +1,74 @@
+
+## Bcome
+
+### This repository is deprecated and no longer supported.  New version here: <a href="https://github.com/webzakimbo/bcome-kontrol">https://github.com/webzakimbo/bcome-kontrol</a>.
+
+Bcome is a server management framework. 
+
+#### Quick links
+
+* [Installation](documentation/installation.md)
+* [Configuration](documentation/configuration.md)
+* [Usage & Commands](documentation/usage.md)
+* [Functions](documentation/functions.md)
+* [Use outside the shell](documentation/external_usage.md)
+* [Interactive mode](documentation/interactive_mode.md)
+* [Views](documentation/views.md)
+* [NEW - Inventory Cache](documentation/inventory_cache.md)
+
+## Overview
+
+It aims to simplify your day to day server management tasks by enabling access to your various estates from a single shell.
+
+* Access all machines across *all* your platforms and environments from one interface.  
+
+* Execute commands across platforms on multiple machines simultaneously, harnessing the power of Ruby to assist with real-time orchestration.
+
+* Simple configuration enables static or dynamic network discovery.
+
+* Upload & download files (as local or sudo user), and execute commands directly on remote hosts (on either individual, or groups of hosts simultaneously)
+
+* Fully customisable for extending the framework with custom commands & tasks.
+
+* Easy integration into existing Ruby projects.
+
+* Dynamic network discovery for EC2 hosted machines (more providers to come). Static network definitions for everything else.
+
+* Transparent usage of locally configured SSH keys
+
+* Integrates easily with Capistrano 
+
+## Security
+
+The framework has no knowledge of your SSH keys, nor does it store them or interpret them in any way, merely acting as a transparent conduit for commands over SSH, with all commands being delegated to your underlying operating system.
+
+## Safety
+
+With great power etc - it is assumed that users have been given the correct privileges for the machines under their control, and that they understand the functions of this tool.
+
+## Copyright
+
+Copyright © 2016 Webzakimbo Ltd guillaume@webzakimbo.com Guillaume Roderick
+
+## License
+
+MIT License
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+

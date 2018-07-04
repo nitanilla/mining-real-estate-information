@@ -1,0 +1,15 @@
+# Real Estate Agency
+
+This is a website made for a local Real Estate Agency to collect payments online.
+
+## Download and Installation
+
+To download this project, choose one of the options:
+
+* Clone the repo: git clone https://github.com/cameronzsmith/real-estate.git
+* [Fork, Clone, or Download on GitHub](https://github.com/cameronzsmith/real-estate)
+
+## Usage
+
+After downloading, feel free to make any changes in the /src/ directory. After making changes, run the command ```gulp``` in the terminal to build. The code will be minified
+and then placed in the *dist* directory.

@@ -1,0 +1,267 @@
+# one-day
+A one day calendar 
+
+## Requirements
+Part I: Write a function to lay out a series of events on the calendar for a single day.
+
+Events will be placed in a container. The top of the container represents 9am and the bottom represents 9pm.   
+The width of the container will be 620px (10px padding on the left and right) and the height will be 720px (1 pixel for every minute between 9am and 9pm). The objects should be laid out so that they do not visually overlap. If there is only one event at a given time slot, its width should be 600px.
+
+There are 2 major constraints: 
+1. Every colliding event must be the same width as every other event that it collides width. 
+2. An event should use the maximum width possible while still adhering to the first constraint.
+
+See below image for an example.
+![image 1](http://i.imgur.com/nVpxlev.png)
+
+The input to the function will be an array of event objects with the start and end times of the event. Example (JS):
+
+    [
+    
+	     {id : 1, start : 60, end : 120},  // an event from 10am to 11am
+	     {id : 2, start : 100, end : 240}, // an event from 10:40am to 1pm
+	     {id : 3, start : 700, end : 720} // an event from 8:40pm to 9pm 
+    ]
+
+The function should return an array of event objects that have the left and top positions set (relative to the top left of the container), in addition to the id, start, and end time.
+
+Part II: Use your function from Part I to create a web page that is styled just like the example image below.  
+![image2](http://i.imgur.com/HptzBTd.png)
+with the following calendar events:
+
+
+ 1. An event that starts at 9:30 am and ends at 11:30 am
+ 2. An event that starts at 6:00 pm and ends at 7:00pm
+ 3. An event that starts at 6:20pm and ends at 7:20pm
+ 4. An event that starts at 7:10pm pm and ends at 8:10 pm  
+
+## Code
+
+### Installation & Running
+1. Clone this repo
+2. Open the index.html file in your favourite browser.   
+
+**Note:** at startup there is a default set of events (required in the second part).  
+For testing, right below the default array (line 14), you can find `generateEvents` function which generates random array of events. The array size will be determined by the arrayLength attribute.
+
+### Dependencies 
+none! 
+
+
+## Solution
+Below you can find the algorithm to solve the problem according to requirements.
+
+### Introduction
+I will try to address this task in manner of graphs, so few terms should be given.
+
+### Terms
+**Node:** represents an event - $n$, $n \in N, N$ - group of all nodes.  
+**Edge:** represents colliding events - $e$, $e \in E, E$ - group of all edges. For example, if node $u$ and $v$ collide then there will be an edge $e_{u,v}$ connecting them.  
+**Graph:** the collection of nodes and edges $G, G\in(N,E)$ .  
+**Cluster:** represents a group of connected nodes ( sub group of the Graph) - $c$, $c \subseteq G$ . For example, if we have the following nodes: $u, v, w$ and edge $e_{u,v}$. Then there will be 2 clusters, the first will contain $u,v$ and the second will contain only $w$.  
+**Clique:** represents sub group of nodes in a cluster, each pair of nodes in this group has a connecting edge -  $cq$, $cq \subseteq c$. Note, a clique represents a group of colliding events.
+
+**Board:** The day container which holds all the events.  
+
+### Terms example
+For the following input:
+
+    [
+	     {id : 1, start : 0, end : 120}, 
+	     {id : 2, start : 60, end : 120},
+	     {id : 3, start : 60, end : 180},
+	     {id : 4, start : 150, end : 240},
+	     {id : 5, start : 200, end : 240},
+	     {id : 6, start : 300, end : 420},
+	     {id : 7, start : 360, end : 420},
+	     {id : 8, start : 300, end : 720}
+    ]
+The graph will be:  
+
+![graph image](http://s24.postimg.org/tz0ly8nqt/graph.png)  
+
+Black cycle - node - event  
+Green ellipse - clique - group of colliding events  
+Red ellipse - cluster - group of connected nodes  
+Blue line - edge - connector between colliding events  
+Note: the top left green ellipse is the biggest clique in the left cluster.  
+The board will be:
+![board](http://i.imgur.com/4sqYwoz.png)  
+
+Red rectangle - cluster  
+Colored dots - clique (each color is a different clique). 
+
+
+### Constraint paraphrase 
+1. Each node in the **same cluster** must have the same width on the board, in order to meet the first constraint.  
+2. Nodes must not overlap each other on the board while starching to maximum width and still adhering to the first constraint.
+3. The width of nodes in a cluster will be set by the biggest clique in the cluster. This is true because, nodes in the same clique will share at least one minute on the board, meaning that they will have to have the same width (because they are colliding). So other nodes in the cluster will have the same width as the smallest node.
+4. Each node in a clique will gain its X axis position relative to its neighbours. 
+
+### Algorithm
+For given array of events `arrayOfEvents` (from the requirements example): 
+
+    [
+    
+         {id : 1, start : 60, end : 120},  // an event from 10am to 11am
+         {id : 2, start : 100, end : 240}, // an event from 10:40am to 1pm
+         {id : 3, start : 700, end : 720} // an event from 8:40pm to 9pm 
+    ]
+
+**Step One:** creating events histogram.  
+An Array of arrays will be created, lets call this array as `histogram`. The `histogram` length will be 720, each index of the `histogram` will represent a  minute on the board (day). 
+Lets call each index of the `histogram` a `minute`. Each `minute`, is an array itself. Each index of the `minute` array represents an event which takes place at this minute.
+
+pseudo code:  
+
+    histogram = new Array(720); 
+    
+    forEach minute in histogram:
+    	minute = new Array(); 
+    	
+    forEach event in arrayOfEvents:
+	    forEach minute inBetween event.start and endMinute:
+		    histogram[minute].push(event.id);
+
+`histogram` array will look like this after this step (for given example):  
+
+    [
+    	1: [],
+    	2: [],
+    	.
+    	.
+    	.
+    	59: [],
+    	60: [1],
+    	61: [1],
+    	.
+    	.
+    	.
+    	99: [1],
+    	100: [1,2],
+    	101: [1,2],
+    	.
+    	.
+    	.
+    	120: [1,2],
+    	121: [2],
+    	122: [2],
+    	.
+    	.
+    	.
+    	240: [2],
+    	241: [],
+    	242: [],
+    	.
+    	.
+    	.
+    	699: [],
+    	700: [3],
+    	701: [3],
+    	.
+    	.
+    	.
+    	720: [3]
+    ]
+
+**Step Two:** creating the graph  
+In this step the graph will be created, including nodes, node neighbours and clusters also the biggest clique of the cluster will be determined.  
+Note that there won't be an edge entity, each node will hold a map of nodes (key: node id, value: node) which it collides with (its neighbours). This map will be called neighbours. Also, a `maxCliqueSize` attribute will be added to each node. The `maxCliqueSize` is the biggest clique the node is part of. 
+
+pseudo code:  
+
+    nodesMap := Map<nodeId, node>;
+    graph := Object<clusters, nodesMap>;
+    Node := Object<nodeId, start, end, neighbours, cluster, position, biggestCliqueSize>;
+    Cluster := Object<mapOfNodesInCluster, width>
+    
+    //creating the nodes
+    forEach event in arrayOfEvents {
+	    node = new Node(event.id, event.start, event.end, new Map<nodeId, node>, null)
+	    nodeMap[node.nodeId] = node;
+	 }
+
+	//creating the clusters
+	cluster = null;
+	forEach minute in histogram {
+		if(minute.length > 0) {
+			cluster = cluster || new Cluster(new Array(), 0);
+			forEach eventId in minute {
+				if(eventId not in cluster.nodes) {
+					cluster.nodes[eventId] = nodeMap[eventId];
+					nodeMap[eventId].cluster = cluster;
+				}
+			} 
+		} else { 
+			if(cluster != null) {
+				graph.clusters.push(cluster);
+			}
+			
+			cluster = null;
+		}
+	}
+	
+	//adding edges to nodes and finding biggest clique for each node
+	forEach minute in histogram {
+		forEach sourceEventId in minute {
+			sourceNode = eventsMap[sourceEventId];
+			sourceNode.biggestCliqueSize = Math.max(sourceNode.biggestCliqueSize, minute.length);
+			forEach targetEventId in minute {
+			    if(sourceEventId != targetEventId) {
+			        sourceNode.neighbours[targetEventId] = eventsMap[targetEventId];
+			    }
+			}
+		}
+	}
+
+**Step Three:** calculating the width of each cluster.  
+As mentioned above, the width of all nodes in the cluster will be determined by the size of the biggest clique in the cluster.   
+The width of each node $n$ in cluster $c$ will follow this equation:  
+$$n_{width} = \frac{Board_{width}}{Max\left ( n_{1}.biggestCliqueSize, n_{2}.biggestCliqueSize, ...,  n_{n}.biggestCliqueSize\right )}$$
+
+Each node width will be set in the cluster its related to. So the width property will be set on the cluster entity.
+
+pseudo code:  
+
+    forEach cluster in graph.clusters {
+	    maxCliqueSize = 1;
+	    forEach node in cluster.nodes {
+		    maxCliqueSize = Max(node.biggestCliqueSize, sizeOf(node.clique);
+	    }
+	    cluster.width = BOARD_WIDTH / maxCliqueSize; 
+	    cluster.biggestCliqueSize = biggestCliqueSize;
+    }
+
+**Step Four:** calculating the node position within its clique.  
+As already mentioned, nodes will have to share the X axis (the "real-estate") with its neighbours. In this step X axis position will be given for each node according to its neighbours.  The biggest clique in the cluster will determine the amount of available places.
+
+pseudo code:  
+
+    forEach node in nodesMap {
+	    positionArray = new Array(node.cluster.biggestCliqueSize);
+	    forEach cliqueNode in node.clique {
+		    if(cliqueNode.position != null) {
+			    //marking occupied indexes
+			    positionArray[cliqueNode.position] = true;
+		    }
+	    }
+
+		forEach index in positionArray {
+			if(!positionArray[index]) {
+				node.position = index;
+				break;
+			}
+		}
+    }
+
+**Step Five:** Putting nodes on the board.
+In this step we already have all the information we need to place an event (node) on its position on the board. The position and size of each node will be determined by:
+
+ 1. height: node.end - node.start  
+ 2. width: node.cluster.width   
+ 3. top-offset: node.start  
+ 4. left-offset: node.cluster.width * node.position + left-padding
+
+#### Algorithm Complexity
+The time complexity of the algorithm is $O\left(n^{2} \right )$.  
+The space complexity of the algorithm is $O\left (n \right )$.  

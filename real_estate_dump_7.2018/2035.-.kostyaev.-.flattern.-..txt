@@ -1,0 +1,16 @@
+Flattern
+=====================================
+
+### Manual
+1. RequireJS: http://requirejs.org/docs/api.html
+2. UI-Router: https://github.com/angular-ui/ui-router/wiki
+3. Angular-ui: [https://github.com/angular-ui?page=1] [http://angular-ui.github.io/]
+4. Address search example: http://plnkr.co/edit/a3KlK8dKH3wwiiksDSn2?p=preview
+5. Slick extension: https://github.com/tminglei/slick-pg
+6. How can angularjs bind to list of checkbox values:
+http://stackoverflow.com/questions/14514461/how-can-angularjs-bind-to-list-of-checkbox-values
+
+Templates: 
+1) Auto market: http://themestrap.co.nf/
+2) Real Estate: http://preview.byaviators.com/?id=html-realocation
+3) Real Estate collection: http://themeforest.net/item/zoner-real-estate-html-template-custom-cms/full_screen_preview/7873854?ref=freshdesignweb

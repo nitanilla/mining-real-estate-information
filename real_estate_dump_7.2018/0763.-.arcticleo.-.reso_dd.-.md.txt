@@ -1,0 +1,15 @@
+RESO Data Dictionary
+====================
+
+## Mission
+
+This project aims to provide models with complete field level support as defined by the Real Estate Standard Organization's Data Dictionary standard.
+
+## Testing
+
+* Test presence of data field mapping dictionaries.
+* Test presence of field mappings for all fields, by model.
+* Test presence of methods for all fields, by model.
+* Test presence of description of all fields, by model.
+* Test validations
+

@@ -1,0 +1,257 @@
+#PyNNGraph
+
+Following the versatility of torch.nngraph, pyNNGraph allows you to create multiple inputs/outputs feed-forward and recurrent neural networks.
+
+PyNNGraph is very similar to torch, in order to train a network you need four things: 
+
+* A network i.e. a function with some parameters to tune. 
+* An error metric to evaluate how good the network is performing on some input, knowing the expected output.
+* An evaluation function to circle through the dataset and compute the gradient of the error with respect to the parameters of the networks. 
+* An optimization method to minimize the error by tuning the parameters of the network accordingly. 
+
+##Building a network
+
+With pyNNGraph you can create complex networks by combining multiples modules together. For example here is a network that can be used to solve the XOR problem:
+
+    in(2) --->Linear(2,2)--->Sigmoid(2)--->Linear(2,1)--->Tanh(1)---> out(1)
+
+To build this network we can use the Network constructor, the required parameters are:
+
+* nodesTable: a dictionary containing all the nodes we need associated with an alias. 
+
+    ```python
+    nodesTable = {
+                  'firstLayer_lin': Linear(2,2), 
+                  'firstLayer_squash': Sigmoid(2), 
+                  'secondLayer_lin': Linear(2,1),
+                  'secondLayer_squash': Tanh(1),
+                  }
+    ```
+
+* inputNodes: a list containing the aliases of all the input nodes.
+
+    ```python
+    inputNodes = ['firstLayer_lin']
+    ```
+  
+* outputNodes: a list containing the aliases of all the output nodes.
+
+    ```python
+    outputNodes = ['secondLayer_squash']
+    ```
+  
+* evaluationSequence: a list of aliases showing the order in which we should evaluate the nodes in order to push some input forward in the network. The inputs nodes are not included in the evaluation sequence. 
+
+    ```python
+    evaluationSequence = ['firstLayer_squash', 'secondLayer_lin', 'secondLayer_squash']
+    ```
+
+We can call initialize the network using these elements `net = Network(nodesTable, inputNodes, outputNodes, evaluationSequence)`. We still need to link the nodes together:
+
+```python
+myNet.link_nodes('firstLayer_lin', 'firstLayer_squash')
+myNet.link_nodes('firstLayer_squash', 'secondLayer_lin')
+myNet.link_nodes('secondLayer_lin', 'secondLayer_squash')
+```
+
+The whole point of having this repetitive synthax is to have versatility in the networks we can create. A network can have several inputs/outputs, cross or split hidden states as you wish. In the future it should be possible to automatically compute the evaluation sequence. The description of each module should be available soon in the module folder. 
+
+Once the network has been initialized, we can use the `forward` and `backward` methods. `forward(inputList)` computes the outputs of the network for the given `inputList` of inputs. The order inside this list should match the `inputNodes` list previously defined. `backward(inputList, gradOutputs)` propagates the error derivatives backward in the network, it is responsible for __accumulating__ the gradient of the error with respect to the parameters of the network. Its parameters are the `inputList` as previously introduced, and `gradOutputs`, the derivative or the error with respect to the outputs of the network. 
+
+##Getting the error derivatives
+
+PyNNGraph only have two error metrics available at the moment:
+
+* Mean Squared Error: the good old MSE, `MSE(netOutput, targetVec) = (netOutput - targetVec)^2`
+
+    ```python
+    MSE = MSELayer(outputSize)
+    errorVec = MSE.forward(netOutput, targetVec) 
+    dEdOuts = MSE.backward(netOutput, targetVec) #compute the gradient wrt. the output of the net
+    ```
+
+* Cross-entropy Error: usefull for classification tasks,
+  `CEE(netOutput, tClass) = -log(softmax(netOutput)[tClass])`
+
+    ```python
+    CEE = CELayer(outputSize)
+    errorVec = MSE.forward(netOutput, targetClass) #targetClass is an integer
+    dEdOuts = MSE.backward(netOutput, targetClass) 
+    ```
+
+##Building an evaluation function
+
+The role of the evaluation function is to compute the error and gradient for one minibatch. The prototype of this function should be `loss, gradParams = feval(params)` where `loss` is the error return for the current minibatch, `gradParams` and `params` are lists of references to respectively the parameters' gradient and the parameters (can be obtained with `Network.get_link_to_parameters()`). `params` represent the state of a network, it is `params` we want to tune. 
+
+An example of evaluation function:
+
+```python
+
+params, gradParams = myNet.get_link_to_parameters()
+  
+def feval(x):
+    #eventually modify params if params != x
+    myNet.reset_grad_param() #remember the gradient is accumulated
+    err = 0.
+    for cx,ct in zip(inputs, targets): #circling over the entire dataset 
+        outs = myNet.forward(cx)    #Push the input inside the network
+        err += np.mean(MSE.forward(outs[0], ct))
+        gradOutput = MSE.backward(outs[0], ct) #gradOutput = dE/douts
+        myNet.backward([cx], [gradOutput])
+    err /= len(inputs)
+    return err, gradParams
+    
+```
+The evaluation function is given to the optimizer.
+
+##Choosing an optimizer
+
+The role of the optimizer is to tune the parameters of the network to minimize the error metric. The most classic method to do thid is gradient descent. A more performant method for classification tasks might be RMSprop. Both methods are implemented in pyNNGraph. Each optimizer has the following prototype:
+
+```python
+loss = SGD(feval, netParams, optimConf, optimState)
+```
+Where `optimConf` is a hash table containing the parameters of the optimization method, and `optimState` is a hash table container used by the optimizer to keep track of some parameters such as the previous gradient for `SGD`, used to implement momentum. 
+
+```python
+optimConf = {'learningRate':0.5, 'learningRateDecay':0.01, 'momentum':0.9, 'weightDecay':0.0}
+optimState = {}
+
+for it in xrange(1000): #perform the training
+    loss = SGD(feval, params, optimConf, optimState)
+```
+
+##Recurrent Neural Networks
+
+The real goodness of pyNNGraph starts here, it is really easy to create and train recurrent networks. Simply create a recurrent connexion where needed:
+
+```python
+net.recurrent_connexion('nodeAlias1', 'nodeAlias2')
+```
+
+You also need to take care of the initial recurrent hidden states `Hins`:
+
+```python
+outs, Hins = myNet.forward(seq, Hins) #forward the signal in the net, returns the standard outputs of
+                                      #the net as well as the last recurrent hidden states for the 
+                                      #current sequence 
+```
+
+To train the network you can then unwrap the network and handle it as you would handle a feed-forward net. For example, to build and train a simple RNN with one hidden layer:
+
+```python
+nodesTable = {
+              'frwdLinear': Linear(4, 3),
+              'recLinear': Linear(3, 3),
+              'cellSquash': Tanh(3),
+              'add': CAddTable(3),
+              'outLinear': Linear(3, 4),
+              'outSquash': Tanh(4)
+            }
+inputNodes = ['frwdLinear']
+outputNodes = ['outSquash']
+evaluationSequence = ['recLinear', 'add', 'cellSquash', 'outLinear', 'outSquash']
+
+net = Network(nodesTable, inputNodes, outputNodes, evaluationSequence)
+
+net.link_nodes('frwdLinear', 'add')
+net.link_nodes('recLinear', 'add')
+net.link_nodes('add', 'cellSquash')
+net.link_nodes('cellSquash', 'outLinear')
+net.link_nodes('outLinear', 'outSquash')
+
+net.recurrent_connexion('cellSquash', 'recLinear')
+
+#get lists of references to parameters of the network
+params, gradParams = myNet.get_link_to_parameters()
+
+#Choosing an error metric
+CEE = CELayer(4)
+
+myNet.unwrap(4) #unwrap the network on 4 timesteps
+Hins = [np.zeros(3)] #initial recurrent hidden states 
+
+def feval(x):
+
+    global Hins
+    myNet.reset_grad_param()
+    err = 0.
+
+    seq, targetSeq = get_next_sample()
+
+    #FORWARD:
+    outs, Hins = myNet.forward(seq, Hins)
+    err = sum([CEE.forward(outs[i], targetSeq[i]) for i in xrange(4)])/4.0
+
+    #BACKWARD:
+    gradOutputs = [CEErr.backward(outs[i], targetSeq[i]) for i in xrange(4)]
+    myNet.backward(seq, gradOutputs)
+    
+    return err, gradParams
+    
+optimConf = {'learningRate':0.1, 'decayRate':0.98}
+optimState = {}
+
+for it in xrange(300):
+    loss = RMSprop(feval, params, optimConf, optimState)
+```
+
+Once the training is done, the `Network.sequence_prediction(inputList)` method can be used to continously feed data to the network. `Network.reset_recurrent_states()` resets the recurrent states to zeros. 
+
+Check test_rnn.py and test_lstm.py for more examples. 
+
+##Building a language model
+
+Inspired from [char-rnn](https://github.com/karpathy/char-rnn) we can build a LSTM character-based language model. The dataset we are going to use consist of the Leo Tolstoy novel "War and peace". This is a rather small 3.2Mo dataset, here is a sample:
+
+> "Well, Prince, so Genoa and Lucca are now just family estates of the Buonapartes. But I warn you, if you don't tell me that this means war, if you still try to defend the infamies and horrors perpetrated by that Antichrist--I really believe he is Antichrist--I will have nothing more to do with you and you are no longer my friend, no longer my 'faithful slave,' as you call yourself! But how do you do? I see I have frightened you--sit down and tell me all the news." It was in July, 1805, and the speaker was the well-known Anna Pavlovna Scherer, maid of honor and favorite of the Empress Marya Fedorovna. With these words she greeted Prince Vasili Kuragin, a man of high rank and importance, who was the first to arrive at her reception.
+
+Let's see how far we can get with this. The first network we are seting up has the following properties:
+
+* Number of hidden LSTM layers: 2
+* Size of each hidden layer: 300
+* Max length of sequences used during the BPTT: 50 characters
+* Minibatches size: 50
+* Dropout value: 0.3
+* Learning rate: 0.008
+* Gradient clipping value: 1.0
+* Error: cross-entropy
+* Optimization method: RMSprop
+
+The dataset is one big sequence of characters, it is split into several sequences of size 50. `feval` pushes forward 50 of those sequences and backpropagate the errors. For each sequence, the recurrent hidden states have to be initialized. For the first sequence of the dataset, we set those states to zeros vectors. Each time the `forward` method is called on the recurrent network, it returns the last recurrent hidden states of the current sequence, which can be used to initialize the recurrent hidden states of the next sequence. 
+
+Here are some results for different epochs:
+
+Initially, the network outputs a random character distribution:
+
+> r0gl9o3ymtkhydEq?3C0*g*DQaD,mEtT;6'h-D9Z A47v1H!IAd66?Y,ZaNhY4HG=,POCzQ!")UP-Ne9)LvN?hLCed'7Wugbqaw*yM!1Ex'"G!5j( GOv/TroL4ecR:enWKEvn=V!bUe,hjm,JV/'9h/D9Bltc(z;dN5cD7E'ZaUCuGGywwP9oy*I*CYFxzRrYH7:J7CnA/5K4omT?gh?=;U6(nBjgvTs/SZ,fMvDbsWCA8NdgiYfBZ.AAvH55WkL6JuEeq0Mkya2EUJn5b-Nq9krJ9mEc3yVVf0Dnp.5S,02MazzcR7tfGp fNisb!jmOH sYJKOhSxcRFR 1wWMvc/4"LNSBY0DoftgP)Ia6CPsJn?UgS(C4agzwsb?NLJB"zkw-6pfJc2zBJ?P,P2v/vaya/oGYh!bv'ddr:AAEE"QGwO9cc(y;2!S)Wx36SvS)WbH"twJbX=d4ex!sEpZpAX3k?M.'FNSivq4-KJ.D7vtBtg:?qd
+
+
+After 200 epochs, the network has learnt a correct distribution:
+
+> utn hos ond the teich to foog at bnd nns cint muut the fhut snd on wicnd Hn toet to lnsusns to mong sald hon sos the fhukg acl iugd hod the and bnrtang the tokced agd sand hh the ntoted send fiiv acv hind hof the shimg in aw teen mnd toe ans on ncrinn ns ond the sifrsd hns mnmfes tils anm hod anr ond ntid, mtins witn for shavd and tooacg bHd witn the whted to tint to fiand Wirnitod wad hat taon anv any fomd wate hh penngnd hn whon ond ant th hom sard he ig auand an waund lnd bnrngnn nnd in bntil
+
+After 900 epochs, some small words start to make sense:
+
+> he ford who he ard the gund the dover sishing his bether the asserned the made of the the corl let whe had shas the the prethed the mast the cand and the corpor the was the bench of the bething srith it the the was the casted and the bele of as the inthe at the her the monged the deront to he ass the bich of and the word of the hers the her the sovered his and the her word of the whith the him and the ord his hams the gonky buct the came is ove whor the dinded of he renacing the comrent the the 
+
+After 4800 epochs:
+
+> he French officer, but he had might see the Kutuzov continued in a proback state and could predecessing the between officer. When compost but are general displose and definite and and mind formed house and treated and had reply, for a but it was the referring of every borticy and the packer of the wound, and feeling and all would with the strength and something had been all under the officers, and army they say the French life of the commonsion had been whom the Russian Russian man were every me
+
+After 10000+ epochs:
+
+> down them on the provence, and in the soul of the God and the morning who had in Moscow impression of the Mausity presence, firmly so supposing away to the officer and interrupted and with a battle at Marya Ever but in reaching part and began to have wounded and fan on the shoulders with the movement of a face of the princess with the experience. But Boris' man was not himself were some more sent consideration, and a word of the dignity of the old and officer he stood to the personal position of the sound. All the best soldiers and some look of before the play and he was certain suppositions to the army and having saying: "Oh, it was only sent on a trust, and impossible: Mary Even the strange interprefing for him and ordered the time on the whole day. She will be in legs, and to be because the soldiers were saying. On the sumprister from Sonya's look of all and far in the Emperor in the fellow and staying of the God and for the countess and he say on the Emperor's father's commander o
+
+After 2700 epochs with a network of hidden size 512 (previously 300):
+
+> The any shoulders, and of sulses with the enemy. The whole country should be looking at the first princess of his own whole soldiers for by the companions of his parent spilition of any all dount of the winders proposed to him. And and he may she went out to the looks. All it was not so is began come from the position of the into a door. They have to him. They gave the commander. The stronger despite it was a spite of the Prince Andrew and the Russian goner from the pables when could be party, the c
+
+After 5000 epochs:
+
+> The army that had been carried away and the commander-in-chief was all at the pack of the condescending of the door. The countess was a death of the same and more and arranged in the thoughts of the place and the third story of her soul, left the room and another with the battle of the day and a group of staff had been able to see it and the state of a strange army and faces of the same thoughts and strains of the door with his street and the power of his brilliant consciousness of the same time he had come away from the most presented things and speaking with both hands of the distance. The staff of the officer was all he saw himself without a man who had gave a small consciousness of the first highest departure of the soldiers who had prepared to repeat to the enemy's village and the dispositions and shouting and the march and the troops were ready to be in the conclusion of his face and had he said that the more would be asked in a second and the commander-in-chief and the countess h
+
+
+
+Some models are still training. Relying only on numpy and without any GPU support, the computational time is very long compared to torch. 
+

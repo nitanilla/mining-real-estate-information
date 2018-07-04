@@ -1,0 +1,20 @@
+Here is the detailed explanation of Script’s functionality. Please don't hesitate to ask me any questions if something not clear and feel free to make proposals to optimize and improve the functionality of the Script.
+
+
+1. This is the starting page: http://www.realestate.com.au/buy/between-0-1000...
+Note: this is a paginated list of many real estate properties.
+2. Extract the Links and IDs of ALL real estate properties in the page.
+3. Check if any of newly extracted IDs is already saved in the file (which has a name OldPropertyList.txt). If yes, stop the script. If not, proceed further.
+4. Extract the description of ALL real estate properties in page 1.
+5. Check for Keyword match. If true, send me an email with the Link of that specific real estate property where they keywords were found.
+6. Save all IDs to a file (OldPropertyList.txt). 
+7. First page scraping is finished, now navigate to page 2 and execute Script from Point 2 again.
+8. After the Script is stopped send me an email if there were any errors during execution or exit.
+
+Additional requirements:
+- set a specific user agent (will be provided) in Python Requests.
+- Use Python Requests with random delay time for webpage access (between 5 and 15 seconds).
+- Enable cookies in Python Requests.
+
+List of Keywords to find in the text of each real estate property (must be capital letter insensitive):
+ocean view*, city view*, island view*, sunset*, sun set*, picturesque*, panoramic, elevat*, renovat*, handym*n, handy m*n, handym*n, develop*

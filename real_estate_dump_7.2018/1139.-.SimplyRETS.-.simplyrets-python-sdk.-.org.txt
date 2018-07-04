@@ -1,0 +1,118 @@
+#+AUTHOR: SimplyRETS, Christopher Reichert, Cody Reichert
+#+TITLE: SimplyRETS Python SDK (Beta)
+
+*Deprecation Notice: This SDK is deprecated and will not receive any future updates. The recommended workflow is to use the [[https://docs.simplyrets.com/api/index.html][API]] directly, or generate an SDK for your use-case from the [[https://docs.simplyrets.com/api/resources.json][Swagger Spec]]*
+
+The official Python SDK for the [[https://simplrets.com][SimplyRETS]] Listings API.
+
+SimplyRETS provides a modern and simple interface for building robust
+applications and websites with Real Estate data.
+
+** Installation
+
+   Clone the repo or install =simplyrets= via pip:
+
+   #+BEGIN_SRC bash
+     $ git clone git@github.com/SimplyRETS/simplyrets-python-sdk
+   #+END_SRC
+   or
+   #+BEGIN_SRC bash
+     $ pip install simplyrets
+   #+END_SRC
+
+
+** Quick Start
+
+   Here's a quick example to set up the client and make a request:
+
+   #+BEGIN_SRC python
+     from simplyrets import simplyrets, PropertiesApi
+
+     api_client = simplyrets.Connection('simplyrets', 'simplyrets')
+     properties_api = PropertiesApi.PropertiesApi(api_client)
+
+     props = properties_api.properties()
+
+     for prop in props:
+         print 'Listing Id: ' + prop.listingId
+   #+END_SRC
+
+
+** Setup the client
+
+   To start using the SDK, import =simplyrets.py= and create a client
+   by passing your API key and API secret (we have demo credentials
+   available you can use for free!). Here's a short example:
+
+   #+BEGIN_SRC python
+     import simplyrets
+     api_client = simplyrets.Connection('simplyrets', 'simplyrets')
+   #+END_SRC
+
+
+** Examples: Making Requests
+
+   Once you have the API Client instantiated you can import the
+   Properties API module and you can then make requests for multiple
+   or single listings.
+
+   Request all listings with no filters:
+   #+BEGIN_SRC python
+     from simplyrets import PropertiesApi
+
+     # Pass the API Client to the PropertiesAPI
+     properties_api = PropertiesApi.PropertiesApi(api_client)
+
+     # Make the request
+     props = properties_api.properties()
+
+     for prop in props:
+         print 'Listing Id: ' + prop.listingId
+   #+END_SRC
+
+   Request a single listing by id:
+   #+BEGIN_SRC python
+     prop = properties_api.property(47638943)
+     print prop.address.full
+   #+END_SRC
+
+
+   Multiple query parameters can be sent to the API to request more
+   refined results:
+   #+BEGIN_SRC python
+     props = properties_api.properties(
+               minbeds=3
+               features=["Granite"]
+               brokers=["SR1234", "ACME12"]
+             )
+
+     for prop in props:
+       print prop.address.full
+   #+END_SRC
+
+   Sending back points to get listings in a geographical area:
+   #+BEGIN_SRC python
+     props = properties_api.properties(
+               points=[ "29.723837146389066,-95.69778442382812"
+                      , "29.938275329718987,-95.69778442382812"
+                      , "29.938275329718987,-95.32974243164061"
+                      , "29.723837146389066,-95.32974243164061"
+                      ]
+             )
+
+     for prop in props:
+         print prop.address.full
+   #+END_SRC
+
+
+** Additional Info
+
+   View the complete interactive API on [[https://docs.simplyrets.com/api/index.html][the docs page]]. Here you can
+   find all the available query parameters and the complete response
+   body. You can even see the URL made for that request.
+
+
+** Support
+
+   For support regarding the API or bugs in the SDK, can contact us at
+   support (at) simplyrets (dot) com - or leave an issue on the [[https://github.com/simplyrets/simplyrets-python-sdk][Github page]]!

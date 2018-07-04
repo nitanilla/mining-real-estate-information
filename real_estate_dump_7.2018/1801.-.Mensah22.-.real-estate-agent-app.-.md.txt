@@ -1,0 +1,29 @@
+# Real Estate Agent Web App
+## This project is for people who are looking for a real estate agent
+
+## Features
+- Users visiting the sitecan browse for the best agent that fits their needs.
+- Agents can sign up for an account and post their recent work/update portfolios.
+- Agents can specify the work in their portfolios by applying tags, these tags make their portfolio searchable.
+- Users visiting the site can search for agents via name or tag that is related to that agent.
+
+## Setup and Configuration
+**Ruby v. 2.4.0**
+**Rails v. 5.0.6**
+
+**Databases:** SQLite (Development), PostgreSQL (Production)
+
+**Gems Used So Far:**
+
+- *Simple_Form*
+- *Slide Down Alerts Rails*
+- *Bootstrap* 
+- *Devise* 
+
+**To run this app locally:**
+
+1. Clone the repository
+2. Run `bundle install`
+3. Create and migrate the SQLite database with `rake db:create` and `rake db:migrate`
+4. Start the server using `rails s`
+5. Run the app on localhost:3000

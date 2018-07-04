@@ -1,0 +1,14 @@
+# Shorelands Real Estate Frontend [![Build Status](http://shorelandsrealestate.com:8081/buildStatus/icon?job=Shorelands Frontend)](http://shorelandsrealestate.com:8081/job/Shorelands%20Frontend/)
+
+### Overview
+User facing website for shorelands real estate. Written in elm with a clojure backend found at [shorelands-api](https://github.com/Hairlock/shorelands-api)
+
+
+### Development
+
+Webpack is used for development and serving files. 
+
+* npm install
+* npm run start
+* (Optional) npm run api - use if you don't have the backend configured
+* navigate to localhost:3005

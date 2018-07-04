@@ -1,0 +1,5 @@
+# srep-uninstaller
+A simple plugin to assist uninstalling simple real estate pack 4 WordPress plugin.
+
+* Removes all options created by Simple Real Estate Pack 4 upon activation
+* Creates a menu item under tools so you can find all pages using shortcodes created by SREP

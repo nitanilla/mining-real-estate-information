@@ -1,0 +1,19 @@
+# felinix
+felinix is a FOSS CAT (computer aided translation) tool focused on speed, productivity, portability and efficient resource use
+
+No code for this project exists as of yet, but this repository is a place-holder and interest-generator for a CAT tool that:
+  
+  - Is built with Python, so as to be cross-platform
+  - It incorporates as many efficiencies as possible (cython/pypy where relevant)
+  - Makes design decisions to allow translators to work at a high level of productivity
+  - Is economic with screen real-estate, to be used comfortably on mobile and desktop devices
+  - Has no limit to TM size, optimised concordancing and lookups
+  - Has server, TM-sharing and collaboration functions (potential TM-privatisation features)
+  - Is free and open source software, enabling professional translators to focus on their work, not licenses
+
+Watch or Star this repo to signal your interest, or use the normal channels.
+
+
+
+--
+The felinix name is intended to link the concepts of the 'CAT' tool and feline-like efficiencies, as well as the 'Unix way'.

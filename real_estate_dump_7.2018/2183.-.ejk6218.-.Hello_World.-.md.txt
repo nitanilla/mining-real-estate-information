@@ -1,0 +1,9 @@
+# Hello_World
+This repository will be used for learning resources, experimentation, discussion, and all else!
+
+
+As of right now, I would really like to work on a project involivng understanding Computational Fluid Dynamics (CFD). I think this will be lots of fun! Also, I would love to use this knowlege to make rockets go!
+
+Current Team Human Flow Chart: Humans Explore ---> Humans Overuse Real-Estate ---> Humans Compete for Resources ---> Humans Fight Untill Less Humans ---> Humans Rebuild ---> Humans Explore ---> Repeat. :(
+
+Proposed Team Human Flow Chart: Humans Explore ---> Humans Overuse Real-Estate ---> Humans Focus Efforts ---> Humans Build Space Ship ---> Humans Gain Real-Estate ---> Humans Rebuild ---> Humans Explore ---> Repeat! :)
