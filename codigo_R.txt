@@ -1,0 +1,39 @@
+﻿library(tm)
+require(NLP)
+require(openNLP)
+library(shiny)
+library(memoise)
+library(qdap)
+
+setDict("C:/Program Files (x86)/WordNet/2.1/dict")
+Sys.setenv(WNHOME = "C:/Program Files (x86)/WordNet/2.1") 
+
+inWordnet <- function(w, pos =  c("ADJECTIVE", "ADVERB", "NOUN", "VERB")) {
+   for (x in pos) {
+      filter <- getTermFilter("ExactMatchFilter", w, TRUE)
+      terms <- getIndexTerms(x, 5, filter)
+      if (!is.null(terms)) return(TRUE)
+   }
+   return(FALSE)
+ }
+
+if(initDict())
+
+terms <- synonyms("realty", "NOUN")
+terms_concepnet_one_gram <- c("property", "building", "ground", "realtor", "brownfield", "brownstone", "building", "grounds", "house", "modern","shelter", "construction", "plot", "land", "rental", "property", "residential", "safe", "house")
+s<-Corpus(DirSource("D:/real_estate_50screen/"))
+#match.string
+phrase<-c("real estate")
+word.freq <- apply_as_df(c, termco_d, match.string = phrase)
+mcsv_w(word.freq, dir = NULL, open = F, sep = ", ", dataframes = NULL, pos = 1, envir = as.environment(pos))
+removePuntuacoes <- function(x) gsub("[[:punct:]]","  ", x)
+docs <- tm_map(c, content_transformer(removePuntuacoes))
+alfa <- function(x) gsub("[^[:alnum:]]", "  ", x)
+docs <- tm_map(docs, content_transformer(alfa))
+docs <- tm_map(docs, tolower)
+docs <- tm_map(docs, removeNumbers) 
+docs <- tm_map(docs, stripWhitespace)
+tdm<-TermDocumentMatrix(docs,control=list(wordLengths=c(3,Inf),weighting = weightTfIdf))
+dtm<-DocumentTermMatrix(docs,control=list(wordLengths=c(3,Inf),weighting = weightTfIdf))
+cor(as.matrix(dtm)[ , c("ground", "property")])
+
